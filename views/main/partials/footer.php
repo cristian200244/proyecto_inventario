@@ -2,7 +2,7 @@
 <!-- End of Main Content -->
 
 <!-- Footer -->
-<footer class="sticky-footer bg-white">
+<footer class="sticky-footer bg-info">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
             <span>Copyright &copy; SENA / Programa: ADSI / Ficha: 2277356 / <?= date('Y') ?> </span>
