@@ -63,10 +63,10 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="#">Olvidó su contraseña?</a>
+                                        <a class="small" href="password.php">Olvidó su contraseña?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="#">Crear cuenta!</a>
+                                        <a class="small" href="register.php">Crear cuenta!</a>
                                     </div>
                                 </div>
                             </div>
