@@ -1,36 +1,36 @@
--- MySQL Workbench Forward Engineering
+ -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema inventario_data_base
+-- Schema sistema_inventario
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema inventario_data_base
+-- Schema sistema_inventario
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `inventario_data_base` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `sistema_inventario` DEFAULT CHARACTER SET utf8 ;
 -- -----------------------------------------------------
 -- Schema new_schema1
 -- -----------------------------------------------------
-USE `inventario_data_base` ;
+USE `sistema_inventario` ;
 
 -- -----------------------------------------------------
--- Table `inventario_data_base`.`roles`
+-- Table `sistema_inventario`.`roles`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `inventario_data_base`.`roles` (
-  `id_rol` BIGINT NOT NULL,
-  `nombre` VARCHAR(50) NOT NULL,
+CREATE TABLE IF NOT EXISTS `sistema_inventario`.`roles` (
+  `id_rol` BIGINT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(50) NULL,
   PRIMARY KEY (`id_rol`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `inventario_data_base`.`tipo_documentos`
+-- Table `sistema_inventario`.`tipo_documentos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `inventario_data_base`.`tipo_documentos` (
+CREATE TABLE IF NOT EXISTS `sistema_inventario`.`tipo_documentos` (
   `id_tipo_documento` BIGINT NOT NULL AUTO_INCREMENT,
   `tipo` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`id_tipo_documento`))
@@ -38,9 +38,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `inventario_data_base`.`ciudades`
+-- Table `sistema_inventario`.`ciudades`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `inventario_data_base`.`ciudades` (
+CREATE TABLE IF NOT EXISTS `sistema_inventario`.`ciudades` (
   `id_ciudad` BIGINT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id_ciudad`))
@@ -48,11 +48,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `inventario_data_base`.`personas`
+-- Table `sistema_inventario`.`personas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `inventario_data_base`.`personas` (
+CREATE TABLE IF NOT EXISTS `sistema_inventario`.`personas` (
   `id_persona` BIGINT NOT NULL AUTO_INCREMENT,
-  `id_rol` BIGINT NOT NULL,
+  `id_rol` BIGINT NULL,
   `id_tipo_documento` BIGINT NOT NULL,
   `id_ciudad` BIGINT NOT NULL,
   `numero_documento` VARCHAR(10) NOT NULL,
@@ -62,8 +62,8 @@ CREATE TABLE IF NOT EXISTS `inventario_data_base`.`personas` (
   `segundo_apellido` VARCHAR(50) NULL,
   `direccion` VARCHAR(50) NOT NULL,
   `telefono` VARCHAR(50) NOT NULL,
-  `password` VARCHAR(20) NOT NULL,
-  `sexo` TINYINT NOT NULL,
+  `password` VARCHAR(20) NULL,
+  `sexo` VARCHAR(50) NOT NULL,
   `e-mail` VARCHAR(100) NULL,
   PRIMARY KEY (`id_persona`),
   INDEX `fk_id_persona_id_rol_idx` (`id_rol` ASC) VISIBLE,
@@ -71,26 +71,26 @@ CREATE TABLE IF NOT EXISTS `inventario_data_base`.`personas` (
   INDEX `fk_id_persona_id_ciudad_idx` (`id_ciudad` ASC) VISIBLE,
   CONSTRAINT `fk_id_persona_id_rol`
     FOREIGN KEY (`id_rol`)
-    REFERENCES `inventario_data_base`.`roles` (`id_rol`)
+    REFERENCES `sistema_inventario`.`roles` (`id_rol`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_id_persona_id_tipo_documento`
     FOREIGN KEY (`id_tipo_documento`)
-    REFERENCES `inventario_data_base`.`tipo_documentos` (`id_tipo_documento`)
+    REFERENCES `sistema_inventario`.`tipo_documentos` (`id_tipo_documento`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_id_persona_id_ciudad`
     FOREIGN KEY (`id_ciudad`)
-    REFERENCES `inventario_data_base`.`ciudades` (`id_ciudad`)
+    REFERENCES `sistema_inventario`.`ciudades` (`id_ciudad`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `inventario_data_base`.`codigos`
+-- Table `sistema_inventario`.`codigos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `inventario_data_base`.`codigos` (
+CREATE TABLE IF NOT EXISTS `sistema_inventario`.`codigos` (
   `id_codigo` BIGINT NOT NULL AUTO_INCREMENT,
   `codigo` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`id_codigo`))
@@ -98,9 +98,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `inventario_data_base`.`marcas`
+-- Table `sistema_inventario`.`marcas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `inventario_data_base`.`marcas` (
+CREATE TABLE IF NOT EXISTS `sistema_inventario`.`marcas` (
   `id_marca` BIGINT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`id_marca`))
@@ -108,9 +108,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `inventario_data_base`.`tipo_dispositivos`
+-- Table `sistema_inventario`.`tipo_dispositivos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `inventario_data_base`.`tipo_dispositivos` (
+CREATE TABLE IF NOT EXISTS `sistema_inventario`.`tipo_dispositivos` (
   `id_tipo_dispositivo` BIGINT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`id_tipo_dispositivo`))
@@ -118,19 +118,19 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `inventario_data_base`.`estado_productos`
+-- Table `sistema_inventario`.`estado_productos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `inventario_data_base`.`estado_productos` (
+CREATE TABLE IF NOT EXISTS `sistema_inventario`.`estado_productos` (
   `id_estado_producto` BIGINT NOT NULL AUTO_INCREMENT,
-  `estado` TINYINT NOT NULL,
+  `estado` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`id_estado_producto`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `inventario_data_base`.`tipo_servicios`
+-- Table `sistema_inventario`.`tipo_servicios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `inventario_data_base`.`tipo_servicios` (
+CREATE TABLE IF NOT EXISTS `sistema_inventario`.`tipo_servicios` (
   `id_tipo_servicio` BIGINT NOT NULL AUTO_INCREMENT,
   `servicio` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`id_tipo_servicio`))
@@ -138,9 +138,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `inventario_data_base`.`servicios`
+-- Table `sistema_inventario`.`servicios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `inventario_data_base`.`servicios` (
+CREATE TABLE IF NOT EXISTS `sistema_inventario`.`servicios` (
   `id_servicio` BIGINT NOT NULL AUTO_INCREMENT,
   `id_persona` BIGINT NOT NULL,
   `id_tipo_dispositivo` BIGINT NOT NULL,
@@ -158,73 +158,41 @@ CREATE TABLE IF NOT EXISTS `inventario_data_base`.`servicios` (
   INDEX `fk_id_servicio_id_estado_producto_idx` (`id_tipo_servicio` ASC) VISIBLE,
   CONSTRAINT `fk_id_servicio_id_codigo`
     FOREIGN KEY (`id_codigo`)
-    REFERENCES `inventario_data_base`.`codigos` (`id_codigo`)
+    REFERENCES `sistema_inventario`.`codigos` (`id_codigo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_id_servicio_id_marca`
     FOREIGN KEY (`id_marca`)
-    REFERENCES `inventario_data_base`.`marcas` (`id_marca`)
+    REFERENCES `sistema_inventario`.`marcas` (`id_marca`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_id_servicio_id_tipo_dispositivo`
     FOREIGN KEY (`id_tipo_dispositivo`)
-    REFERENCES `inventario_data_base`.`tipo_dispositivos` (`id_tipo_dispositivo`)
+    REFERENCES `sistema_inventario`.`tipo_dispositivos` (`id_tipo_dispositivo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_id_servicio_id_estado_producto`
     FOREIGN KEY (`id_tipo_servicio`)
-    REFERENCES `inventario_data_base`.`estado_productos` (`id_estado_producto`)
+    REFERENCES `sistema_inventario`.`estado_productos` (`id_estado_producto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_id_servicio_id_tipo_servicio`
     FOREIGN KEY (`id_tipo_servicio`)
-    REFERENCES `inventario_data_base`.`tipo_servicios` (`id_tipo_servicio`)
+    REFERENCES `sistema_inventario`.`tipo_servicios` (`id_tipo_servicio`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_id_servicio_id_persona`
     FOREIGN KEY (`id_persona`)
-    REFERENCES `inventario_data_base`.`personas` (`id_persona`)
+    REFERENCES `sistema_inventario`.`personas` (`id_persona`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `inventario_data_base`.`sexo`
+-- Table `sistema_inventario`.`facturas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `inventario_data_base`.`sexo` (
-)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `inventario_data_base`.`sexo_copy1`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `inventario_data_base`.`sexo_copy1` (
-)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `inventario_data_base`.`sexo_copy2`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `inventario_data_base`.`sexo_copy2` (
-)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `inventario_data_base`.`sexo_copy3`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `inventario_data_base`.`sexo_copy3` (
-)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `inventario_data_base`.`facturas`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `inventario_data_base`.`facturas` (
+CREATE TABLE IF NOT EXISTS `sistema_inventario`.`facturas` (
   `id_factura` BIGINT NOT NULL AUTO_INCREMENT,
   `id_persona` BIGINT NOT NULL,
   `id_servicio` BIGINT NOT NULL,
@@ -237,12 +205,12 @@ CREATE TABLE IF NOT EXISTS `inventario_data_base`.`facturas` (
   INDEX `fk_factura_id_servicio_idx` (`id_servicio` ASC) VISIBLE,
   CONSTRAINT `fk_id_factura_id_persona`
     FOREIGN KEY (`id_persona`)
-    REFERENCES `inventario_data_base`.`personas` (`id_persona`)
+    REFERENCES `sistema_inventario`.`personas` (`id_persona`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_factura_id_servicio`
     FOREIGN KEY (`id_servicio`)
-    REFERENCES `inventario_data_base`.`servicios` (`id_servicio`)
+    REFERENCES `sistema_inventario`.`servicios` (`id_servicio`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

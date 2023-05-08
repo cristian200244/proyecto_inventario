@@ -1,10 +1,10 @@
 <?php
 class Database{
-    public $host = "";
-    public $database = "";
-    public $user="";
-    public $password ="";
-    public $charset = "";
+    public $host;
+    public $database;
+    public $user;
+    public $password;
+    public $charset;
 
     public function __construct()
     {
