@@ -8,19 +8,20 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">hola estas en el modulo Administrador</h1>
+    <div class="div">
+        <a href="#" class="btn btn-primary"> Nuevo registro</a>
+    </div>
     <form action="">
         <div class="container text-center">
-            <div class="col-auto">
-
-            </div>
+        
             <h1 class="h2 mb-4  text-center">Usuarios</h1>
             <hr class="bg-info">
             <div class="row text-start">
                 <div class="col">
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">tipp de documento</label>
+                        <label for="exampleFormControlInput1" class="form-label">Tipo de documento</label>
                         <select class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
+                            <option selected>Selecciona una opción</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
