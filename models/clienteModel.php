@@ -15,7 +15,7 @@ class Cliente extends stdClass
     private $segundo_apellido;
     private $sexo;
     private $ciudad;
-    private $email;
+    private $correo;
     private $direccion;
     private $telefono;
     private $database;
@@ -52,10 +52,10 @@ class Cliente extends stdClass
                 $item->sexo             = $row['sexo'];
                 $item->ciudad           = $row['id_ciudad'];
                 $item->telefono           = $row['telefono'];
-                $item->email            = $row['email'];
+                $item->correo            = $row['correo'];
                 $item->direccion        = $row['direccion'];
 
-                array_push($datos_clientes,$item);
+                array_push($datos_clientes, $item);
             }
 
             return $datos_clientes;
@@ -68,13 +68,14 @@ class Cliente extends stdClass
         $items = [];
 
         try {
-            $sql = 'SELECT  id_tipo_documento, numero_documento , primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, sexo, telefono, ciudad, email, direccion FROM personas';
+            $sql = 'SELECT  id, id_tipo_documento, numero_documento , primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, sexo, telefono, id_ciudad, correo, direccion FROM personas';
             $query = $this->database->conexion()->query($sql);
 
             while ($row = $query->fetch()) {
-                $item            = new Cliente();
+
+                $item                   = new Cliente();
                 $item->id               = $row['id'];
-                $item->tipo_documento = $row['id_tipo_documento'];
+                $item->tipo_documento   = $row['id_tipo_documento'];
                 $item->numero_documento = $row['numero_documento'];
                 $item->primer_nombre    = $row['primer_nombre'];
                 $item->segundo_nombre   = $row['segundo_nombre'];
@@ -82,10 +83,9 @@ class Cliente extends stdClass
                 $item->segundo_apellido = $row['segundo_apellido'];
                 $item->sexo             = $row['sexo'];
                 $item->telefono         = $row['telefono'];
-                $item->ciudad           = $row['ciudad'];
-                $item->email            = $row['email'];
+                $item->ciudad           = $row['id_ciudad'];
+                $item->correo           = $row['correo'];
                 $item->direccion        = $row['direccion'];
-
 
                 array_push($items, $item);
             }
@@ -100,13 +100,13 @@ class Cliente extends stdClass
     public function store($datos)
     {
         try {
-            $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento,primer_nombre,segundo_nommbre,primer_apellido,segundo_apellido,sexo,telefono,ciudad,email,direccion ) 
-            VALUES(:id_tipo_documento, :numero_documento, :primer_nombre, :segundo_nombre, :primer_apelido, :segundo_apellido, :sexo, :telefono, :ciudad, :email, :direccion)';
+            $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento,primer_nombre,segundo_nommbre,primer_apellido,segundo_apellido,sexo,telefono,id_ciudad,correo,direccion ) 
+            VALUES(:id_tipo_documento, :numero_documento, :primer_nombre, :segundo_nombre, :primer_apelido, :segundo_apellido, :sexo, :telefono, :id_ciudad, :correo, :direccion)';
 
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
 
-                
+
                 'id_tipo_documento  ' => $datos['id_tipo_documento'],
                 'numero_documento' => $datos['numero_documento'],
                 'primer_nombre   ' => $datos['primer_nombre'],
@@ -115,15 +115,13 @@ class Cliente extends stdClass
                 'segundo_apellido' => $datos['segundo_apellido'],
                 'sexo            ' => $datos['sexo'],
                 'telefono'         => $datos['telefono'],
-                'ciudad          ' => $datos['ciudad'],
-                'email           ' => $datos['email'],
+                'id_ciudad          ' => $datos['id_ciudad'],
+                'correo           ' => $datos['correo'],
                 'direccion       ' => $datos['direccion'],
             ]);
             if ($query) {
                 return true;
             }
-
-           
         } catch (PDOException $e) {
             die($e->getMessage());
         }
@@ -142,10 +140,10 @@ class Cliente extends stdClass
               primer_apellido = :primer_apellido,
               segundo_apellido = :segundo_apellido,
               sexo = :sexo,
-              ciudad = :ciudad,
-              email = :email,
+              id_ciudad = :id_ciudad,
+              correo = :correo,
               direccion = :direccion,
-              rol WHERE id = :id';
+              WHERE id = :id';
 
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
@@ -157,10 +155,10 @@ class Cliente extends stdClass
                 'primer_apellido ' => $datos['primer_apellido'],
                 'segundo_apellido' => $datos['segundo_apellido'],
                 'sexo            ' => $datos['sexo'],
-                'ciudad          ' => $datos['ciudad'],
-                'email           ' => $datos['email'],
+                'id_ciudad          ' => $datos['id_ciudad'],
+                'correo           ' => $datos['correo'],
                 'direccion       ' => $datos['direccion'],
-               
+
             ]);
             if ($query) {
                 return true;
@@ -180,7 +178,7 @@ class Cliente extends stdClass
                 'id'        => $id
             ]);
             if ($query) {
-                 return true;
+                return true;
             }
         } catch (PDOException $e) {
             die($e->getMessage());

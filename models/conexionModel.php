@@ -1,5 +1,6 @@
 <?php
-class Database{
+class Database
+{
     public $host;
     public $database;
     public $user;
@@ -13,7 +14,6 @@ class Database{
         $this->user     = constant('USER');
         $this->password = constant('PASSWORD');
         $this->charset  = constant('CHARSET');
-
     }
 
     public function conexion()
@@ -30,12 +30,7 @@ class Database{
 
             return $pdo;
         } catch (PDOException $e) {
-            print_r('Error en la conexión con la bases de datos:' . $e->getMessage("la conexion ha fallado"));
+            print_r('Error en la conexión con la bases de datos:' . $e->getMessage());
         }
     }
 }
-
-
-
-
-?>

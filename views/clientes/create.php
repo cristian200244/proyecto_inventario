@@ -6,10 +6,15 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
+    <!-- Page Heading --> 
+    
+ 
+    <button type="submit" class="btn btn-outline-info ml-5"><a href="consult.php">Ver Información</a> </button>
+
     <form method="POST" action="../../controller/clienteController.php">
     <input type="hidden" name="c" value="1">
         <div class="container text-center">
-            <h1 class="h2 mb-4  text-center"> Actualizar Cliente</h1>
+            <h1 class="h2 mb-4  text-center">Crear Cliente</h1>
             <hr class="bg-info">
             <div class="row text-start">
                 <div class="col">
@@ -26,6 +31,7 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Primer Nombre</label>
                         <input type="text" class="form-control" id="primer_nombre" name="primer_nombre">
+                    
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Primer Apellido</label>
@@ -39,10 +45,16 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
                             <option value="3">Femenino</option>
                         </select>
                     </div>
+
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label ">Direccion</label>
                         <input type="text" class="form-control" id="direccion" name="direccion">
                     </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label ">E-mail</label>
+                        <input type="text" class="form-control" id="correo" name="correo">
+                    </div>
+
                 </div>
                 <div class="col">
                     <div class="mb-3">
@@ -59,7 +71,7 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Ciudad</label>
-                        <select class="form-select" aria-label="Default select example" id="ciudad" name="ciudad" required= "required" >
+                        <select class="form-select" aria-label="Default select example" id="id_ciudad" name="id_ciudad" required= "required" >
                             <option selected>Selecionar Ciudad</option>
                             <option value="1">Amazonas</option>
                             <option value="2">Antioquia</option>
@@ -104,7 +116,7 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
                 </div>
 
             </div>
-            <button type="submit" class="btn btn-outline-info ml-0">Actualizar Cliente</button>
+            <button type="submit" class="btn btn-outline-info ml-0">Guardar Cliente</button>
         </div>
     </form>
  
@@ -114,4 +126,3 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');
 ?>
- 
