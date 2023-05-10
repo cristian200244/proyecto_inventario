@@ -18,37 +18,24 @@ require_once '../../models/clienteModel.php';
 <body>
     <h2>CONSULTAR DISPOSITIVOS</h1>
 
-    <form class="d-flex">
     <div class="col-sm-8">
-        <input class="form-control me-2" type="text"  aria-label="Search" id="numero_documento" name="numero_documento">
+        <input class="form-control me-3" type="text"  aria-label="Search" id="numero_documento" name="numero_documento">
         <button class="btn btn-outline-success" type="submit">buscar</button>
-      </form>
+    </div>
       <table class="table table-striped ">
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Numero</th>
+                <th scope="col">numero_documento</th>
                 <th scope="col">primer Nombre</th>
                 <th scope="col">Primer Apellido</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Código</th>
         
             </tr>
         </thead>
         <tbody>
-            <?php
-            if ($registro) {
-                foreach ($registro as $row) {
-            ?>
-                    <tr>
-                        <th><?= $row->id ?></th>
-                        <td><?= $row->primer_nombre ?></td>
-                        <td><?= $row->primer_apellido ?></td>
-                        
-
-                    </tr>
-            <?php
-                }
-            }
-            ?>
+           
         </tbody>
     </table>
 

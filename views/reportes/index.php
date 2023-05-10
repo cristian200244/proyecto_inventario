@@ -29,21 +29,7 @@ require_once '../../models/clienteModel.php';
             </tr>
         </thead>
         <tbody>
-            <?php
-            if ($registro) {
-                foreach ($registro as $row) {
-            ?>
-                    <tr>
-                        <th><?= $row->id ?></th>
-                        <td><?= $row->primer_nombre ?></td>
-                        <td><?= $row->primer_apellido ?></td>
-                        
-
-                    </tr>
-            <?php
-                }
-            }
-            ?>
+            
         </tbody>
     </table>
 
