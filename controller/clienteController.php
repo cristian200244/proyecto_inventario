@@ -96,6 +96,7 @@ class ClienteController
             'direccion       ' => $_REQUEST['direccion'],
 
         ];
+        var_dump($datos);
 
         $result = $this->cliente->update($datos);
 

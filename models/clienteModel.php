@@ -100,7 +100,7 @@ class Cliente extends stdClass
     public function store($datos)
     {
         try {
-            $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento,primer_nombre,segundo_nommbre,primer_apellido,segundo_apellido,sexo,telefono,id_ciudad,correo,direccion ) 
+            $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,sexo,telefono,id_ciudad,correo,direccion ) 
             VALUES(:id_tipo_documento, :numero_documento, :primer_nombre, :segundo_nombre, :primer_apelido, :segundo_apellido, :sexo, :telefono, :id_ciudad, :correo, :direccion)';
 
             $prepare = $this->database->conexion()->prepare($sql);
