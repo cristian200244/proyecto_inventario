@@ -68,8 +68,8 @@
                         <ul>
 
                             <li><a href="<?= BASE_URL ?>./views/dispositivos/index.php" class="text-light text-decoration-none" >Ver Reportes</a></li>
-                            <li><a href=" ··" class="text-light text-decoration-none" >Crear Factura</a></li>
-                            <li><a href="··" class="text-light text-decoration-none" >Ver Factura</a></li>
+                            <li><a href=" #" class="text-light text-decoration-none" >Crear Factura</a></li>
+                            <li><a href=" #" class="text-light text-decoration-none" >Ver Factura</a></li>
                         </ul>
                     </ul>
      </li>
