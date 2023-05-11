@@ -16,7 +16,7 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
                     <h1 class="h3 mb-4 text-gray-800 text text-left">Cliente</h1>
 
                     <div class="mb-3 text-left">
-                        <label for="formGroupExampleInput" class="form-label">Example label</label>
+                        <label for="formGroupExampleInput" class="form-label">tipo de documento</label>
                         <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
                     </div>
                     <div class="mb-3 text-left">
