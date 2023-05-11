@@ -5,30 +5,32 @@ require_once '../../models/clienteModel.php';
 
 $datos = new Cliente();
 $registro = $datos->getAll();
-
+ 
 ?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <!-- Page Heading -->
+    <!-- Page Heading --> 
     <h1 class="h3 mb-4 text-gray-800">Clientes</h1>
     <table class="table table-striped ">
         <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">ver</th>
-                <th scope="col">primer Nombre</th>
+                <th scope="col">Primer Nombre</th>
                 <th scope="col">Primer Apellido</th>
                 <th scope="col">Ciudad</th>
                 <th scope="col">Direccion</th>
                 <th scope="col">Telefono</th>
-            </tr>
+            </tr> 
         </thead>
         <tbody>
             <?php
             if ($registro) {
                 foreach ($registro as $row) {
+                   var_dump($row);
+                   die(); 
             ?>
                     <tr>
                         <th><?= $row->id ?></th>
@@ -39,7 +41,7 @@ $registro = $datos->getAll();
                                 </svg><a href="show.php"></a>
                             </button>
                         </td>
-                        <td><?= $row->primer_nombre ?></td>
+                        <td><?= $row->primer_nombre ?></td> 
                         <td><?= $row->primer_apellido ?></td>
                         <td><?= $row->ciudad ?></td>
                         <td><?= $row->direccion ?></td>

@@ -46,7 +46,7 @@
          <ul class="submenuItems">
             <ul>
                  <li><a href="<?= BASE_URL ?>./views/clientes/create.php" class="text-light text-decoration-none" >Crear Clinte</a></li>
-                 <li><a href="<?= BASE_URL ?>./views/clientes/show.php" class="text-light text-decoration-none" >Consultar Clintes</a></li>
+                 <li><a href="<?= BASE_URL ?>./views/clientes/index.php" class="text-light text-decoration-none" >Consultar Clintes</a></li>
             </ul>
          </ul>
      </li>
@@ -72,9 +72,9 @@
                      <ul class="submenuItems">
                         <ul>
 
-                            <li><a href="<?= BASE_URL ?>./views/dispositivos/index.php" class="text-light text-decoration-none" >Ver Reportes</a></li>
-                            <li><a href=" ··" class="text-light text-decoration-none" >Crear Factura</a></li>
-                            <li><a href="··" class="text-light text-decoration-none" >Ver Factura</a></li>
+                            <li><a href="<?= BASE_URL ?>./views/reportes/index.php" class="text-light text-decoration-none" >Ver Reportes</a></li>
+                            <li><a href="<?= BASE_URL ?>./views/facturas/create.php" class="text-light text-decoration-none" >Crear Factura</a></li>
+                            <li><a href= "<?= BASE_URL ?>./views/facturas/index.php" class="text-light text-decoration-none" >Ver Factura</a></li>
                         </ul>
                     </ul>
      </li>

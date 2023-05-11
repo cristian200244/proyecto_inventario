@@ -20,8 +20,31 @@ class Cliente extends stdClass
     private $telefono;
     private $database;
 
-    public function __construct()
+    public function __construct(
+        //   $tipo_documento,
+        //   $numero_documento,
+        //   $primer_nombre,
+        //   $segundo_nombre,
+        //   $primer_apellido,
+        //   $segundo_apellido,
+        //   $sexo,
+        //   $ciudad,
+        //   $correo,
+        //   $direccion,
+        //   $telefono,
+    )
     {
+        // $this->tipo_documento= $tipo_documento;
+        // $this->numero_documento= $numero_documento;
+        // $this->primer_nombre= $primer_nombre;
+        // $this->segundo_nombre= $segundo_nombre;
+        // $this->primer_apellido= $primer_apellido;
+        // $this->segundo_apellido= $segundo_apellido;
+        // $this->sexo= $sexo;
+        // $this->ciudad= $ciudad;
+        // $this->correo= $correo;
+        // $this->direccion= $direccion;
+        // $this->telefono= $telefono;
         $this->database = new Database();
     }
     public function getId()
@@ -43,7 +66,7 @@ class Cliente extends stdClass
             while ($row = $query->fetch()) {
                 $item            = new Cliente();
                 $item->id               = $row['id'];
-                $item->tipo_documento = $row['id_tipo_documento'];
+                $item->tipo_documento   = $row['id_tipo_documento'];
                 $item->numero_documento = $row['numero_documento'];
                 $item->primer_nombre    = $row['primer_nombre'];
                 $item->segundo_nombre   = $row['segundo_nombre'];
@@ -51,8 +74,8 @@ class Cliente extends stdClass
                 $item->segundo_apellido = $row['segundo_apellido'];
                 $item->sexo             = $row['sexo'];
                 $item->ciudad           = $row['id_ciudad'];
-                $item->telefono           = $row['telefono'];
-                $item->correo            = $row['correo'];
+                $item->telefono         = $row['telefono'];
+                $item->correo           = $row['correo'];
                 $item->direccion        = $row['direccion'];
 
                 array_push($datos_clientes, $item);
@@ -132,7 +155,7 @@ class Cliente extends stdClass
 
         try {
             $sql = 'UPDATE personas SET 
-              
+               
               id_tipo_documento= :id_tipo_documento,
               numero_documento = :numero_documento,
               primer_nombre = :primer_nombre,
@@ -149,17 +172,17 @@ class Cliente extends stdClass
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
                 'id'        => $datos['id'],
-                'id_tipo_documento  ' => $datos['id_tipo_documento'],
-                'numero_documento' => $datos['numero_documento'],
-                'primer_nombre   ' => $datos['primer_nombre'],
-                'segundo_nombre  ' => $datos['segundo_nombre'],
-                'primer_apellido ' => $datos['primer_apellido'],
-                'segundo_apellido' => $datos['segundo_apellido'],
-                'telefono'         =>$datos['telefono'],
-                'sexo'            => $datos['sexo'],
-                'id_ciudad'       => $datos['id_ciudad'],
-                'correo'          => $datos['correo'],
-                'direccion'       => $datos['direccion'],
+                'id_tipo_documento' => $datos['id_tipo_documento'],
+                'numero_documento'  => $datos['numero_documento'],
+                'primer_nombre'     => $datos['primer_nombre'],
+                'segundo_nombre'    => $datos['segundo_nombre'],
+                'primer_apellido'   => $datos['primer_apellido'],
+                'segundo_apellido'  => $datos['segundo_apellido'],
+                'telefono'          =>$datos['telefono'],
+                'sexo'              => $datos['sexo'],
+                'id_ciudad'         => $datos['id_ciudad'],
+                'correo'            => $datos['correo'],
+                'direccion'         => $datos['direccion'],
 
             ]);
             if ($query) {
@@ -186,4 +209,9 @@ class Cliente extends stdClass
             die($e->getMessage());
         }
     }
+    
+public function getPrimer_nombre(){
+
+} 
+
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
