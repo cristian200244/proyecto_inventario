@@ -4,7 +4,7 @@ include_once dirname(__FILE__) . '../../Config/config.php';
 require_once 'conexionModel.php';
 
 
-class Cliente extends stdClass
+class Usuario extends stdClass
 {
     private $id;
     private $tipo_documento;
@@ -15,7 +15,7 @@ class Cliente extends stdClass
     private $segundo_apellido;
     private $sexo;
     private $ciudad;
-    private $correo;
+    private $email;
     private $direccion;
     private $telefono;
     private $database;
@@ -41,7 +41,7 @@ class Cliente extends stdClass
             ]);
 
             while ($row = $query->fetch()) {
-                $item = new Cliente();
+                $item                   = new Usuario();
                 $item->id               = $row['id'];
                 $item->tipo_documento   = $row['id_tipo_documento'];
                 $item->numero_documento = $row['numero_documento'];
@@ -52,13 +52,13 @@ class Cliente extends stdClass
                 $item->sexo             = $row['sexo'];
                 $item->ciudad           = $row['id_ciudad'];
                 $item->telefono         = $row['telefono'];
-                $item->correo           = $row['correo'];
+                $item->email            = $row['email'];
                 $item->direccion        = $row['direccion'];
 
-                array_push($datos_clientes, $item);
+                array_push($datos_usuario,$item);
             }
 
-            return $datos_clientes;
+            return $datos_usuario;
         } catch (PDOException $e) {
             return ['mensaje' => $e];
         }
@@ -68,12 +68,11 @@ class Cliente extends stdClass
         $items = [];
 
         try {
-            $sql = 'SELECT  id, id_tipo_documento, numero_documento , primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, sexo, telefono, id_ciudad, correo, direccion FROM personas';
+            $sql = 'SELECT  id_tipo_documento, numero_documento , primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, sexo, telefono, ciudad, email, direccion FROM personas';
             $query = $this->database->conexion()->query($sql);
 
-            while ($row = $query->fetch()) {
-
-                $item                   = new Cliente();
+            while ($row                 = $query->fetch()) {
+                $item                   = new Usuario();
                 $item->id               = $row['id'];
                 $item->tipo_documento   = $row['id_tipo_documento'];
                 $item->numero_documento = $row['numero_documento'];
@@ -83,9 +82,10 @@ class Cliente extends stdClass
                 $item->segundo_apellido = $row['segundo_apellido'];
                 $item->sexo             = $row['sexo'];
                 $item->telefono         = $row['telefono'];
-                $item->ciudad           = $row['id_ciudad'];
-                $item->correo           = $row['correo'];
+                $item->ciudad           = $row['ciudad'];
+                $item->email            = $row['email'];
                 $item->direccion        = $row['direccion'];
+
 
                 array_push($items, $item);
             }
@@ -100,29 +100,30 @@ class Cliente extends stdClass
     public function store($datos)
     {
         try {
-            $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, sexo, telefono, id_ciudad, correo, direccion) 
-            VALUES(:id_tipo_documento, :numero_documento, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :sexo, :telefono, :id_ciudad, :correo, :direccion)';
+            $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento,primer_nombre,segundo_nommbre,primer_apellido,segundo_apellido,sexo,telefono,ciudad,email,direccion ) 
+            VALUES(:id_tipo_documento, :numero_documento, :primer_nombre, :segundo_nombre, :primer_apelido, :segundo_apellido, :sexo, :telefono, :ciudad, :email, :direccion)';
 
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
 
-
-
-                'id_tipo_documento' => $datos['id_tipo_documento'],
-                'numero_documento'  => $datos['numero_documento'],
-                'primer_nombre'     => $datos['primer_nombre'],
-                'segundo_nombre'    => $datos['segundo_nombre'],
-                'primer_apellido'   => $datos['primer_apellido'],
-                'segundo_apellido'  => $datos['segundo_apellido'],
-                'sexo'              => $datos['sexo'],
-                'telefono'          => $datos['telefono'],
-                'id_ciudad'         => $datos['id_ciudad'],
-                'correo'            => $datos['correo'],
-                'direccion'         => $datos['direccion'],
+                
+                'id_tipo_documento'   => $datos['id_tipo_documento'],
+                'numero_documento'    => $datos['numero_documento'],
+                'primer_nombre'       => $datos['primer_nombre'],
+                'segundo_nombre'      => $datos['segundo_nombre'],
+                'primer_apellido'    => $datos['primer_apellido'],
+                'segundo_apellido'    => $datos['segundo_apellido'],
+                'sexo'                => $datos['sexo'],
+                'telefono'            => $datos['telefono'],
+                'ciudad'              => $datos['ciudad'],
+                'email'               => $datos['email'],
+                'direccion'           => $datos['direccion'],
             ]);
             if ($query) {
                 return true;
             }
+
+           
         } catch (PDOException $e) {
             die($e->getMessage());
         }
@@ -134,32 +135,32 @@ class Cliente extends stdClass
         try {
             $sql = 'UPDATE personas SET 
               
-              id_tipo_documento   = :id_tipo_documento,
-              numero_documento    = :numero_documento,
-              primer_nombre       = :primer_nombre,
-              segundo_nommbre     = :segundo_nommbre,
-              primer_apellido     = :primer_apellido,
-              segundo_apellido    = :segundo_apellido,
-              sexo                = :sexo,
-              id_ciudad           = :id_ciudad,
-              correo              = :correo,
-              direccion           = :direccion,
-              WHERE id            = :id';
+              id_tipo_documento  =   :id_tipo_documento,
+              numero_documento   =   :numero_documento,
+              primer_nombre      =   :primer_nombre,
+              segundo_nommbre    =   :segundo_nommbre,
+              primer_apellido    =   :primer_apellido,
+              segundo_apellido   =   :segundo_apellido,
+              sexo               =   :sexo,
+              ciudad             =   :ciudad,
+              email              =   :email,
+              direccion          =   :direccion,
+              rol WHERE id       =   :id';
 
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
-                'id'        => $datos['id'],
-                'id_tipo_documento  ' => $datos['id_tipo_documento'],
-                'numero_documento' => $datos['numero_documento'],
-                'primer_nombre   ' => $datos['primer_nombre'],
-                'segundo_nombre  ' => $datos['segundo_nombre'],
-                'primer_apellido ' => $datos['primer_apellido'],
-                'segundo_apellido' => $datos['segundo_apellido'],
-                'sexo            ' => $datos['sexo'],
-                'id_ciudad          ' => $datos['id_ciudad'],
-                'correo           ' => $datos['correo'],
-                'direccion       ' => $datos['direccion'],
-
+                'id'                  => $datos['id'],
+                'id_tipo_documento'   => $datos['id_tipo_documento'],
+                'numero_documento'    => $datos['numero_documento'],
+                'primer_nombre'       => $datos['primer_nombre'],
+                'segundo_nombre'      => $datos['segundo_nombre'],
+                'primer_apellido '    => $datos['primer_apellido'],
+                'segundo_apellido'    => $datos['segundo_apellido'],
+                'sexo'                => $datos['sexo'],
+                'ciudad'              => $datos['ciudad'],
+                'email'               => $datos['email'],
+                'direccion'           => $datos['direccion'],
+               
             ]);
             if ($query) {
                 return true;
@@ -179,7 +180,7 @@ class Cliente extends stdClass
                 'id'        => $id
             ]);
             if ($query) {
-                return true;
+                 return true;
             }
         } catch (PDOException $e) {
             die($e->getMessage());

@@ -90,7 +90,7 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
                             <option value="20">Magdalena</option>
                             <option value="21">Meta</option>
                             <option value="22">Nariño</option>
-                            <option value="23">Norte de Santander</option>
+                            <option value="23">Norte de Santander</option>  
                             <option value="24">Putumayo</option>
                             <option value="25">Quindío</option>
                             <option value="26">Risaralda</option>
