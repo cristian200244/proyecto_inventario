@@ -8,8 +8,6 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
 
     <!-- Page Heading --> 
     
- 
- 
     <form method="POST" action="../../controller/clienteController.php">
     <input type="hidden" name="c" value="1">
         <div class="container text-center">
