@@ -52,9 +52,9 @@ class ClienteController
             'primer_apellido'   => $_REQUEST['primer_apellido'],
             'segundo_apellido'  => $_REQUEST['segundo_apellido'],
             'sexo'              => $_REQUEST['sexo'],
-            'id_ciudad'            => $_REQUEST['id_ciudad'],
-            'telefono'            => $_REQUEST['telefono'],
-            'correo'             => $_REQUEST['correo'],
+            'id_ciudad'         => $_REQUEST['id_ciudad'],
+            'telefono'          => $_REQUEST['telefono'],
+            'correo'            => $_REQUEST['correo'],
             'direccion'         => $_REQUEST['direccion'],
         ];
         $result = $this->cliente->store($datos);
