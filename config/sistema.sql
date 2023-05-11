@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `sistema_inventario`.`personas` (
   `telefono` VARCHAR(50) NOT NULL,
   `password` VARCHAR(20) NULL,
   `sexo` VARCHAR(50) NOT NULL,
-  `e-mail` VARCHAR(100) NULL,
+  `correo` VARCHAR(100) NULL,
   PRIMARY KEY (`id_persona`),
   INDEX `fk_id_persona_id_rol_idx` (`id_rol` ASC) VISIBLE,
   INDEX `fk_id_persona_id_tipo_documento_idx` (`id_tipo_documento` ASC) VISIBLE,
