@@ -154,10 +154,10 @@ class Cliente extends stdClass
                 'segundo_nombre  ' => $datos['segundo_nombre'],
                 'primer_apellido ' => $datos['primer_apellido'],
                 'segundo_apellido' => $datos['segundo_apellido'],
-                'sexo            ' => $datos['sexo'],
-                'id_ciudad          ' => $datos['id_ciudad'],
-                'correo           ' => $datos['correo'],
-                'direccion       ' => $datos['direccion'],
+                'sexo '            => $datos['sexo'],
+                'id_ciudad '       => $datos['id_ciudad'],
+                'correo '          => $datos['correo'],
+                'direccion '       => $datos['direccion'],
 
             ]);
             if ($query) {
