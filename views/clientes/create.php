@@ -9,8 +9,7 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
     <!-- Page Heading --> 
     
  
-    <button type="submit" class="btn btn-outline-info ml-5"><a href="index.php">Ver Información</a> </button>
-
+ 
     <form method="POST" action="../../controller/clienteController.php">
     <input type="hidden" name="c" value="1">
         <div class="container text-center">
