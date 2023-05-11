@@ -100,24 +100,24 @@ class Cliente extends stdClass
     public function store($datos)
     {
         try {
-            $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,sexo,telefono,id_ciudad,correo,direccion ) 
-            VALUES(:id_tipo_documento, :numero_documento, :primer_nombre, :segundo_nombre, :primer_apelido, :segundo_apellido, :sexo, :telefono, :id_ciudad, :correo, :direccion)';
+            $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, sexo, telefono, id_ciudad, correo, direccion) 
+            VALUES(:id_tipo_documento, :numero_documento, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :sexo, :telefono, :id_ciudad, :correo, :direccion)';
 
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
 
 
-                'id_tipo_documento  ' => $datos['id_tipo_documento'],
-                'numero_documento' => $datos['numero_documento'],
-                'primer_nombre   ' => $datos['primer_nombre'],
-                'segundo_nombre  ' => $datos['segundo_nombre'],
-                'primer_apellido ' => $datos['primer_apellido'],
-                'segundo_apellido' => $datos['segundo_apellido'],
-                'sexo            ' => $datos['sexo'],
-                'telefono'         => $datos['telefono'],
-                'id_ciudad          ' => $datos['id_ciudad'],
-                'correo           ' => $datos['correo'],
-                'direccion       ' => $datos['direccion'],
+                'id_tipo_documento' => $datos['id_tipo_documento'],
+                'numero_documento'  => $datos['numero_documento'],
+                'primer_nombre'     => $datos['primer_nombre'],
+                'segundo_nombre'    => $datos['segundo_nombre'],
+                'primer_apellido'   => $datos['primer_apellido'],
+                'segundo_apellido'  => $datos['segundo_apellido'],
+                'sexo'              => $datos['sexo'],
+                'telefono'          => $datos['telefono'],
+                'id_ciudad'         => $datos['id_ciudad'],
+                'correo'            => $datos['correo'],
+                'direccion'         => $datos['direccion'],
             ]);
             if ($query) {
                 return true;

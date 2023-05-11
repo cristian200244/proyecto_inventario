@@ -19,9 +19,8 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
                 <div class="col">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Tipo de documento</label>
-                        <select class="form-select" aria-label="Default select example" name="id_tipo_documento" id="id_tipo_documento" required= "required">
-                            <option selected>Seleccionar Documento</option>
-                            <option value="0"></option>
+                        <select class="form-select" aria-label="Default select example" name="id_tipo_documento" id="id_tipo_documento" required="required">
+                            <option>Seleccionar Documento</option>
                             <option value="1">CC</option>
                             <option value="2">TI</option>
                             <option value="3">CE</option>
@@ -38,7 +37,7 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
                     </div>
                     <div class="mb-3">
                         <label for="sexo" class="form-label">sexo</label>
-                        <select class="form-select" aria-label="Default select example" id="sexo" name="sexo" required= "required">
+                        <select class="form-select" aria-label="Default select example" id="sexo" name="sexo" required="required">
                             <option selected>Seleccionar Sexo</option>
                             <option value="2">Masculino</option>
                             <option value="3">Femenino</option>
