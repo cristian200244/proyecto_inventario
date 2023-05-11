@@ -136,9 +136,10 @@ class Cliente extends stdClass
               id_tipo_documento= :id_tipo_documento,
               numero_documento = :numero_documento,
               primer_nombre = :primer_nombre,
-              segundo_nommbre = :segundo_nommbre,
+              segundo_nombre = :segundo_nombre,
               primer_apellido = :primer_apellido,
               segundo_apellido = :segundo_apellido,
+              telefono = : telefono,
               sexo = :sexo,
               id_ciudad = :id_ciudad,
               correo = :correo,
@@ -154,10 +155,11 @@ class Cliente extends stdClass
                 'segundo_nombre  ' => $datos['segundo_nombre'],
                 'primer_apellido ' => $datos['primer_apellido'],
                 'segundo_apellido' => $datos['segundo_apellido'],
-                'sexo '            => $datos['sexo'],
-                'id_ciudad '       => $datos['id_ciudad'],
-                'correo '          => $datos['correo'],
-                'direccion '       => $datos['direccion'],
+                'telefono'         =>$datos['telefono'],
+                'sexo'            => $datos['sexo'],
+                'id_ciudad'       => $datos['id_ciudad'],
+                'correo'          => $datos['correo'],
+                'direccion'       => $datos['direccion'],
 
             ]);
             if ($query) {
@@ -184,4 +186,4 @@ class Cliente extends stdClass
             die($e->getMessage());
         }
     }
-}
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
