@@ -32,8 +32,8 @@
          <ul class="submenuItems ">
             <ul>
  <!-- aqui julian la cago -->
-                <li><a href="<?= BASE_URL ?>./views/servicios/index.php " class="text-light text-decoration-none">Crear Servicios</a></li>
-                <li><a href="#" class="text-light text-decoration-none">Consultar Servicios</a></li>
+                <li><a href="<?= BASE_URL ?>./views/servicios/index.php " class="text-light text-decoration-none">Crear</a></li>
+                <li><a href="#" class="text-light text-decoration-none">Consultar</a></li>
             </ul>
          </ul>
      </li>
@@ -45,8 +45,8 @@
          </div>
          <ul class="submenuItems">
             <ul>
-                 <li><a href="<?= BASE_URL ?>./views/clientes/create.php" class="text-light text-decoration-none" >Crear Clinte</a></li>
-                 <li><a href="<?= BASE_URL ?>./views/clientes/index.php" class="text-light text-decoration-none" >Consultar Clintes</a></li>
+                 <li><a href="<?= BASE_URL ?>./views/clientes/create.php" class="text-light text-decoration-none" >Crear </a></li>
+                 <li><a href="<?= BASE_URL ?>./views/clientes/index.php" class="text-light text-decoration-none" >Consultar</a></li>
             </ul>
          </ul>
      </li>
@@ -59,7 +59,7 @@
          </div>
          <ul class="submenuItems">
             <ul>
-                <li><a href="<?= BASE_URL ?>./views/dispositivos/index.php" class="text-light text-decoration-none " >Ver Dispositivos</a></li>
+                <li><a href="<?= BASE_URL ?>./views/dispositivos/index.php" class="text-light text-decoration-none " >Ver </a></li>
             </ul>
           </ul>
      </li>
@@ -72,7 +72,7 @@
                      <ul class="submenuItems">
                         <ul>
 
-                            <li><a href="<?= BASE_URL ?>./views/reportes/index.php" class="text-light text-decoration-none" >Ver Reportes</a></li>
+                            <li><a href="<?= BASE_URL ?>./views/reportes/index.php" class="text-light text-decoration-none" >Ver  </a></li>
                             <li><a href="<?= BASE_URL ?>./views/facturas/create.php" class="text-light text-decoration-none" >Crear Factura</a></li>
                             <li><a href= "<?= BASE_URL ?>./views/facturas/index.php" class="text-light text-decoration-none" >Ver Factura</a></li>
                         </ul>
