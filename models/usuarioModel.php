@@ -186,4 +186,111 @@ class Usuario extends stdClass
             die($e->getMessage());
         }
     }
+
+
+//---------------------------------------------------------------//
+    // -------------------------------getter------------------------//
+
+    public function getTipoDocumento()
+    {
+        return $this->tipo_documento;
+    }
+
+    public function getNumeroDocumento()
+    {
+        return $this->numero_documento;
+    }
+
+    public function getPrimerNombre()
+    {
+        return $this->primer_nombre;
+    }
+
+    public function getSegundoNombre()
+    {
+        return $this->segundo_nombre;
+    }
+
+    public function getPrimerApellido()
+    {
+        return $this->primer_apellido;
+    }
+
+    public function getSegundoApellido()
+    {
+        return $this->segundo_apellido;
+    }
+
+    public function getSexo()
+    {
+        return $this->sexo;
+    }
+
+    public function getCiudad()
+    {
+        return $this->ciudad;
+    }
+
+    public function getEmail()
+    {
+        return $this->correo;
+    }
+
+    public function getDireccion()
+    {
+        return $this->direccion;
+    }
+
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    //---------------------------------------------------------------//
+    // -------------------------------setter------------------------//
+
+    public function setTipo_documento($tipo_documento)
+    {
+        return $this->tipo_documento;
+    }
+    public function setNumero_documento($numero_documento)
+    {
+        return $this->numero_documento;
+    }
+    public function setPrimer_nombre($primer_nombre)
+    {
+        return $this->primer_nombre;
+    }
+    public function setSegundo_nombre($segundo_nombre)
+    {
+        return $this->segundo_nombre;
+    }
+    public function setPrimer_apellido($primer_apellido)
+    {
+        return $this->primer_apellido;
+    }
+    public function setSegundo_apellido($segundo_apellido)
+    {
+        return $this->segundo_apellido;
+    }
+    public function setSexo($sexo)
+    {
+        return $this->sexo;
+    }
+    public function setCiudad($ciudad)
+    {
+        return $this->ciudad;
+    }
+    public function setCorreo($correo)
+    {
+        return $this->correo;
+    }
+    public function setDireccion($direccion)
+    {
+        return $this->direccion;
+    }
+    public function setTelefono($telefono)
+    {
+        return $this->telefono;
+    }
 }

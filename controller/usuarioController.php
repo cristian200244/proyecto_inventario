@@ -70,7 +70,7 @@ class UsuarioController
     public function delete()
     {
         $this->usuario->delete($_REQUEST['id']);
-        header("Location: ../views/clientes/show.php");
+        header("Location: ../views/admin/show.php");
     }
     public function update()
     {
