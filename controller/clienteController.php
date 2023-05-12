@@ -69,7 +69,7 @@ class ClienteController
     public function show()
     {
         $id = $_REQUEST['id'];
-        header("Location: ../views/clientes/calculadora/consult.php?id=" . $id);
+        header("Location: ../views/clientes/show?id=" . $id);
     }
 
     public function delete()
