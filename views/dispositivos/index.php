@@ -18,11 +18,11 @@ require_once '../../models/clienteModel.php';
 <body>
     <h2>CONSULTAR DISPOSITIVOS</h1>
 
-    <div class="col-sm-8">
-        <input class="form-control me-3" type="text"  aria-label="Search" id="numero_documento" name="numero_documento">
-        <button class="btn btn-outline-success" type="submit">buscar</button>
+    <p><div class="col-sm-8"></p>
+    <p><input class="form-control " type="text"  id="numero_documento">
+    <p><button class="btn btn-outline-success" type="submit">buscar</button>
     </div>
-      <table class="table table-striped ">
+       <table class="table table-striped ">
         <thead>
             <tr>
                 <th scope="col">#</th>
