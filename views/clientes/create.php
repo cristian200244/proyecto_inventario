@@ -80,8 +80,9 @@ $data = $ciudad->getAll();
                     <label for="correo" class="form-label ">E-mail</label>
                     <input type="text" class="form-control" id="correo" name="correo">
                 </div>
-                    <button type="submit" class="btn btn-outline-info ml-2">Guardar Cliente</button>
             </div>
+            <br>
+            <button type="submit" class="btn btn-outline-info ml-2">Guardar Cliente</button>
 
     </form>
 </div>

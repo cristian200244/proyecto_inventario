@@ -64,28 +64,59 @@ class Ciudad
     {
         try {
             $sql = 'INSERT INTO ciudades (nombre) values (:nombre)';
-            // $prepare = $this->database->conexion()->prepare();
-             
-
+            $prepare = $this->database->conexion()->prepare($sql);
+            $query = $prepare->execute([
+                'nombre' => $datos['nombre']
+            ]);
+            if ($query) {
+                return true;
+            }
         } catch (PDOException $e) {
             return ['mensaje' => $e];
         }
     }
 
-    public function update(){
-
+    public function update($datos)
+    {
+        try {
+            $sql = 'UPDATE ciudades SET  nombre WHERE id = :id';
+            $prepare = $this->database->conexion()->prepare($sql);
+            $query = $prepare->execute([
+                'id'      => $datos['id'],
+                'nombre' => $datos['nombre']
+            ]);
+            if ($query) {
+                return true;
+            }
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
     }
 
-    public function delete(){
+    public function delete($id)
+    {
+        try {
+            $sql = 'DELETE FROM ciudades WHERE id = :id';
 
+            $prepare = $this->database->conexion()->prepare($sql);
+            $query = $prepare->execute([
+                'id'        => $id
+            ]);
+            if ($query) {
+                return true;
+            }
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
     }
 
     public function getCiudad()
     {
         return $this->nombre;
     }
-
-    public function setCiudad()
+    
+    public function setCiudad($nombre)
     {
+        return $this->nombre;
     }
 }
