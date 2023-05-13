@@ -5,62 +5,31 @@ require_once '../../models/clienteModel.php';
 
 
 ?>
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-</head>
-
-<body>
-    <h2>CONSULTAR DISPOSITIVOS</h1>
-
-    <p><div class="col-sm-8"></p>
-    <p><input class="form-control " type="text"  id="numero_documento">
-    <p><button class="btn btn-outline-success" type="submit">buscar</button>
-    </div>
-       <table class="table table-striped ">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">numero_documento</th>
-                <th scope="col">primer Nombre</th>
-                <th scope="col">Primer Apellido</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Código</th>
-        
-            </tr>
-        </thead>
-        <tbody>
-           
-        </tbody>
-    </table>
-
-</body>
-
-</html>
 
 
 
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-3 offset-md-0"><input class="form-control " type="text" placeholder="CONSULTAR DISPOSITIVOS" id="numero_documento"></div>
+            <div class="col-4">
+                <p><button class=" col-auto btn btn-outline-success" type="submit">buscar</button>
+            </div>
+        </div>
 
 
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre completo</th>
+                    <th scope="col">codigo</th>
+                    <th scope="col">Estado</th>
 
+                </tr>
+            </thead>
+        </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
 
 
 

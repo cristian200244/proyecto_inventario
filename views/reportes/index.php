@@ -17,14 +17,13 @@ require_once '../../models/clienteModel.php';
 
 <body>
     <h2>Reportes</h1>
-
+    <div class="container-fluid">
       <table class="table table-striped ">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">fecha de creacion</th>
-                <th scope="col">reporte del mes</th>
-                <th scope="col">total</th>
+                <th scope="col">Fecha de creacion</th>
+                <th scope="col">Reporte Mensual</th>
+                <th scope="col">Total</th>
         
             </tr>
         </thead>
@@ -32,7 +31,7 @@ require_once '../../models/clienteModel.php';
             
         </tbody>
     </table>
-
+    </div>
 </body>
 
 </html>
