@@ -1,5 +1,5 @@
 <?php
-include_once dirname(__FILE__) . '../../Config/config.php';
+include_once dirname(__FILE__) . '../../Config/config.example.php';
 require_once 'conexionModel.php';
 
 class Ciudad

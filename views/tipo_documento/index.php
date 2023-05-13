@@ -12,7 +12,7 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
         <hr>
         <?php include_once(BASE_DIR . '../../views/main/partials/menu.php'); ?>
         <hr>
-        <h1 class="h3 mb-4 text-gray-800 text-left">Dispositivos</h1>
+        <h1 class="h3 mb-4 text-gray-800 text-left">Tipos De Documento</h1>
         <div class="row">
             <div class="col">
                 <table class="table">
