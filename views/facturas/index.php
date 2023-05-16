@@ -15,6 +15,10 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
 
         <!-- /.container-fluid -->
 
-        <?php
-        include_once(BASE_DIR . '../../views/main/partials/footer.php');
-        ?>
+
+
+    </div>
+</div>
+<?php
+include_once(BASE_DIR . '../../views/main/partials/footer.php');
+?>

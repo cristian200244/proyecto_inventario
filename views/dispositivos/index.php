@@ -3,6 +3,9 @@ include_once(__DIR__ . "../../../config/config.example.php");
 include_once(BASE_DIR . '../../views/main/partials/header.php');
 require_once '../../models/clienteModel.php';
 
+$datos = new Cliente();
+$registro = $datos->getAll();
+
 
 ?>
 
@@ -13,7 +16,7 @@ require_once '../../models/clienteModel.php';
 
             <div class="col-md-3 offset-md-0"><input class="form-control " type="text" placeholder="CONSULTAR DISPOSITIVOS" id="numero_documento"></div>
             <div class="col-4">
-                <p><button class=" col-auto btn btn-outline-success" type="submit">buscar</button>
+                <p><button class=" col-auto btn btn-outline-info" type="submit">buscar</button>
             </div>
         </div>
 
@@ -27,7 +30,24 @@ require_once '../../models/clienteModel.php';
 
                 </tr>
             </thead>
-        </table>
+        </table> <p>
+       <?php
+                       if ($registro) {
+                        $pos = 1;
+        
+                        foreach ($registro as $row) {
+                    ?>
+                <tr>
+                       
+                        <td><?= $row->getPrimerNombre().' '.$row->getPrimerApellido() ?></td>
+
+                </tr>
+
+                <?php
+                    $pos++;
+                }
+            }
+            ?>
 
 </div>
 
