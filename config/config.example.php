@@ -14,5 +14,5 @@ define('DIR', dirname(__FILE__));
 define('HOST', 'localhost');
 define('DB', 'sistema_inventario');
 define('USER', 'root');
-define('PASSWORD', 'root');
+define('PASSWORD', '123456789');
 define('CHARSET', 'utf8mb4');

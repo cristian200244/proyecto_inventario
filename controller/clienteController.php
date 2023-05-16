@@ -74,15 +74,13 @@ class ClienteController
 
     public function delete()
     {
-        $this->cliente->delete($_REQUEST['id']);
+        $this->cliente->delete($_REQUEST['id_persona']);
         header("Location: ../views/clientes/index.php");
     }
 
     public function update()
     {
-        var_dump($_REQUEST);
-        die();
-        
+    
         $datos = [
 
             'id_tipo_documento' => $_REQUEST['id_tipo_documento'],

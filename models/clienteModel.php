@@ -177,11 +177,11 @@ class Cliente extends stdClass
     public function delete($id_persona)
     {
         try {
-            $sql = 'DELETE FROM personas WHERE id = :id';
+            $sql = 'DELETE FROM personas WHERE id_persona = :id_persona';
 
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
-                'id'        => $id_persona
+                'id_persona'        => $id_persona
             ]);
             if ($query) {
                 return true;

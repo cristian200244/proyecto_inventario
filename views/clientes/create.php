@@ -59,8 +59,8 @@ $registro = $datos_documento->getAll();
                     <label for="sexo" class="form-label">Sexo</label>
                     <select class="form-select" aria-label="Default select example" id="sexo" name="sexo" required="required">
                         <option selected>Seleccionar Sexo</option>
-                        <option value="2">Masculino</option>
-                        <option value="3">Femenino</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="femenino">Femenino</option>
                     </select>
                 </div>
                 <div class="col-3 mb-2">
