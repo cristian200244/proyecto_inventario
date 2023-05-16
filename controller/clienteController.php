@@ -75,7 +75,7 @@ class ClienteController
     public function delete()
     {
         $this->cliente->delete($_REQUEST['id']);
-        header("Location: ../views/clientes/show.php");
+        header("Location: ../views/clientes/index.php");
     }
 
     public function update()
