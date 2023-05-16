@@ -2,7 +2,7 @@
 include_once(__DIR__ . "../../../config/config.example.php");
 include_once(BASE_DIR . '../../views/main/partials/header.php');
 require_once '../../models/clienteModel.php';
-$r = rand(0,999999999);
+$r = rand(0, 999999999);
 
 $datos = new Cliente();
 $registro = $datos->getAll();
@@ -25,24 +25,8 @@ $registro = $datos->getAll();
 
                 <div class="col-6">
                     <div class="titulo" id="Nombre_completo">Nombre completo: </div>
-                    <?php
-                       if ($registro) {
-                        $pos = 1;
-        
-                        foreach ($registro as $row) {
-                    ?>
-                <tr>
-                        
-                        <td><?= $row->getPrimerNombre().' '.$row->getPrimerApellido() ?></td>
-
-                </tr>
-
-                <?php
-                    $pos++;
-                }
-            }
-            ?>
-</div>
+                    <input class="form-control" type="text">
+                </div>
                 <div class="col-6">
                     <div class="titulo" id="numerofactura">Nro. Factura: </div>
                     <input class="form-control" type="number">
@@ -50,49 +34,12 @@ $registro = $datos->getAll();
 
                 <div class="col-6">
                     <div class="titulo" id="telefono">Telefono: </div>
-                   
-               <?php
-                       if ($registro) {
-                        $pos = 1;
-        
-                        foreach ($registro as $row) {
-                    ?>
-                <tr>
-                        
-                        <td><?= $row->getTelefono()?></td>
-
-                </tr>
-
-                <?php
-                    $pos++;
-                }
-            }
-            ?>
-
-
-
+                    <input class="form-control" type="number">
                 </div>
 
                 <div class="col-6">
                     <div class="titulo" id="direccion">Direccion:</div>
-                    <?php
-                       if ($registro) {
-                        $pos = 1;
-        
-                        foreach ($registro as $row) {
-                    ?>
-                <tr>
-                        
-                        <td><?= $row->getDireccion()?></td>
-
-                </tr>
-
-                <?php
-                    $pos++;
-                }
-            }
-            ?>
-                   
+                    <input class="form-control" type="text">
                 </div>
 
                 <div class="col-6">
