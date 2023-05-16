@@ -1,6 +1,5 @@
 <?php
     include_once(__DIR__ . "/config/config.php");
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -24,8 +23,8 @@
 
 </head>
 
-<body class="bg-gradient-primary"> 
-    
+<body class="bg-gradient-primary">
+
     <div class="container">
 
         <!-- Outer Row -->

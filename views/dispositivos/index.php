@@ -1,5 +1,5 @@
 <?php
-include_once(__DIR__ . "../../../config/config.php");
+include_once(__DIR__ . "../../../config/config.example.php");
 include_once(BASE_DIR . '../../views/main/partials/header.php');
 ?>
 
@@ -7,7 +7,7 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">hola estas en el modulo Dispositivos</h1>
+    <h1 class="h3 mb-4 text-gray-800"> hola estas en el modulo  ver dispositivos</h1>
 
 </div>
 <!-- /.container-fluid -->
@@ -15,3 +15,4 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');
 ?>
+ 

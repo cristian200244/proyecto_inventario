@@ -1,8 +1,8 @@
 <?php
-include_once dirname(__FILE__) . '../../Config/config.php';
+include_once dirname(__FILE__) . '../../Config/config.example.php';
 require_once 'conexionModel.php';
 
-class Ciudad
+class Ciudad  
 {
     private $id;
     private $nombre;
@@ -25,11 +25,13 @@ class Ciudad
         try {
             $sql = 'SELECT * FROM ciudades WHERE id=:id';
             $query = $this->database->conexion()->prepare($sql);
-            $query->execute(['id' => $id]);
-            while ($row = $query->fetchAll()) {
+            $query->execute(['id_ciudad' => $id]);
+            while ($row = $query->fetch()) {
                 $datos  = new Ciudad();
-                $datos->id = $row['id'];
+                $datos->id = $row['id_ciudad'];
                 $datos->nombre = $row['nombre'];
+
+                array_push($ciudad, $datos);
             }
             return $ciudad;
         } catch (PDOException $e) {
@@ -63,7 +65,7 @@ class Ciudad
     public function store($datos)
     {
         try {
-            $sql = 'INSERT INTO ciudades (nombre) values (:nombre)';
+            $sql = 'INSERT INTO ciudades ( nombre) values (:nombre)';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
                 'nombre' => $datos['nombre']
@@ -72,19 +74,20 @@ class Ciudad
                 return true;
             }
         } catch (PDOException $e) {
-            return ['mensaje' => $e];
+            die($e->getMessage()); 
         }
     }
 
     public function update($datos)
     {
         try {
-            $sql = 'UPDATE ciudades SET  nombre WHERE id = :id';
+            $sql = 'UPDATE ciudades SET  nombre WHERE id_ciudad = :id_ciudad'; 
             $prepare = $this->database->conexion()->prepare($sql);
-            $query = $prepare->execute([
-                'id'      => $datos['id'],
-                'nombre' => $datos['nombre']
+             $query = $prepare->execute([
+                'id_ciudad'      => $datos['id_ciudad'],
+                'nombre'         => $datos['nombre']
             ]);
+            
             if ($query) {
                 return true;
             }
@@ -96,11 +99,10 @@ class Ciudad
     public function delete($id)
     {
         try {
-            $sql = 'DELETE FROM ciudades WHERE id = :id';
-
+            $sql = 'DELETE FROM ciudades WHERE id_ciudad = :id_ciudad';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
-                'id'        => $id
+                'id_ciudad'  => $id
             ]);
             if ($query) {
                 return true;
@@ -114,9 +116,11 @@ class Ciudad
     {
         return $this->nombre;
     }
-    
+
     public function setCiudad($nombre)
     {
         return $this->nombre;
     }
+
+   
 }

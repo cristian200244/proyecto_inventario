@@ -1,10 +1,14 @@
 <?php
-include_once(__DIR__ . "../../../config/config.php");
+include_once(__DIR__ . "../../../config/config.example.php");
 include_once(BASE_DIR . '../../views/main/partials/header.php');
 require_once '../../models/ciudadModel.php';
+require_once '../../models/documentoModel.php';
 
 $ciudad = new Ciudad();
 $data = $ciudad->getAll();
+
+$datos_documento = new TipoDocumento();
+$registro = $datos_documento->getAll();
 
 ?>
 
@@ -22,10 +26,12 @@ $data = $ciudad->getAll();
                 <div class="col-6 mb-2">
                     <label for="id_tipo_documento" class="form-label">Tipo de documento</label>
                     <select class="form-select" aria-label="Default select example" name="id_tipo_documento" id="id_tipo_documento" required="required">
-                        <option>Seleccionar Documento</option>
-                        <option value="1">CC</option>
-                        <option value="2">TI</option>
-                        <option value="3">CE</option>
+                        <option selected>Seleccionar</option>
+                        <?php
+                        foreach ($registro as $documento) {
+                            echo '<option value="' . $documento->getId() . '">' . $documento->getTipoDocumento() . '</option>';
+                        }
+                        ?>
                     </select>
                 </div>
                 <div class="col-6 mb-2">
@@ -83,12 +89,13 @@ $data = $ciudad->getAll();
             </div>
             <br>
             <button type="submit" class="btn btn-outline-info ml-2">Guardar Cliente</button>
+        </div>
 
     </form>
 </div>
 
 
-</div>
+ 
 <!-- /.container-fluid -->
 
 <?php
