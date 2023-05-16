@@ -29,6 +29,9 @@ class UsuarioController
                 case '4': //eliminar el registro
                     self::delete();
                     break;
+                    case '5': //eliminar el registro
+                      
+                        
                 default:
                     self::index();
                     break;
@@ -56,6 +59,7 @@ class UsuarioController
             'telefono'          => $_REQUEST['telefono'],
             'correo'            => $_REQUEST['correo'],
             'direccion'         => $_REQUEST['direccion'],
+            'password'         => $_REQUEST['password'],
         ];
         $result = $this->usuario->store($datos);
         if ($result) {
@@ -94,6 +98,7 @@ class UsuarioController
             'id_ciudad'        => $_REQUEST['id_ciudad'],
             'correo'           => $_REQUEST['correo'],
             'direccion'        => $_REQUEST['direccion'],
+            'password'         => $_REQUEST['password'],
 
         ];
         var_dump($datos);

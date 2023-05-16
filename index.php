@@ -80,6 +80,7 @@
         </div>
 
     </div>
+    <script src="public/js/validacion.js"></script>
 </body>
 
 </html>
