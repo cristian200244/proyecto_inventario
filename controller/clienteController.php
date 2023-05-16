@@ -68,8 +68,8 @@ class ClienteController
 
     public function show()
     {
-        $id = $_REQUEST['id'];
-        header("Location: ../views/clientes/show?id=" . $id);
+        $id_persona = $_REQUEST['id_persona'];
+        header("Location: ../views/clientes/show.php?id_persona=" . $id_persona);
     }
 
     public function delete()
@@ -80,28 +80,30 @@ class ClienteController
 
     public function update()
     {
+        var_dump($_REQUEST);
+        die();
+        
         $datos = [
 
-            'rol             ' => $_REQUEST['rol'],
-            'tipo_documento  ' => $_REQUEST['tipo_documento'],
-            'numero_documento' => $_REQUEST['numero_documento'],
-            'primer_nombre   ' => $_REQUEST['primer_nombre'],
-            'segundo_nombre  ' => $_REQUEST['segundo_nombre'],
-            'primer_apellido ' => $_REQUEST['primer_apellido'],
-            'segundo_apellido' => $_REQUEST['segundo_apellido'],
-            'sexo            ' => $_REQUEST['sexo'],
-            'telefono'            => $_REQUEST['telefono'],
-            'id_ciudad          ' => $_REQUEST['id_ciudad'],
-            'correo           ' => $_REQUEST['correo'],
-            'direccion       ' => $_REQUEST['direccion'],
+            'id_tipo_documento' => $_REQUEST['id_tipo_documento'],
+            'numero_documento'  => $_REQUEST['numero_documento'],
+            'primer_nombre'     => $_REQUEST['primer_nombre'],
+            'segundo_nombre'    => $_REQUEST['segundo_nombre'],
+            'primer_apellido'   => $_REQUEST['primer_apellido'],
+            'segundo_apellido'  => $_REQUEST['segundo_apellido'],
+            'sexo'              => $_REQUEST['sexo'],
+            'telefono'          => $_REQUEST['telefono'],
+            'id_ciudad'         => $_REQUEST['id_ciudad'],
+            'correo'            => $_REQUEST['correo'],
+            'direccion'         => $_REQUEST['direccion'],
 
         ];
-        // var_dump($datos);
+         
 
         $result = $this->cliente->update($datos);
 
         if ($result) {
-            header("Location: ../views/clientes/show.php");
+            header("Location: ../views/clientes/index.php");
             exit();
         }
 
