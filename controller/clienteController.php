@@ -75,7 +75,7 @@ class ClienteController
     public function delete()
     {
         $this->cliente->delete($_REQUEST['id']);
-        header("Location: ../views/clientes/show.php");
+        header("Location: ../views/clientes/index.php");
     }
 
     public function update()
@@ -96,7 +96,7 @@ class ClienteController
             'direccion       ' => $_REQUEST['direccion'],
 
         ];
-        var_dump($datos);
+        // var_dump($datos);
 
         $result = $this->cliente->update($datos);
 

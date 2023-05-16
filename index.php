@@ -1,5 +1,5 @@
 <?php
-    include_once(__DIR__ . "/config/config.php");
+    include_once(__DIR__ . "/config/config.example.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
