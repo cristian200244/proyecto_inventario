@@ -6,7 +6,7 @@ require_once 'conexionModel.php';
 
 class Cliente extends stdClass
 {
-    private $id;
+    private $id_persona;
     private $tipo_documento;
     private $numero_documento;
     private $primer_nombre;
@@ -27,22 +27,22 @@ class Cliente extends stdClass
     public function getId()
     {
 
-        return $this->id;
+        return $this->id_persona;
     }
-    public function getById($id)
+    public function getById($id_persona)
     {
         $datos_clientes = [];
 
         try {
-            $sql  = 'SELECT * FROM personas WHERE id = :id';
+            $sql  = 'SELECT * FROM personas WHERE id_persona = :id_persona';
             $query = $this->database->conexion()->prepare($sql);
             $query->execute([
-                'id' => $id
+                'id_persona' => $id_persona
             ]);
 
             while ($row = $query->fetch()) {
                 $item            = new Cliente();
-                $item->id               = $row['id'];
+                $item->id_persona       = $row['id_persona'];
                 $item->tipo_documento   = $row['id_tipo_documento'];
                 $item->numero_documento = $row['numero_documento'];
                 $item->primer_nombre    = $row['primer_nombre'];
@@ -70,13 +70,15 @@ class Cliente extends stdClass
         try {
             $sql = 'SELECT  id_persona, id_tipo_documento, numero_documento , primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, sexo, telefono, c.nombre AS ciudad, correo, direccion 
             FROM personas AS p
-            JOIN ciudades AS c ON p.id_ciudad = c.id_ciudad ORDER BY id_persona DESC';
+            JOIN ciudades AS c ON p.id_ciudad = c.id_ciudad 
+            WHERE id_rol = 2
+            ORDER BY id_persona DESC';
             $query = $this->database->conexion()->query($sql);
 
             while ($row = $query->fetch()) {
 
                 $item                   = new Cliente();
-                $item->id               = $row['id_persona'];
+                $item->id_persona       = $row['id_persona'];
                 $item->tipo_documento   = $row['id_tipo_documento'];
                 $item->numero_documento = $row['numero_documento'];
                 $item->primer_nombre    = $row['primer_nombre'];
@@ -172,14 +174,14 @@ class Cliente extends stdClass
         }
     }
 
-    public function delete($id)
+    public function delete($id_persona)
     {
         try {
-            $sql = 'DELETE FROM personas WHERE id = :id';
+            $sql = 'DELETE FROM personas WHERE id_persona = :id_persona';
 
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
-                'id'        => $id
+                'id_persona'        => $id_persona
             ]);
             if ($query) {
                 return true;
@@ -192,106 +194,106 @@ class Cliente extends stdClass
     //---------------------------------------------------------------//
     // -------------------------------getter------------------------//
 
-        public function getTipoDocumento()
-        {
-            return $this->tipo_documento;
-        }
-
-        public function getNumeroDocumento()
-        {
-            return $this->numero_documento;
-        }
-
-        public function getPrimerNombre()
-        {
-            return $this->primer_nombre;
-        }
-
-        public function getSegundoNombre()
-        {
-            return $this->segundo_nombre;
-        }
-
-        public function getPrimerApellido()
-        {
-            return $this->primer_apellido;
-        }
-
-        public function getSegundoApellido()
-        {
-            return $this->segundo_apellido;
-        }
-
-        public function getSexo()
-        {
-            return $this->sexo;
-        }
-
-        public function getCiudad()
-        {
-            return $this->ciudad;
-        }
-
-        public function getCorreo()
-        {
-            return $this->correo;
-        }
-
-        public function getDireccion()
-        {
-            return $this->direccion;
-        }
-
-        public function getTelefono()
-        {
-            return $this->telefono;
-        }
-
-        //---------------------------------------------------------------//
-        // -------------------------------setter------------------------//
-
-        public function setTipo_documento($tipo_documento)
-        {
-            return $this->tipo_documento;
-        }
-        public function setNumero_documento($numero_documento)
-        {
-            return $this->numero_documento;
-        }
-        public function setPrimer_nombre($primer_nombre)
-        {
-            return $this->primer_nombre;
-        }
-        public function setSegundo_nombre($segundo_nombre)
-        {
-            return $this->segundo_nombre;
-        }
-        public function setPrimer_apellido($primer_apellido)
-        {
-            return $this->primer_apellido;
-        }
-        public function setSegundo_apellido($segundo_apellido)
-        {
-            return $this->segundo_apellido;
-        }
-        public function setSexo($sexo)
-        {
-            return $this->sexo;
-        }
-        public function setCiudad($ciudad)
-        {
-            return $this->ciudad;
-        }
-        public function setCorreo($correo)
-        {
-            return $this->correo;
-        }
-        public function setDireccion($direccion)
-        {
-            return $this->direccion;
-        }
-        public function setTelefono($telefono)
-        {
-            return $this->telefono;
-        }
+    public function getTipoDocumento()
+    {
+        return $this->tipo_documento;
     }
+
+    public function getNumeroDocumento()
+    {
+        return $this->numero_documento;
+    }
+
+    public function getPrimerNombre()
+    {
+        return $this->primer_nombre;
+    }
+
+    public function getSegundoNombre()
+    {
+        return $this->segundo_nombre;
+    }
+
+    public function getPrimerApellido()
+    {
+        return $this->primer_apellido;
+    }
+
+    public function getSegundoApellido()
+    {
+        return $this->segundo_apellido;
+    }
+
+    public function getSexo()
+    {
+        return $this->sexo;
+    }
+
+    public function getCiudad()
+    {
+        return $this->ciudad;
+    }
+
+    public function getCorreo()
+    {
+        return $this->correo;
+    }
+
+    public function getDireccion()
+    {
+        return $this->direccion;
+    }
+
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    //---------------------------------------------------------------//
+    // -------------------------------setter------------------------//
+
+    public function setTipo_documento($tipo_documento)
+    {
+        return $this->tipo_documento;
+    }
+    public function setNumero_documento($numero_documento)
+    {
+        return $this->numero_documento;
+    }
+    public function setPrimer_nombre($primer_nombre)
+    {
+        return $this->primer_nombre;
+    }
+    public function setSegundo_nombre($segundo_nombre)
+    {
+        return $this->segundo_nombre;
+    }
+    public function setPrimer_apellido($primer_apellido)
+    {
+        return $this->primer_apellido;
+    }
+    public function setSegundo_apellido($segundo_apellido)
+    {
+        return $this->segundo_apellido;
+    }
+    public function setSexo($sexo)
+    {
+        return $this->sexo;
+    }
+    public function setCiudad($ciudad)
+    {
+        return $this->ciudad;
+    }
+    public function setCorreo($correo)
+    {
+        return $this->correo;
+    }
+    public function setDireccion($direccion)
+    {
+        return $this->direccion;
+    }
+    public function setTelefono($telefono)
+    {
+        return $this->telefono;
+    }
+}
