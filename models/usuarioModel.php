@@ -1,12 +1,12 @@
 <?php
 
-include_once dirname(__FILE__) . '../../Config/config.php';
+include_once dirname(__FILE__) . '../../Config/config.example.php';
 require_once 'conexionModel.php';
 
 
 class Usuario extends stdClass
 {
-    private $id;
+    private $id_persona;
     private $tipo_documento;
     private $numero_documento;
     private $primer_nombre;
@@ -27,22 +27,22 @@ class Usuario extends stdClass
     public function getId()
     {
 
-        return $this->id;
+        return $this->id_persona;
     }
-    public function getById($id)
+    public function getById($id_persona)
     {
         $datos_usuario = [];
 
         try {
-            $sql  = 'SELECT * FROM personas WHERE id = :id';
+            $sql  = 'SELECT * FROM personas WHERE $id_persona = :$id_persona';
             $query = $this->database->conexion()->prepare($sql);
             $query->execute([
-                'id' => $id
+                'id_persona' => $id_persona
             ]);
 
             while ($row = $query->fetch()) {
                 $item = new Usuario();
-                $item->id               = $row['id'];
+                $item->id               = $row['$id_persona'];
                 $item->tipo_documento   = $row['id_tipo_documento'];
                 $item->numero_documento = $row['numero_documento'];
                 $item->primer_nombre    = $row['primer_nombre'];
@@ -55,7 +55,7 @@ class Usuario extends stdClass
                 $item->correo           = $row['correo'];
                 $item->direccion        = $row['direccion'];
 
-                array_push($datos_clientes, $item);
+                array_push($datos_usuario, $item);
             }
 
             return $datos_usuario;
@@ -70,7 +70,7 @@ class Usuario extends stdClass
         try {
             $sql = 'SELECT  id_persona, id_tipo_documento, numero_documento , primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, sexo, telefono, c.nombre AS id_ciudad, correo, direccion 
             FROM personas AS p
-            JOIN ciudades AS c ON p.id_ciudad = c.id_ciudad ORDER BY id_persona DESC';
+            JOIN ciudades AS c ON  p.id_ciudad = c.id_ciudad ORDER BY id_persona DESC';
             $query = $this->database->conexion()->query($sql);
 
             while ($row = $query->fetch()) {

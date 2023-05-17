@@ -63,7 +63,7 @@ class UsuarioController
         ];
         $result = $this->usuario->store($datos);
         if ($result) {
-            header("Location: ../views/clientes/index.php");
+            header("Location: ../views/admin/index.php");
             exit();
         } else {
             echo $error = "Ocurrió un error";
@@ -73,13 +73,13 @@ class UsuarioController
     public function show()
     {
         $id = $_REQUEST['id'];
-        header("Location: ../views/clientes/show?id=" . $id);
+        header("Location: ../views/admin/show?id=" . $id);
     }
 
     public function delete()
     {
         $this->usuario->delete($_REQUEST['id']);
-        header("Location: ../views/clientes/show.php");
+        header("Location: ../views/admin/show.php");
     }
 
     public function update()
@@ -106,7 +106,7 @@ class UsuarioController
         $result = $this->usuario->update($datos);
 
         if ($result) {
-            header("Location: ../views/clientes/show.php");
+            header("Location: ../views/admin/show.php");
             exit();
         }
 
