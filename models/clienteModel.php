@@ -49,7 +49,7 @@ class Cliente extends stdClass
                 $item->segundo_nombre   = $row['segundo_nombre'];
                 $item->primer_apellido  = $row['primer_apellido'];
                 $item->segundo_apellido = $row['segundo_apellido'];
-                $item->sexo             = $row['sexo'];
+                $item->sexo             = $row['id_sexo'];
                 $item->ciudad           = $row['id_ciudad'];
                 $item->telefono         = $row['telefono'];
                 $item->correo           = $row['correo'];
@@ -68,7 +68,7 @@ class Cliente extends stdClass
         $items = [];
 
         try {
-            $sql = 'SELECT  id_persona, id_tipo_documento, numero_documento , primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, sexo, telefono, c.nombre AS ciudad, correo, direccion 
+            $sql = 'SELECT  id_persona, id_tipo_documento, numero_documento , primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_sexo, telefono, c.nombre AS ciudad, correo, direccion 
             FROM personas AS p
             JOIN ciudades AS c ON p.id_ciudad = c.id_ciudad 
             WHERE id_rol = 2
@@ -85,7 +85,7 @@ class Cliente extends stdClass
                 $item->segundo_nombre   = $row['segundo_nombre'];
                 $item->primer_apellido  = $row['primer_apellido'];
                 $item->segundo_apellido = $row['segundo_apellido'];
-                $item->sexo             = $row['sexo'];
+                $item->sexo             = $row['id_sexo'];
                 $item->telefono         = $row['telefono'];
                 $item->ciudad           = $row['ciudad'];
                 $item->correo           = $row['correo'];
@@ -104,8 +104,8 @@ class Cliente extends stdClass
     public function store($datos)
     {
         try {
-            $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, sexo, telefono, id_ciudad, correo, direccion) 
-            VALUES(:id_tipo_documento, :numero_documento, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :sexo, :telefono, :id_ciudad, :correo, :direccion)';
+            $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_sexo, telefono, id_ciudad, correo, direccion) 
+            VALUES(:id_tipo_documento, :numero_documento, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :id_sexo, :telefono, :id_ciudad, :correo, :direccion)';
 
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
@@ -118,7 +118,7 @@ class Cliente extends stdClass
                 'segundo_nombre'    => $datos['segundo_nombre'],
                 'primer_apellido'   => $datos['primer_apellido'],
                 'segundo_apellido'  => $datos['segundo_apellido'],
-                'sexo'              => $datos['sexo'],
+                'id_sexo'              => $datos['id_sexo'],
                 'telefono'          => $datos['telefono'],
                 'id_ciudad'         => $datos['id_ciudad'],
                 'correo'            => $datos['correo'],
@@ -144,8 +144,8 @@ class Cliente extends stdClass
               segundo_nombre    = :segundo_nombre,
               primer_apellido   = :primer_apellido,
               segundo_apellido  = :segundo_apellido,
-              telefono          = : telefono,
-              sexo              = :sexo,
+              telefono          = :telefono,
+              id_sexo              = :id_sexo,
               id_ciudad         = :id_ciudad,
               correo            = :correo,
               direccion         = :direccion,
@@ -171,7 +171,7 @@ class Cliente extends stdClass
                 'primer_apellido'   => $datos['primer_apellido'],
                 'segundo_apellido'  => $datos['segundo_apellido'],
                 'telefono'          => $datos['telefono'],
-                'sexo'              => $datos['sexo'],
+                'id_sexo'              => $datos['id_sexo'],
                 'id_ciudad'         => $datos['id_ciudad'],
                 'correo'            => $datos['correo'],
                 'direccion'         => $datos['direccion'],
@@ -263,27 +263,27 @@ class Cliente extends stdClass
     //---------------------------------------------------------------//
     // -------------------------------setter------------------------//
 
-    public function setTipo_documento($tipo_documento)
+    public function setTipoDocumento($tipo_documento)
     {
         return $this->tipo_documento;
     }
-    public function setNumero_documento($numero_documento)
+    public function setNumeroDocumento($numero_documento)
     {
         return $this->numero_documento;
     }
-    public function setPrimer_nombre($primer_nombre)
+    public function setPrimerNombre($primer_nombre)
     {
         return $this->primer_nombre;
     }
-    public function setSegundo_nombre($segundo_nombre)
+    public function setSegundoNombre($segundo_nombre)
     {
         return $this->segundo_nombre;
     }
-    public function setPrimer_apellido($primer_apellido)
+    public function setPrimerApellidoo($primer_apellido)
     {
         return $this->primer_apellido;
     }
-    public function setSegundo_apellido($segundo_apellido)
+    public function setSegundoApellido($segundo_apellido)
     {
         return $this->segundo_apellido;
     }
