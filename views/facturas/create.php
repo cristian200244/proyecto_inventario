@@ -7,6 +7,13 @@ $r = rand(0, 999999999);
 $datos = new Cliente();
 $registro = $datos->getAll();
 
+
+
+foreach  ($registro as $cliente){
+    $primer_nombre      = $cliente->getPrimerNombre();
+    $primer_apellido    = $cliente->getPrimerApellido();
+
+}
 ?>
 
 <!-- Begin Page Content -->
@@ -25,7 +32,7 @@ $registro = $datos->getAll();
 
                 <div class="col-6">
                     <div class="titulo" id="Nombre_completo">Nombre completo: </div>
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" id="primer_nombre" value="<?= $primer_nombre ?> <?= $primer_apellido ?>">
                 </div>
                 <div class="col-6">
                     <div class="titulo" id="numerofactura">Nro. Factura: </div>
@@ -78,7 +85,7 @@ $registro = $datos->getAll();
                         <input class="form-control" type="number">
                     </div>
                     <p>
-                    <p><button type="submit" class=" col-auto btn btn-outline-info">Crear</button>
+                    <p><button type="submit" class=" col-auto btn btn-outline-info" hreff' '>Crear</button>
                 </div>
             </div>
     </body>
