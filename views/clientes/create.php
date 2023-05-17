@@ -3,6 +3,7 @@ include_once(__DIR__ . "../../../config/config.example.php");
 include_once(BASE_DIR . '../../views/main/partials/header.php');
 require_once '../../models/ciudadModel.php';
 require_once '../../models/documentoModel.php';
+require_once '../../models/sexoModel.php';
 
 $ciudad = new Ciudad();
 $data = $ciudad->getAll();
@@ -10,7 +11,11 @@ $data = $ciudad->getAll();
 $datos_documento = new TipoDocumento();
 $registro = $datos_documento->getAll();
 
+$datos_sexo = new Sexo();
+$registro_sexo = $datos_sexo->getAll();
 ?>
+
+    
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -28,8 +33,8 @@ $registro = $datos_documento->getAll();
                     <select class="form-select" aria-label="Default select example" name="id_tipo_documento" id="id_tipo_documento" required="required">
                         <option selected>Seleccionar</option>
                         <?php
-                        foreach ($registro as $documento) {
-                            echo '<option value="' . $documento->getId() . '">' . $documento->getTipoDocumento() . '</option>';
+                        foreach ($registro  as $datos) {
+                            echo '<option value="' . $datos->getId() . '">' . $datos->getTipoDocumento() . '</option>';
                         }
                         ?>
                     </select>
@@ -58,9 +63,11 @@ $registro = $datos_documento->getAll();
                 <div class="col-3 mb-2">
                     <label for="sexo" class="form-label">Sexo</label>
                     <select class="form-select" aria-label="Default select example" id="sexo" name="sexo" required="required">
-                        <option selected>Seleccionar Sexo</option>
-                        <option value="masculino">Masculino</option>
-                        <option value="femenino">Femenino</option>
+                    <?php
+                        foreach ($registro_sexo as $sexo) {
+                            echo '<option value="' . $sexo->getId() . '">' . $sexo->getSexo() . '</option>';
+                        }
+                        ?>
                     </select>
                 </div>
                 <div class="col-3 mb-2">
