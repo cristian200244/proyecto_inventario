@@ -4,7 +4,7 @@ include_once dirname(__FILE__) . '../../Config/config.example.php';
 require_once 'conexionModel.php';
 
 
-class Cliente extends stdClass
+class Cliente 
 {
     private $id_persona;
     private $tipo_documento;

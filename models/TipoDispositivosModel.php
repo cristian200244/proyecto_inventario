@@ -23,7 +23,7 @@ class Dispositivos
     {
         $dispositivo = [];
         try {
-            $sql = 'SELECT * FROM tipo_dispositivos WHERE id=:id';
+            $sql = 'SELECT * FROM tipo_dispositivos WHERE id_tipo_dispositivo=:id_tipo_dispositivo';
             $query = $this->database->conexion()->prepare($sql);
             $query->execute(['id_tipo_dispositivo' => $id]);
             while ($row = $query->fetch()) {

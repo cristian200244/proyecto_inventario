@@ -2,7 +2,7 @@
 include_once dirname(__FILE__) . '../../Config/config.example.php';
 require_once 'conexionModel.php';
 
-class Ciudad  
+class Ciudad   
 {
     private $id;
     private $nombre;
@@ -21,19 +21,21 @@ class Ciudad
 
     public function getById($id)
     {
-        $ciudad = [];
+        $datos_ciudad = [];
         try {
             $sql = 'SELECT * FROM ciudades WHERE id_ciudad=:id_ciudad';
             $query = $this->database->conexion()->prepare($sql);
-            $query->execute(['id_ciudad' => $id]);
+            $query->execute([
+                    'id_ciudad' => $id
+            ]);
             while ($row = $query->fetch()) {
-                $datos  = new Ciudad();
-                $datos->id = $row['id_ciudad'];
-                $datos->nombre = $row['nombre'];
+                $item         = new Ciudad();
+                $item->id     = $row['id_ciudad'];
+                $item->nombre = $row['nombre'];
 
-                array_push($ciudad, $datos);
+                array_push($datos_ciudad , $item);
             }
-            return $ciudad;
+            return $datos_ciudad;
         } catch (PDOException $e) {
             return ['mensasje' => $e];
         }
@@ -81,11 +83,11 @@ class Ciudad
     public function update($datos)
     {
         try {
-            $sql = 'UPDATE ciudades SET  nombre WHERE id_ciudad = :id_ciudad'; 
+            $sql = 'UPDATE ciudades SET nombre = :nombre WHERE id_ciudad = :id_ciudad'; 
             $prepare = $this->database->conexion()->prepare($sql);
              $query = $prepare->execute([
                 'id_ciudad'      => $datos['id_ciudad'],
-                'nombre'         => $datos['nombre']
+                'nombre'         => $datos['nombre'] 
             ]);
             
             if ($query) {

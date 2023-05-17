@@ -52,11 +52,11 @@ class DispositivoController
     public function show()
     {
         $id = $_REQUEST['id_tipo_dispositivo'];
-        header("Location: ../views/tipo_dispositivos/index.php");
+        header("Location: ../views/tipo_dispositivos/index.php?id_ciudad=" . $id);
     }
     public function delete()
     {
-        $this->dispositivo->delete($_REQUEST['id']);
+        $this->dispositivo->delete($_REQUEST['id_tipo_dispositivo']);
         header("Location: ../views/tipo_dispositivos/index.php");
     }
     public function update()

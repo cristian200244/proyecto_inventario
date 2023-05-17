@@ -50,11 +50,11 @@ class MarcasController
     public function show()
     {
         $id = $_REQUEST['id_marca'];
-        header("Location: ../views/marcas/index.php");
+        header("Location: ../views/marcas/index.php?id_marca=" . $id);
     }
     public function delete()
     {
-        $this->marca->delete($_REQUEST['id']);
+        $this->marca->delete($_REQUEST['id_marca']);
         header('Location: ../views/marcas/index.php');
     }
     public function update()

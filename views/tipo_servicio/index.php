@@ -5,7 +5,7 @@ require_once '../../models/tipoServicioModel.php';
 
 $datos_servicio = new Servicios();
 $registro = $datos_servicio->getAll();
-  
+
 ?>
 
 
@@ -17,11 +17,9 @@ $registro = $datos_servicio->getAll();
         <hr>
         <?php include_once(BASE_DIR . '../../views/main/partials/menu.php'); ?>
         <hr>
-        <h1 class="h3 mb-4 text-gray-800 text-left">Tipo De Servicios
+        <h1 class="h3 mb-4 text-gray-800 text-left">Tipo De Servicios 
             <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-                </svg>
+                <i class="bi bi-plus-circle-fill" style="font-size: 1.5rem; "></i>
             </button>
         </h1>
         <div class="row">
@@ -56,7 +54,7 @@ $registro = $datos_servicio->getAll();
                         <?php
                         if ($registro) {
                             $pos = 1;
-                            foreach ($registro as $servicio) { 
+                            foreach ($registro as $servicio) {
                         ?>
                                 <tr>
                                     <td><?= $pos ?></td>
