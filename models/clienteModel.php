@@ -113,15 +113,15 @@ class Cliente extends stdClass
 
                 'id_tipo_documento' => $datos['id_tipo_documento'],
                 'numero_documento'  => $datos['numero_documento'],
-                'primer_nombre'     => $datos['primer_nombre'],
-                'segundo_nombre'    => $datos['segundo_nombre'],
-                'primer_apellido'   => $datos['primer_apellido'],
-                'segundo_apellido'  => $datos['segundo_apellido'],
-                'id_sexo'              => $datos['id_sexo'],
+                'primer_nombre'     => strtoupper($datos['primer_nombre']),
+                'segundo_nombre'    => strtoupper($datos['segundo_nombre']),
+                'primer_apellido'   => strtoupper($datos['primer_apellido']),
+                'segundo_apellido'  => strtoupper($datos['segundo_apellido']),
+                'id_sexo'           => $datos['id_sexo'],
                 'telefono'          => $datos['telefono'],
                 'id_ciudad'         => $datos['id_ciudad'],
-                'correo'            => $datos['correo'],
-                'direccion'         => $datos['direccion'],
+                'correo'            => strtoupper($datos['correo']),
+                'direccion'         => strtoupper($datos['direccion']),
             ]);
             if ($query) {
                 return true;
@@ -144,15 +144,15 @@ class Cliente extends stdClass
               primer_apellido   = :primer_apellido,
               segundo_apellido  = :segundo_apellido,
               telefono          = :telefono,
-              id_sexo              = :id_sexo,
+              id_sexo           = :id_sexo,
               id_ciudad         = :id_ciudad,
               correo            = :correo,
-              direccion         = :direccion,
-              WHERE id          = :id';
+              direccion         = :direccion
+              WHERE id_persona  = :id_persona';
 
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
-                'id'        => $datos['id'],
+                'id_persona'        => $datos['id_persona'],
                 'id_tipo_documento' => $datos['id_tipo_documento'],
                 'numero_documento'  => $datos['numero_documento'],
                 'primer_nombre'     => $datos['primer_nombre'],
@@ -160,7 +160,7 @@ class Cliente extends stdClass
                 'primer_apellido'   => $datos['primer_apellido'],
                 'segundo_apellido'  => $datos['segundo_apellido'],
                 'telefono'          => $datos['telefono'],
-                'id_sexo'              => $datos['id_sexo'],
+                'id_sexo'           => $datos['id_sexo'],
                 'id_ciudad'         => $datos['id_ciudad'],
                 'correo'            => $datos['correo'],
                 'direccion'         => $datos['direccion'],

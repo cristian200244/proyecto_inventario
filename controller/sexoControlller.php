@@ -60,7 +60,7 @@ class SexoController
     public function update()
     {
         $datos = [
-            'id_marca' => $_REQUEST['id_marca'],
+            'id_sexo' => $_REQUEST['id_sexo'],
             'nombre' => $_REQUEST['nombre']
 
         ];

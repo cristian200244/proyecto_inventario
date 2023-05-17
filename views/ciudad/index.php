@@ -23,8 +23,8 @@ $registro = $datos_ciudad->getAll();
                 </svg>
             </button>
         </h1>
-        <div class="row">
-            <div class="col">
+        <div class=" ">
+            <div class=" ">
                 <div class="collapse" id="collapseExample">
                     <div class="card card-body">
                         <div class="mb-3">
@@ -63,8 +63,8 @@ $registro = $datos_ciudad->getAll();
                                     <td><?= $pos ?></td>
                                     <td><?= $ciudad->getCiudad() ?></td>
                                     <td>
-                                        <a class="btn btn-sm btn-outline-warning" href="../../controller/ciudadController.php?c=3&id=<?= $ciudad->getId() ?>">Actualizar</a>
-                                        <a class="btn btn-sm btn-outline-danger" href="../../controller/ciudadController.php?c=4&id=<?= $ciudad->getId() ?>">Eliminar</a>
+                                        <a class="btn btn-sm btn-outline-warning" href="../../controller/ciudadController.php?c=3&id_ciudad=<?= $ciudad->getId() ?>">Actualizar</a>
+                                        <a class="btn btn-sm btn-outline-danger" href="../../controller/ciudadController.php?c=4&id_ciudad=<?= $ciudad->getId() ?>">Eliminar</a>
 
                                     </td>
 

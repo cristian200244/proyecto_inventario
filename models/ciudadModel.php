@@ -23,7 +23,7 @@ class Ciudad
     {
         $ciudad = [];
         try {
-            $sql = 'SELECT * FROM ciudades WHERE id=:id';
+            $sql = 'SELECT * FROM ciudades WHERE id_ciudad=:id_ciudad';
             $query = $this->database->conexion()->prepare($sql);
             $query->execute(['id_ciudad' => $id]);
             while ($row = $query->fetch()) {

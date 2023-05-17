@@ -16,7 +16,7 @@ $registro = $datos_marca->getAll();
         <hr>
         <?php include_once(BASE_DIR . '../../views/main/partials/menu.php'); ?>
         <hr>
-        <h1 class="h3 mb-4 text-gray-800 text-left">Marcas   <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <h1 class="h3 mb-4 text-gray-800 text-left">Marcas<button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                 <svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
                 </svg>
@@ -56,23 +56,23 @@ $registro = $datos_marca->getAll();
                         if ($registro) {
                             $pos = 1;
                             foreach ($registro as $marca) {
-                          
-                        ?>
-                        <tr>
-                            <th><?= $pos?></th>
-                            <td><?= $marca->getMarca()?></td>
-                            <td>
-                                <a class="btn btn-sm btn-outline-warning" href="../../controller/marcasController.php?c=3&id=<?= $marca->getId() ?>">Actualizar</a>
-                                <a class="btn btn-sm btn-outline-danger" href="../../controller/marcasController.php?c=4&id=<?= $marca->getId() ?>">Eliminar</a>
-                            </td>
 
-                        </tr>
-                            <?php 
-                             $pos++;    
-                                }
+                        ?>
+                                <tr>
+                                    <th><?= $pos ?></th>
+                                    <td><?= $marca->getMarca() ?></td>
+                                    <td>
+                                        <a class="btn btn-sm btn-outline-warning" href="../../controller/marcasController.php?=<? $marca->getId() ?>">Actualizar</a>
+                                        <a class="btn btn-sm btn-outline-danger" href="../../controller/marcasController.php?c=4&id=<?= $marca->getId() ?>">Eliminar</a>
+                                    </td>
+
+                                </tr>
+                        <?php
+                                $pos++;
                             }
-                            
-                            ?>
+                        }
+
+                        ?>
                     </tbody>
                 </table>
             </div>
