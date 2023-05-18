@@ -18,7 +18,7 @@ class EstadoProducto
         
         $estado = [];
         try{
-            $sql = 'INSERT INTO estado_producto WHERE id=:id';
+            $sql = 'INSERT INTO estado_producto WHERE id_estado_producto = :id_estado_producto';
             $query = $this->database->conexion()->prepare($sql);
             $query->execute(['id_estado_producto' => $id]);
             
@@ -75,7 +75,7 @@ class EstadoProducto
     public function update($datos)
     {
         try {
-            $sql = 'UPDATE estado_productos SET estado WHERE id_estado_producto= :id_estado_producto';
+            $sql = 'UPDATE estado_productos SET estado = :estado WHERE id_estado_producto= :id_estado_producto';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
                 'id_estado_producto' => $datos['id_estado_producto'],
@@ -91,7 +91,7 @@ class EstadoProducto
     public function delete($id)
     {
         try {
-            $sql = 'DELETE  FROM estado_productos WHERE id_estado_producto =: id_estado_producto';
+            $sql = 'DELETE  FROM estado_productos WHERE id_estado_producto = :id_estado_producto';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute(['id_estado_producto' => $id]);
 

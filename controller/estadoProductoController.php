@@ -52,11 +52,11 @@ class EstadoController
     public function show()
     {
         $id = $_REQUEST['id_estado_producto'];
-        header("Location: ../views/estado_producto/index.php");
+        header("Location: ../views/estado_producto/index.php?id_estado_producto=" . $id);
     }
     public function delete()
     {
-        $this->estado->delete($_REQUEST['id']);
+        $this->estado->delete($_REQUEST['id_estado_producto']);
         header("Location: ../views/estado_producto/index.php");
     }
     public function update()
@@ -68,7 +68,7 @@ class EstadoController
         $result = $this->estado->update($datos);
 
         if ($result) {
-            header("Location: ../views/estado_producto/update.php");
+            header("Location: ../views/estado_producto/index.php");
             exit();
         }
         return $result;

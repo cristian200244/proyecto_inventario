@@ -76,11 +76,13 @@ class Marcas
     public function update($datos)
     {
         try {
-            $sql = 'UPDATE marcas SET nombre WHERE id_marca= :id_marca';
+            $sql = 'UPDATE marcas SET nombre = :nombre 
+                    WHERE id_marca = :id_marca
+            ';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
+                'nombre'    => $datos['nombre'],
                 'id_marca'  => $datos['id_marca'],
-                'nombre'    => $datos['nombre']
             ]);
             if ($query) {
                 return true;

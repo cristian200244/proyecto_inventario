@@ -52,7 +52,7 @@ class DispositivoController
     public function show()
     {
         $id = $_REQUEST['id_tipo_dispositivo'];
-        header("Location: ../views/tipo_dispositivos/index.php?id_ciudad=" . $id);
+        header("Location: ../views/tipo_dispositivos/index.php?id_tipo_dispositivo=" . $id);
     }
     public function delete()
     {
@@ -68,7 +68,7 @@ class DispositivoController
         $result = $this->dispositivo->update($datos);
 
         if ($result) {
-            header("Location: ../views/tipo_dispositivos/update.php");
+            header("Location: ../views/tipo_dispositivos/index.php");
             exit();
         }
         return $result;

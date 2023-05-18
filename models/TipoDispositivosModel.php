@@ -81,7 +81,7 @@ class Dispositivos
     public function update($datos)
     {
         try {
-            $sql = 'UPDATE tipo_dispositivos SET  nombre WHERE id_tipo_dispositivo = :id_tipo_dispositivo'; 
+            $sql = 'UPDATE tipo_dispositivos SET  nombre = :nombre WHERE id_tipo_dispositivo = :id_tipo_dispositivo'; 
             $prepare = $this->database->conexion()->prepare($sql);
              $query = $prepare->execute([
                 'id_tipo_dispositivo'      => $datos['id_tipo_dispositivo'],

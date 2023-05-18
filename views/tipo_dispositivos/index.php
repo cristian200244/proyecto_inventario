@@ -6,6 +6,11 @@ require_once '../../models/TipoDispositivosModel.php';
 $datos_dispositivos = new Dispositivos();
 $registro = $datos_dispositivos->getAll();
 
+foreach ($registro as $dispositivos) {
+    $id = $dispositivos->getId();
+    $nombre = $dispositivos->getDispositivo();
+}
+
 
 ?>
 
@@ -19,7 +24,7 @@ $registro = $datos_dispositivos->getAll();
         <?php include_once(BASE_DIR . '../../views/main/partials/menu.php'); ?>
         <hr>
         <h1 class="h3 mb-4 text-gray-800 text-left">Dispositivos <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        <i class="bi bi-plus-circle-fill" style="font-size: 1.5rem; "></i>
+                <i class="bi bi-plus-circle-fill" style="font-size: 1.5rem; "></i>
             </button></h1>
         <div class="row">
             <div class="col">
@@ -30,8 +35,8 @@ $registro = $datos_dispositivos->getAll();
                                 <input type="hidden" name="c" value="1">
                                 <div class=" input-group ">
                                     <input type=" text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese un nuevo nuevo dispositivo">
-                                    <button type="submit" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"> 
-                                    <i class="bi bi-send-plus-fill" style="font-size: 1.0rem; "></i>
+                                    <button type="submit" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                        <i class="bi bi-send-plus-fill" style="font-size: 1.0rem; "></i>
                                     </button>
                                 </div>
 
@@ -48,19 +53,16 @@ $registro = $datos_dispositivos->getAll();
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="../../controller/ciudadController.php" method="POST">
-                                    <input type="hidden" name="c" value="3">
-                                    <input type="hidden" name="id" value="<?= $id ?>">
+                                <form action="../../controller/TipoDispositivosController.php?c=3&id_tipo_dispositivo=<?= $id ?>" method="POST">
                                     <div class="input-group ">
                                         <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $nombre ?>">
-
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">Actualizar</button>
                                     </div>
                                 </form>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Actualizar</button>
-                                <button type="button" class="btn btn-outline-primary">Cancelar</button>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -86,11 +88,9 @@ $registro = $datos_dispositivos->getAll();
                                     <td><?= $pos ?></td>
                                     <td><?= $dispositivos->getDispositivo() ?></td>
                                     <td>
-                                    <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="../../controller/TipoDispositivosController.php?c=2&id_tipo_dispositivo=<?= $dispositivos->getId() ?>">
-                                            Actualizar
-                                        </button>
-                                        <button type="button" class="btn btn-outline-danger"  href="../../controller/TipoDispositivosController.php?c=4&id_tipo_dispositivo=<?= $dispositivos->getId() ?>">Eliminar</button>
-                                         
+                                        <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="../../controller/TipoDispositivosController.php?c=2&id_tipo_dispositivo=<?= $dispositivos->getId() ?>">Actualizar</a>
+                                        <a type="button" class="btn btn-sm btn-outline-danger" href="../../controller/TipoDispositivosController.php?c=4&id_tipo_dispositivo=<?= $dispositivos->getId() ?>">Eliminar</a>
+
                                     </td>
 
                                 </tr>

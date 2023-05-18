@@ -43,6 +43,7 @@ class ClienteController
 
     public function store()
     {
+         
         $datos = [
 
             'id_tipo_documento' => $_REQUEST['id_tipo_documento'],

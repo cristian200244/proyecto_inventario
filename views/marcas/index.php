@@ -3,17 +3,16 @@ include_once(__DIR__ . "../../../config/config.example.php");
 include_once(BASE_DIR . '../../views/main/partials/header.php');
 require_once '../../models/marcasModel.php';
 
-$datos_marca = new Marcas();
-$registro = $datos_marca->getAll();
+$marcas = new Marcas();
 
-$datos = new Marcas();
-$registros = $datos->getById($_REQUEST['id_marca']);
-
+$registros = $marcas->getAll();
+ 
 
 foreach ($registros as $marca) {
     $id     = $marca->getId();
-    $nombre = $marca->$nombre();
+    $nombre = $marca->getMarca();
 }
+
 ?>
 
 <!-- Begin Page Content -->
@@ -38,7 +37,7 @@ foreach ($registros as $marca) {
                                 <div class="input-group ">
                                     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese una nueva marca">
                                     <button type="submit" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                    <i class="bi bi-send-plus-fill" style="font-size: 1.0rem; "></i>
+                                        <i class="bi bi-send-plus-fill" style="font-size: 1.0rem; "></i>
                                     </button>
                                 </div>
 
@@ -55,18 +54,16 @@ foreach ($registros as $marca) {
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="../../controller/ciudadController.php" method="POST">
-                                    <input type="hidden" name="c" value="3">
-                                    <input type="hidden" name="id" value="<?= $id ?>">
+                                <form action="../../controller/marcasController.php?c=3&id_marca=<?= $id ?>" method="POST">
                                     <div class="input-group ">
                                         <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $nombre ?>">
 
                                     </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">Actualizar</button>
+                                        <!-- <button type="button" class="btn btn-outline-primary">Cancelar</button> -->
+                                    </div>
                                 </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Actualizar</button>
-                                <button type="button" class="btn btn-outline-primary">Cancelar</button>
                             </div>
                         </div>
                     </div>
@@ -83,22 +80,17 @@ foreach ($registros as $marca) {
                     </thead>
                     <tbody>
                         <?php
-                        if ($registro) {
+                        if ($registros) {
                             $pos = 1;
-                            foreach ($registro as $marca) {
+                            foreach ($registros as $marca) {
 
                         ?>
                                 <tr>
                                     <th><?= $pos ?></th>
                                     <td><?= $marca->getMarca() ?></td>
                                     <td>
-                                        <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="../../controller/marcasController.php?c=2&id_marca=<? $marca->getId() ?>">
-                                         Actualizar
-                                    </button>
-                                        <button type="button" class="btn btn-outline-danger" href="../../controller/marcasController.php?c=4&id_marca=<?= $marca->getId() ?>">
-                                            
-                                        Eliminar    
-                                    </button>
+                                        <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="../../controller/marcasController.php?c=2&id_marca=<?= $marca->getId() ?>">Actualizar</a>
+                                        <a type="button" class="btn btn-sm btn-outline-danger" href="../../controller/marcasController.php?c=4&id_marca=<?= $marca->getId() ?>">Eliminar</a>
                                     </td>
 
                                 </tr>
