@@ -36,7 +36,7 @@ foreach ($registro as $estados) {
                             <form action="../../controller/estadoProductoController.php" method="POST">
                                 <input type="hidden" name="c" value="1">
                                 <div class="input-group ">
-                                    <input type="text" class="form-control" id="estado" name="estado" placeholder="Crear un estado del producto">
+                                    <input type="text" class="form-control" id="estado" name="estado" placeholder="Ingrese una nueva estado">
                                     <button type="submit" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                                         <i class="bi bi-send-plus-fill" style="font-size: 1.0rem; "></i>
                                     </button>
@@ -55,16 +55,17 @@ foreach ($registro as $estados) {
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="../../controller/estadoProductoController.php?c=3&id_estado_producto ?>" method="POST">
+                                <form action="../../controller/estadoProductoController.php?c=3&id_estado_producto=<?= $id ?>" method="POST">
                                     <div class="input-group ">
                                         <input type="text" class="form-control" id="estado" name="estado" value="<?= $estado ?>">
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">Actualizar</button>
+                                         
                                     </div>
                                 </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -89,16 +90,16 @@ foreach ($registro as $estados) {
                                     <th><?= $pos ?></th>
                                     <td><?= $estados->getEstado() ?></td>
                                     <td>
-                                        <a class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="../../controller/estadoProductoController.php?c=2&id_estado_producto=<?= $estados->getId() ?>">Actualizar</a>
-                                        <a class="btn btn-sm btn-outline-danger" href="../../controller/estadoProductoController.php?c=4&id_estado_producto=<?= $estados->getId() ?>">Eliminar</a>
+                                        <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="../../controller/estadoProductoController.php?c=2&id_estado_producto=<?= $estados->getId() ?>">Actualizar</a>
+                                        <a type="button" class="btn btn-sm btn-outline-danger" href="../../controller/estadoProductoController.php?c=4&id_estado_producto=<?= $estados->getId() ?>">Eliminar</a>
                                     </td>
 
                                 </tr>
-
                         <?php
                                 $pos++;
                             }
                         }
+
                         ?>
                     </tbody>
                 </table>
@@ -106,6 +107,7 @@ foreach ($registro as $estados) {
 
         </div>
     </div>
+
 
 </div>
 <!-- /.container-fluid -->

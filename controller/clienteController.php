@@ -70,7 +70,7 @@ class ClienteController
     public function show()
     {
         $id_persona = $_REQUEST['id_persona'];
-        header("Location: ../views/clientes/show.php?id_persona=" . $id_persona);
+        header("Location: ../views/clientes/update.php?id_persona=" . $id_persona);
     }
 
     public function delete()

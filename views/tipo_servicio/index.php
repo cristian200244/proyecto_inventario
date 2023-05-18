@@ -6,6 +6,11 @@ require_once '../../models/tipoServicioModel.php';
 $datos_servicio = new Servicios();
 $registro = $datos_servicio->getAll();
 
+foreach ($registro as $servicios) {
+    $id= $servicios->getId();
+    $servicio= $servicios->getServicio();
+}
+
 ?>
 
 
@@ -41,6 +46,29 @@ $registro = $datos_servicio->getAll();
                         </div>
                     </div>
                 </div>
+                <!-- registro -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualizar Registro </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="../../controller/tipoServicioController.php?c=3&id_tipo_servicio=<?= $id ?>" method="POST">
+                                    <div class="input-group ">
+                                        <input type="text" class="form-control" id="servicio" name="servicio" value="<?= $servicio ?>">
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">Actualizar</button>
+                                         
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <br>
                 <table class="table ">
                     <thead>
@@ -54,14 +82,14 @@ $registro = $datos_servicio->getAll();
                         <?php
                         if ($registro) {
                             $pos = 1;
-                            foreach ($registro as $servicio) {
+                            foreach ($registro as $servicios) {
                         ?>
                                 <tr>
                                     <td><?= $pos ?></td>
-                                    <td><?= $servicio->getServicio() ?></td>
+                                    <td><?= $servicios->getServicio() ?></td>
                                     <td>
-                                        <a class="btn btn-sm btn-outline-warning" href="../../controller/tipoServicioController.php?c=3&id=<?= $servicio->getId() ?>">Actualizar</a>
-                                        <a class="btn btn-sm btn-outline-danger" href="../../controller/tipoServicioController.php?c=4&id=<?= $servicio->getId() ?>">Eliminar</a>
+                                        <a class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="../../controller/tipoServicioController.php?c=2&id_tipo_servicio=<?= $servicios->getId() ?>">Actualizar</a>
+                                        <a class="btn btn-sm btn-outline-danger" href="../../controller/tipoServicioController.php?c=4&id_tipo_servicio=<?= $servicios->getId() ?>">Eliminar</a>
                                     </td>
                                 </tr>
                         <?php

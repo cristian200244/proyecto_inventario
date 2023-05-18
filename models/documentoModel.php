@@ -21,7 +21,7 @@ class TipoDocumento
     {
         $documento = [];
         try {
-            $sql =  'SELECT * FROM tipo_documentos WHERE id = :id';
+            $sql =  'SELECT * FROM tipo_documentos WHERE id_tipo_documento = :id_tipo_documento';
             $query = $this->database->conexion()->prepare($sql);
             $query->execute(['id_tipo_documento' => $id]);
 
@@ -80,11 +80,11 @@ class TipoDocumento
     public function update($datos)
     {
         try {
-            $sql = 'UPDATE tipo_documentos SET tipo WHERE id_tipo_documento = :id_tipo_documento'; 
+            $sql = 'UPDATE tipo_documentos SET tipo= :tipo WHERE id_tipo_documento = :id_tipo_documento'; 
             $prepare = $this->database->conexion()->prepare($sql);
              $query = $prepare->execute([
-                'id_tipo_documento'      => $datos['id_tipo_documento'],
-                'tipo'         => $datos['tipo'] 
+                'id_tipo_documento'   => $datos['id_tipo_documento'],
+                'tipo'                => $datos['tipo'] 
             ]);
             
             if ($query) {

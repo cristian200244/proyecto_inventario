@@ -42,7 +42,7 @@ foreach ($registro as $cliente) {
         <input type="hidden" name="c" value="3">
         <input type="hidden" name="id" value="<?= $id_persona ?>">
         <div class="container text-center">
-            <h1 class="h2 mb-4  text-center">Actualizar Cliente</h1>
+            <h1 class="h2 mb-4  text-center">informacion completa del Cliente</h1>
             <hr class="bg-info">
             <div class="row text-start">
                 <div class="col-6 mb-2">

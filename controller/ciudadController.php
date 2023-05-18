@@ -62,7 +62,7 @@
         public function update()
         {
             $datos = [
-                'id' => $_REQUEST['id'],
+                'id_ciudad' => $_REQUEST['id_ciudad'],
                 'nombre' => $_REQUEST['nombre']
             ];
             $result = $this->ciudad->update($datos);

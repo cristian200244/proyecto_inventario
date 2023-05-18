@@ -40,7 +40,7 @@ $registro = $datos->getAll();
                         <td><?= $row->getCiudad() ?></td>
                         <td><?= $row->getDireccion() ?></td>
                         <td><?= $row->getTelefono() ?></td>
-                        <td><button type="button" class="btn btn-outline-info  "><a href="../../controller/clienteController.php?c=2&id_persona=<?= $row->getId() ?>">
+                        <td><button type="button" class="btn btn-outline-info  "><a href="show.php">
                                     <i class="bi bi-eye-fill" style="font-size: 1.3rem; "></i></a> 
                             </button>
                             <button type="button" class="btn btn-outline-warning"><a href="../../controller/clienteController.php?c=2&id_persona=<?= $row->getId() ?>">

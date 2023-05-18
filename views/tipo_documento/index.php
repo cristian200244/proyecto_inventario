@@ -6,6 +6,11 @@ require_once '../../models/documentoModel.php';
 $datos_documento = new TipoDocumento();
 $registro = $datos_documento->getAll();
 
+foreach ($registro as $documento) {
+    $id = $documento->getId();
+    $tipo_documento = $documento->getTipoDocumento();
+}
+
 ?>
 
 <!-- Begin Page Content -->
@@ -39,6 +44,27 @@ $registro = $datos_documento->getAll();
                         </div>
                     </div>
                 </div>
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualizar Registro </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="../../controller/documentoController.php?c=3&id_tipo_documento=<?= $id ?>" method="POST">
+                                    <div class="input-group ">
+                                        <input type="text" class="form-control" id="tipo" name="tipo" value="<?= $tipo_documento ?>">
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">Actualizar</button>
+                                     </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <br>
                 <table class="table">
                     <thead>
@@ -58,8 +84,8 @@ $registro = $datos_documento->getAll();
                                     <td><?= $pos ?></td>
                                     <td><?= $documento->getTipoDocumento() ?></td>
                                     <td>
-                                    <a class="btn btn-sm btn-outline-warning" href="../../controller/ciudadController.php?c=3&id=<?= $documento->getId() ?>">Actualizar</a>
-                                        <a class="btn btn-sm btn-outline-danger" href="../../controller/ciudadController.php?c=4&id=<?= $documento->getId() ?>">Eliminar</a>
+                                    <a class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="../../controller/documentoController.php?c=2&id_tipo_documento=<?= $documento->getId() ?>">Actualizar</a>
+                                        <a class="btn btn-sm btn-outline-danger" href="../../controller/documentoController.php?c=4&id_tipo_documento=<?= $documento->getId() ?>">Eliminar</a>
                                     </td>
 
                                 </tr>

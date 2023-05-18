@@ -6,11 +6,9 @@ require_once '../../models/ciudadModel.php';
 $datos_ciudad = new Ciudad();
 $registros = $datos_ciudad->getAll();
 
-$datos = new Ciudad();
-$registro = $datos->getById($_REQUEST['id_ciudad']);
 
 
-foreach ($registro as $ciudades) {
+foreach ($registros as $ciudades) {
     $id     = $ciudades->getId();
     $nombre = $ciudades->getCiudad();
 }
@@ -55,18 +53,16 @@ foreach ($registro as $ciudades) {
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="../../controller/ciudadController.php" method="POST">
-                                    <input type="hidden" name="c" value="3">
-                                    <input type="hidden" name="id" value="<?= $id ?>">
+                                <form action="../../controller/ciudadController.php?c=3&id_ciudad=<?= $id ?>" method="POST">
+
                                     <div class="input-group ">
                                         <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $nombre ?>">
 
                                     </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-sm btn-outline-success" data-bs-dismiss="modal">Actualizar</button>
+                                    </div>
                                 </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Actualizar</button>
-                                <button type="button" class="btn btn-outline-primary">Cancelar</button>
                             </div>
                         </div>
                     </div>
@@ -76,8 +72,8 @@ foreach ($registro as $ciudades) {
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col" colspan="3">opciones</th>
+                            <th scope="col">Sexo</th>
+                            <th scope="col" colspan="2">opciones</th>
 
                         </tr>
                     </thead>
@@ -85,16 +81,16 @@ foreach ($registro as $ciudades) {
                         <?php
                         if ($registros) {
                             $pos = 1;
-                            foreach ($registros as $ciudad) {
+                            foreach ($registros as $ciudades) {
                         ?>
                                 <tr>
                                     <td><?= $pos ?></td>
-                                    <td><?= $ciudad->getCiudad() ?></td>
+                                    <td><?= $ciudades->getCiudad() ?></td>
                                     <td>
-                                        <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="../../controller/ciudadController.php?c=2&id_ciudad=<?= $ciudad->getId() ?>">
+                                        <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="../../controller/ciudadController.php?c=2&id_ciudad=<?= $ciudades->getId() ?>">
                                             Actualizar
-                                        </button>
-                                        <button type="button" class="btn btn-outline-danger" href="../../controller/ciudadController.php?c=4&id_ciudad=<?= $ciudad->getId() ?>">Eliminar</button>
+                                        </a>
+                                        <a type="button" class="btn btn-sm btn-outline-danger" href="../../controller/ciudadController.php?c=4&id_ciudad=<?= $ciudades->getId() ?>">Eliminar</a>
 
                                     </td>
 
