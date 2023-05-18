@@ -30,7 +30,7 @@ $registro = $datos->getAll();
 
                 </tr>
             </thead>
-        </table> <p>
+        </table>
        <?php
                        if ($registro) {
                         $pos = 1;
@@ -39,7 +39,7 @@ $registro = $datos->getAll();
                     ?>
                 <tr>
                        
-                        <td><?= $row->getPrimerNombre().' '.$row->getPrimerApellido() ?></td>
+                        <td> <?= $row->getPrimerNombre().' '.$row->getPrimerApellido() ?></td>
 
                 </tr>
 
