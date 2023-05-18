@@ -1,6 +1,6 @@
 <?php
 include_once(__DIR__ . "../../../config/config.example.php");
- include_once(BASE_DIR . '../../views/main/partials/header.php');
+include_once(BASE_DIR . '../../views/main/partials/header.php');
 require_once '../../models/usuarioModel.php';
  
 
@@ -48,7 +48,6 @@ $registro = $datos->getAll();
                         <td><?= $row->getCiudad() ?></td>
                         <td><?= $row->getDireccion() ?></td>
                         <td><?= $row->getTelefono() ?></td>
-                        <td><?= $row->getPassword() ?></td>
                         <td><?= $row->getSexo() ?></td>
                         <td><?= $row->getCorreo() ?></td>
                         <td><button type="button" class="btn btn-outline-info"><a href="../../controller/clienteController.php?c=2&id=<?= $row->getId() ?>">
@@ -90,3 +89,4 @@ $registro = $datos->getAll();
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');
 ?>
+                      

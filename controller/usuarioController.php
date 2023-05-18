@@ -46,6 +46,7 @@ class UsuarioController
 
     public function store()
     {
+        
         $datos = [
 
             'id_tipo_documento' => $_REQUEST['id_tipo_documento'],
@@ -59,11 +60,11 @@ class UsuarioController
             'telefono'          => $_REQUEST['telefono'],
             'correo'            => $_REQUEST['correo'],
             'direccion'         => $_REQUEST['direccion'],
-            'password'         => $_REQUEST['password'],
+           
         ];
         $result = $this->usuario->store($datos);
         if ($result) {
-            header("Location: ../views/admin/index.php");
+            header("Location: ../views/clientes/index.php");
             exit();
         } else {
             echo $error = "Ocurrió un error";
@@ -72,8 +73,8 @@ class UsuarioController
 
     public function show()
     {
-        $id = $_REQUEST['id'];
-        header("Location: ../views/admin/show?id=" . $id);
+        $id = $_REQUEST['id_persona'];
+        header("Location:  ../views/clientes/show.php?id_persona=" . $id);
     }
 
     public function delete()
@@ -98,7 +99,7 @@ class UsuarioController
             'id_ciudad'        => $_REQUEST['id_ciudad'],
             'correo'           => $_REQUEST['correo'],
             'direccion'        => $_REQUEST['direccion'],
-            'password'         => $_REQUEST['password'],
+           
 
         ];
         var_dump($datos);

@@ -18,7 +18,7 @@ class Usuario extends stdClass
     private $correo;
     private $direccion;
     private $telefono;
-    private $password;
+    
     private $database;
 
     public function __construct()
@@ -55,7 +55,7 @@ class Usuario extends stdClass
                 $item->telefono         = $row['telefono'];
                 $item->correo           = $row['correo'];
                 $item->direccion        = $row['direccion'];
-                $item->password       = $row['password'];
+                 
 
                 array_push($datos_usuario, $item);
             }
@@ -92,7 +92,7 @@ class Usuario extends stdClass
                 $item->ciudad           = $row['id_ciudad'];
                 $item->correo           = $row['correo'];
                 $item->direccion        = $row['direccion'];
-              
+                
 
                 array_push($items, $item);
             }
@@ -106,6 +106,7 @@ class Usuario extends stdClass
 
     public function store($datos)
     {
+        var_dump($datos);
         try {
             $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_sexo, telefono, id_ciudad, correo, direccion) 
             VALUES(:id_tipo_documento, :numero_documento, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :id_sexo, :telefono, :id_ciudad, :correo, :direccion)';
@@ -126,7 +127,8 @@ class Usuario extends stdClass
                 'id_ciudad'         => $datos['id_ciudad'],
                 'correo'            => $datos['correo'],
                 'direccion'         => $datos['direccion'],
-                'password'          => $datos['password'],
+               
+                
             ]);
             if ($query) {
                 return true;
@@ -158,27 +160,16 @@ class Usuario extends stdClass
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
                 'id'        => $datos['id'],
-                'id_tipo_documento  ' => $datos['id_tipo_documento'],
-                'numero_documento' => $datos['numero_documento'],
-                'primer_nombre   ' => $datos['primer_nombre'],
-                'segundo_nombre  ' => $datos['segundo_nombre'],
-                'primer_apellido ' => $datos['primer_apellido'],
-                'segundo_apellido' => $datos['segundo_apellido'],
-                'sexo            ' => $datos['sexo'],
-                'id_ciudad          ' => $datos['id_ciudad'],
-                'correo           ' => $datos['correo'],
-                'direccion       ' => $datos['direccion'],
                 'id_tipo_documento' => $datos['id_tipo_documento'],
                 'numero_documento'  => $datos['numero_documento'],
                 'primer_nombre'     => $datos['primer_nombre'],
                 'segundo_nombre'    => $datos['segundo_nombre'],
                 'primer_apellido'   => $datos['primer_apellido'],
                 'segundo_apellido'  => $datos['segundo_apellido'],
-                'telefono'          => $datos['telefono'],
-                'sexo'              => $datos['id_sexo'],
+                'sexo'              => $datos['sexo'],
                 'id_ciudad'         => $datos['id_ciudad'],
                 'correo'            => $datos['correo'],
-                'direccion'         => $datos['direccion'],
+               
 
             ]);
             if ($query) {
@@ -263,10 +254,7 @@ class Usuario extends stdClass
         {
             return $this->telefono;
         }
-        public function getPassword()
-        {
-            return $this->password;
-        }
+      
 
 
         //---------------------------------------------------------------//
@@ -316,8 +304,5 @@ class Usuario extends stdClass
         {
             return $this->telefono;
         }
-        public function setPassword($password)
-        {
-            return $this->Password;
-        }
+        
     }
