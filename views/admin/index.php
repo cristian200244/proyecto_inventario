@@ -26,11 +26,11 @@ $registro = $datos->getAll();
                 <th scope="col">Primer Nombre</th>
                 <th scope="col">Primer Apellido</th>
                 <th scope="col">Ciudad</th>
-                <th scope="col">Direccion</th>
-                <th scope="col">Telefono</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Teléfono</th>
                 <th scope="col">Contraseña</th>
                 <th scope="col">sexo</th>
-                <th scope="col">Correo electronico</th>
+                <th scope="col">Correo electrónico</th>
                 <th scope="col" colspan="3">Opciones</th>
             </tr>
         </thead>

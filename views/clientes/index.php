@@ -10,6 +10,7 @@ $registro = $datos->getAll();
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
+    
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800 text-center">Clientes <button type="button" class="btn btn-outline-primary float-right mr-5"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
