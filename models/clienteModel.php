@@ -114,15 +114,15 @@ class Cliente
 
                 'id_tipo_documento' => $datos['id_tipo_documento'],
                 'numero_documento'  => $datos['numero_documento'],
-                'primer_nombre'     => strtoupper($datos['primer_nombre']),
-                'segundo_nombre'    => strtoupper($datos['segundo_nombre']),
-                'primer_apellido'   => strtoupper($datos['primer_apellido']),
-                'segundo_apellido'  => strtoupper($datos['segundo_apellido']),
-                'id_sexo'           => $datos['id_sexo'],
-                'telefono'          => $datos['telefono'],
-                'id_ciudad'         => $datos['id_ciudad'],
-                'correo'            => strtoupper($datos['correo']),
-                'direccion'         => strtoupper($datos['direccion']),
+                'primer_nombre'     =>$datos['primer_nombre'],
+                'segundo_nombre'    =>$datos['segundo_nombre'],
+                'primer_apellido'   =>$datos['primer_apellido'],
+                'segundo_apellido'  =>$datos['segundo_apellido'],
+                'id_sexo'           =>$datos['id_sexo'],
+                'telefono'          =>$datos['telefono'],
+                'id_ciudad'         =>$datos['id_ciudad'],
+                'correo'            =>$datos['correo'],
+                'direccion'         =>$datos['direccion'],
             ]);
             if ($query) {
                 return true;

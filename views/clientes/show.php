@@ -13,7 +13,7 @@ $datos_sexo = new Sexo();
 $registro_sexo = $datos_sexo->getAll();
 
 $datos_documento = new TipoDocumento();
-$registro = $datos_documento->getAll();
+$registros = $datos_documento->getAll();
 
 $datos = new Cliente();
 $registro = $datos->getById($_REQUEST['id_persona']);
@@ -38,8 +38,8 @@ foreach ($registro as $cliente) {
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-<form method="POST" action="../../controller/clienteController.php">
-        <input type="hidden" name="c" value="3">
+    <form>
+
         <input type="hidden" name="id" value="<?= $id_persona ?>">
         <div class="container text-center">
             <h1 class="h2 mb-4  text-center">informacion completa del Cliente</h1>
@@ -48,9 +48,9 @@ foreach ($registro as $cliente) {
                 <div class="col-6 mb-2">
                     <label for="id_tipo_documento" class="form-label">Tipo de documento</label>
                     <select class="form-select" aria-label="Default select example" value="<?= $tipo_documento ?>" name="id_tipo_documento" id="id_tipo_documento" required="required">
-                        <option selected>Seleccionar</option>
+
                         <?php
-                        foreach ($registro  as $datos) {
+                        foreach ($registros  as $datos) {
                             echo '<option value="' . $datos->getId() . '">' . $datos->getTipoDocumento() . '</option>';
                         }
                         ?>
@@ -91,17 +91,7 @@ foreach ($registro as $cliente) {
                     <label for="telefono" class="form-label">Telefono</label>
                     <input type="tel" class="form-control" id="telefono" name="telefono" value="<?= $telefono ?>">
                 </div>
-                <div class="col-6 mb-2">
-                    <label for="id_ciudad" class="form-label">Ciudad</label>
-                    <select class="form-select" aria-label="Default select example" id="id_ciudad" name="id_ciudad" required="required" value="<?= $ciudad ?>">
-                        <option selected>Seleccionar</option>
-                        <?php
-                        foreach ($data as $valores) {
-                            echo '<option value="' . $valores->getId() . '">' . $valores->getCiudad() . '</option>';
-                        }
-                        ?>
-                    </select>
-                </div>
+                
                 <div class="col-6 mb-2">
                     <label for="direccion" class="form-label ">Dirección</label>
                     <input type="text" class="form-control" id="direccion" name="direccion" value="<?= $direccion ?>">
@@ -112,7 +102,7 @@ foreach ($registro as $cliente) {
                 </div>
             </div>
             <br>
-            <button type="submit" class="btn btn-outline-info ml-2">Guardar Cliente</button>
+           <a type="button" class="btn btn-lg border-primary float-start" href="index.php"><i class="bi bi-arrow-return-left"></i></a> 
         </div>
 
     </form>
