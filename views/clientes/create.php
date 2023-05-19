@@ -15,7 +15,7 @@ $datos_sexo = new Sexo();
 $registro_sexo = $datos_sexo->getAll();
 ?>
 
-    
+
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -62,8 +62,8 @@ $registro_sexo = $datos_sexo->getAll();
                 </div>
                 <div class="col-3 mb-2">
                     <label for="sexo" class="form-label">Sexo</label>
-                    <select class="form-select" aria-label="Default select example" id="sexo" name="sexo" required="required">
-                    <?php
+                    <select class="form-select" aria-label="Default select example" id="id_sexo" name="id_sexo" required="required">
+                        <?php
                         foreach ($registro_sexo as $sexo) {
                             echo '<option value="' . $sexo->getId() . '">' . $sexo->getSexo() . '</option>';
                         }
@@ -102,7 +102,7 @@ $registro_sexo = $datos_sexo->getAll();
 </div>
 
 
- 
+
 <!-- /.container-fluid -->
 
 <?php
