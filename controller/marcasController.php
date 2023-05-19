@@ -12,16 +12,16 @@ class MarcasController
 
         if (isset($_REQUEST['c'])) {
             switch ($_REQUEST['c']) {
-                case '1': //Almacenar en la base de datos
+                case '1':
                     self::store();
                     break;
-                case '2': //ver usuario
+                case '2':
                     self::show();
                     break;
-                case '3': //Actualizar el registro
+                case '3':
                     self::update();
                     break;
-                case '4': //eliminar el registro
+                case '4':
                     self::delete();
                     break;
                 default:
@@ -39,7 +39,7 @@ class MarcasController
         $datos = [
             'nombre' => $_REQUEST['nombre']
         ];
-         $result = $this->marca->store($datos);
+        $result = $this->marca->store($datos);
         if ($result) {
             header('Location: ../views/marcas/index.php');
             exit();
@@ -50,11 +50,11 @@ class MarcasController
     public function show()
     {
         $id = $_REQUEST['id_marca'];
-        header("Location: ../views/marcas/index.php");
+        header("Location: ../views/marcas/index.php?id_marca=" . $id);
     }
     public function delete()
     {
-        $this->marca->delete($_REQUEST['id']);
+        $this->marca->delete($_REQUEST['id_marca']);
         header('Location: ../views/marcas/index.php');
     }
     public function update()
@@ -64,10 +64,11 @@ class MarcasController
             'nombre' => $_REQUEST['nombre']
 
         ];
+
         $result = $this->marca->update($datos);
 
         if ($result) {
-            header("Location: ../views/marcas/update.php");
+            header("Location: ../views/marcas/index.php");
             exit();
         }
         return $result;

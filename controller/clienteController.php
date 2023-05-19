@@ -43,6 +43,7 @@ class ClienteController
 
     public function store()
     {
+         
         $datos = [
 
             'id_tipo_documento' => $_REQUEST['id_tipo_documento'],
@@ -51,7 +52,7 @@ class ClienteController
             'segundo_nombre'    => $_REQUEST['segundo_nombre'],
             'primer_apellido'   => $_REQUEST['primer_apellido'],
             'segundo_apellido'  => $_REQUEST['segundo_apellido'],
-            'id_sexo'              => $_REQUEST['id_sexo'],
+            'id_sexo'           => $_REQUEST['id_sexo'],
             'id_ciudad'         => $_REQUEST['id_ciudad'],
             'telefono'          => $_REQUEST['telefono'],
             'correo'            => $_REQUEST['correo'],
@@ -69,7 +70,7 @@ class ClienteController
     public function show()
     {
         $id_persona = $_REQUEST['id_persona'];
-        header("Location: ../views/clientes/show.php?id_persona=" . $id_persona);
+        header("Location: ../views/clientes/update.php?id_persona=" . $id_persona);
     }
 
     public function delete()
@@ -82,14 +83,14 @@ class ClienteController
     {
     
         $datos = [
-
+            'id'        => $_REQUEST['id'],
             'id_tipo_documento' => $_REQUEST['id_tipo_documento'],
             'numero_documento'  => $_REQUEST['numero_documento'],
             'primer_nombre'     => $_REQUEST['primer_nombre'],
             'segundo_nombre'    => $_REQUEST['segundo_nombre'],
             'primer_apellido'   => $_REQUEST['primer_apellido'],
             'segundo_apellido'  => $_REQUEST['segundo_apellido'],
-            'id_sexo'           => $_REQUEST['id_sexo'],
+            'id_sexo'              => $_REQUEST['id_sexo'],
             'telefono'          => $_REQUEST['telefono'],
             'id_ciudad'         => $_REQUEST['id_ciudad'],
             'correo'            => $_REQUEST['correo'],

@@ -35,8 +35,9 @@ class TipoDocumentoController
 
     public function store()
     {
- 
-        $datos = ['tipo' => $_REQUEST['tipo']];
+        $datos = [
+            'tipo' => $_REQUEST['tipo']
+        ];
         $result = $this->documento->store($datos);
          if ($result) {
             header("Location: ../views/tipo_documento/index.php ");
@@ -49,12 +50,13 @@ class TipoDocumentoController
     public function update()
     {
         $datos = [
+            'id_tipo_documento' => $_REQUEST['id_tipo_documento'],
             'tipo' => $_REQUEST['tipo']
         ];
         $result = $this->documento->update($datos);
 
         if ($result) {
-            header("Location: ../views/tipo_documento/update.php");
+            header("Location: ../views/tipo_documento/index.php");
             exit();
         }
         return $result;
@@ -63,7 +65,7 @@ class TipoDocumentoController
     public function show()
     {
         $id = $_REQUEST['id_tipo_documento'];
-        header("Location: ../views/tipo_documento/index.php");
+        header("Location: ../views/tipo_documento/index.php?id_tipo_documento=" .$id);
     }
     public function delete()
     {

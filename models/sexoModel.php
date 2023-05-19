@@ -25,7 +25,9 @@ class Sexo
         try {
             $sql = 'SELECT * FROM sexo WHERE id_sexo=:id_sexo';
             $query = $this->database->conexion()->prepare($sql);
-            $query->execute(['id_sexo' => $id]);
+            $query->execute([
+                'id_sexo' => $id
+            ]);
             while ($row = $query->fetch()) {
                 $datos  = new Sexo();
                 $datos->id = $row['id_sexo'];
@@ -65,7 +67,7 @@ class Sexo
     public function store($datos)
     {
         try {
-            $sql = 'INSERT INTO sexo ( nombre) values (:nombre)';
+            $sql = 'INSERT INTO sexo (nombre) values (:nombre)';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
                 'nombre' => $datos['nombre']
@@ -81,7 +83,7 @@ class Sexo
     public function update($datos)
     {
         try {
-            $sql = 'UPDATE sexo SET  nombre WHERE id_sexo = :id_sexo';
+            $sql = 'UPDATE sexo SET  nombre = :nombre WHERE id_sexo = :id_sexo';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
                 'id_sexo'      => $datos['id_sexo'],
