@@ -69,8 +69,8 @@ $data = $ciudad->getAll();
 
                     </div>
                     <div class="col-3 mb-2">
-                        <label for="sexo" class="form-label">Sexo</label>
-                        <select class="form-select" aria-label="Default select example" id="sexo" name="sexo" required="required">
+                        <label for="id_sexo" class="form-label">Sexo</label>
+                        <select class="form-select" aria-label="Default select example" id="id_sexo" name="id_sexo" required="required">
                             <option selected>Seleccionar Sexo</option>
                             <option value="2">Masculino</option>
                             <option value="3">Femenino</option>

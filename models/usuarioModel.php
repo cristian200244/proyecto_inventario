@@ -18,7 +18,6 @@ class Usuario extends stdClass
     private $correo;
     private $direccion;
     private $telefono;
-    
     private $database;
 
     public function __construct()
@@ -122,7 +121,7 @@ class Usuario extends stdClass
                 'segundo_nombre'    => $datos['segundo_nombre'],
                 'primer_apellido'   => $datos['primer_apellido'],
                 'segundo_apellido'  => $datos['segundo_apellido'],
-                'sexo'              => $datos['sexo'],
+                'id_sexo'              => $datos['id_sexo'],
                 'telefono'          => $datos['telefono'],
                 'id_ciudad'         => $datos['id_ciudad'],
                 'correo'            => $datos['correo'],
@@ -151,7 +150,7 @@ class Usuario extends stdClass
               primer_apellido   = :primer_apellido,
               segundo_apellido  = :segundo_apellido,
               telefono          = : telefono,
-              sexo              = :sexo,
+              id_sexo              = :id_sexo,
               id_ciudad         = :id_ciudad,
               correo            = :correo,
               direccion         = :direccion,
@@ -166,9 +165,10 @@ class Usuario extends stdClass
                 'segundo_nombre'    => $datos['segundo_nombre'],
                 'primer_apellido'   => $datos['primer_apellido'],
                 'segundo_apellido'  => $datos['segundo_apellido'],
-                'sexo'              => $datos['sexo'],
+                'id_sexo'              => $datos['id_sexo'],
                 'id_ciudad'         => $datos['id_ciudad'],
                 'correo'            => $datos['correo'],
+                'direccion'         => $datos['direccion'],
                
 
             ]);

@@ -55,7 +55,7 @@ class UsuarioController
             'segundo_nombre'    => $_REQUEST['segundo_nombre'],
             'primer_apellido'   => $_REQUEST['primer_apellido'],
             'segundo_apellido'  => $_REQUEST['segundo_apellido'],
-            'sexo'              => $_REQUEST['sexo'],
+            'id_sexo'              => $_REQUEST['id_sexo'],
             'id_ciudad'         => $_REQUEST['id_ciudad'],
             'telefono'          => $_REQUEST['telefono'],
             'correo'            => $_REQUEST['correo'],
@@ -80,7 +80,7 @@ class UsuarioController
     public function delete()
     {
         $this->usuario->delete($_REQUEST['id']);
-        header("Location: ../views/admin/show.php");
+        header("Location: ../views/clientes/index.php");
     }
 
     public function update()
@@ -94,7 +94,7 @@ class UsuarioController
             'segundo_nombre'   => $_REQUEST['segundo_nombre'],
             'primer_apellido'  => $_REQUEST['primer_apellido'],
             'segundo_apellido' => $_REQUEST['segundo_apellido'],
-            'sexo'             => $_REQUEST['sexo'],
+            'id_sexo'             => $_REQUEST['id_sexo'],
             'telefono'         => $_REQUEST['telefono'],
             'id_ciudad'        => $_REQUEST['id_ciudad'],
             'correo'           => $_REQUEST['correo'],
@@ -102,7 +102,7 @@ class UsuarioController
            
 
         ];
-        var_dump($datos);
+     
 
         $result = $this->usuario->update($datos);
 

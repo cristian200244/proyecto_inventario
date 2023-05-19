@@ -153,17 +153,8 @@ class Cliente extends stdClass
 
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
-                'id'        => $datos['id'],
-                'id_tipo_documento  ' => $datos['id_tipo_documento'],
-                'numero_documento' => $datos['numero_documento'],
-                'primer_nombre   ' => $datos['primer_nombre'],
-                'segundo_nombre  ' => $datos['segundo_nombre'],
-                'primer_apellido ' => $datos['primer_apellido'],
-                'segundo_apellido' => $datos['segundo_apellido'],
-                'sexo            ' => $datos['sexo'],
-                'id_ciudad          ' => $datos['id_ciudad'],
-                'correo           ' => $datos['correo'],
-                'direccion       ' => $datos['direccion'],
+                'id'                => $datos['id'],
+                'direccion'         => $datos['direccion'],
                 'id_tipo_documento' => $datos['id_tipo_documento'],
                 'numero_documento'  => $datos['numero_documento'],
                 'primer_nombre'     => $datos['primer_nombre'],
@@ -171,7 +162,7 @@ class Cliente extends stdClass
                 'primer_apellido'   => $datos['primer_apellido'],
                 'segundo_apellido'  => $datos['segundo_apellido'],
                 'telefono'          => $datos['telefono'],
-                'id_sexo'              => $datos['id_sexo'],
+                'id_sexo'           => $datos['id_sexo'],
                 'id_ciudad'         => $datos['id_ciudad'],
                 'correo'            => $datos['correo'],
                 'direccion'         => $datos['direccion'],
