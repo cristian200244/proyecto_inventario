@@ -94,9 +94,15 @@ foreach ($registro as $dispositivos) {
                                     </td>
 
                                 </tr>
-                        <?php
+                            <?php
                                 $pos++;
                             }
+                        } else {
+                            ?>
+                            <tr>
+                                <td colspan="3" class="text-center">No hay datos</td>
+                            </tr>
+                        <?php
                         }
                         ?>
                     </tbody>

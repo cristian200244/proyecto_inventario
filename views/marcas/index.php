@@ -6,7 +6,7 @@ require_once '../../models/marcasModel.php';
 $marcas = new Marcas();
 
 $registros = $marcas->getAll();
- 
+
 
 foreach ($registros as $marca) {
     $id     = $marca->getId();
@@ -94,11 +94,16 @@ foreach ($registros as $marca) {
                                     </td>
 
                                 </tr>
-                        <?php
+                            <?php
                                 $pos++;
                             }
+                        } else {
+                            ?>
+                            <tr>
+                                <td colspan="3" class="text-center">No hay datos</td>
+                            </tr>
+                        <?php
                         }
-
                         ?>
                     </tbody>
                 </table>

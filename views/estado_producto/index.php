@@ -62,7 +62,7 @@ foreach ($registro as $estados) {
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">Actualizar</button>
-                                         
+
                                     </div>
                                 </form>
                             </div>
@@ -95,11 +95,16 @@ foreach ($registro as $estados) {
                                     </td>
 
                                 </tr>
-                        <?php
+                            <?php
                                 $pos++;
                             }
+                        } else {
+                            ?>
+                            <tr>
+                                <td colspan="3" class="text-center">No hay datos</td>
+                            </tr>
+                        <?php
                         }
-
                         ?>
                     </tbody>
                 </table>

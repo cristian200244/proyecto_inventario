@@ -23,7 +23,7 @@ foreach ($registro as $documento) {
         <hr>
         <h1 class="h3 mb-4 text-gray-800 text-left">Tipos De Documento
             <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <i class="bi bi-plus-circle-fill" style="font-size: 1.5rem; "></i>
+                <i class="bi bi-plus-circle-fill" style="font-size: 1.5rem; "></i>
             </button>
         </h1>
         <div class="row">
@@ -35,8 +35,8 @@ foreach ($registro as $documento) {
                                 <input type="hidden" name="c" value="1">
                                 <div class="input-group ">
                                     <input type="text" class="form-control" id="tipo" name="tipo" placeholder="Ingrese un nuevo tipo de documento">
-                                    <button type="submit" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"> 
-                                    <i class="bi bi-send-plus-fill" style="font-size: 1.0rem; "></i>
+                                    <button type="submit" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                        <i class="bi bi-send-plus-fill" style="font-size: 1.0rem; "></i>
                                     </button>
                                 </div>
                             </form>
@@ -59,7 +59,7 @@ foreach ($registro as $documento) {
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">Actualizar</button>
-                                     </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -84,17 +84,22 @@ foreach ($registro as $documento) {
                                     <td><?= $pos ?></td>
                                     <td><?= $documento->getTipoDocumento() ?></td>
                                     <td>
-                                    <a class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="../../controller/documentoController.php?c=2&id_tipo_documento=<?= $documento->getId() ?>">Actualizar</a>
+                                        <a class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="../../controller/documentoController.php?c=2&id_tipo_documento=<?= $documento->getId() ?>">Actualizar</a>
                                         <a class="btn btn-sm btn-outline-danger" href="../../controller/documentoController.php?c=4&id_tipo_documento=<?= $documento->getId() ?>">Eliminar</a>
                                     </td>
 
                                 </tr>
-                        <?php
+                            <?php
                                 $pos++;
                             }
+                        } else {
+                            ?>
+                            <tr>
+                                <td colspan="3" class="text-center">No hay datos</td>
+                            </tr>
+                        <?php
                         }
                         ?>
-
                     </tbody>
                 </table>
             </div>

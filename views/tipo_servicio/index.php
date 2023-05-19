@@ -7,8 +7,8 @@ $datos_servicio = new Servicios();
 $registro = $datos_servicio->getAll();
 
 foreach ($registro as $servicios) {
-    $id= $servicios->getId();
-    $servicio= $servicios->getServicio();
+    $id = $servicios->getId();
+    $servicio = $servicios->getServicio();
 }
 
 ?>
@@ -22,7 +22,7 @@ foreach ($registro as $servicios) {
         <hr>
         <?php include_once(BASE_DIR . '../../views/main/partials/menu.php'); ?>
         <hr>
-        <h1 class="h3 mb-4 text-gray-800 text-left">Tipo De Servicios 
+        <h1 class="h3 mb-4 text-gray-800 text-left">Tipo De Servicios
             <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                 <i class="bi bi-plus-circle-fill" style="font-size: 1.5rem; "></i>
             </button>
@@ -62,7 +62,7 @@ foreach ($registro as $servicios) {
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">Actualizar</button>
-                                         
+
                                     </div>
                                 </form>
                             </div>
@@ -92,9 +92,15 @@ foreach ($registro as $servicios) {
                                         <a class="btn btn-sm btn-outline-danger" href="../../controller/tipoServicioController.php?c=4&id_tipo_servicio=<?= $servicios->getId() ?>">Eliminar</a>
                                     </td>
                                 </tr>
-                        <?php
+                            <?php
                                 $pos++;
                             }
+                        } else {
+                            ?>
+                            <tr>
+                                <td colspan="3" class="text-center">No hay datos</td>
+                            </tr>
+                        <?php
                         }
                         ?>
                     </tbody>

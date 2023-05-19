@@ -95,9 +95,15 @@ foreach ($registros as $ciudades) {
                                     </td>
 
                                 </tr>
-                        <?php
+                            <?php
                                 $pos++;
                             }
+                        } else {
+                            ?>
+                            <tr>
+                                <td colspan="7" class="text-center">No hay datos</td>
+                            </tr>
+                        <?php
                         }
                         ?>
 
