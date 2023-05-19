@@ -21,7 +21,7 @@ require_once '../../models/clienteModel.php';
       <table class="table table-striped ">
         <thead>
             <tr>
-                <th scope="col">Fecha de creacion</th>
+                <th scope="col">Fecha de Creacion</th>
                 <th scope="col">Reporte Mensual</th>
                 <th scope="col">Total</th>
         

@@ -10,9 +10,9 @@ $registro = $datos->getAll();
 
 
 foreach  ($registro as $cliente){
-    $primer_nombre      = $cliente->getPrimerNombre();
-    $primer_apellido    = $cliente->getPrimerApellido();
-
+    $primer_nombre       = $cliente->getPrimerNombre();
+    $segundo_apellido    = $cliente->getSegundoApellido();
+    $direccion           = $cliente->getDireccion();
 }
 ?>
 
@@ -32,7 +32,8 @@ foreach  ($registro as $cliente){
 
                 <div class="col-6">
                     <div class="titulo" id="Nombre_completo">Nombre completo: </div>
-                    <input class="form-control" type="text" id="primer_nombre" value="<?= $primer_nombre ?> <?= $primer_apellido ?>">
+                    <input class="form-control" type="text" id="primer_nombre" value="<?= $primer_nombre ?> <?= $segundo_apellido ?>">
+                    
                 </div>
                 <div class="col-6">
                     <div class="titulo" id="numerofactura">Nro. Factura: </div>
@@ -46,7 +47,7 @@ foreach  ($registro as $cliente){
 
                 <div class="col-6">
                     <div class="titulo" id="direccion">Direccion:</div>
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text"  value="<?= $direccion ?>">
                 </div>
 
                 <div class="col-6">
@@ -85,7 +86,7 @@ foreach  ($registro as $cliente){
                         <input class="form-control" type="number">
                     </div>
                     <p>
-                    <p><button type="submit" class=" col-auto btn btn-outline-info" hreff' '>Crear</button>
+                    <p><button type="submit"  class="  col-auto btn btn-outline-info" hreff' '>Crear</button>
                 </div>
             </div>
     </body>

@@ -24,8 +24,8 @@ $registro = $datos->getAll();
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Nombre completo</th>
-                    <th scope="col">codigo</th>
+                    <th scope="col">Nombre Completo</th>
+                    <th scope="col">Codigo</th>
                     <th scope="col">Estado</th>
 
                 </tr>
