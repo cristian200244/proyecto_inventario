@@ -41,23 +41,23 @@ $registro_sexo = $datos_sexo->getAll();
                 </div>
                 <div class="col-6 mb-2">
                     <label for="numero_documento" class="form-label">N° de documento</label>
-                    <input type="number" class="form-control" id="numero_documento" name="numero_documento">
+                    <input type="number" class="form-control" id="numero_documento" name="numero_documento" required minlength="10" maxlength="10">
                 </div>
                 <div class="col-6 mb-2">
                     <label for="primer_nombre" class="form-label">Primer Nombre</label>
-                    <input type="text" class="form-control" id="primer_nombre" name="primer_nombre">
+                    <input type="text" class="form-control" id="primer_nombre" name="primer_nombre" required>
                 </div>
                 <div class="col-6 mb-2">
                     <label for="segundo_nombre" class="form-label">Segundo Nombre</label>
-                    <input type="text" class="form-control" id="segundo_nombre" name="segundo_nombre">
+                    <input type="text" class="form-control" id="segundo_nombre" name="segundo_nombre"  >
                 </div>
                 <div class="col-6 mb-2">
                     <label for="primer_apellido" class="form-label">Primer Apellido</label>
-                    <input type="text" class="form-control" id="primer_apellido" name="primer_apellido">
+                    <input type="text" class="form-control" id="primer_apellido" name="primer_apellido" required>
                 </div>
                 <div class="col-6 mb-2">
                     <label for="segundo_apellido" class="form-label">Segundo Apellido</label>
-                    <input type="text" class="form-control" id="segundo_apellido" name="segundo_apellido">
+                    <input type="text" class="form-control" id="segundo_apellido" name="segundo_apellido"  >
 
                 </div>
                 <div class="col-3 mb-2">
@@ -72,7 +72,7 @@ $registro_sexo = $datos_sexo->getAll();
                 </div>
                 <div class="col-3 mb-2">
                     <label for="telefono" class="form-label">Telefono</label>
-                    <input type="tel" class="form-control" id="telefono" name="telefono">
+                    <input type="tel" class="form-control" id="telefono" name="telefono" required>
                 </div>
                 <div class="col-6 mb-2">
                     <label for="id_ciudad" class="form-label">Ciudad</label>
@@ -87,11 +87,11 @@ $registro_sexo = $datos_sexo->getAll();
                 </div>
                 <div class="col-6 mb-2">
                     <label for="direccion" class="form-label ">Dirección</label>
-                    <input type="text" class="form-control" id="direccion" name="direccion">
+                    <input type="text" class="form-control" id="direccion" name="direccion" required>
                 </div>
                 <div class="col-6 mb-2">
                     <label for="correo" class="form-label ">E-mail</label>
-                    <input type="text" class="form-control" id="correo" name="correo">
+                    <input type="text" class="form-control" id="correo" name="correo" >
                 </div>
             </div>
             <br>
