@@ -29,15 +29,19 @@ class UsuarioController
                 case '4': //eliminar el registro
                     self::delete();
                     break;
-                    case '5': //eliminar el registro
-                      
-                        
-                default:
-                    self::index();
-                    break;
+                // case '5': //
+                //     self::InciarSesion();
+                //     break;
+
+                // case '6':
+                //     self::CerrarSesion();
+                //     break;
+                // default:
             }
         }
     }
+
+
 
     public function index()
     {
@@ -46,7 +50,7 @@ class UsuarioController
 
     public function store()
     {
-        
+
         $datos = [
 
             'id_tipo_documento' => $_REQUEST['id_tipo_documento'],
@@ -60,7 +64,9 @@ class UsuarioController
             'telefono'          => $_REQUEST['telefono'],
             'correo'            => $_REQUEST['correo'],
             'direccion'         => $_REQUEST['direccion'],
-           
+            'correo'            => $_REQUEST['correo'],
+            'password'          => $_REQUEST['password'],
+
         ];
         $result = $this->usuario->store($datos);
         if ($result) {
@@ -70,6 +76,8 @@ class UsuarioController
             echo $error = "Ocurrió un error";
         }
     }
+
+    
 
     public function show()
     {
@@ -94,15 +102,15 @@ class UsuarioController
             'segundo_nombre'   => $_REQUEST['segundo_nombre'],
             'primer_apellido'  => $_REQUEST['primer_apellido'],
             'segundo_apellido' => $_REQUEST['segundo_apellido'],
-            'id_sexo'             => $_REQUEST['id_sexo'],
+            'id_sexo'          => $_REQUEST['id_sexo'],
             'telefono'         => $_REQUEST['telefono'],
             'id_ciudad'        => $_REQUEST['id_ciudad'],
             'correo'           => $_REQUEST['correo'],
             'direccion'        => $_REQUEST['direccion'],
-           
+
 
         ];
-     
+
 
         $result = $this->usuario->update($datos);
 

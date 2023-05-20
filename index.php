@@ -1,5 +1,5 @@
 <?php
-    include_once(__DIR__ . "/config/config.example.php");
+include_once(__DIR__ . "/config/config.example.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -42,22 +42,25 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Bienvenido!!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form action="controller/usuarioController.php" method="POST">
+                                        
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Introducir la dirección de correo electrónico...">
+                                            <input type="email" required  class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp"  placeholder="Introducir la dirección de correo electrónico...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Contraseña">
+                                            <input type="password" required class="form-control form-control-user" id="exampleInputPassword" placeholder="Contraseña">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
+                                                <div class="CheckBox1">
+                                                    <input type="checkbox" onclick="verpassword()">Mostrar password
+                                                </div>
                                             </div>
                                         </div>
-                                        <a href="<?= BASE_URL ?>/views/main/index.php" class="btn btn-primary btn-user btn-block">
-                                            Iniciar sesion
+                                           <a href="main/index.php">
+                                           <button class="btn btn-primary form-control" type="submit">Enviar</button>
+                                           
                                         </a>
                                         <hr>
 
