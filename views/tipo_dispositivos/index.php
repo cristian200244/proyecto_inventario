@@ -53,14 +53,13 @@ foreach ($registro as $dispositivos) {
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="../../controller/TipoDispositivosController.php?c=3&id_tipo_dispositivo=<?= $id ?>" method="POST">
-                                    <div class="input-group ">
-                                        <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $nombre ?>">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">Actualizar</button>
-                                    </div>
-                                </form>
+                                <div class="input-group ">
+                                    <input type="text" class="form-control" id="dispositivo_actualizado" name="nombre" value="<?= $nombre ?>">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal" onclick="recarga(<?= $dispositivos->getId() ?>)">Actualizar</button>
+                                </div>
+
                             </div>
 
                         </div>
@@ -86,9 +85,11 @@ foreach ($registro as $dispositivos) {
                         ?>
                                 <tr>
                                     <td><?= $pos ?></td>
-                                    <td><?= $dispositivos->getDispositivo() ?></td>
                                     <td>
-                                        <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="../../controller/TipoDispositivosController.php?c=2&id_tipo_dispositivo=<?= $dispositivos->getId() ?>">Actualizar</a>
+                                       <span id="dispositivo<?= $dispositivos->getId() ?>"> <?= $dispositivos->getDispositivo() ?></span>
+                                    </td>
+                                    <td>
+                                        <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_dispositivo_<?= $dispositivos->getId() ?>" onclick="update(<?= $dispositivos->getId() ?>)">Actualizar</a>
                                         <a type="button" class="btn btn-sm btn-outline-danger" href="../../controller/TipoDispositivosController.php?c=4&id_tipo_dispositivo=<?= $dispositivos->getId() ?>">Eliminar</a>
 
                                     </td>
@@ -114,7 +115,27 @@ foreach ($registro as $dispositivos) {
 
 </div>
 <!-- /.container-fluid -->
+<script>
+    function update(id) {
+    let elemento = document.getElementById(`dispositivo${id}`);
+    let nombre = elemento.textContent
 
+    document.getElementById('dispositivo_actualizado').value = nombre
+}
+function recarga(id) {
+
+    let elemento = document.getElementById("dispositivo_actualizado");
+    let nombre = elemento.value
+
+    axios.post(`../../controller/tipoDispositivosController.php?c=3&id_tipo_dispositivo=${id}&nombre=${nombre}`)
+        .then(function (response) {
+            window.location.reload()
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+}
+</script>
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');
 ?>

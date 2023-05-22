@@ -68,9 +68,8 @@ class DispositivoController
         $result = $this->dispositivo->update($datos);
 
         if ($result) {
-            header("Location: ../views/tipo_dispositivos/index.php");
-            exit();
+            echo json_encode(array('succes'=>1,'nombre'=>$datos['nombre']));
         }
-        return $result;
+        
     }
 }

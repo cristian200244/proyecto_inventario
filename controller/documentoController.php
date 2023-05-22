@@ -59,7 +59,7 @@ class TipoDocumentoController
             header("Location: ../views/tipo_documento/index.php");
             exit();
         }
-        return $result;
+        return $result; //falata json
     }
 
     public function show()

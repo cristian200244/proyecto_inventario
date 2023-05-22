@@ -68,9 +68,9 @@ class EstadoController
         $result = $this->estado->update($datos);
 
         if ($result) {
-            header("Location: ../views/estado_producto/index.php");
-            exit();
+            echo json_encode(array('succes' => 1, 'estado'=>$datos['estado']));
+
         }
-        return $result;
+        
     }
 }

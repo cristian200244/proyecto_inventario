@@ -54,21 +54,20 @@ foreach ($registros as $estado_producto) {
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="../../controller/marcasController.php?c=3&id_estado_producto=<?= $id ?>" method="POST">
-                                    <div class="input-group ">
-                                        <input type="text" class="form-control" id="estado" name="estado" value="<?= $estado ?>">
+                                     <div class="input-group ">
+                                        <input type="text" class="form-control" id="estado_actualizado" name="estado"  >
 
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">Actualizar</button>
+                                    <div class="modal-footer">  
+                                        <a   class="btn btn-outline-success" data-bs-dismiss="modal"  onclick="recarga(<?= $estado_producto->getId() ?>) ">Actualizar</a>
                                         <!-- <button type="button" class="btn btn-outline-primary">Cancelar</button> -->
                                     </div>
-                                </form>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
-                <br>
+                <br>    
                 <table class="table">
                     <thead>
                         <tr>
@@ -87,10 +86,12 @@ foreach ($registros as $estado_producto) {
                         ?>
                                 <tr>
                                     <th><?= $pos ?></th>
-                                    <td><?= $estado_producto->getMarca() ?></td>
                                     <td>
-                                        <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="../../controller/estadoProductoModel.php?c=2&id_estado_producto=<?= $estado_producto->getId() ?>">Actualizar</a>
-                                        <a type="button" class="btn btn-sm btn-outline-danger" href="../../controller/estadoProductoModel.php?c=4&id_estado_producto=<?= $estado_producto->getId() ?>">Eliminar</a>
+                                    <span id="estado_dispositivo<?= $estado_producto->getId() ?>"><?= $estado_producto->getEstado() ?></span>
+                                    </td>
+                                    <td>
+                                    <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_estado_<?= $estado_producto->getId() ?>" onclick="update(<?= $estado_producto->getId() ?>)">Actualizar</a>
+                                        <a type="button" class="btn btn-sm btn-outline-danger" href="../../controller/estadoProductoController.php?c=4&id_estado_producto=<?= $estado_producto->getId() ?>">Eliminar</a>
                                     </td>
 
                                 </tr>
@@ -113,6 +114,28 @@ foreach ($registros as $estado_producto) {
     </div>
 
 </div>
+<script>
+    function update(id) {
+        let elemento = document.getElementById(`estado_dispositivo${id}`);
+        let estado = elemento.textContent
+
+        document.getElementById('estado_actualizado').value = estado
+    }
+
+    function recarga(id) {
+
+        let elemento = document.getElementById("estado_actualizado");
+        let estado = elemento.value
+
+        axios.post(`../../controller/estadoProductoController.php?c=3&id_estado_producto=${id}&estado=${estado}`)
+            .then(function(response) {
+                window.location.reload()
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+    }
+</script>
 <!-- /.container-fluid -->
 
 <?php
