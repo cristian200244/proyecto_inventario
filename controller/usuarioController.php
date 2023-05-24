@@ -42,6 +42,23 @@ class UsuarioController
     }
 
 
+    function validarUsuario($usuario, $password)
+{
+    $conexion = new mysqli("localhost", "usuario", "password", "base");
+    $consulta = "select contrasenia from usuario where nick = '$usuario';";
+
+    $result = $conexion->query($consulta);
+
+    if ($result->num_rows > 0) {
+        $fila = $result->fetch_assoc();
+        if (strcmp($password, $fila["contrasenia"]) == 0)
+            return true;
+        else
+            return false;
+    } else
+        return false;
+}
+
 
     public function index()
     {

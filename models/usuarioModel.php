@@ -64,6 +64,7 @@ class Usuario extends stdClass
             return ['mensaje' => $e];
         }
     }
+
     public function getAll()
     {
         $items = [];
@@ -197,6 +198,15 @@ class Usuario extends stdClass
         }
     }
 
+
+
+    public function InicioSesion(){
+        
+
+
+
+        
+    }
     //---------------------------------------------------------------//
     // -------------------------------getter------------------------//
 
