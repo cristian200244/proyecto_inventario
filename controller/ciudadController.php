@@ -68,9 +68,8 @@
             $result = $this->ciudad->update($datos);
 
             if ($result) {
-                header("Location: ../views/ciudad/index.php");
-                exit();
+                echo json_encode(array('succes' => 1, 'nombre'=>$datos['nombre']));
             }
-            return $result;
+             
         }
     }

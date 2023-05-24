@@ -51,15 +51,13 @@ foreach ($registro_sexo as $sexo) {
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="../../controller/sexoControlller.php?c=3&id_sexo=<?= $id ?>" method="POST">
-                                    <div class="input-group ">
-                                        <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $nombre ?>">
+                                <div class="input-group ">
+                                    <input type="text" class="form-control" id="nombre_actualizado" name="nombre">
+                                </div>
+                                <div class="modal-footer">
+                                    <a   class="btn btn-sm btn-outline-success" data-bs-dismiss="modal" onclick="recarga(<?= $sexo->getId() ?>)">Actualizar</a>
+                                </div>
 
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-sm btn-outline-success" data-bs-dismiss="modal">Actualizar</button>
-                                    </div>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -83,10 +81,12 @@ foreach ($registro_sexo as $sexo) {
                         ?>
                                 <tr>
                                     <th><?= $pos ?></th>
-                                    <td><?= $sexo->getSexo() ?></td>
                                     <td>
-                                        <a class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="../../controller/sexoControlller.php?c=2&id_sexo=<?= $sexo->getId() ?>">Actualizar</a>
-                                        <a class="btn btn-sm btn-outline-danger" href="../../controller/sexoControlller.php?c=4&id_sexo=<?= $sexo->getId() ?>">Eliminar</a>
+                                       <span id="sexo_<?= $sexo->getId()?>"> <?= $sexo->getSexo() ?> </span>
+                                    </td>
+                                    <td>
+                                        <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_sexo_<?= $sexo->getId()?>" onclick="update(<?= $sexo->getId()?>)" >Actualizar</a>
+                                        <a type="button" class="btn btn-sm btn-outline-danger" href="../../controller/sexoControlller.php?c=4&id_sexo=<?= $sexo->getId() ?>">Eliminar</a>
                                     </td>
 
                                 </tr>
@@ -109,6 +109,28 @@ foreach ($registro_sexo as $sexo) {
     </div>
 
 </div>
+<script>
+    function update(id) {
+        let elemento = document.getElementById(`sexo_${id}`);
+        let nombre = elemento.textContent
+
+        document.getElementById('nombre_actualizado').value = nombre
+    }
+
+    function recarga(id) {
+
+        let elemento = document.getElementById("nombre_actualizado");
+        let nombre = elemento.value
+
+        axios.post(`../../controller/sexoControlller.php?c=3&id_sexo=${id}&nombre=${nombre}`)
+            .then(function(response) {
+                window.location.reload()
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+    }
+</script>
 <!-- /.container-fluid -->
 
 <?php

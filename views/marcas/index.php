@@ -60,9 +60,7 @@ foreach ($registros as $marca) {
                                 </div>
                                 <div class="modal-footer">
                                     <a class="btn btn-outline-success" data-bs-dismiss="modal" onclick="recarga(<?= $marca->getId() ?>)">Actualizar</a>
-
                                 </div>
-
                             </div>
                         </div>
                     </div>

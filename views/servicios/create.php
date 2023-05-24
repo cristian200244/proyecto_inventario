@@ -11,19 +11,10 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
                 <h1 class="h2 mb-4  text-center">Crear Servicio</h1>
                 <hr>
                 <form class="row g-3">
-                    <h5 class="text-start">Ingresar Datos Del Cliente</h5>
-                    <div class="col-md-2">
-                        <label for="inputZip" class="form-label">Tipo De Documento</label>
-                        <select id="inputState" class="form-select">
-                            <option selected>Choose...</option>
-                            <option>...</option>
-                        </select>
+                    <div class="col-md-6">
+                        <h5 class="text-start mt-4">Ingresar Nombre Del Cliente</h5>
                     </div>
-                    <div class="col-md-4">
-                        <label for="inputState" class="form-label">N° De Documento</label>
-                        <input type="text" class="form-control" id="inputZip">
-
-                    </div>
+                     
                     <div class="col-md-6">
                         <label for="inputCity" class="form-label">Nombre Completo</label>
                         <input type="text" class="form-control" id="inputCity">

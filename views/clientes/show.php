@@ -48,7 +48,6 @@ foreach ($registro as $cliente) {
                 <div class="col-6 mb-2">
                     <label for="id_tipo_documento" class="form-label">Tipo de documento</label>
                     <select class="form-select" aria-label="Default select example" value="<?= $tipo_documento ?>" name="id_tipo_documento" id="id_tipo_documento" required="required" disabled>
-
                         <?php
                         foreach ($registros  as $datos) {
                             echo '<option value="' . $datos->getId() . '">' . $datos->getTipoDocumento() . '</option>';

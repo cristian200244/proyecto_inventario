@@ -55,15 +55,15 @@ foreach ($registro as $servicios) {
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                     <div class="input-group ">
-                                        <input type="text" class="form-control" id="servicio_actualizado" name="servicios" >
+                                <div class="input-group ">
+                                    <input type="text" class="form-control" id="servicio_actualizado" name="servicio">
 
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a  class="btn btn-outline-success" data-bs-dismiss="modal" onclick="recarga(<?= $servicios->getId() ?>">Actualizar</a>
+                                </div>
+                                <div class="modal-footer">
+                                    <a class="btn btn-outline-success" data-bs-dismiss="modal" onclick="recarga(<?= $servicios->getId() ?>)">Actualizar</a>
 
-                                    </div>
-                            
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@ foreach ($registro as $servicios) {
                                 <tr>
                                     <td><?= $pos ?></td>
                                     <td>
-                                     <span id="tipo_servicio<?= $servicios->getId() ?>"><?= $servicios->getServicio() ?></span>   
+                                        <span id="tipo_servicio<?= $servicios->getId() ?>"> <?= $servicios->getServicio() ?> </span>
                                     </td>
                                     <td>
                                         <a class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_servicio_<?= $servicios->getId() ?>" onclick="update(<?= $servicios->getId() ?>)">Actualizar</a>
@@ -115,17 +115,18 @@ foreach ($registro as $servicios) {
 <script>
     function update(id) {
         let elemento = document.getElementById(`tipo_servicio${id}`);
-        let servicios = elemento.textContent
+        let servicio = elemento.textContent
 
-        document.getElementById('servicio_actualizado').value = servicios
+        document.getElementById('servicio_actualizado').value = servicio
     }
 
     function recarga(id) {
 
         let elemento = document.getElementById("servicio_actualizado");
-        let servicios = elemento.value
-
-        axios.post(`../../controller/tipoServicioController.php?c=3&id_tipo_servicio=${id}&servicios=${servicios}`)
+        let servicio = elemento.value
+       
+ 
+        axios.post(`../../controller/tipoServicioController.php?c=3&id_tipo_servicio=${id}&servicio=${servicio}`)
             .then(function(response) {
                 window.location.reload()
             })
