@@ -86,7 +86,7 @@ foreach  ($registro as $cliente){
                         <input class="form-control" type="number">
                     </div>
                     <p>
-                    <p><button type="submit"  class="  col-auto btn btn-outline-info" hreff' '>Crear</button>
+                    <p><button type="submit"  class="  col-auto btn btn-outline-info" >Crear</button>
                 </div>
             </div>
     </body>
