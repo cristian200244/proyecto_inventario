@@ -1,7 +1,26 @@
 <?php
 include_once(__DIR__ . "../../../config/config.example.php");
 include_once(BASE_DIR . '../../views/main/partials/header.php');
+require_once '../../models/estadoProductoModel.php';
+require_once '../../models/marcasModel.php';
+require_once '../../models/TipoDispositivosModel.php';
+require_once '../../models/tipoServicioModel.php';
+
+$producto = new EstadoProducto();
+$registro = $producto->getAll();
+
+$marca = new Marcas();
+$registro_marcas = $marca->getAll();
+
+$tipo_dispositivos = new Dispositivos();
+$registro_tipo_dispositivos = $tipo_dispositivos->getAll();
+
+$servicio  = new Servicios();
+$registro_servicios = $servicio->getAll();
+
+
 ?>
+
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -11,11 +30,11 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
                 <h1 class="h2 mb-4  text-center">Crear Servicio</h1>
                 <hr>
                 <form class="row g-3">
-                    <div class="col-md-6">
+                    <div class="col-12">
                         <h5 class="text-start mt-4">Ingresar Nombre Del Cliente</h5>
                     </div>
-                     
-                    <div class="col-md-6">
+
+                    <div class="col-12">
                         <label for="inputCity" class="form-label">Nombre Completo</label>
                         <input type="text" class="form-control" id="inputCity">
                     </div>
@@ -23,22 +42,52 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
 
                     <h5 class="text-start">Ingresar Datos Del Dispositivo</h5>
 
-                   
+
                     <div class="col-md-4">
-                        <label for="inputZip" class="form-label">Dispositivo</label>
-                        <input type="text" class="form-control" id="inputZip">
+                        <label for="id_tipo_dispositivo" class="form-label">Dispositivo</label>
+                        <select class="form-select" aria-label="Default select example" name="id_tipo_documento" id="id_tipo_documento"  >
+                            <option selected>Seleccionar</option>
+                            <?php
+                            foreach ($registro_tipo_dispositivos  as $datos) {
+                                echo '<option value="' . $datos->getId() . '">' . $datos->getDispositivo() . '</option>';
+                            }
+                            ?>
+                        </select>
                     </div>
                     <div class="col-md-4">
-                        <label for="inputState" class="form-label">Marca</label>
-                        <input type="text" class="form-control" id="inputZip">
+                        <label for="id_marca" class="form-label">Marca</label>
+                        <select class="form-select" aria-label="Default select example" name="id_marca" id="id_marca">
+                            <option selected>Seleccionar</option>
+                            <?php
+                            foreach ($registro_marcas as $datos_marca) {
+                                echo '<option value="' . $datos_marca->getId() . '">' . $datos_marca->getMarca() . '</option>';
+                            }
+                            ?>
+                        </select>
                     </div>
                     <div class="col-md-4">
-                        <label for="inputState" class="form-label">Marca</label>
-                        <input type="text" class="form-control" id="inputZip">
+                        <label for="id_estado_producto" class="form-label">Estado</label>
+                        <select class="form-select" aria-label="Default select example" name="id_estado_producto" id="id_estado_producto">
+                            <option selected>Seleccionar</option>
+                            <?php
+                            foreach ($registro as $producto) {
+                                echo '<option value=" ' . $producto->getId() . ' ">' . $producto->getEstado() . '</option>';
+                            }
+                            ?>
+                        </select>
                     </div>
                     <div class="col-md-4">
-                        <label for="inputEmail4" class="form-label">Servicio</label>
-                        <input type="text" class="form-control" id="inputEmail4">
+                        <label for="id_tipo_servicio" class="form-label">Servicio</label>
+                        <select class="form-select" aria-label="Default select example" name="id_tipo_servicio" id="id_tipo_servicio">
+                            <option selected>Seleccionar</option>
+                            <?php
+                            foreach ($registro_servicios as $servicio) {
+                                echo '<option value="'. $servicio->getId(). '">' .$servicio->getServicio(). '</option>';
+                            }
+                            
+                            ?>
+                        </select>
+
                     </div>
                     <div class="col-md-4">
                         <label for="inputCity" class="form-label">codigo</label>
@@ -51,7 +100,7 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
                     <div class="col-md-12">
                         <label for="inputCity" class="form-label">Falla</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="limite 500 caracteres"></textarea>
-                     </div>
+                    </div>
                     <div class="col-12">
                         <button type="submit" onclick="enviar()" class="btn btn-outline-info">Crear Servicio</button>
                     </div>
@@ -61,10 +110,7 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
 
 
     </div>
-    <!-- <button type="submit" class="btn btn-outline-info ml-2">Guardar Servicio</button>
-        </div>
 
-    </form> -->
 </div>
 
 
