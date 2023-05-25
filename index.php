@@ -49,9 +49,9 @@ include_once(__DIR__ . "/config/config.example.php");
                                         <h1 class="h4 text-gray-900 mb-4">Bienvenido!!</h1>
                                     </div>
                                     <form action="views/main/index.php" method="POST">
-
+                                        
                                         <div class="form-group">
-                                            <input type="email" required class="form-control form-control-user" id="correo" aria-describedby="emailHelp" placeholder="Introducir la dirección de correo electrónico...">
+                                            <input type="email" required  class="form-control form-control-user" id="usuario" aria-describedby="emailHelp"  placeholder="Introducir la dirección de correo electrónico...">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" required class="form-control form-control-user" id="password" placeholder="Contraseña">
@@ -64,11 +64,7 @@ include_once(__DIR__ . "/config/config.example.php");
                                                 </div>
                                             </div>
                                         </div>
-                                        <button id="boton" type="submit" class="boton" onclick="login()">Iniciar sesion</button>
-                                        <!-- <a href="main/index.php">
-                                           <button class="btn btn-primary form-control" type="submit">Enviar</button>
-                                           
-                                        </a> -->
+                                        <button id="boton" class="boton" onclick="login()">Iniciar sesion</button>
                                         <hr>
 
                                     </form>
