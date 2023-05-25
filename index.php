@@ -2,10 +2,6 @@
 include_once(__DIR__ . "/config/config.example.php");
 // require_once("sesion.class.php");
 
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -49,9 +45,9 @@ include_once(__DIR__ . "/config/config.example.php");
                                         <h1 class="h4 text-gray-900 mb-4">Bienvenido!!</h1>
                                     </div>
                                     <form action="views/main/index.php" method="POST">
-                                        
+
                                         <div class="form-group">
-                                            <input type="email" required  class="form-control form-control-user" id="usuario" aria-describedby="emailHelp"  placeholder="Introducir la dirección de correo electrónico...">
+                                            <input type="email" required class="form-control form-control-user" id="correo" aria-describedby="emailHelp" placeholder="Introducir la dirección de correo electrónico...">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" required class="form-control form-control-user" id="password" placeholder="Contraseña">
@@ -60,15 +56,16 @@ include_once(__DIR__ . "/config/config.example.php");
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
                                                 <div class="CheckBox1">
-                                                    <input type="checkbox" onclick="verpassword()">Mostrar contraseña
+                                                    <input type="checkbox" onclick="togglePasswordVisibility()">Mostrar contraseña
                                                 </div>
                                             </div>
                                         </div>
-                                        <button id="boton" class="boton" onclick="login()">Iniciar sesion</button>
-                                        <hr>
+                                        <button id="boton" type="submit" class="boton" onclick="login()">Iniciar sesion</button>
 
                                     </form>
-                                    <hr>
+
+
+
                                     <div class="text-center">
                                         <a class="small" href="password.php">Olvidó su contraseña?</a>
                                     </div>
@@ -86,7 +83,9 @@ include_once(__DIR__ . "/config/config.example.php");
         </div>
 
     </div>
-    <script src="public/js/main.js"></script>
+
+    <script src="public/js/main.js">
+    </script>
 </body>
 
 </html>

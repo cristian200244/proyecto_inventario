@@ -3,8 +3,12 @@
 class LoginModel {
     public function __construct() {
         // Constructor del modelo
+        $stm = Conexion::conectar()
     }
 
     // Aquí se pueden colocar métodos para trabajar con los datos de inicio de sesión, como verificar credenciales en la base de datos
 }
 ?>
+
+
+
