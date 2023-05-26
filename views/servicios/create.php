@@ -49,7 +49,7 @@ $registro_servicios = $servicio->getAll();
                     <hr>
 
                     <h5 class="text-start">Ingresar Datos Del Dispositivo
-                        <button type="button" class="btn  border-primary float-right mr-5">
+                        <button type="button" class="btn  border-primary float-right mr-5" id="agregar" value="+" > 
                             <a href="">
                                 <i class="bi bi-plus-circle-fill float-end style=" font-size: 1.5rem;">
                                 </i>
@@ -126,6 +126,7 @@ $registro_servicios = $servicio->getAll();
 include_once(BASE_DIR . '../../views/main/partials/footer.php');
 ?>
 
+ 
 <script>
     $(document).ready(function() {
         $('.persona').select2();
