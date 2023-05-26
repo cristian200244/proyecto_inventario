@@ -5,6 +5,10 @@ require_once '../../models/estadoProductoModel.php';
 require_once '../../models/marcasModel.php';
 require_once '../../models/TipoDispositivosModel.php';
 require_once '../../models/tipoServicioModel.php';
+require_once '../../models/clienteModel.php';
+
+$cliente = new Cliente();
+$nombre = $cliente->getAll();
 
 $producto = new EstadoProducto();
 $registro = $producto->getAll();
@@ -29,23 +33,33 @@ $registro_servicios = $servicio->getAll();
             <div class="container text-center">
                 <h1 class="h2 mb-4  text-center">Crear Servicio</h1>
                 <hr>
-                <form class="row g-3">
-                    <div class="col-12">
-                        <h5 class="text-start mt-4">Ingresar Nombre Del Cliente</h5>
-                    </div>
+                <form class="row g-3" action="../../controller/servicioController.php?c=1" method="post">
 
                     <div class="col-12">
-                        <label for="inputCity" class="form-label">Nombre Completo</label>
-                        <input type="text" class="form-control" id="inputCity">
+                        <label for="id_persona" class="form-label">Nombre Completo Del Cliente</label>
+                        <select class="form-select persona" aria-label="Default select example" name=id_persona" id=id_persona"">
+
+                            <?php
+                            foreach ($nombre as $nombreCompleto) {
+                                echo '<option value="' . $nombreCompleto->getId() . '">' . $nombreCompleto->NombreCompleto() . '</option>';
+                            }
+                            ?>
+                        </select>
                     </div>
                     <hr>
 
-                    <h5 class="text-start">Ingresar Datos Del Dispositivo</h5>
-
+                    <h5 class="text-start">Ingresar Datos Del Dispositivo
+                        <button type="button" class="btn  border-primary float-right mr-5">
+                            <a href="">
+                                <i class="bi bi-plus-circle-fill float-end style=" font-size: 1.5rem;">
+                                </i>
+                            </a>
+                        </button>
+                    </h5>
 
                     <div class="col-md-4">
                         <label for="id_tipo_dispositivo" class="form-label">Dispositivo</label>
-                        <select class="form-select" aria-label="Default select example" name="id_tipo_documento" id="id_tipo_documento"  >
+                        <select class="form-select" aria-label="Default select example" name="id_tipo_documento" id="id_tipo_documento">
                             <option selected>Seleccionar</option>
                             <?php
                             foreach ($registro_tipo_dispositivos  as $datos) {
@@ -82,43 +96,38 @@ $registro_servicios = $servicio->getAll();
                             <option selected>Seleccionar</option>
                             <?php
                             foreach ($registro_servicios as $servicio) {
-                                echo '<option value="'. $servicio->getId(). '">' .$servicio->getServicio(). '</option>';
+                                echo '<option value="' . $servicio->getId() . '">' . $servicio->getServicio() . '</option>';
                             }
-                            
+
                             ?>
                         </select>
-
                     </div>
                     <div class="col-md-4">
-                        <label for="inputCity" class="form-label">codigo</label>
-                        <input type="text" class="form-control" id="inputCity">
+                        <label for="id_codigo" class="form-label">codigo</label>
+                        <input type="text" class="form-control" id="id_codigo" name="id_codigo">
                     </div>
                     <div class="col-md-4">
                         <label for="fecha" class="form-label">Fecha</label>
                         <input type="date" class="form-control" id="fecha" name="fecha">
                     </div>
                     <div class="col-md-12">
-                        <label for="inputCity" class="form-label">Falla</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="limite 500 caracteres"></textarea>
+                        <label for="falla" class="form-label">Falla</label>
+                        <textarea class="form-control" id="falla" rows="4" name="falla" placeholder="limite 500 caracteres"></textarea>
                     </div>
                     <div class="col-12">
-                        <button type="submit" onclick="enviar()" class="btn btn-outline-info">Crear Servicio</button>
+                        <button type="submit" class="btn btn-outline-info">Crear Servicio</button>
                     </div>
+                </form>
             </div>
-            </form>
         </div>
-
-
     </div>
-
 </div>
-
-
-
-
-
-<!-- /.container-fluid -->
-
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');
 ?>
+
+<script>
+    $(document).ready(function() {
+        $('.persona').select2();
+    });
+</script>
