@@ -16,19 +16,28 @@ require_once '../../models/clienteModel.php';
 </head>
 
 <body>
-    <h2>Reportes</h1>
+    <h1>Reportes</h1>
     <div class="container-fluid">
-      <table class="table table-striped ">
+    <table class="table table-striped"> 
         <thead>
             <tr>
-                <th scope="col">Fecha de Creacion</th>
-                <th scope="col">Reporte Mensual</th>
-                <th scope="col">Total</th>
-        
+                <th scope="col">Mes</th>
+                <th scope="col">Ventas</th>
+                <th scope="col">Ganancias</th>
             </tr>
         </thead>
         <tbody>
-            
+            <?php
+            if (!empty($datosTabla)) {
+                foreach ($datosTabla as $fila) {
+                    echo '<tr>';
+                    foreach ($fila as $dato) {
+                        echo '<td>' . $dato . '</td>';
+                    }
+                    echo '</tr>';
+                }
+            }
+            ?>
         </tbody>
     </table>
     </div>

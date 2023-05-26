@@ -31,29 +31,25 @@ foreach  ($registro as $cliente){
                 <hr>
 
                 <div class="col-6">
-                    <div class="titulo" id="Nombre_completo">Nombre completo: </div>
-                    <input class="form-control" type="text" id="primer_nombre" value="<?= $primer_nombre ?> <?= $segundo_apellido ?>">
+                    <div class="titulo" id="Nombre_completo">NOMBRE COMPLETO: </div>
+                   <?=$primer_nombre ?> <?= $segundo_apellido ?>
                     
                 </div>
                 <div class="col-6">
-                    <div class="titulo" id="numerofactura">Nro. Factura: </div>
+                    <div class="titulo" id="tipo_servicio">TIPO DE SERVICIO: </div>
                     <input class="form-control" type="number">
                 </div>
 
                 <div class="col-6">
-                    <div class="titulo" id="telefono">Telefono: </div>
-                    <input class="form-control" type="number">
+                    <div class="titulo" id="fecha">FECHA: </div>
+                    <input type="datetime-local" name="" id="">
                 </div>
 
                 <div class="col-6">
-                    <div class="titulo" id="direccion">Direccion:</div>
+                    <div class="titulo" id="direccion">PRECIO:</div>
                     <input class="form-control" type="text"  value="<?= $direccion ?>">
                 </div>
 
-                <div class="col-6">
-                    <div class="titulo" id="id_marca">marca: </div>
-                    <input class="form-control" type="text">
-                </div>
 
                 <p>
 
@@ -83,7 +79,7 @@ foreach  ($registro as $cliente){
 
                     <div class="col-xs-3">
                         <div>Valor a Pagar: </div>
-                        <input class="form-control" type="number">
+                       
                     </div>
                     <p>
                     <p><button type="submit"  class="  col-auto btn btn-outline-info" >Crear</button>
