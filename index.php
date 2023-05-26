@@ -1,6 +1,11 @@
 <?php
 include_once(__DIR__ . "/config/config.example.php");
+// include_once(__DIR__ . "usuarioController.php");
+
 // require_once("sesion.class.php");
+if (isset($errorMessage)) { ?>
+        <p><?php echo $errorMessage; ?></p>
+    <?php } 
 
 ?>
 <!DOCTYPE html>
@@ -44,13 +49,14 @@ include_once(__DIR__ . "/config/config.example.php");
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Bienvenido!!</h1>
                                     </div>
-                                    <form action="views/main/index.php" method="POST">
+                                    <form action="controller/usuarioController.php" method="POST">
+                                     <input type="hidden" name="c" value="5"> 
 
                                         <div class="form-group">
-                                            <input type="email" required class="form-control form-control-user" id="correo" aria-describedby="emailHelp" placeholder="Introducir la dirección de correo electrónico...">
+                                            <input type="email" required class="form-control form-control-user"  name="correo" aria-describedby="emailHelp" placeholder="Introducir la dirección de correo electrónico...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" required class="form-control form-control-user" id="password" placeholder="Contraseña">
+                                            <input type="password" required class="form-control form-control-user"  name="password" placeholder="Contraseña">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -60,7 +66,7 @@ include_once(__DIR__ . "/config/config.example.php");
                                                 </div>
                                             </div>
                                         </div>
-                                        <button id="boton" type="submit" class="boton" onclick="login()">Iniciar sesion</button>
+                                        <button id="boton" type="submit" class="boton">Iniciar sesion</button>
 
                                     </form>
 

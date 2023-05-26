@@ -1,14 +1,31 @@
 <?php
-// Aquí se coloca el modelo de datos relacionados con el inicio de sesión
-class LoginModel {
-    public function __construct() {
-        // Constructor del modelo
-        $stm = Conexion::conectar()
-    }
+include_once dirname(__FILE__) . '../../Config/config.example.php';
+require_once 'conexionModel.php';
 
-    // Aquí se pueden colocar métodos para trabajar con los datos de inicio de sesión, como verificar credenciales en la base de datos
+class User {
+    private $db;
+    
+    public function __construct() {
+        $this->db = new mysqli('localhost', 'sistema_inventario', 'contrasena_db', 'nombre_db');
+        
+        if ($this->db->connect_error) {
+            die('Error al conectar a la base de datos: ' . $this->db->connect_error);
+        }
+    }
+    
+    public function verifyCredentials($username, $password) {
+        $query = "SELECT u.id_persona, correo* FROM usuarios AS u JOIN personas AS p
+        ON u.id_persona = p.id_persona WHERE id_rol =1 AND u.estado = 1 AND correo =  'CORREO12@GMAIL.COM' AND PASSWORD = '123456'";
+        $result = $this->db->query($query);
+        
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+            if (password_verify($password, $user['password'])) {
+                return $user;
+            }
+        }
+        
+        return false;
+    }
 }
 ?>
-
-
-

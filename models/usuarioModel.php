@@ -2,7 +2,7 @@
 
 include_once dirname(__FILE__) . '../../Config/config.example.php';
 require_once 'conexionModel.php';
-
+require_once '../controller/usuarioController.php';
 
 class Usuario extends stdClass
 {
@@ -15,14 +15,17 @@ class Usuario extends stdClass
     private $segundo_apellido;
     private $sexo;
     private $ciudad;
-    private $correo;
+    public $correo;
     private $direccion;
     private $telefono;
     private $database;
+   public $password;
+
 
     public function __construct()
     {
         $this->database = new Database();
+    
     }
     public function getId()
     {
@@ -200,13 +203,7 @@ class Usuario extends stdClass
 
 
 
-    public function InicioSesion(){
-        
 
-
-
-        
-    }
     //---------------------------------------------------------------//
     // -------------------------------getter------------------------//
 
@@ -253,6 +250,11 @@ class Usuario extends stdClass
         public function getCorreo()
         {
             return $this->correo;
+        }
+
+        public function getPassword()
+        {
+            return $this->password;
         }
 
         public function getDireccion()
@@ -306,6 +308,8 @@ class Usuario extends stdClass
         {
             return $this->correo;
         }
+      
+        
         public function setDireccion($direccion)
         {
             return $this->direccion;
@@ -313,6 +317,32 @@ class Usuario extends stdClass
         public function setTelefono($telefono)
         {
             return $this->telefono;
+        }
+
+
+        public function getUser($datos){
+            $datos = [
+                'correo' => $datos['correo'],
+                'password' => $datos['password'],
+            ];
+            try {
+                
+                
+                $sql = 'SELECT id, password, correo FROM usuarios   WHERE  correo = :correo AND password = :password';
+                $query = $this->database->conexion()->prepare($sql);
+                var_dump([$query]);
+                die();
+
+                $query->bindParam(':correo', $_POST['correo']);
+                $query->bindParam(':password', $_POST['password']);
+                $query->execute();
+                
+                $results = $query->fetch(PDO::FETCH_ASSOC);
+    
+                return $results;
+            } catch (PDOException $e) {
+                die($e->getMessage());
+            }
         }
         
     }

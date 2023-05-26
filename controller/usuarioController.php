@@ -15,7 +15,8 @@ class UsuarioController
         $this->usuario = new Usuario();
 
         if (isset($_REQUEST['c'])) {
-            switch ($_REQUEST['c']) {
+            $controlador = $_REQUEST['c'];
+            switch ( $controlador) {
                 case '1': //Almacenar en la base de datos
                     self::store();
 
@@ -29,35 +30,51 @@ class UsuarioController
                 case '4': //eliminar el registro
                     self::delete();
                     break;
-                // case '5': //
-                //     self::InciarSesion();
-                //     break;
-
-                // case '6':
-                //     self::CerrarSesion();
-                //     break;
-                // default:
+                case '5': //
+                    self::InciarSesion();
+                    break;
+                    
+                    // case '6':
+                        //     self::CerrarSesion();
+                        //     break;
+                        // default:
+                    }
+                }
             }
-        }
-    }
+        
+    
+            
+            public function InciarSesion()
+            {
+                //Lo que llega por REQUEST
+                $datos = [
+                    'correo' => $_REQUEST['correo'],
+                    'password' => $_REQUEST['password'],
+                ];
 
-
-    function validarUsuario($usuario, $password)
-{
-    $conexion = new mysqli("localhost", "usuario", "password", "base");
-    $consulta = "select contrasenia from usuario where nick = '$usuario';";
-
-    $result = $conexion->query($consulta);
-
-    if ($result->num_rows > 0) {
-        $fila = $result->fetch_assoc();
-        if (strcmp($password, $fila["contrasenia"]) == 0)
-            return true;
-        else
-            return false;
-    } else
-        return false;
-}
+                  if (empty($datos['correo']) || empty($datos['password'])) {
+                    
+                        return $mensaje = "Nombre de Usuario o contraseña vacio";
+                    
+                      } else {
+                            $results =  $this->usuario->getUser($datos);
+                        
+                            if ($results) {
+                                  session_start();
+                            
+                                  $_SESSION['id']       = $results['id'];
+                                  $_SESSION['correo']    = $results['correo'];
+                            
+                                  $message = '¡Bienvenido!';
+                                  header('Location:../Views/main/index.php');
+                                } else {
+                                      $message = '¡Lo sentimos! Los datos ingresados no concuerdan' . '<br>' .
+                                        '<div class="alert-danger"> ¡Error al Digtar o Usuario no existe!</div>';
+                                    }
+                                  }
+                            }
+                            
+                        
 
 
     public function index()
