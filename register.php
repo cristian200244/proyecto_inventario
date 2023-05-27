@@ -72,8 +72,13 @@ $data = $ciudad->getAll();
                         <label for="id_sexo" class="form-label">Sexo</label>
                         <select class="form-select" aria-label="Default select example" id="id_sexo" name="id_sexo" required="required">
                             <option selected>Seleccionar Sexo</option>
-                            <option value="2">Masculino</option>
-                            <option value="3">Femenino</option>
+                            <?php
+                            foreach ($data as $valores) {
+                                echo '<option value="' . $valores->getId() . '">' . $valores->getCiudad() . '</option>';
+                            }
+                            ?>
+                            <!-- <option value="2">Masculino</option>
+                            <option value="3">Femenino</option> -->
                         </select>
                     </div>
                     <div class="col-3 mb-2">

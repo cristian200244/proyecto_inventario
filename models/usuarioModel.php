@@ -2,7 +2,7 @@
 
 include_once dirname(__FILE__) . '../../Config/config.example.php';
 require_once 'conexionModel.php';
-require_once '../controller/usuarioController.php';
+// require_once '../controller/usuarioController.php';
 
 class Usuario extends stdClass
 {
@@ -19,13 +19,12 @@ class Usuario extends stdClass
     private $direccion;
     private $telefono;
     private $database;
-   public $password;
+    public $password;
 
 
     public function __construct()
     {
         $this->database = new Database();
-    
     }
     public function getId()
     {
@@ -57,7 +56,7 @@ class Usuario extends stdClass
                 $item->telefono         = $row['telefono'];
                 $item->correo           = $row['correo'];
                 $item->direccion        = $row['direccion'];
-                 
+
 
                 array_push($datos_usuario, $item);
             }
@@ -95,7 +94,7 @@ class Usuario extends stdClass
                 $item->ciudad           = $row['id_ciudad'];
                 $item->correo           = $row['correo'];
                 $item->direccion        = $row['direccion'];
-                
+
 
                 array_push($items, $item);
             }
@@ -130,8 +129,6 @@ class Usuario extends stdClass
                 'id_ciudad'         => $datos['id_ciudad'],
                 'correo'            => $datos['correo'],
                 'direccion'         => $datos['direccion'],
-               
-                
             ]);
             if ($query) {
                 return true;
@@ -173,7 +170,7 @@ class Usuario extends stdClass
                 'id_ciudad'         => $datos['id_ciudad'],
                 'correo'            => $datos['correo'],
                 'direccion'         => $datos['direccion'],
-               
+
 
             ]);
             if ($query) {
@@ -207,142 +204,140 @@ class Usuario extends stdClass
     //---------------------------------------------------------------//
     // -------------------------------getter------------------------//
 
-        public function getTipoDocumento()
-        {
-            return $this->tipo_documento;
-        }
-
-        public function getNumeroDocumento()
-        {
-            return $this->numero_documento;
-        }
-
-        public function getPrimerNombre()
-        {
-            return $this->primer_nombre;
-        }
-
-        public function getSegundoNombre()
-        {
-            return $this->segundo_nombre;
-        }
-
-        public function getPrimerApellido()
-        {
-            return $this->primer_apellido;
-        }
-
-        public function getSegundoApellido()
-        {
-            return $this->segundo_apellido;
-        }
-
-        public function getSexo()
-        {
-            return $this->sexo;
-        }
-
-        public function getCiudad()
-        {
-            return $this->ciudad;
-        }
-
-        public function getCorreo()
-        {
-            return $this->correo;
-        }
-
-        public function getPassword()
-        {
-            return $this->password;
-        }
-
-        public function getDireccion()
-        {
-            return $this->direccion;
-        }
-
-        public function getTelefono()
-        {
-            return $this->telefono;
-        }
-      
-
-
-        //---------------------------------------------------------------//
-        // -------------------------------setter------------------------//
-
-        public function setTipo_documento($tipo_documento)
-        {
-            return $this->tipo_documento;
-        }
-        public function setNumero_documento($numero_documento)
-        {
-            return $this->numero_documento;
-        }
-        public function setPrimer_nombre($primer_nombre)
-        {
-            return $this->primer_nombre;
-        }
-        public function setSegundo_nombre($segundo_nombre)
-        {
-            return $this->segundo_nombre;
-        }
-        public function setPrimer_apellido($primer_apellido)
-        {
-            return $this->primer_apellido;
-        }
-        public function setSegundo_apellido($segundo_apellido)
-        {
-            return $this->segundo_apellido;
-        }
-        public function setSexo($sexo)
-        {
-            return $this->sexo;
-        }
-        public function setCiudad($ciudad)
-        {
-            return $this->ciudad;
-        }
-        public function setCorreo($correo)
-        {
-            return $this->correo;
-        }
-      
-        
-        public function setDireccion($direccion)
-        {
-            return $this->direccion;
-        }
-        public function setTelefono($telefono)
-        {
-            return $this->telefono;
-        }
-
-
-        public function getUser($datos){
-            $datos = [
-                'correo' => $datos['correo'],
-                'password' => $datos['password'],
-            ];
-            try {
-                
-                
-                $sql = 'SELECT id, password, correo FROM usuarios   WHERE  correo = :correo AND password = :password';
-                $query = $this->database->conexion()->prepare($sql);
-                var_dump([$query]);
-                die();
-
-                $query->bindParam(':correo', $_POST['correo']);
-                $query->bindParam(':password', $_POST['password']);
-                $query->execute();
-                
-                $results = $query->fetch(PDO::FETCH_ASSOC);
-    
-                return $results;
-            } catch (PDOException $e) {
-                die($e->getMessage());
-            }
-        }
-        
+    public function getTipoDocumento()
+    {
+        return $this->tipo_documento;
     }
+
+    public function getNumeroDocumento()
+    {
+        return $this->numero_documento;
+    }
+
+    public function getPrimerNombre()
+    {
+        return $this->primer_nombre;
+    }
+
+    public function getSegundoNombre()
+    {
+        return $this->segundo_nombre;
+    }
+
+    public function getPrimerApellido()
+    {
+        return $this->primer_apellido;
+    }
+
+    public function getSegundoApellido()
+    {
+        return $this->segundo_apellido;
+    }
+
+    public function getSexo()
+    {
+        return $this->sexo;
+    }
+
+    public function getCiudad()
+    {
+        return $this->ciudad;
+    }
+
+    public function getCorreo()
+    {
+        return $this->correo;
+    }
+
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    public function getDireccion()
+    {
+        return $this->direccion;
+    }
+
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+
+
+    //---------------------------------------------------------------//
+    // -------------------------------setter------------------------//
+
+    public function setTipo_documento($tipo_documento)
+    {
+        return $this->tipo_documento;
+    }
+    public function setNumero_documento($numero_documento)
+    {
+        return $this->numero_documento;
+    }
+    public function setPrimer_nombre($primer_nombre)
+    {
+        return $this->primer_nombre;
+    }
+    public function setSegundo_nombre($segundo_nombre)
+    {
+        return $this->segundo_nombre;
+    }
+    public function setPrimer_apellido($primer_apellido)
+    {
+        return $this->primer_apellido;
+    }
+    public function setSegundo_apellido($segundo_apellido)
+    {
+        return $this->segundo_apellido;
+    }
+    public function setSexo($sexo)
+    {
+        return $this->sexo;
+    }
+    public function setCiudad($ciudad)
+    {
+        return $this->ciudad;
+    }
+    public function setCorreo($correo)
+    {
+        return $this->correo;
+    }
+
+
+    public function setDireccion($direccion)
+    {
+        return $this->direccion;
+    }
+    public function setTelefono($telefono)
+    {
+        return $this->telefono;
+    }
+
+
+    public function getUser($datos)
+    {
+
+        $items = [];
+
+        $datos = [
+            'correo'   => $datos['correo'],
+            'password' => $datos['password'],
+        ];
+
+        $correo = $datos["correo"];
+        $pass   = $datos['password'];
+
+        try {
+
+            $sql = "SELECT id, password, correo FROM usuarios WHERE correo = '$correo' AND password = '$pass' ";
+            $query  = $this->database->conexion()->query($sql);
+
+            return $query->fetchObject();
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+}

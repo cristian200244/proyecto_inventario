@@ -16,7 +16,7 @@ class UsuarioController
 
         if (isset($_REQUEST['c'])) {
             $controlador = $_REQUEST['c'];
-            switch ( $controlador) {
+            switch ($controlador) {
                 case '1': //Almacenar en la base de datos
                     self::store();
 
@@ -33,48 +33,47 @@ class UsuarioController
                 case '5': //
                     self::InciarSesion();
                     break;
-                    
-                    // case '6':
-                        //     self::CerrarSesion();
-                        //     break;
-                        // default:
-                    }
-                }
-            }
-        
-    
-            
-            public function InciarSesion()
-            {
-                //Lo que llega por REQUEST
-                $datos = [
-                    'correo' => $_REQUEST['correo'],
-                    'password' => $_REQUEST['password'],
-                ];
 
-                  if (empty($datos['correo']) || empty($datos['password'])) {
-                    
-                        return $mensaje = "Nombre de Usuario o contraseña vacio";
-                    
-                      } else {
-                            $results =  $this->usuario->getUser($datos);
-                        
-                            if ($results) {
-                                  session_start();
-                            
-                                  $_SESSION['id']       = $results['id'];
-                                  $_SESSION['correo']    = $results['correo'];
-                            
-                                  $message = '¡Bienvenido!';
-                                  header('Location:../Views/main/index.php');
-                                } else {
-                                      $message = '¡Lo sentimos! Los datos ingresados no concuerdan' . '<br>' .
-                                        '<div class="alert-danger"> ¡Error al Digtar o Usuario no existe!</div>';
-                                    }
-                                  }
-                            }
-                            
-                        
+                    // case '6':
+                    //     self::CerrarSesion();
+                    //     break;
+                    // default:
+            }
+        }
+    }
+
+
+
+    public function InciarSesion()
+    {
+        //Lo que llega por REQUEST
+        $datos = [
+            'correo'   => $_REQUEST['correo'],
+            'password' => $_REQUEST['password'],
+        ];
+
+        if (empty($datos['correo']) || empty($datos['password'])) {
+
+            return $mensaje = "Nombre de Usuario o contraseña vacio";
+        } else {
+            $results = $this->usuario->getUser($datos);
+
+            if ($results) {
+                session_start();
+
+                $_SESSION['id']     = $results->id;
+                $_SESSION['correo'] = $results->correo;
+
+                $message = '¡Bienvenido!';
+                header('Location:../Views/main/index.php');
+            } else {
+                echo $message = '¡Lo sentimos! Los datos ingresados no concuerdan' . '<br>' .
+                    '<div class="alert-danger"> ¡Error al Digtar o Usuario no existe!</div>';
+            }
+        }
+    }
+
+
 
 
     public function index()
@@ -111,7 +110,7 @@ class UsuarioController
         }
     }
 
-    
+
 
     public function show()
     {

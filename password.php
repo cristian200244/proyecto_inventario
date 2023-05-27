@@ -1,7 +1,22 @@
 <?php
-    include_once(__DIR__ . "/config/config.example.php");
+include_once(__DIR__ . "/config/config.example.php");
 ?>
-<!DOCTYPE html>
+
+
+
+
+<form action="recuperar_contraseña.php" method="POST">
+    <label for="correo">Correo electrónico:</label>
+    <input type="email" id="correo" name="correo" required>
+    <input type="submit" value="Restablecer contraseña">
+    <div class="form-group">
+        <label for="captcha" class="col-md-3 control-label"></label>
+        <div class="g-recaptcha col-md-9" data-sitekey="clave de reCaptcha"></div>
+    </div>
+</form>
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -53,4 +68,4 @@
     </div>
 </body>
 
-</html>
+</html> -->
