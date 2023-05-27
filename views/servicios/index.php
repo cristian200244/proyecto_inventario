@@ -9,9 +9,9 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
     <div class="container text-center">
         <div class="row">
             <div class="col">
-                <h1 class="h3 mb-4 text-gray-800 ">hola estas en el modulo ver servicios
+                <h1 class="h3 mb-4 text-gray-800 ">Servicios Relizados
                     <form class="d-flex float-end" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control me-2" type="search" placeholder="buscar " aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </h1>
@@ -37,11 +37,7 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
                             <td>Thornton</td>
                             <td>@fat</td>
                         </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+
                     </tbody>
                 </table>
 

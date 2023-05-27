@@ -22,7 +22,7 @@ $registro_tipo_dispositivos = $tipo_dispositivos->getAll();
 $servicio  = new Servicios();
 $registro_servicios = $servicio->getAll();
 
-
+$codigo = rand(1,9999999);
 ?>
 
 
@@ -37,8 +37,7 @@ $registro_servicios = $servicio->getAll();
 
                     <div class="col-12">
                         <label for="id_persona" class="form-label">Nombre Completo Del Cliente</label>
-                        <select class="form-select persona" aria-label="Default select example" name=id_persona" id=id_persona"">
-
+                        <select class="form-select persona" aria-label="Default select example" name="id_persona" id="id_persona">
                             <?php
                             foreach ($nombre as $nombreCompleto) {
                                 echo '<option value="' . $nombreCompleto->getId() . '">' . $nombreCompleto->NombreCompleto() . '</option>';
@@ -49,17 +48,12 @@ $registro_servicios = $servicio->getAll();
                     <hr>
 
                     <h5 class="text-start">Ingresar Datos Del Dispositivo
-                        <button type="button" class="btn  border-primary float-right mr-5" id="agregar" value="+" > 
-                            <a href="">
-                                <i class="bi bi-plus-circle-fill float-end style=" font-size: 1.5rem;">
-                                </i>
-                            </a>
-                        </button>
+
                     </h5>
 
                     <div class="col-md-4">
                         <label for="id_tipo_dispositivo" class="form-label">Dispositivo</label>
-                        <select class="form-select" aria-label="Default select example" name="id_tipo_documento" id="id_tipo_documento">
+                        <select class="form-select" aria-label="Default select example" name="id_tipo_dispositivo" id="id_tipo_dispositivo">
                             <option selected>Seleccionar</option>
                             <?php
                             foreach ($registro_tipo_dispositivos  as $datos) {
@@ -98,13 +92,12 @@ $registro_servicios = $servicio->getAll();
                             foreach ($registro_servicios as $servicio) {
                                 echo '<option value="' . $servicio->getId() . '">' . $servicio->getServicio() . '</option>';
                             }
-
                             ?>
                         </select>
                     </div>
                     <div class="col-md-4">
                         <label for="id_codigo" class="form-label">codigo</label>
-                        <input type="text" class="form-control" id="id_codigo" name="id_codigo">
+                        <input type="text" class="form-control" id="id_codigo" name="id_codigo" value="<?= $codigo ?>" disabled>
                     </div>
                     <div class="col-md-4">
                         <label for="fecha" class="form-label">Fecha</label>
@@ -126,7 +119,7 @@ $registro_servicios = $servicio->getAll();
 include_once(BASE_DIR . '../../views/main/partials/footer.php');
 ?>
 
- 
+
 <script>
     $(document).ready(function() {
         $('.persona').select2();

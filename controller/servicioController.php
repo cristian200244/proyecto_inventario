@@ -31,26 +31,27 @@ class ServiciosController
     }
     public function index()
     {
-       return $this->servicios->getAll();
+        return $this->servicios->getAll();
     }
     public function store()
     {
+
         $datos = [
-            'id_persona'          => $_REQUEST['id_persona'],
-            'id_marca'            => $_REQUEST['id_marca'],
-            'id_tipo_dispositivo' => $_REQUEST['id_tipo_dispositivo'],
-            'id_codigo'           => $_REQUEST['id_codigo'],
-            'id_estado_producto'  => $_REQUEST['id_estado_producto'],
-            'falla'               => $_REQUEST['falla'],
-            'fecha'               => $_REQUEST['fecha'],
+            'id_persona'            => $_REQUEST['id_persona'],
+            'id_tipo_dispositivo'   => $_REQUEST['id_tipo_dispositivo'],
+            'id_marca'              => $_REQUEST['id_marca'],
+            'id_tipo_servicio'      => $_REQUEST['id_tipo_servicio'],
+            'id_codigo'             => $_REQUEST['id_codigo'],
+            'id_estado_producto'    => $_REQUEST['id_estado_producto'],
+            'falla'                 => $_REQUEST['falla'],
+            'fecha'                 => $_REQUEST['fecha'],
         ];
         $result = $this->servicios->store($datos);
         if ($result) {
             header("Location: ../views/servicios/create.php");
             exit();
-        }else{
+        } else {
             echo $error = "ocurrio un me mensaje";
         }
     }
 }
- 

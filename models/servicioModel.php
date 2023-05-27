@@ -69,26 +69,30 @@
                     $item->falla       = $row['falla'];
                     $item->fecha       = $row['fecha'];
 
-                    array_push($items,$item);
+                    array_push($items, $item);
                 }
                 return $item;
             } catch (PDOException $e) {
                 return ['mensaje' => $e];
             }
         }
-         public function store($datos){
+        public function store($datos)
+        {
+
             try {
-                $sql = 'INSERT INTO servicios(id_persona, id_marca,id_tipo_servicio,id_codigo,falla,fecha) VALUES (:id_persona, : id_marca, :id_tipo_servicio, :id_codigo, :falla, :fecha)';
+                $sql = 'INSERT INTO servicios(id_persona, id_tipo_dispositivo, id_marca, id_tipo_servicio, id_codigo, id_estado_producto, falla, fecha)
+                 VALUES  (:id_persona, :id_tipo_dispositivo, :id_marca, :id_tipo_servicio, :id_codigo, :id_estado_producto, :falla, :fecha)';
                 $prepare = $this->database->conexion()->prepare($sql);
                 $query = $prepare->execute([
 
-                    'id_persona'       => $datos['id_persona'],
-                    'id_marca'         => $datos['id_marca'],
-                    'id_tipo_servicio' => $datos['id_tipo_servicio'],
-                    'id_codigo'        => $datos['id_codigo'],
-                    'id_estado_producto' => $datos['id_estado_producto'],
-                    'falla'            => $datos['falla'],
-                    'fecha'            => $datos['fecha']
+                    'id_persona'            => $datos['id_persona'],
+                    'id_tipo_dispositivo'   => $datos['id_tipo_dispositivo'],
+                    'id_marca'              => $datos['id_marca'],
+                    'id_tipo_servicio'      => $datos['id_tipo_servicio'],
+                    'id_codigo'             => $datos['id_codigo'],
+                    'id_estado_producto'    => $datos['id_estado_producto'],
+                    'falla'                 => $datos['falla'],
+                    'fecha'                 => $datos['fecha']
                 ]);
                 if ($query) {
                     return true;
@@ -96,5 +100,5 @@
             } catch (PDOException $e) {
                 die($e->getMessage());
             }
-         }
+        }
     }
