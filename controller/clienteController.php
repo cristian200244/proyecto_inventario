@@ -42,8 +42,10 @@ class ClienteController
     }
 
     public function store()
-    {   
-        
+    {
+
+
+
         $datos = [
 
             'id_tipo_documento' => $_REQUEST['id_tipo_documento'],
@@ -58,6 +60,7 @@ class ClienteController
             'correo'            => $_REQUEST['correo'],
             'direccion'         => $_REQUEST['direccion'],
         ];
+
         $result = $this->cliente->store($datos);
         if ($result) {
             header("Location: ../views/clientes/index.php");

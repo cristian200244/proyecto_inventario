@@ -22,7 +22,7 @@ class Database
         try {
             $con = "mysql:host=" . $this->host . ";dbname=" . $this->database . ";charset=" . $this->charset;
             $opt = [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::CASE_UPPER,
                 PDO::ATTR_EMULATE_PREPARES => false,
             ];
 
