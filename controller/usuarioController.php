@@ -34,10 +34,9 @@ class UsuarioController
                     self::InciarSesion();
                     break;
 
-                    // case '6':
-                    //     self::CerrarSesion();
-                    //     break;
-                    // default:
+                    case '6':
+                        self::CerrarSesion();
+                        break;
             }
         }
     }
@@ -153,5 +152,14 @@ class UsuarioController
         }
 
         return $result;
+    }
+
+    public function cerrarSesion()
+    {
+      session_start();
+      session_unset();
+      session_destroy();
+      header('Location: index.php');
+      
     }
 }

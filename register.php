@@ -3,9 +3,18 @@ include_once(__DIR__ . "/config/config.example.php");
 
 // include_once(BASE_DIR . '../../views/main/partials/header.php');
 require_once 'models/ciudadModel.php';
+require_once 'models/rolesModel.php';
+require_once 'models/sexoModel.php';
 
 $ciudad = new Ciudad();
 $data = $ciudad->getAll();
+
+$sexo = new Sexo();
+$data_sexo = $sexo->getAll();
+
+
+$roles = new Roles();
+$data_rol = $roles->getAll();
 
 ?>
 <!DOCTYPE html>
@@ -51,40 +60,47 @@ $data = $ciudad->getAll();
                         <label for="numero_documento" class="form-label">N° de documento</label>
                         <input type="number" class="form-control" id="numero_documento" name="numero_documento">
                     </div>
+
                     <div class="col-6 mb-2">
                         <label for="primer_nombre" class="form-label">Primer Nombre</label>
                         <input type="text" class="form-control" id="primer_nombre" name="primer_nombre">
                     </div>
+
                     <div class="col-6 mb-2">
                         <label for="segundo_nombre" class="form-label">Segundo Nombre</label>
                         <input type="text" class="form-control" id="segundo_nombre" name="segundo_nombre">
                     </div>
+
                     <div class="col-6 mb-2">
                         <label for="primer_apellido" class="form-label">Primer Apellido</label>
                         <input type="text" class="form-control" id="primer_apellido" name="primer_apellido">
                     </div>
+
                     <div class="col-6 mb-2">
                         <label for="segundo_apellido" class="form-label">Segundo Apellido</label>
                         <input type="text" class="form-control" id="segundo_apellido" name="segundo_apellido">
 
                     </div>
+
+
                     <div class="col-3 mb-2">
                         <label for="id_sexo" class="form-label">Sexo</label>
                         <select class="form-select" aria-label="Default select example" id="id_sexo" name="id_sexo" required="required">
                             <option selected>Seleccionar Sexo</option>
                             <?php
-                            foreach ($data as $valores) {
-                                echo '<option value="' . $valores->getId() . '">' . $valores->getCiudad() . '</option>';
+                            foreach ($data_sexo as $valores) {
+                                echo '<option value="' . $valores->getId() . '">' . $valores->getSexo() . '</option>';
                             }
                             ?>
-                            <!-- <option value="2">Masculino</option>
-                            <option value="3">Femenino</option> -->
+                           
                         </select>
                     </div>
+
                     <div class="col-3 mb-2">
                         <label for="telefono" class="form-label">Telefono</label>
                         <input type="tel" class="form-control" id="telefono" name="telefono">
                     </div>
+
                     <div class="col-6 mb-2">
                         <label for="id_ciudad" class="form-label">Ciudad</label>
                         <select class="form-select" aria-label="Default select example" id="id_ciudad" name="id_ciudad" required="required">
@@ -96,6 +112,7 @@ $data = $ciudad->getAll();
                             ?>
                         </select>
                     </div>
+
                     <div class="col-6 mb-2">
                         <label for="direccion" class="form-label ">Dirección</label>
                         <input type="text" class="form-control" id="direccion" name="direccion">
@@ -109,9 +126,23 @@ $data = $ciudad->getAll();
                     </div>
 
                     <div class="col-6 mb-2">
+                        <label for="id_rol" class="form-label">Roles</label>
+                        <select class="form-select" aria-label="Default select example" id="id_rol" name="id_rol" required="required">
+                            <option selected>Seleccionar</option>
+                            <?php
+                            foreach ($data_rol as $valores) {
+                                echo '<option value="' . $valores->getId() . '">' . $valores->getRol() . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+
+
+                    <div class="col-6 mb-2">
                         <label for="password" class="form-label ">Contraseña</label>
                         <input type="password" class="form-control" id="password" name="password">
                     </div>
+
                 </div>
                 <br>
                 <button type="submit" class="btn btn-outline-info ml-2">Guardar Usuario</button>

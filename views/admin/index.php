@@ -81,6 +81,44 @@ $registro = $datos->getAll();
         </table>
 
 </form>
+<div class="col-xs-12 col-sm-12 col-md-12">
+		
+		<h4>Perfil de usuario</h4>
+		
+		
+		<div class="card mb-3" style="max-width: 540px;">
+			<div class="row no-gutters">
+    			<div class="col-md-4">
+					<img src="https://w7.pngwing.com/pngs/627/693/png-transparent-computer-icons-user-user-icon-thumbnail.png" class="img-thumbnail ">
+    			</div>
+    			<div class="col-md-8">
+      				<div class="card-body">
+        				<h5 class="card-title">Administrador</h5>
+						<table width="90%">
+							<tbody><tr>
+								<td width="30%"><b>Usuario:</b></td>
+								<td width="70%">admin</td>
+							</tr>
+							<tr>
+								<td><b>Rol:</b></td>
+								<td>Administrador</td>
+							</tr>
+							<tr>
+								<td><b>Caja:</b></td>
+								<td>Tienda Central</td>
+							</tr>
+							</tbody></table>
+						<!--<p class="card-text">admin</p>
+						<p class="card-text">Administrador2 mexichango negro y gay</p>
+						<p class="card-text">Tienda Central</p>-->
+      				</div>
+    			</div>
+  			</div>
+		</div>
+		
+		<a href="" class="btn btn-success">Actualizar información</a>
+	</div>
+
 
 </div>
 
@@ -89,4 +127,6 @@ $registro = $datos->getAll();
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');
 ?>
+
+
                       
