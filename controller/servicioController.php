@@ -41,7 +41,7 @@ class ServiciosController
             'id_tipo_dispositivo'   => $_REQUEST['id_tipo_dispositivo'],
             'id_marca'              => $_REQUEST['id_marca'],
             'id_tipo_servicio'      => $_REQUEST['id_tipo_servicio'],
-            'id_codigo'             => $_REQUEST['id_codigo'],
+            'codigo'                => $_REQUEST['codigo'],
             'id_estado_producto'    => $_REQUEST['id_estado_producto'],
             'falla'                 => $_REQUEST['falla'],
             'fecha'                 => $_REQUEST['fecha'],

@@ -22,7 +22,7 @@ $registro_tipo_dispositivos = $tipo_dispositivos->getAll();
 $servicio  = new Servicios();
 $registro_servicios = $servicio->getAll();
 
-$codigo = rand(1,9999999);
+$codigo = rand(1, 9999999);
 ?>
 
 
@@ -50,7 +50,10 @@ $codigo = rand(1,9999999);
                     <h5 class="text-start">Ingresar Datos Del Dispositivo
 
                     </h5>
-
+                    <div class="col-md-4">
+                        <label for="codigo" class="form-label">codigo</label>
+                        <input type="text" class="form-control" id="codigo" name="codigo" value="<?= $codigo ?>" readonly>
+                    </div>
                     <div class="col-md-4">
                         <label for="id_tipo_dispositivo" class="form-label">Dispositivo</label>
                         <select class="form-select" aria-label="Default select example" name="id_tipo_dispositivo" id="id_tipo_dispositivo">
@@ -94,10 +97,6 @@ $codigo = rand(1,9999999);
                             }
                             ?>
                         </select>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="id_codigo" class="form-label">codigo</label>
-                        <input type="text" class="form-control" id="id_codigo" name="id_codigo" value="<?= $codigo ?>" disabled>
                     </div>
                     <div class="col-md-4">
                         <label for="fecha" class="form-label">Fecha</label>

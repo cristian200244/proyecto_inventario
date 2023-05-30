@@ -70,7 +70,7 @@ class Cliente
         try {
             $sql = 'SELECT  id_persona, id_tipo_documento, numero_documento , primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_sexo, telefono, c.nombre AS ciudad, correo, direccion 
             FROM personas AS p
-            JOIN ciudades AS c ON p.id_ciudad = c.id_ciudad 
+            JOIN ciudades AS c ON p.id_ciudad = c.id_ciudad
             WHERE id_rol = 2
             ORDER BY id_persona DESC';
             $query = $this->database->conexion()->query($sql);

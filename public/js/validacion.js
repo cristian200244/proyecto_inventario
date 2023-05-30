@@ -1,4 +1,4 @@
- 
+
 function convertDate() {
     function pad(s) {
         return (s < 10) ? '0' + s : s;
@@ -8,4 +8,5 @@ function convertDate() {
     pad(d.getMonth() + 1),
     pad(d.getDate())].join('-')
 }
-document.getElementById("fecha").max = convertDate();
+
+// document.getElementById("fecha").max = convertDate();
