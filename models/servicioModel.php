@@ -54,18 +54,27 @@
             $items = [];
 
             try {
-                $sql = 'SELECT * FROM servicios ORDER BY  id_servicio ASC';
+                $sql = 'SELECT s.id_servicio,
+                CONCAT(p.primer_nombre, " ", segundo_nombre, " ", primer_apellido, " ", segundo_apellido) as nombre_persona,td.nombre AS nombre_tipo_dispositivo,
+                ts.servicio AS nombre_tipo_servicio,m.nombre AS nombre_marca,codigo ,e.estado as estado_producto, falla ,fecha
+                FROM servicios AS s
+                JOIN personas AS p ON p.id_persona = s.id_persona
+                JOIN estado_productos AS e ON e.id_estado_producto = s.id_estado_producto 
+                JOIN tipo_servicios AS ts ON ts.id_tipo_servicio = s.id_tipo_servicio
+                JOIN marcas AS  m ON m.id_marca = s.id_marca
+                JOIN tipo_dispositivos AS td ON  td.id_tipo_dispositivo = s.id_estado_producto 
+                ORDER BY  id_servicio DESC';
                 $query = $this->database->conexion()->query($sql);
 
                 while ($row = $query->fetch()) {
                     $item =            new ServiciosModel();
                     $item->id            = $row['id_servicio'];
-                    $item->persona       = $row['id_persona'];
-                    $item->dispositivo   = $row['id_tipo_dispositivo'];
-                    $item->marca         = $row['id_marca'];
-                    $item->tipo_servicio = $row['id_tipo_servicio'];
+                    $item->persona       = $row['nombre_persona'];
+                    $item->dispositivo   = $row['nombre_tipo_dispositivo'];
+                    $item->marca         = $row['nombre_marca'];
+                    $item->tipo_servicio = $row['nombre_tipo_servicio'];
                     $item->codigo        = $row['codigo'];
-                    $item->estado        = $row['id_estado_producto'];
+                    $item->estado        = $row['estado_producto'];
                     $item->falla         = $row['falla'];
                     $item->fecha         = $row['fecha'];
 
@@ -86,6 +95,30 @@
                 $prepare = $this->database->conexion()->prepare($sql);
                 $query = $prepare->execute([
 
+                    'id_persona'            => $datos['id_persona'],
+                    'id_tipo_dispositivo'   => $datos['id_tipo_dispositivo'],
+                    'id_marca'              => $datos['id_marca'],
+                    'id_tipo_servicio'      => $datos['id_tipo_servicio'],
+                    'codigo'                => $datos['codigo'],
+                    'id_estado_producto'    => $datos['id_estado_producto'],
+                    'falla'                 => $datos['falla'],
+                    'fecha'                 => $datos['fecha']
+                ]);
+                if ($query) {
+                    return true;
+                }
+            } catch (PDOException $e) {
+                die($e->getMessage());
+            }
+        }
+        public function update($datos)
+        {
+            try {
+                $sql = 'UPDATE servicios  SET  id_servicio = :id_servicio, id_persona = :id_persona, id_tipo_dispositivo = :id_tipo_dispositivo,
+                id_marca = :id_marca, id_tipo_servicio = :id_tipo_servicio, codigo = :codigo,   id_estado_producto = :id_estado_producto,falla = :falla, fecha =:fecha
+                 WHERE id_servicio = :id_servicio';
+                $prepare = $this->database->conexion()->prepare($sql);
+                $query = $prepare->execute([
                     'id_persona'            => $datos['id_persona'],
                     'id_tipo_dispositivo'   => $datos['id_tipo_dispositivo'],
                     'id_marca'              => $datos['id_marca'],

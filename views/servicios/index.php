@@ -18,7 +18,7 @@ $registro = $datos->getAll();
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
     </h1>
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -26,7 +26,11 @@ $registro = $datos->getAll();
                 <th scope="col">Cliente</th>
                 <th scope="col">Dispositivo</th>
                 <th scope="col">Servicio</th>
-                <th scope="col" colspan="2">Opciones</th>
+                <th scope="col">marca</th>
+                <th scope="col">estado</th>
+                <th scope="col">fecha</th>
+                <th scope="col">falla</th>
+                <th scope="col">Opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -44,12 +48,13 @@ $registro = $datos->getAll();
                         <td><?= $row->getPersona() ?></td>
                         <td><?= $row->getTipoDispositivo() ?></td>
                         <td><?= $row->getTipoServicio() ?></td>
+                        <td><?= $row->getMarca() ?></td>
+                        <td><?= $row->getEstadoProducto() ?></td>
+                        <td><?= $row->getFecha() ?></td>
+                        <td><?= $row->getFalla() ?></td>
                         <td>
-                            <button type="button" class="btn btn-outline-info"><a href="#">
-                                    <i class="bi bi-eye-fill" style="font-size: 1.3rem; "></i></a>
-                            </button>
-                            <button type="button" class="btn btn-outline-danger"><a href="#">
-                                    <i class="bi bi-trash3-fill" style="font-size: 1.3rem; "></i></a>
+                        <button type="button" class="btn btn-outline-warning"><a href="../../controller/servicioController.php?c=2&id_servicio=<?= $row->getId() ?>">
+                                    <i class="bi bi-pencil-square" style="font-size: 1.3rem; "></i></a>
                             </button>
                         </td>
                     </tr>
@@ -58,7 +63,7 @@ $registro = $datos->getAll();
                 }
             } else {
                 ?>
-                <td colspan="6" class="text-center">Sin Registros</td>
+                <td colspan="10" class="text-center">Sin Registros</td>
             <?php
             }
             ?>
