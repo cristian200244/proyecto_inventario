@@ -68,9 +68,7 @@ class MarcasController
         $result = $this->marca->update($datos);
 
         if ($result) {
-            header("Location: ../views/marcas/index.php");
-            exit();
+            echo json_encode(array('succes' => 1, 'nombre'=>$datos['nombre']));
         }
-        return $result;
     }
 }

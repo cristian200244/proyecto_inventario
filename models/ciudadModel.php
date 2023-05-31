@@ -46,7 +46,7 @@ class Ciudad
         $items = [];
 
         try {
-            $sql = 'SELECT * FROM ciudades ORDER BY nombre ASC';
+            $sql = 'SELECT  * FROM   ciudades ORDER BY  nombre ASC';
             $query = $this->database->conexion()->query($sql);
 
             while ($row = $query->fetch()) {
@@ -67,7 +67,7 @@ class Ciudad
     public function store($datos)
     {
         try {
-            $sql = 'INSERT INTO ciudades ( nombre) values (:nombre)';
+            $sql = 'INSERT INTO ciudades ( nombre) values  (:nombre) ';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
                 'nombre' => $datos['nombre']

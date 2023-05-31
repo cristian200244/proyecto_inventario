@@ -5,7 +5,7 @@
      <!-- Sidebar - Brand -->
      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= BASE_URL ?>./views/main/index.php">
 
-         <div class="sidebar-brand-text mx-3">Electronica L&L</div>
+         <div class="sidebar-brand-text mx-3">Electrónica L&L</div>
      </a>
 
      <!-- Divider -->

@@ -53,16 +53,12 @@ foreach ($registros as $ciudades) {
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="../../controller/ciudadController.php?c=3&id_ciudad=<?= $id ?>" method="POST">
-
-                                    <div class="input-group ">
-                                        <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $nombre ?>">
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-sm btn-outline-success" data-bs-dismiss="modal">Actualizar</button>
-                                    </div>
-                                </form>
+                                <div class="input-group ">
+                                    <input type="text" class="form-control" id="nombre_actualizado" name="nombre">
+                                </div>
+                                <div class="modal-footer">
+                                    <a class="btn btn-sm btn-outline-success" data-bs-dismiss="modal" onclick="recarga(<?= $ciudades->getId() ?>)">Actualizar</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -72,7 +68,7 @@ foreach ($registros as $ciudades) {
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Sexo</th>
+                            <th scope="col">Departemento</th>
                             <th scope="col" colspan="2">opciones</th>
 
                         </tr>
@@ -85,19 +81,25 @@ foreach ($registros as $ciudades) {
                         ?>
                                 <tr>
                                     <td><?= $pos ?></td>
-                                    <td><?= $ciudades->getCiudad() ?></td>
                                     <td>
-                                        <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="../../controller/ciudadController.php?c=2&id_ciudad=<?= $ciudades->getId() ?>">
-                                            Actualizar
-                                        </a>
+                                        <span id="ciudad_<?= $ciudades->getId() ?>"> <?= $ciudades->getCiudad() ?> </span>
+                                    </td>
+                                    <td>
+                                        <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_ciudad_<?= $ciudades->getId()?>" onclick="update (<?= $ciudades->getId()?>)">Actualizar</a>
                                         <a type="button" class="btn btn-sm btn-outline-danger" href="../../controller/ciudadController.php?c=4&id_ciudad=<?= $ciudades->getId() ?>">Eliminar</a>
 
                                     </td>
 
                                 </tr>
-                        <?php
+                            <?php
                                 $pos++;
                             }
+                        } else {
+                            ?>
+                            <tr>
+                                <td colspan="3" class="text-center">No hay datos</td>
+                            </tr>
+                        <?php
                         }
                         ?>
 
@@ -109,6 +111,29 @@ foreach ($registros as $ciudades) {
     </div>
 
 </div>
+<script>
+    function update(id){
+        let elemento=document.getElementById(`ciudad_${id}`)
+        let nombre = elemento.textContent
+        
+        document.getElementById('nombre_actualizado').value = nombre
+        
+    }
+    
+    function recarga(id){
+        let elemento = document.getElementById("nombre_actualizado")
+        let nombre  = elemento.value
+ 
+        axios.post(`../../controller/ciudadController.php?c=3&id_ciudad=${id}&nombre=${nombre}`)
+        .then(function(response){
+            window.location.reload()
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+    }
+
+</script>
 <!-- /.container-fluid -->
 
 <?php

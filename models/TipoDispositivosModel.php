@@ -65,7 +65,7 @@ class Dispositivos
     public function store($datos)
     {
         try {
-            $sql = 'INSERT INTO tipo_dispositivos (nombre) values (:nombre)';
+            $sql = 'INSERT INTO tipo_dispositivos (nombre) values (:nombre) ';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
                 'nombre' => $datos['nombre']

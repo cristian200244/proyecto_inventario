@@ -1,4 +1,4 @@
-<?php
+    <?php
 include_once(__DIR__ . "../../../config/config.example.php");
 include_once(BASE_DIR . '../../views/main/partials/header.php');
 require_once '../../models/documentoModel.php';
@@ -23,7 +23,7 @@ foreach ($registro as $documento) {
         <hr>
         <h1 class="h3 mb-4 text-gray-800 text-left">Tipos De Documento
             <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <i class="bi bi-plus-circle-fill" style="font-size: 1.5rem; "></i>
+                <i class="bi bi-plus-circle-fill" style="font-size: 1.5rem; "></i>
             </button>
         </h1>
         <div class="row">
@@ -35,8 +35,8 @@ foreach ($registro as $documento) {
                                 <input type="hidden" name="c" value="1">
                                 <div class="input-group ">
                                     <input type="text" class="form-control" id="tipo" name="tipo" placeholder="Ingrese un nuevo tipo de documento">
-                                    <button type="submit" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"> 
-                                    <i class="bi bi-send-plus-fill" style="font-size: 1.0rem; "></i>
+                                    <button type="submit" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                        <i class="bi bi-send-plus-fill" style="font-size: 1.0rem; "></i>
                                     </button>
                                 </div>
                             </form>
@@ -52,15 +52,14 @@ foreach ($registro as $documento) {
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="../../controller/documentoController.php?c=3&id_tipo_documento=<?= $id ?>" method="POST">
-                                    <div class="input-group ">
-                                        <input type="text" class="form-control" id="tipo" name="tipo" value="<?= $tipo_documento ?>">
+                                     <div class="input-group ">
+                                        <input type="text" class="form-control" id="tipo_actualizado" name="tipo" >
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">Actualizar</button>
-                                     </div>
-                                </form>
+                                        <a   class="btn btn-outline-success" data-bs-dismiss="modal" onclick="recarga(<?= $documento->getId()?>)">Actualizar</a>
+                                    </div>
+                                 
                             </div>
                         </div>
                     </div>
@@ -82,19 +81,26 @@ foreach ($registro as $documento) {
                         ?>
                                 <tr>
                                     <td><?= $pos ?></td>
-                                    <td><?= $documento->getTipoDocumento() ?></td>
                                     <td>
-                                    <a class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="../../controller/documentoController.php?c=2&id_tipo_documento=<?= $documento->getId() ?>">Actualizar</a>
+                                       <span id="documento<?= $documento->getId() ?>"> <?= $documento->getTipoDocumento() ?> </span>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_documento_<?= $documento->getId() ?>" onclick="update(<?= $documento->getId() ?>)" >Actualizar</a>
                                         <a class="btn btn-sm btn-outline-danger" href="../../controller/documentoController.php?c=4&id_tipo_documento=<?= $documento->getId() ?>">Eliminar</a>
                                     </td>
 
                                 </tr>
-                        <?php
+                            <?php
                                 $pos++;
                             }
+                        } else {
+                            ?>
+                            <tr>
+                                <td colspan="3" class="text-center">No hay datos</td>
+                            </tr>
+                        <?php
                         }
                         ?>
-
                     </tbody>
                 </table>
             </div>
@@ -103,6 +109,28 @@ foreach ($registro as $documento) {
     </div>
 
 </div>
+<script>
+    function update(id) {
+        let elemento = document.getElementById(`documento${id}`);
+        let documento = elemento.textContent
+
+        document.getElementById('tipo_actualizado').value = documento
+    }
+
+    function recarga(id) {
+
+        let elemento = document.getElementById("tipo_actualizado");
+        let documento = elemento.value
+
+        axios.post(`../../controller/documentoController.php?c=3&id_tipo_documento=${id}&tipo=${ documento }`)
+            .then(function(response) {
+                window.location.reload()
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+    }
+</script>
 <!-- /.container-fluid -->
 
 <?php

@@ -61,7 +61,7 @@ class Servicios
     public function store($datos)
     {
         try {
-            $sql = 'INSERT INTO tipo_servicios (servicio) VALUES (:servicio)';
+            $sql = 'INSERT INTO tipo_servicios (servicio) VALUES  (:servicio) ';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
                 'servicio' => $datos['servicio']
