@@ -6,7 +6,7 @@ require_once '../../models/marcasModel.php';
 $marcas = new Marcas();
 
 $registros = $marcas->getAll();
- 
+
 
 foreach ($registros as $marca) {
     $id     = $marca->getId();
@@ -54,16 +54,13 @@ foreach ($registros as $marca) {
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="../../controller/marcasController.php?c=3&id_marca=<?= $id ?>" method="POST">
-                                    <div class="input-group ">
-                                        <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $nombre ?>">
+                                <div class="input-group ">
+                                    <input type="text" class="form-control" id="nombre_actualizado" name="nombre">
 
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">Actualizar</button>
-                                        <!-- <button type="button" class="btn btn-outline-primary">Cancelar</button> -->
-                                    </div>
-                                </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <a class="btn btn-outline-success" data-bs-dismiss="modal" onclick="recarga(<?= $marca->getId() ?>)">Actualizar</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -87,18 +84,25 @@ foreach ($registros as $marca) {
                         ?>
                                 <tr>
                                     <th><?= $pos ?></th>
-                                    <td><?= $marca->getMarca() ?></td>
                                     <td>
-                                        <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="../../controller/marcasController.php?c=2&id_marca=<?= $marca->getId() ?>">Actualizar</a>
+                                        <span id="nombre_<?= $marca->getId() ?>"> <?= $marca->getMarca() ?> </span>
+                                    </td>
+                                    <td>
+                                        <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_marca_<?= $marca->getId() ?>" onclick="update(<?= $marca->getId() ?>)">Actualizar</a>
                                         <a type="button" class="btn btn-sm btn-outline-danger" href="../../controller/marcasController.php?c=4&id_marca=<?= $marca->getId() ?>">Eliminar</a>
                                     </td>
 
                                 </tr>
-                        <?php
+                            <?php
                                 $pos++;
                             }
+                        } else {
+                            ?>
+                            <tr>
+                                <td colspan="3" class="text-center">No hay datos</td>
+                            </tr>
+                        <?php
                         }
-
                         ?>
                     </tbody>
                 </table>
@@ -108,6 +112,28 @@ foreach ($registros as $marca) {
     </div>
 
 </div>
+<script>
+    function update(id) {
+        let elemento = document.getElementById(`nombre_${id}`);
+        let nombre = elemento.textContent
+
+        document.getElementById('nombre_actualizado').value = nombre
+    }
+
+    function recarga(id) {
+
+        let elemento = document.getElementById("nombre_actualizado");
+        let nombre = elemento.value
+
+        axios.post(`../../controller/marcasController.php?c=3&id_marca=${id}&nombre=${nombre}`)
+            .then(function(response) {
+                window.location.reload()
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+    }
+</script>
 <!-- /.container-fluid -->
 
 <?php

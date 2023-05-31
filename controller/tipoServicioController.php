@@ -67,9 +67,8 @@ class ServicioController
         $result = $this->servicio->update($datos);
 
         if ($result) {
-            header("Location: ../views/tipo_servicio/index.php");
-            exit();
+            echo json_encode(array('succes' => 1, 'servicio'=>$datos['servicio']));
         }
-        return $result;
+         
     }
 }

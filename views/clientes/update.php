@@ -39,21 +39,18 @@ foreach ($registro as $cliente) {
 <div class="container-fluid">
 
     <form method="POST" action="../../controller/clienteController.php?c=3&id_persona=<?= $id_persona ?>">
-        <input type="hidden" name="c" value="3">
-        <input type="hidden" name="id" value="<?= $id_persona ?>">
         <div class="container text-center">
+        <a type="button" class="btn  border-primary float-start" href="index.php"><i class="bi bi-arrow-return-left"></i></a>
+            <button type="submit" class="btn btn-outline-info ml-2 float-start">Actualizar Cliente</button>
             <h1 class="h2 mb-4  text-center">Actualizar Datos Del Cliente </h1>
             <hr class="bg-info">
             <div class="row text-start">
                 <div class="col-6 mb-2">
                     <label for="id_tipo_documento" class="form-label">Tipo de documento</label>
-                    <select class="form-select" aria-label="Default select example" name="id_tipo_documento" id="id_tipo_documento" value="<?= $tipo_documento ?>">
-                        <option selected>Seleccionar</option>
-                        <?php
-                        foreach ($registros  as $tipo_documento) {
-                            echo '<option value="' . $tipo_documento->getId() . '">' . $tipo_documento->getTipoDocumento() . '</option>';
-                        }
-                        ?>
+                    <select class="form-select" aria-label="Default select example" name="id_tipo_documento" id="id_tipo_documento" >
+                    <?php foreach ($registros as $documento) : ?>
+                            <option value="<?= $documento->getId() ?>" <?= $documento->getId() == $cliente->getTipoDocumento() ? 'selected' :  "" ?>><?= $documento->getTipoDocumento() ?></option>
+                        <?php endforeach ?>
                     </select>
                 </div>
                 <div class="col-6 mb-2">
@@ -79,13 +76,10 @@ foreach ($registro as $cliente) {
                 </div>
                 <div class="col-3 mb-2">
                     <label for="sexo" class="form-label">Sexo</label>
-                    <select class="form-select" aria-label="Default select example" id="id_sexo" name="id_sexo" value="<?= $sexo ?>">
-                        <option selected>Seleccionar</option>
-                        <?php
-                        foreach ($registro_sexo as $sexo) {
-                            echo '<option value="' . $sexo->getId() . '">' . $sexo->getSexo() . '</option>';
-                        }
-                        ?>
+                    <select class="form-select" aria-label="Default select example" id="id_sexo" name="id_sexo">
+                        <?php foreach ($registro_sexo as $sexo) : ?>
+                            <option value="<?= $sexo->getId() ?>" <?= $sexo->getId() == $cliente->getSexo() ? 'selected' :  "" ?>><?= $sexo->getSexo() ?></option>
+                        <?php endforeach ?>
                     </select>
                 </div>
                 <div class="col-3 mb-2">
@@ -94,13 +88,10 @@ foreach ($registro as $cliente) {
                 </div>
                 <div class="col-6 mb-2">
                     <label for="id_ciudad" class="form-label">Ciudad</label>
-                    <select class="form-select" aria-label="Default select example" id="id_ciudad" name="id_ciudad" value="<?= $ciudad ?>">
-                        <option selected>Seleccionar</option>
-                        <?php
-                        foreach ($data as $valores) {
-                            echo '<option value="' . $valores->getId() . '">' . $valores->getCiudad() . '</option>';
-                        }
-                        ?>
+                    <select class="form-select" aria-label="Default select example" id="id_ciudad" name="id_ciudad" >
+                    <?php foreach ($data as $valores) : ?>
+                            <option value="<?= $valores->getId() ?>" <?= $valores->getId() == $cliente->getCiudad() ? 'selected' :  "" ?>><?= $valores->getCiudad() ?></option>
+                        <?php endforeach ?>
                     </select>
                 </div>
                 <div class="col-6 mb-2">
@@ -112,12 +103,8 @@ foreach ($registro as $cliente) {
                     <input type="text" class="form-control" id="correo" name="correo" value="<?= $correo ?>">
                 </div>
             </div>
-            <br>
-            <button type="submit" class="btn btn-outline-info ml-2">Guardar Cliente</button>
         </div>
-
     </form>
-
 </div>
 <!-- /.container-fluid -->
 
