@@ -17,8 +17,8 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
     <thead>
         <tr>
             <th scope="col">#</th>
+            <th scope="col">Numero de Identificacion</th>
             <th scope="col">Primer Nombre</th>
-            <th scope="col">Primer Apellido</th>
 
         </tr>
     </thead>

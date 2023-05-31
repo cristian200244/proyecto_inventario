@@ -1,22 +1,22 @@
 <?php
 include_once(__DIR__ . "../../../config/config.example.php");
 include_once(BASE_DIR . '../../views/main/partials/header.php');
-require_once '../../models/clienteModel.php';
-$r = rand(0, 999999999);
-
-$datos = new Cliente();
-$registro = $datos->getAll();
 
 
 
-foreach  ($registro as $cliente){
-    $primer_nombre       = $cliente->getPrimerNombre();
-    $segundo_apellido    = $cliente->getSegundoApellido();
-    $direccion           = $cliente->getDireccion();
+
+function generarCodigoAleatorio() {
+    $longitud = 8; // Longitud del código
+    $caracteres = "0123456789"; // Caracteres permitidos
+    $codigo = "";
+    for ($i = 0; $i < $longitud; $i++) {
+        $posicion = mt_rand(0, strlen($caracteres) - 1);
+        $codigo .= $caracteres[$posicion];
+    }
+    return $codigo;
 }
-?>
 
-<!-- Begin Page Content -->
+?>
 <div class="container-fluid">
 
 
@@ -32,22 +32,22 @@ foreach  ($registro as $cliente){
 
                 <div class="col-6">
                     <div class="titulo" id="Nombre_completo">NOMBRE COMPLETO: </div>
-                   <?=$primer_nombre ?> <?= $segundo_apellido ?>
+                    <input class="form-control" type="number">
                     
                 </div>
                 <div class="col-6">
                     <div class="titulo" id="tipo_servicio">TIPO DE SERVICIO: </div>
-                    <input class="form-control" type="number">
+                    <input class="form-control" type="text">
                 </div>
 
                 <div class="col-6">
                     <div class="titulo" id="fecha">FECHA: </div>
-                    <input type="datetime-local" name="" id="">
+                    <input class="form-control" type="date">
                 </div>
 
                 <div class="col-6">
                     <div class="titulo" id="direccion">PRECIO:</div>
-                    <input class="form-control" type="text"  value="<?= $direccion ?>">
+                    <input class="form-control" type="text"  value="">
                 </div>
 
 
@@ -69,7 +69,7 @@ foreach  ($registro as $cliente){
                     </thead>
                     <tbody>
                         <tr>
-                            <td><?= $r ?></td>
+                            <td><?= generarCodigoAleatorio()  ?> </td>
                             <td>cantidad total</td>
                             <td>valor total</td>
                         </tr>
