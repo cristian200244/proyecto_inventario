@@ -103,12 +103,8 @@ foreach ($registro as $cliente) {
                     <input type="text" class="form-control" id="correo" name="correo" value="<?= $correo ?>">
                 </div>
             </div>
-         
-          
         </div>
-
     </form>
-
 </div>
 <!-- /.container-fluid -->
 

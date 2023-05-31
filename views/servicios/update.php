@@ -13,6 +13,12 @@ require_once '../../models/clienteModel.php';
 $producto = new EstadoProducto();
 $registro = $producto->getAll();
 
+$person = new Cliente();
+$registro_person = $person->getAll();
+
+$tipo_servicio = new Servicios();
+$registros_services = $tipo_servicio->getAll();
+
 $marca = new Marcas();
 $registro_marcas = $marca->getAll();
 
@@ -29,13 +35,10 @@ foreach ($registro_servicios as $services) {
     $tipo_servicio   = $services->getTipoServicio();
     $codigo          = $services->getCodigo();
     $estado          = $services->getEstadoProducto();
-    $falla           = $services->getFalla();
     $fecha           = $services->getFecha();
+    $falla           = $services->getFalla();
 }
-
-$codigo = rand(1, 9999999);
-$fecha = date('y-m-d');
-
+ 
 ?>
 
 
@@ -49,15 +52,14 @@ $fecha = date('y-m-d');
                 <form class="row g-3" action="../../controller/servicioController.php?c=3" method="post">
                     <div class="col-12">
                         <label for="id_persona" class="form-label">Nombre Completo Del Cliente</label>
-                        <select class="form-select persona" aria-label="Default select example" name="id_persona9" id="id_persona">
-                            <?php foreach ($registros as $personas) : ?>
-                                <option value="<?= $personas->getId() ?>" <?= $personas->getId() == $services->getPersona() ? 'selected' :  "" ?>> <?= $personas->getPersona() ?> </option>
+                        <select class="form-select persona" aria-label="Default select example" name="id_persona" id="id_persona">
+                            <?php foreach ($registro_person as $personas) : ?>
+                                <option value="<?= $personas->getId() ?>" <?= $personas->getId() == $services->getPersona() ? 'selected' :  "" ?>> <?= $personas->NombreCompleto() ?> </option>
                             <?php endforeach ?>
                         </select>
                     </div>
                     <hr>
                     <h5 class="text-start">Ingresar Datos Del Dispositivo
-
                     </h5>
                     <div class="col-md-4">
                         <label for="codigo" class="form-label">codigo</label>
@@ -82,16 +84,16 @@ $fecha = date('y-m-d');
                     <div class="col-md-4">
                         <label for="id_estado_producto" class="form-label">Estado</label>
                         <select class="form-select" aria-label="Default select example" name="id_estado_producto" id="id_estado_producto">
-                            <?php foreach ($registro_estado_producto as $registro_estado) : ?>
-                                <option value="<?= $registro_estado->getId() ?>" <?= $registro_estado->getId() == $services->getEstado() ? 'selected' :  "" ?>><?= $registro_estado->getEstado() ?></option>
+                            <?php foreach ($registro as $registro_estado) : ?>
+                                <option value="<?= $registro_estado->getId() ?>" <?= $registro_estado->getId() == $services->getEstadoProducto() ? 'selected' :  "" ?>><?= $registro_estado->getEstado() ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>
                     <div class="col-md-4">
                         <label for="id_tipo_servicio" class="form-label">Servicio</label>
                         <select class="form-select" aria-label="Default select example" name="id_tipo_servicio" id="id_tipo_servicio">
-                            <?php foreach ($registro_tipo_servicios as $registro_de_servicios) : ?>
-                                <option value="<?= $registro_de_servicios->getId() ?>" <?= $registro_de_servicios->getId() == $services->getTipoServicio() ? 'selected' :  "" ?>><?= $registro_de_servicios->getTipoServicio() ?></option>
+                            <?php foreach ($registros_services as $registro_de_servicios) : ?>
+                                <option value="<?= $registro_de_servicios->getId() ?>" <?= $registro_de_servicios->getId() == $services->getTipoServicio() ? 'selected' :  "" ?> ><?= $registro_de_servicios->getServicio() ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>
@@ -101,7 +103,7 @@ $fecha = date('y-m-d');
                     </div>
                     <div class="col-md-12">
                         <label for="falla" class="form-label">Falla</label>
-                        <textarea class="form-control" id="falla" rows="4" name="falla" placeholder="limite 500 caracteres" value="<?= $falla ?>"></textarea>
+                        <textarea class="form-control" id="falla" rows="4" name="falla" placeholder="limite 500 caracteres" > <?= $falla ?></textarea>
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-outline-info">Actualizar</button>
