@@ -31,23 +31,6 @@ $registro = $datos->getAll();
                 </tr>
             </thead>
         </table>
-       <?php
-                       if ($registro) {
-                        $pos = 1;
-        
-                        foreach ($registro as $row) {
-                    ?>
-                <tr>
-                       
-                        <td> <?= $row->getPrimerNombre().' '.$row->getPrimerApellido() ?></td>
-
-                </tr>
-
-                <?php
-                    $pos++;
-                }
-            }
-            ?>
 
 </div>
 

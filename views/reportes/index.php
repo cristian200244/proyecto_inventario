@@ -27,17 +27,7 @@ require_once '../../models/clienteModel.php';
             </tr>
         </thead>
         <tbody>
-            <?php
-            if (!empty($datosTabla)) {
-                foreach ($datosTabla as $fila) {
-                    echo '<tr>';
-                    foreach ($fila as $dato) {
-                        echo '<td>' . $dato . '</td>';
-                    }
-                    echo '</tr>';
-                }
-            }
-            ?>
+           
         </tbody>
     </table>
     </div>

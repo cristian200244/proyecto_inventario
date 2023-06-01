@@ -1,21 +1,21 @@
 <?php
 include_once(__DIR__ . "../../../config/config.example.php");
 include_once(BASE_DIR . '../../views/main/partials/header.php');
+require_once '../../models/clienteModel.php';
+require_once '../../models/tipoServicioModel.php';
+require_once '../../models/TipoDispositivosModel.php';
 
 
+$cliente = new Cliente();
+$nombre = $cliente->getAll();
 
+$servicio  = new Servicios();
+$registro_servicios = $servicio->getAll();
 
-function generarCodigoAleatorio() {
-    $longitud = 8; // Longitud del código
-    $caracteres = "0123456789"; // Caracteres permitidos
-    $codigo = "";
-    for ($i = 0; $i < $longitud; $i++) {
-        $posicion = mt_rand(0, strlen($caracteres) - 1);
-        $codigo .= $caracteres[$posicion];
-    }
-    return $codigo;
-}
-
+$tipo_dispositivos = new Dispositivos();
+$registro_tipo_dispositivos = $tipo_dispositivos->getAll();
+$fecha = date('y-m-d');
+$hora  = date("g:i A")
 ?>
 <div class="container-fluid">
 
@@ -27,68 +27,83 @@ function generarCodigoAleatorio() {
         </center>
         <div class="container">
             <div class="row">
-
+             
                 <hr>
-
+ <form class="row g-3" action="../../controller/facturaController.php?c=1" method="post">
                 <div class="col-6">
                     <div class="titulo" id="Nombre_completo">NOMBRE COMPLETO: </div>
-                    <input class="form-control" type="number">
+                    <select class="form-select" aria-label="Default select example" name="id_persona" id="id_persona">
+                            <?php
+                            foreach ($nombre as $nombreCompleto) {
+                                echo '<option value="' . $nombreCompleto->getId() . '">' . $nombreCompleto->NombreCompleto() . '</option>';
+                            }
+                            ?>
+                        </select>
                     
                 </div>
                 <div class="col-6">
                     <div class="titulo" id="tipo_servicio">TIPO DE SERVICIO: </div>
-                    <input class="form-control" type="text">
+                    <select class="form-select" aria-label="Default select example" name="id_tipo_servicio" id="id_tipo_servicio">
+                            <option selected>Seleccionar</option>
+                            <?php
+                            foreach ($registro_servicios as $servicio) {
+                                echo '<option value="' . $servicio->getId() . '">' . $servicio->getServicio() . '</option>';
+                            }
+                            ?>
+                        </select>
                 </div>
 
                 <div class="col-6">
-                    <div class="titulo" id="fecha">FECHA: </div>
-                    <input class="form-control" type="date">
+                    <div class="titulo" id="id_servicio">DISPOSITIVO: </div>
+                    <select class="form-select" aria-label="Default select example" name="id_tipo_dispositivo" id="id_tipo_dispositivo">
+                            <option selected>Seleccionar</option>
+                            <?php
+                            foreach ($registro_tipo_dispositivos  as $datos) {
+                                echo '<option value="' . $datos->getId() . '">' . $datos->getDispositivo() . '</option>';
+                            }
+                            ?>
+                        </select>
                 </div>
+
+                <div class="col-md-4">
+                        <label for="fecha" class="form-label">FECHA</label>
+                        <input type="text" class="form-control" id="fecha" name="fecha" value="<?= $fecha?>" readonly>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <label for="fecha" class="form-label">HORA</label>
+                        <input type="text" class="form-control" id="hora" name="hora" value="<?= $hora?>" readonly >
+                    </div>
 
                 <div class="col-6">
-                    <div class="titulo" id="direccion">PRECIO:</div>
-                    <input class="form-control" type="text"  value="">
+                    <div class="titulo" id="precio">PRECIO U:</div>
+                    <input class="form-control"  id="precio" type="number"  value="">
                 </div>
 
+
+
+                <div class="col-6">
+                    <div class="titulo" id="total">TOTAL:</div>
+                    <input class="form-control"   id="total" type="number"  value="">
+                </div>
 
                 <p>
 
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>
-                                <h4 class="titulo">&nbsp;&nbsp;&nbsp;Codigo&nbsp;&nbsp;&nbsp;</h4>
-                            </th>
-                            <th>
-                                <h4 class="titulo">&nbsp;&nbsp;&nbsp;Cant.&nbsp;&nbsp;&nbsp;</h4>
-                            </th>
-                            <th>
-                                <h4 class="titulo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subtotal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><?= generarCodigoAleatorio()  ?> </td>
-                            <td>cantidad total</td>
-                            <td>valor total</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="row sinespacio">
 
-                    <div class="col-xs-3">
-                        <div>Valor a Pagar: </div>
-                       
-                    </div>
-                    <p>
-                    <p><button type="submit"  class="  col-auto btn btn-outline-info" >Crear</button>
+                <div class="col-6">
+                        <button type="submit" class="btn btn-outline-info ml-2">Crear</button>
                 </div>
-            </div>
-    </body>
-
+                        </div>
 </div>
 <!-- /.container-fluid -->
+
+
+<script>
+    $(document).ready(function() {
+        $('.persona').select2();
+    });
+</script>
 
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');
