@@ -5,7 +5,7 @@
     class ServiciosModel
     {
         private $id;
-        private $persona;
+        private $id_persona;
         private $dispositivo;
         private $marca;
         private $tipo_servicio;
@@ -19,13 +19,14 @@
         {
             $this->database = new Database();
         }
+
         public function getId()
         {
             return $this->id;
         }
+
         public function getById($id)
         {
-            $servicio = [];
             try {
                 $sql = 'SELECT * FROM servicios WHERE id_servicio = :id_servicio';
                 $query = $this->database->conexion()->prepare($sql);
@@ -33,7 +34,8 @@
 
                 while ($row = $query->fetch()) {
                     $datos = new ServiciosModel();
-                    $datos->persona     = $row['id_persona'];
+                    $datos->id          = $row['id_servicio'];
+                    $datos->id_persona  = $row['id_persona'];
                     $datos->dispositivo = $row['id_tipo_dispositivo'];
                     $datos->marca       = $row['id_marca'];
                     $datos->tipo_servicio = $row['id_tipo_servicio'];
@@ -41,10 +43,9 @@
                     $datos->estado       = $row['id_estado_producto'];
                     $datos->falla        = $row['falla'];
                     $datos->fecha        = $row['fecha'];
-
-                    array_push($servicio, $datos);
                 }
-                return $servicio;
+
+                return $datos;
             } catch (PDOException $e) {
                 return ['mensaje' => $e];
             }
@@ -62,14 +63,14 @@
                 JOIN estado_productos AS e ON e.id_estado_producto = s.id_estado_producto 
                 JOIN tipo_servicios AS ts ON ts.id_tipo_servicio = s.id_tipo_servicio
                 JOIN marcas AS  m ON m.id_marca = s.id_marca
-                JOIN tipo_dispositivos AS td ON  td.id_tipo_dispositivo = s.id_estado_producto 
+                JOIN tipo_dispositivos AS td ON  td.id_tipo_dispositivo = s.id_tipo_dispositivo
                 ORDER BY  id_servicio DESC';
                 $query = $this->database->conexion()->query($sql);
 
                 while ($row = $query->fetch()) {
                     $item =            new ServiciosModel();
                     $item->id            = $row['id_servicio'];
-                    $item->persona       = $row['nombre_persona'];
+                    $item->id_persona    = $row['nombre_persona'];
                     $item->dispositivo   = $row['nombre_tipo_dispositivo'];
                     $item->marca         = $row['nombre_marca'];
                     $item->tipo_servicio = $row['nombre_tipo_servicio'];
@@ -114,11 +115,13 @@
         public function update($datos)
         {
             try {
-                $sql = 'UPDATE servicios  SET  id_servicio = :id_servicio, id_persona = :id_persona, id_tipo_dispositivo = :id_tipo_dispositivo,
+                $sql = 'UPDATE servicios  SET   id_persona = :id_persona, id_tipo_dispositivo = :id_tipo_dispositivo,
                 id_marca = :id_marca, id_tipo_servicio = :id_tipo_servicio, codigo = :codigo,   id_estado_producto = :id_estado_producto,falla = :falla, fecha =:fecha
                  WHERE id_servicio = :id_servicio';
                 $prepare = $this->database->conexion()->prepare($sql);
                 $query = $prepare->execute([
+                    'id_servicio'            => $datos['id_servicio'],
+                    'id_persona'            => $datos['id_persona'],
                     'id_persona'            => $datos['id_persona'],
                     'id_tipo_dispositivo'   => $datos['id_tipo_dispositivo'],
                     'id_marca'              => $datos['id_marca'],
@@ -137,7 +140,7 @@
         }
         public function getPersona()
         {
-            return $this->persona;
+            return $this->id_persona;
         }
         public function getTipoDispositivo()
         {
@@ -167,9 +170,9 @@
         {
             return $this->fecha;
         }
-        public function setPersona($persona)
+        public function setPersona($id_persona)
         {
-            return $this->persona;
+            return $this->id_persona;
         }
         public function setTipoDispositivo($dispositivo)
         {

@@ -47,7 +47,7 @@ foreach ($registro as $cliente) {
             <div class="row text-start">
                 <div class="col-6 mb-2">
                     <label for="id_tipo_documento" class="form-label">Tipo de documento</label>
-                    <select class="form-select" aria-label="Default select example" value="<?= $tipo_documento ?>" name="id_tipo_documento" id="id_tipo_documento" required="required" disabled>
+                    <select class="form-select" aria-label="Default select example" value="<?= $tipo_documento ?>" name="id_tipo_documento" id="id_tipo_documento"  disabled>
                         <?php
                         foreach ($registros  as $datos) {
                             echo '<option value="' . $datos->getId() . '">' . $datos->getTipoDocumento() . '</option>';
@@ -57,28 +57,28 @@ foreach ($registro as $cliente) {
                 </div>
                 <div class="col-6 mb-2">
                     <label for="numero_documento" class="form-label">N° de documento</label>
-                    <input type="number" class="form-control" id="numero_documento" name="numero_documento" value="<?= $numero_documento ?>" disabled>
+                    <input type="number" class="form-control" id="numero_documento" name="numero_documento" value="<?= $numero_documento ?>" readonly>
                 </div>
                 <div class="col-6 mb-2">
                     <label for="primer_nombre" class="form-label">Primer Nombre</label>
-                    <input type="text" class="form-control" id="primer_nombre" name="primer_nombre" value="<?= $primer_nombre ?>" disabled>
+                    <input type="text" class="form-control" id="primer_nombre" name="primer_nombre" value="<?= $primer_nombre ?>" readonly>
                 </div>
                 <div class="col-6 mb-2">
                     <label for="segundo_nombre" class="form-label">Segundo Nombre</label>
-                    <input type="text" class="form-control" id="segundo_nombre" name="segundo_nombre" value="<?= $segundo_nombre ?>" disabled>
+                    <input type="text" class="form-control" id="segundo_nombre" name="segundo_nombre" value="<?= $segundo_nombre ?>" readonly>
                 </div>
                 <div class="col-6 mb-2">
                     <label for="primer_apellido" class="form-label">Primer Apellido</label>
-                    <input type="text" class="form-control" id="primer_apellido" name="primer_apellido" value="<?= $primer_apellido ?>" disabled>
+                    <input type="text" class="form-control" id="primer_apellido" name="primer_apellido" value="<?= $primer_apellido ?>" readonly>
                 </div>
                 <div class="col-6 mb-2">
                     <label for="segundo_apellido" class="form-label">Segundo Apellido</label>
-                    <input type="text" class="form-control" id="segundo_apellido" name="segundo_apellido" value="<?= $segundo_apellido ?>" disabled>
+                    <input type="text" class="form-control" id="segundo_apellido" name="segundo_apellido" value="<?= $segundo_apellido ?>" readonly>
 
                 </div>
                 <div class="col-3 mb-2">
                     <label for="sexo" class="form-label">Sexo</label>
-                    <select class="form-select" aria-label="Default select example" id="id_sexo" name="id_sexo" required="required" value="<?= $sexo ?>" disabled>
+                    <select class="form-select" aria-label="Default select example" id="id_sexo" name="id_sexo" required="required" value="<?= $sexo ?>" readonly>
                         <?php
                         foreach ($registro_sexo as $sexo) {
                             echo '<option value="' . $sexo->getId() . '">' . $sexo->getSexo() . '</option>';
@@ -88,11 +88,11 @@ foreach ($registro as $cliente) {
                 </div>
                 <div class="col-3 mb-2">
                     <label for="telefono" class="form-label">Telefono</label>
-                    <input type="tel" class="form-control" id="telefono" name="telefono" value="<?= $telefono ?>" disabled>
+                    <input type="tel" class="form-control" id="telefono" name="telefono" value="<?= $telefono ?>" readonly>
                 </div>
                 <div class="col-6 mb-2">
                     <label for="id_ciudad" class="form-label">Ciudad</label>
-                    <select class="form-select" aria-label="Default select example" id="id_ciudad" name="id_ciudad" value="<?= $ciudad ?> " disabled>
+                    <select class="form-select" aria-label="Default select example" id="id_ciudad" name="id_ciudad" value="<?= $ciudad ?> " readonly>
                         <option selected>Seleccionar</option>
                         <?php
                         foreach ($data as $valores) {
@@ -103,11 +103,11 @@ foreach ($registro as $cliente) {
                 </div>
                 <div class="col-6 mb-2">
                     <label for="direccion" class="form-label ">Dirección</label>
-                    <input type="text" class="form-control" id="direccion" name="direccion" value="<?= $direccion ?>" disabled>
+                    <input type="text" class="form-control" id="direccion" name="direccion" value="<?= $direccion ?>" readonly>
                 </div>
                 <div class="col-6 mb-2">
                     <label for="correo" class="form-label ">E-mail</label>
-                    <input type="text" class="form-control" id="correo" name="correo" value="<?= $correo ?>" disabled>
+                    <input type="text" class="form-control" id="correo" name="correo" value="<?= $correo ?>" readonly>
                 </div>
             </div>
              

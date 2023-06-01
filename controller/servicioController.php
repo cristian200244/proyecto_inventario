@@ -55,12 +55,13 @@ class ServiciosController
     public function show()
     {
         $id = $_REQUEST['id_servicio'];
-        header("Location: ../views/servicios/update.php?id_servicio=". $id);
+        header("Location: ../views/servicios/update.php?id_servicio=" . $id);
     }
     public function update()
     {
         $datos = [
-            'id_servicio'           => $_REQUEST['id_servicio'],
+
+            'id_servicio'            => $_REQUEST['id_servicio'],
             'id_persona'            => $_REQUEST['id_persona'],
             'id_tipo_dispositivo'   => $_REQUEST['id_tipo_dispositivo'],
             'id_marca'              => $_REQUEST['id_marca'],

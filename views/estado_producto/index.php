@@ -24,9 +24,9 @@ foreach ($registros as $estado_producto) {
         <hr>
         <?php include_once(BASE_DIR . '../../views/main/partials/menu.php'); ?>
         <hr>
-        <h1 class="h3 mb-4 text-gray-800 text-left">Esatdos Del Dispositivo <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <h1 class="h3 mb-4 text-gray-800 text-left">Esatdos Del Dispositivo <a type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                 <i class="bi bi-plus-circle-fill" style="font-size: 1.5rem; "></i>
-            </button></h1>
+            </a></h1>
         <div class="row">
             <div class="col">
                 <div class="collapse" id="collapseExample">
@@ -46,28 +46,8 @@ foreach ($registros as $estado_producto) {
                     </div>
                 </div>
                 <!-- Actualizacion de registro-->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualizar Registro </h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                     <div class="input-group ">
-                                        <input type="text" class="form-control" id="estado_actualizado" name="estado"  >
 
-                                    </div>
-                                    <div class="modal-footer">  
-                                        <a   class="btn btn-outline-success" data-bs-dismiss="modal"  onclick="recarga(<?= $estado_producto->getId() ?>) ">Actualizar</a>
-                                        <!-- <button type="button" class="btn btn-outline-primary">Cancelar</button> -->
-                                    </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>    
+                <br>
                 <table class="table">
                     <thead>
                         <tr>
@@ -87,14 +67,35 @@ foreach ($registros as $estado_producto) {
                                 <tr>
                                     <th><?= $pos ?></th>
                                     <td>
-                                    <span id="estado_dispositivo<?= $estado_producto->getId() ?>"><?= $estado_producto->getEstado() ?></span>
+                                        <span id="estado_dispositivo<?= $estado_producto->getId() ?>"><?= $estado_producto->getEstado() ?></span>
                                     </td>
                                     <td>
-                                    <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_estado_<?= $estado_producto->getId() ?>" onclick="update(<?= $estado_producto->getId() ?>)">Actualizar</a>
+                                        <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_estado_<?= $estado_producto->getId() ?>" onclick="update(<?= $estado_producto->getId() ?>)">Actualizar</a>
                                         <a type="button" class="btn btn-sm btn-outline-danger" href="../../controller/estadoProductoController.php?c=4&id_estado_producto=<?= $estado_producto->getId() ?>">Eliminar</a>
                                     </td>
 
                                 </tr>
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualizar Registro </h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="input-group ">
+                                                    <input type="text" class="form-control" id="estado_actualizado" name="estado">
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a class="btn btn-outline-success" data-bs-dismiss="modal" onclick="recarga(<?= $estado_producto->getId() ?>) ">Actualizar</a>
+                                                    <!-- <button type="button" class="btn btn-outline-primary">Cancelar</button> -->
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             <?php
                                 $pos++;
                             }

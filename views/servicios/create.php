@@ -102,7 +102,7 @@ $fecha = date('y-m-d');
                     </div>
                     <div class="col-md-4">
                         <label for="fecha" class="form-label">Fecha</label>
-                        <input type="text" class="form-control" id="fecha" name="fecha" value="<?= $fecha?>" readonly>
+                        <input type="text" class="form-control" id="fecha" name="fecha" value="<?= $fecha ?>" readonly>
                     </div>
                     <div class="col-md-12">
                         <label for="falla" class="form-label">Falla</label>

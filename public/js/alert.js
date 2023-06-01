@@ -10,7 +10,7 @@ function AlertDelete(id_persona) {
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: "../../Controller/clienteController.php?c=4&id_personas=" + id_persona,
+                url: "../../Controller/clienteController.php?c=4&id_persona=" + id_persona,
                 success: function(r) {
                     document.location.reload();
                 }
