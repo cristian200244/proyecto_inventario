@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -42,6 +40,8 @@
             
                 <nav class="navbar navbar-expand navbar-light bg-ligth topbar mb-4 static-top shadow ">
                     <h2 class="text-dark  ml-2 text">Control De Inventario</h2>
+
+                   
                   
                     <!-- <button type="button"  class="btn btn-primary ml-auto mr-4 p-2 g-col-6" ><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                     
@@ -65,22 +65,25 @@
             </li>
 
             <li>
-                <a class="dropdown-item" href="<?= BASE_URL ?>../index.php?c=6">
+                <a class="dropdown-item" href="<?= BASE_URL ?>../index.php?c=6"   src="public/js/cerrar.js"></script>
                     <i class="fa-solid fa-hand fa-shake" style="color: #FF4633 ; padding-left: 8%; padding-right:8%;"></i>
                     Cerrar Sesión
+                  
                 </a>
             </li>
+            
         </ul>
 
     </li>
 </ul>
 
         </nav>
+        <script src="public/js/cerrar.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                
     
                 <!-- <h1>Salir</h1>
     <a href="../../index.php" class="btn" >inicio</a> -->
 
    
-
   
