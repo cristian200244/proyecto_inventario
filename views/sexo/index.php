@@ -21,9 +21,9 @@ foreach ($registro_sexo as $sexo) {
         <hr>
         <?php include_once(BASE_DIR . '../../views/main/partials/menu.php'); ?>
         <hr>
-        <h1 class="h3 mb-4 text-gray-800 text-left">Sexo <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <h1 class="h3 mb-4 text-gray-800 text-left">Sexo <a type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                 <i class="bi bi-plus-circle-fill" style="font-size: 1.5rem; "></i>
-            </button></h1>
+            </a></h1>
         <div class="row">
             <div class="col">
                 <div class="collapse" id="collapseExample">
@@ -42,26 +42,7 @@ foreach ($registro_sexo as $sexo) {
                         </div>
                     </div>
                 </div>
-                <!-- Actualizacion de registro-->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualizar Registro </h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="input-group ">
-                                    <input type="text" class="form-control" id="nombre_actualizado" name="nombre">
-                                </div>
-                                <div class="modal-footer">
-                                    <a   class="btn btn-sm btn-outline-success" data-bs-dismiss="modal" onclick="recarga(<?= $sexo->getId() ?>)">Actualizar</a>
-                                </div>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <br>
                 <table class="table">
                     <thead>
@@ -82,14 +63,34 @@ foreach ($registro_sexo as $sexo) {
                                 <tr>
                                     <th><?= $pos ?></th>
                                     <td>
-                                       <span id="sexo_<?= $sexo->getId()?>"> <?= $sexo->getSexo() ?> </span>
+                                        <span id="sexo_<?= $sexo->getId() ?>"> <?= $sexo->getSexo() ?> </span>
                                     </td>
                                     <td>
-                                        <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_sexo_<?= $sexo->getId()?>" onclick="update(<?= $sexo->getId()?>)" >Actualizar</a>
+                                        <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_sexo_<?= $sexo->getId() ?>" onclick="update(<?= $sexo->getId() ?>)">Actualizar</a>
                                         <a type="button" class="btn btn-sm btn-outline-danger" href="../../controller/sexoControlller.php?c=4&id_sexo=<?= $sexo->getId() ?>">Eliminar</a>
                                     </td>
 
                                 </tr>
+                                <!-- Actualizacion de registro-->
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualizar Registro </h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="input-group ">
+                                                    <input type="text" class="form-control" id="nombre_actualizado" name="nombre">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a class="btn btn-sm btn-outline-success" data-bs-dismiss="modal" onclick="recarga(<?= $sexo->getId() ?>)">Actualizar</a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             <?php
                                 $pos++;
                             }

@@ -41,7 +41,6 @@ foreach ($registro as $cliente) {
     <form method="POST" action="../../controller/clienteController.php?c=3&id_persona=<?= $id_persona ?>">
         <div class="container text-center">
         <a type="button" class="btn  border-primary float-start" href="index.php"><i class="bi bi-arrow-return-left"></i></a>
-            <button type="submit" class="btn btn-outline-info ml-2 float-start">Actualizar Cliente</button>
             <h1 class="h2 mb-4  text-center">Actualizar Datos Del Cliente </h1>
             <hr class="bg-info">
             <div class="row text-start">
@@ -103,7 +102,9 @@ foreach ($registro as $cliente) {
                     <input type="text" class="form-control" id="correo" name="correo" value="<?= $correo ?>">
                 </div>
             </div>
+            <button type="submit" class="btn btn-outline-info ml-2 float-center">Actualizar Cliente</button>
         </div>
+
     </form>
 </div>
 <!-- /.container-fluid -->

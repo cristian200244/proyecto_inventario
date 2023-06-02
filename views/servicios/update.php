@@ -26,20 +26,20 @@ $tipo_dispositivos = new Dispositivos();
 $registro_tipo_dispositivos = $tipo_dispositivos->getAll();
 
 $servicio  = new ServiciosModel();
-$registro_servicios = $servicio->getById($_REQUEST['id_servicio']);
-foreach ($registro_servicios as $services) {
-    $id              = $services->getId();
-    $persona         = $services->getPersona();
-    $dispositivo     = $services->getTipoDispositivo();
-    $marca           = $services->getMarca();
-    $tipo_servicio   = $services->getTipoServicio();
-    $codigo          = $services->getCodigo();
-    $estado          = $services->getEstadoProducto();
-    $fecha           = $services->getFecha();
-    $falla           = $services->getFalla();
-}
- 
+$services = $servicio->getById($_REQUEST['id_servicio']);
+
+$id              = $services->getId();
+$persona         = $services->getPersona();
+$dispositivo     = $services->getTipoDispositivo();
+$marca           = $services->getMarca();
+$tipo_servicio   = $services->getTipoServicio();
+$codigo          = $services->getCodigo();
+$estado          = $services->getEstadoProducto();
+$fecha           = $services->getFecha();
+$falla           = $services->getFalla();
+
 ?>
+
 
 
 <!-- Begin Page Content -->
@@ -47,9 +47,10 @@ foreach ($registro_servicios as $services) {
     <div class="row">
         <div class="col">
             <div class="container text-center">
+                <a type="button" class="btn  border-primary float-start mt-2" href="index.php"><i class="bi bi-arrow-return-left"></i></a>
                 <h1 class="h2 mb-4  text-center">Actualizacion Del Servicio</h1>
                 <hr>
-                <form class="row g-3" action="../../controller/servicioController.php?c=3" method="post">
+                <form class="row g-3" action="../../controller/servicioController.php?c=3&id_servicio=<?= $id ?>" method="post">
                     <div class="col-12">
                         <label for="id_persona" class="form-label">Nombre Completo Del Cliente</label>
                         <select class="form-select persona" aria-label="Default select example" name="id_persona" id="id_persona">
@@ -93,7 +94,7 @@ foreach ($registro_servicios as $services) {
                         <label for="id_tipo_servicio" class="form-label">Servicio</label>
                         <select class="form-select" aria-label="Default select example" name="id_tipo_servicio" id="id_tipo_servicio">
                             <?php foreach ($registros_services as $registro_de_servicios) : ?>
-                                <option value="<?= $registro_de_servicios->getId() ?>" <?= $registro_de_servicios->getId() == $services->getTipoServicio() ? 'selected' :  "" ?> ><?= $registro_de_servicios->getServicio() ?></option>
+                                <option value="<?= $registro_de_servicios->getId() ?>" <?= $registro_de_servicios->getId() == $services->getTipoServicio() ? 'selected' :  "" ?>><?= $registro_de_servicios->getServicio() ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>
@@ -103,10 +104,10 @@ foreach ($registro_servicios as $services) {
                     </div>
                     <div class="col-md-12">
                         <label for="falla" class="form-label">Falla</label>
-                        <textarea class="form-control" id="falla" rows="4" name="falla" placeholder="limite 500 caracteres" > <?= $falla ?></textarea>
+                        <textarea class="form-control" id="falla" rows="4" name="falla" placeholder="limite 500 caracteres"> <?= $falla ?></textarea>
                     </div>
                     <div class="col-12">
-                        <button type="submit" class="btn btn-outline-info">Actualizar</button>
+                        <button type="submit" class="btn btn-outline-info">Actualizar Servicio</button>
                     </div>
                 </form>
             </div>

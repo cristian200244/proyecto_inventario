@@ -64,7 +64,7 @@ class Marcas
             $sql = 'INSERT INTO marcas (nombre) VALUES (:nombre) ';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
-                'nombre' => $datos['nombre']
+                'nombre' => trim($datos['nombre'])
             ]);
             if ($query) {
                 return true;
