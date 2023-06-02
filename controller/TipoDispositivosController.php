@@ -2,7 +2,7 @@
 
 require_once '../models/TipoDispositivosModel.php';
 $controller = new DispositivoController;
-class DispositivoController 
+class DispositivoController
 {
 
     private $dispositivo;
@@ -14,7 +14,7 @@ class DispositivoController
         if (isset($_REQUEST['c'])) {
             switch ($_REQUEST['c']) {
                 case '1': //Almacenar en la base de datos
-                    self::store(); 
+                    self::store();
                     break;
                 case '2': //ver usuario
                     self::show();
@@ -68,8 +68,7 @@ class DispositivoController
         $result = $this->dispositivo->update($datos);
 
         if ($result) {
-            echo json_encode(array('succes'=>1,'nombre'=>$datos['nombre']));
+            echo json_encode(array('succes' => 1, 'nombre' => $datos['nombre']));
         }
-        
     }
 }

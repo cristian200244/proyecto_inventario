@@ -7,7 +7,7 @@ $datos = new ServiciosModel();
 $registro = $datos->getAll();
 
 ?>
-
+ 
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -19,7 +19,7 @@ $registro = $datos->getAll();
             <button class="btn btn-outline-success me-2" type="submit">Search</button>
         </form>
     </h1>
-
+    
     <table class="table table-striped">
         <thead>
             <tr>
