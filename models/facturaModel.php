@@ -11,7 +11,6 @@ class Factura{
    private $dispositivo;
    private $tipo_servicio;
    private $fecha;
-   private $hora;
    private $precio;
    private $total;
    private $database;
@@ -33,13 +32,12 @@ class Factura{
 
                 while ($row = $query->fetch()) {
                     $datos = new Factura();
-                    $datos->persona      = $row['id_persona'];
-                    $datos->tipo_servicio = $row['id_tipo_servicio'];
-                    $datos->dispositivo  = $row['id_tipo_dispositivo'];
-                    $datos->fecha        = $row['fecha'];
-                    $datos->hora         = $row['hora'];
-                    $datos->precio       = $row['precio'];
-                    $datos->total        = $row['total'];
+                    $datos->persona       = $row['id_persona'];
+                    $datos->tipo_servicio = $row['id_servicio'];
+                    $datos->dispositivo   = $row['id_tipo_dispositivo'];
+                    $datos->fecha         = $row['fecha'];
+                    $datos->precio        = $row['precio'];
+                    $datos->total         = $row['total'];
                     array_push($factura, $datos);
                 }
                 return $factura;
@@ -53,23 +51,23 @@ class Factura{
 
             try {
                 $sql = 'SELECT f.id_factura,
-                CONCAT(p.primer_nombre, " ", segundo_nombre, " ", primer_apellido, " ", segundo_apellido) AS persona, td.nombre , f.fecha, f.hora, f.precio,f.total
+                CONCAT(p.primer_nombre, " ", segundo_nombre, " ", primer_apellido, " ", segundo_apellido) AS persona,ts.servicio , td.nombre , f.fecha, f.precio,f.total
                 FROM facturas AS f
                 JOIN personas AS p ON p.id_persona = f.id_persona
                 JOIN servicios AS s ON s.id_servicio = f.id_servicio
                 JOIN tipo_dispositivos AS td ON  td.id_tipo_dispositivo = f.id_tipo_dispositivo
+                JOIN tipo_servicios AS ts ON ts.id_tipo_servicio = s.id_tipo_servicio
                 ORDER BY  id_factura DESC';
                 $query = $this->database->conexion()->query($sql);
 
                 while ($row = $query->fetch()) {
                     $item =            new Factura();
-                    $item->id            = $row['id_servicio'];
-                    $item->persona       = $row['nombre_persona'];
-                    $item->dispositivo   = $row['nombre_tipo_dispositivo'];
-                    $item->tipo_servicio = $row['nombre_tipo_servicio'];
+                    $item->id            = $row['id_factura'];
+                    $item->persona       = $row['persona'];
+                    $item->dispositivo   = $row['nombre'];
+                    $item->tipo_servicio = $row['servicio'];
                     $item->fecha         = $row['fecha'];
-                    $item->hora         = $row['hora'];
-                    $item->precio         = $row['precio'];
+                    $item->precio        = $row['precio'];
                     $item->total         = $row['total'];
                     array_push($items, $item);
                 }
@@ -83,18 +81,16 @@ class Factura{
         {
 
             try {
-                $sql = 'INSERT INTO facturas(id_factura ,id_persona ,id_servicio ,id_tipo_servicio ,fecha ,hora ,precio ,total )
-                 VALUES  (:id_factura ,:id_persona ,:id_tipo_dispositivo ,:id_tipo_servicio ,:fecha ,:hora ,:precio ,:total)';
+                $sql = 'INSERT INTO facturas(id_persona ,id_servicio ,id_tipo_dispositivo ,fecha  ,precio ,total )
+                 VALUES  (:id_persona ,:id_servicio ,:id_tipo_dispositivo ,:fecha  ,:precio ,:total)';
                 $prepare = $this->database->conexion()->prepare($sql);
                 $query = $prepare->execute([
-
-                    'id'                 => $datos['id_persona'],
-                    'tipo_dispositivo'   => $datos['id_tipo_dispositivo'],
-                    'tipo_servicio'      => $datos['id_tipo_servicio'],
-                    'fecha'              => $datos['fecha'],
-                    'hora'               => $datos['hora'],
-                    'precio'             => $datos['precio'],
-                    'total'              => $datos['total']
+                    'id_persona'            => $datos['id_persona'],
+                    'id_tipo_dispositivo'   => $datos['id_tipo_dispositivo'],
+                    'id_servicio'           => $datos['id_servicio'],
+                    'fecha'                 => $datos['fecha'],
+                    'precio'                => $datos['precio'],
+                    'total'                 => $datos['total']
                 ]);
                 if ($query) {
                     return true;
@@ -103,18 +99,6 @@ class Factura{
                 die($e->getMessage());
             }
         }
-  public function crearFactura($tipo_servicio, $persona, $total) {
-    $fecha = date('Y-m-d');
-
-    $sql = "INSERT INTO facturas (id_factura, id_persona,id_servicio,precio, total, fecha) VALUES (:id_persona, :id_tipo_dispositivo, :id_tipo_servicio, :fecha,:precio,:total,:hora)";
-    $result = $this->database->conexion()->prepare($sql);
-
-    if ($result) {
-      return true;
-    } else {
-      return false;
-    }
-  }
   public function getPersona()
         {
             return $this->persona;
@@ -131,7 +115,15 @@ class Factura{
         {
             return $this->fecha;
         }
-        public function setPersona($persona)
+        public function getPrecio()
+        {
+            return $this->precio;
+        }
+        public function getTotal()
+        {
+            return $this->total;
+        }
+        public function setPersona()
         {
             return $this->persona;
         }
@@ -147,6 +139,13 @@ class Factura{
         {
             return $this->fecha;
         }
-
+        public function setTotal($total)
+        {
+            return $this->total;
+        }
+        public function setPrecio($precio)
+        {
+            return $this->precio;
+        }
  
 }

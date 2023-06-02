@@ -14,8 +14,8 @@ $registro_servicios = $servicio->getAll();
 
 $tipo_dispositivos = new Dispositivos();
 $registro_tipo_dispositivos = $tipo_dispositivos->getAll();
+
 $fecha = date('y-m-d');
-$hora  = date("g:i A")
 ?>
 <div class="container-fluid">
 
@@ -29,10 +29,10 @@ $hora  = date("g:i A")
             <div class="row">
              
                 <hr>
- <form class="row g-3" action="../../controller/facturaController.php?c=1" method="post">
+         <form class="row g-3" action="../../controller/facturaController.php?c=1" method="post">
                 <div class="col-6">
                     <div class="titulo" id="Nombre_completo">NOMBRE COMPLETO: </div>
-                    <select class="form-select" aria-label="Default select example" name="id_persona" id="id_persona">
+                    <select class="form-select persona" aria-label="Default select example" name="id_persona" id="id_persona">
                             <?php
                             foreach ($nombre as $nombreCompleto) {
                                 echo '<option value="' . $nombreCompleto->getId() . '">' . $nombreCompleto->NombreCompleto() . '</option>';
@@ -43,7 +43,7 @@ $hora  = date("g:i A")
                 </div>
                 <div class="col-6">
                     <div class="titulo" id="tipo_servicio">TIPO DE SERVICIO: </div>
-                    <select class="form-select" aria-label="Default select example" name="id_tipo_servicio" id="id_tipo_servicio">
+                    <select class="form-select" aria-label="Default select example" name="id_servicio" id="id_servicio">
                             <option selected>Seleccionar</option>
                             <?php
                             foreach ($registro_servicios as $servicio) {
@@ -67,25 +67,19 @@ $hora  = date("g:i A")
 
                 <div class="col-md-4">
                         <label for="fecha" class="form-label">FECHA</label>
-                        <input type="text" class="form-control" id="fecha" name="fecha" value="<?= $fecha?>" readonly>
-                    </div>
-
-
-                    <div class="col-md-4">
-                        <label for="fecha" class="form-label">HORA</label>
-                        <input type="text" class="form-control" id="hora" name="hora" value="<?= $hora?>" readonly >
+                        <input type="text" class="form-control" id="fecha" name="fecha" value="<?= $fecha?>" readonly >
                     </div>
 
                 <div class="col-6">
                     <div class="titulo" id="precio">PRECIO U:</div>
-                    <input class="form-control"  id="precio" type="number"  value="">
+                    <input class="form-control"  id="precio" name="precio" type="number" >
                 </div>
 
 
 
                 <div class="col-6">
                     <div class="titulo" id="total">TOTAL:</div>
-                    <input class="form-control"   id="total" type="number"  value="">
+                    <input class="form-control" name="total"  id="total" type="number" >
                 </div>
 
                 <p>
@@ -95,7 +89,8 @@ $hora  = date("g:i A")
                         <button type="submit" class="btn btn-outline-info ml-2">Crear</button>
                 </div>
                         </div>
-</div>
+             </form>
+           </div>
 <!-- /.container-fluid -->
 
 

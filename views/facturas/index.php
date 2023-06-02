@@ -13,7 +13,7 @@ $registro = $datos->getAll();
 
     <button type="button" class="btn  border-primary float-right mr-5  ">
         <a href="<?= BASE_URL ?>./views/facturas/create.php"> <i class="bi bi-person-plus" style="font-size: 1.2rem; "></i></a></button>
-    <h1 class="h3 mb-4 text-gray-800 ">Servicios Relizados
+    <h1 class="h3 mb-4 text-gray-800 ">Facturas Relizadas
         <form class="d-flex float-end" role="search">
             <input class="form-control me-1" type="search" placeholder="buscar " aria-label="Search">
             <button class="btn btn-outline-success me-2" type="submit">Search</button>
@@ -27,8 +27,8 @@ $registro = $datos->getAll();
                 <th scope="col">Cliente</th>
                 <th scope="col">Dispositivo</th>
                 <th scope="col">Servicio</th>
-                <th scope="col">Marca</th>
-                <th scope="col">Estado</th>
+                <th scope="col">fecha</th>
+                <th scope="col">total</th>
              
             </tr>
         </thead>
@@ -47,9 +47,8 @@ $registro = $datos->getAll();
                         <td><?= $row->getPersona() ?></td>
                         <td><?= $row->getTipoDispositivo() ?></td>
                         <td><?= $row->getTipoServicio() ?></td>
-                        <td><?= $row->getMarca() ?></td>
-                        <td><?= $row->getEstadoProducto() ?></td>
-    
+                        <td><?= $row->getFecha() ?></td>
+                        <td><?= $row->getTotal() ?></td>
                 
                     </tr>
                 <?php
