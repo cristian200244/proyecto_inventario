@@ -67,6 +67,9 @@ class Usuario extends stdClass
         }
     }
 
+   
+    
+
     public function getAll()
     {
         $items = [];

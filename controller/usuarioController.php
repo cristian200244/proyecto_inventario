@@ -72,6 +72,7 @@ class UsuarioController
         }
     }
 
+    
 
 
 
@@ -97,7 +98,7 @@ class UsuarioController
             'correo'            => $_REQUEST['correo'],
             'direccion'         => $_REQUEST['direccion'],
             'correo'            => $_REQUEST['correo'],
-            'password'          => $_REQUEST['password'],
+          
 
         ];
         $result = $this->usuario->store($datos);
@@ -172,3 +173,37 @@ class UsuarioController
     
     
 }
+
+// $stmt = $pdo->prepare('SELECT COUNT(correo) AS EmailCount FROM personas WHERE correo = :correo');
+// $stmt->execute(array('correo' => $_POST['correo']));
+// $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// if ($result['correo'] == 0) {
+//     $stmt = $pdo->prepare('INSERT INTO correo (correo) VALUES (:correo)');
+//     $stmt->execute(array('correo' => $_POST['correo']));
+//     echo 'Thank you for Submitting. Redirecting back to Home Page';
+// } else {
+//     echo 'E-mail exists!';
+// }
+
+
+
+
+// $correo = $_POST['correo'];
+// $contraseña= $_POST['password'];
+
+// $query = "INSERT INTO personas(, correo,contraseña
+// VALUE ('$correo','$contraseña')";
+
+// //verifica que el correo no se repita en la base de datos
+// $verificar_correo =mysqli_query($conexion, "SELECT * FROM personas WHERE correo='$correo'");
+
+// if (mysqli_num_rows($verificar_correo)> 0) {
+//     echo' <script>
+//     alert("Este correo ya esta registrado, intenta con otro diferente");
+//     window.location = "../register.php"
+//     </script>'; 
+   
+// }
+
+

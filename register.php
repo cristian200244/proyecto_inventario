@@ -16,6 +16,9 @@ $data_sexo = $sexo->getAll();
 $roles = new Roles();
 $data_rol = $roles->getAll();
 
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -41,7 +44,7 @@ $data_rol = $roles->getAll();
 
         <!-- Page Heading -->
 
-        <form action="controller/usuarioController.php" method="POST">
+        <form action="controller/usuarioController.php" id="correo" method="POST">
             <input type="hidden" name="c" value="1">
             <div class="container text-center">
                 <h1 class="h2 mb-4  text-center">Crear Usuario</h1>
@@ -125,23 +128,23 @@ $data_rol = $roles->getAll();
 
                     </div>
 
-                    <div class="col-6 mb-2">
+                    <!-- <div class="col-6 mb-2">
                         <label for="id_rol" class="form-label">Roles</label>
                         <select class="form-select" aria-label="Default select example" id="id_rol" name="id_rol" required="required">
                             <option selected>Seleccionar</option>
-                            <?php
+                            
                             foreach ($data_rol as $valores) {
                                 echo '<option value="' . $valores->getId() . '">' . $valores->getRol() . '</option>';
                             }
                             ?>
                         </select>
-                    </div>
+                    </div> -->
 
 
-                    <div class="col-6 mb-2">
+                    <!-- <div class="col-6 mb-2">
                         <label for="password" class="form-label ">Contraseña</label>
                         <input type="password" class="form-control" id="password" name="password">
-                    </div>
+                    </div> -->
 
                 </div>
                 <br>
