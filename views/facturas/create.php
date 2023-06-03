@@ -71,13 +71,6 @@ $fecha = date('y-m-d');
                     </div>
 
                 <div class="col-6">
-                    <div class="titulo" id="precio">PRECIO U:</div>
-                    <input class="form-control"  id="precio" name="precio" type="number" >
-                </div>
-
-
-
-                <div class="col-6">
                     <div class="titulo" id="total">TOTAL:</div>
                     <input class="form-control" name="total"  id="total" type="number" >
                 </div>
@@ -96,7 +89,7 @@ $fecha = date('y-m-d');
 
 <script>
     $(document).ready(function() {
-        $('.persona').select2();
+        $('.idpersona').select2();
     });
 </script>
 

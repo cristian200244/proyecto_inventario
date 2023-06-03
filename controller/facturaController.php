@@ -33,7 +33,6 @@ class facturaControllers
             'id_tipo_dispositivo'  => $_REQUEST['id_tipo_dispositivo'],
             'id_servicio'          => $_REQUEST['id_servicio'],
             'fecha'                => $_REQUEST['fecha'],
-            'precio'               => $_REQUEST['precio'],
             'total'                => $_REQUEST['total']
         ];
         $result = $this->factura->store($datos);
