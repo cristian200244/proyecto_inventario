@@ -41,7 +41,7 @@ class UsuarioController
         }
     }
 
-
+   
 
     public function InciarSesion()
     {
@@ -73,7 +73,7 @@ class UsuarioController
     }
 
     
-
+ 
 
 
     public function index()
@@ -103,10 +103,11 @@ class UsuarioController
         ];
         $result = $this->usuario->store($datos);
         if ($result) {
-            header("Location: ../views/clientes/index.php");
+            header("Location: ../index.php");
             exit();
         } else {
             echo $error = "Ocurrió un error";
+           
         }
     }
 
@@ -164,10 +165,13 @@ class UsuarioController
 
     @session_start();
     session_destroy();
-    header("Location: ../index.php");
+    exit();
+    header("Location: ../index.php" );
+
+    
       
     }
-
+    
   
    
     

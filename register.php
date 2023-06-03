@@ -37,14 +37,14 @@ $data_rol = $roles->getAll();
     <link href="<?= BASE_URL ?> ../public/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
-
+ 
 <body class="bg-light">
 
     <div class="container-fluid">
 
         <!-- Page Heading -->
 
-        <form action="controller/usuarioController.php" id="correo" method="POST">
+        <form action="controller/usuarioController.php"  method="POST">
             <input type="hidden" name="c" value="1">
             <div class="container text-center">
                 <h1 class="h2 mb-4  text-center">Crear Usuario</h1>
@@ -148,11 +148,15 @@ $data_rol = $roles->getAll();
 
                 </div>
                 <br>
-                <button type="submit" class="btn btn-outline-info ml-2">Guardar Usuario</button>
+                <button onclick="user()" type="submit" class="btn btn-outline-info ml-2">Guardar Usuario</button>
+             
             </div>
         </form>
 
     </div>
+    <script src="public/js/register.js">
+        
+    </script>
 </body>
 
 </html>

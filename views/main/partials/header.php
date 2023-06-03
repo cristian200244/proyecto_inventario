@@ -20,14 +20,8 @@
     <link href="../../public/css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../public/css/style.css">
     <link href="../../public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"> 
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-
 </head>
 
 <body id="page-top " >
@@ -41,49 +35,33 @@
                 <nav class="navbar navbar-expand navbar-light bg-ligth topbar mb-4 static-top shadow ">
                     <h2 class="text-dark  ml-2 text">Control De Inventario</h2>
 
-                   
-                  
-                    <!-- <button type="button"  class="btn btn-primary ml-auto mr-4 p-2 g-col-6" ><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
-                    
-                <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
-                <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
-            </svg> </button > -->
-
 
          
-<ul class="navbar-nav ms-auto ms-md-0 me-5 me-lg-7">
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-             
+                    <ul class="navbar-nav ms-auto ms-md-0 me-5 me-lg-7">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
 
-            <!-- <input type="hidden" name="c" value="5"> -->
-           
-        
-            <li>
-                <hr class="dropdown-divider" />
-            </li>
+                                <li>
+                                    <a class="dropdown-item" href="<?= BASE_URL ?>/index.php?c=6" onclick="salirSistema()">
+                                        <i class="fa-solid fa-hand fa-shake" style="color: #FF4633 ; padding-left: 8%; padding-right:8%;"></i>
+                                        Cerrar Sesión
+                                    </a>
+                                </li>
+                                
+                            </ul>
 
-            <li>
-                <a class="dropdown-item" href="<?= BASE_URL ?>../index.php?c=6"   src="public/js/cerrar.js"></script>
-                    <i class="fa-solid fa-hand fa-shake" style="color: #FF4633 ; padding-left: 8%; padding-right:8%;"></i>
-                    Cerrar Sesión
-                  
-                </a>
-            </li>
-            
-        </ul>
+                        </li>
+                    </ul>
 
-    </li>
-</ul>
-
-        </nav>
-        <script src="public/js/cerrar.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                 </nav>
+     
                
-    
-                <!-- <h1>Salir</h1>
-    <a href="../../index.php" class="btn" >inicio</a> -->
+     
 
    
   

@@ -66,7 +66,7 @@ if (isset($errorMessage)) { ?>
                                                 </div>
                                             </div>
                                         </div>
-                                        <button id="boton" type="submit" onclick="Swal.fire()" class="boton">Iniciar sesion</button>
+                                        <button id="boton" type="submit"    class="btn btn-info">Iniciar sesion</button>
 
                                     </form>
 
@@ -92,8 +92,8 @@ if (isset($errorMessage)) { ?>
 
     <script src="public/js/main.js">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="public/js/cerrarsesion.js"></script>
+      <script src="public/js/cerrar.js"></script>
+  
     
    
 
