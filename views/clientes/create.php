@@ -32,7 +32,7 @@ $registro_sexo = $datos_sexo->getAll();
                 <div class="col-6 mb-2">
                     <label for="id_tipo_documento" class="form-label">Tipo de documento</label>
                     <select class="form-select" aria-label="Default select example" name="id_tipo_documento" id="id_tipo_documento" required="required">
-                        <option selected>Seleccionar</option>
+                        <option selected value="">Seleccionar</option>
                         <?php
                         foreach ($registro  as $datos) {
                             echo '<option value="' . $datos->getId() . '">' . $datos->getTipoDocumento() . '</option>';
@@ -42,32 +42,33 @@ $registro_sexo = $datos_sexo->getAll();
                 </div>
                 <div class="col-6 mb-2">
                     <label for="numero_documento" class="form-label">N° de documento</label>
-                    <input type="number" class="form-control" id="numero_documento" name="numero_documento">
+                    <input type="text" class="form-control" id="numero_documento" name="numero_documento"  oninput="restrictNumberInput(event)"  maxlength="10" required>
 
                 </div>
                 <div class="col-6 mb-2">
                     <label for="primer_nombre" class="form-label">Primer Nombre</label>
-                    <input type="text" class="form-control" id="primer_nombre" name="primer_nombre">
+                    <input type="text" class="form-control" id="primer_nombre" name="primer_nombre" oninput="restricForm(event)" maxlength="20" required>
 
                 </div>
                 <div class="col-6 mb-2">
                     <label for="segundo_nombre" class="form-label">Segundo Nombre</label>
-                    <input type="text" class="form-control" id="segundo_nombre" name="segundo_nombre">
+                    <input type="text" class="form-control" id="segundo_nombre" name="segundo_nombre" oninput="restricForm(event)" maxlength="20" >
                 </div>
                 <div class="col-6 mb-2">
                     <label for="primer_apellido" class="form-label">Primer Apellido</label>
-                    <input type="text" class="form-control" id="primer_apellido" name="primer_apellido">
+                    <input type="text" class="form-control" id="primer_apellido" name="primer_apellido" oninput="restricForm(event)" maxlength="30" required >
 
                 </div>
                 <div class="col-6 mb-2">
                     <label for="segundo_apellido" class="form-label">Segundo Apellido</label>
-                    <input type="text" class="form-control" id="segundo_apellido" name="segundo_apellido">
+                    <input type="text" class="form-control" id="segundo_apellido" name="segundo_apellido" oninput="restricForm(event)" maxlength="30"  >
 
                 </div>
                 <div class="col-3 mb-2">
                     <label for="sexo" class="form-label">Sexo</label>
                     <select class="form-select" aria-label="Default select example" id="id_sexo" name="id_sexo" required="required">
-                        <?php
+                    <option selected value="">Seleccionar</option>
+                      <?php
                         foreach ($registro_sexo as $sexo) {
                             echo '<option value="' . $sexo->getId() . '">' . $sexo->getSexo() . '</option>';
                         }
@@ -76,12 +77,12 @@ $registro_sexo = $datos_sexo->getAll();
                 </div>
                 <div class="col-3 mb-2">
                     <label for="telefono" class="form-label">Telefono</label>
-                    <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                    <input type="tel" class="form-control" id="telefono" name="telefono" oninput="restrictNumberInput(event)" maxlength="10" required>
                 </div>
                 <div class="col-6 mb-2">
-                    <label for="id_ciudad" class="form-label">Ciudad</label>
+                    <label for="id_ciudad" class="form-label">Ciudad De Residencia</label>
                     <select class="form-select" aria-label="Default select example" id="id_ciudad" name="id_ciudad" required="required">
-                        <option selected>Seleccionar</option>
+                        <option selected value="">Seleccionar</option>
                         <?php
                         foreach ($data as $valores) {
                             echo '<option value="' . $valores->getId() . '">' . $valores->getCiudad() . '</option>';
@@ -91,11 +92,11 @@ $registro_sexo = $datos_sexo->getAll();
                 </div>
                 <div class="col-6 mb-2">
                     <label for="direccion" class="form-label ">Dirección</label>
-                    <input type="text" class="form-control" id="direccion" name="direccion" required>
+                    <input type="text" class="form-control" id="direccion" name="direccion" oninput="restricAddres(event)" maxlength="140" required >
                 </div>
                 <div class="col-6 mb-2">
                     <label for="correo" class="form-label ">E-mail</label>
-                    <input type="text" class="form-control" id="correo" name="correo">
+                    <input type="email" class="form-control" id="correo" name="correo" >
                 </div>
             </div>
             <br>

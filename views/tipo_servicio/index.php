@@ -35,7 +35,7 @@ foreach ($registro as $servicios) {
                             <form action="../../controller/tipoServicioController.php" method="POST" onsubmit="submitFormServicio(event)" id="mi_form_servicio">
                                 <input type="hidden" name="c" value="1">
                                 <div class="input-group ">
-                                    <input type="text" class="form-control" id="servicio" name="servicio" placeholder="Ingrese un nuevo tipo de documento" oninput="restrictInput(event)" maxlength="30">
+                                    <input type="text" class="form-control" id="servicio" name="servicio" placeholder="Ingrese un nuevo tipo de documento" oninput="restrictInput(event)" maxlength="30" required>
                                      <button type="submit" class="btn btn-outline-primary"  data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                                     <i class="bi bi-send-plus-fill" style="font-size: 1.0rem; "></i>
                                 </button>

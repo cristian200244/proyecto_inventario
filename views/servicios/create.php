@@ -39,7 +39,7 @@ $fecha = date('y-m-d');
 
                     <div class="col-12">
                         <label for="id_persona" class="form-label">Nombre Completo Del Cliente</label>
-                        <select class="form-select persona" aria-label="Default select example" name="id_persona" id="id_persona">
+                        <select class="form-select" aria-label="Default select example" name="id_persona" id="id_persona">
                             <?php
                             foreach ($nombre as $nombreCompleto) {
                                 echo '<option value="' . $nombreCompleto->getId() . '">' . $nombreCompleto->NombreCompleto() . '</option>';

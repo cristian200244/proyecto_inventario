@@ -31,10 +31,10 @@ foreach ($registro as $dispositivos) {
                 <div class="collapse" id="collapseExample">
                     <div class="card card-body">
                         <div class="mb-3">
-                            <form action="../../controller/TipoDispositivosController.php" method="POST" onsubmit="submitForm(event)" id="myForm">
+                            <form action="../../controller/TipoDispositivosController.php" method="POST" >
                                 <input type="hidden" name="c" value="1">
                                 <div class=" input-group ">
-                                    <input type=" text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese un nuevo nuevo dispositivo" oninput="restrictInput(event)" maxlength="30">
+                                    <input type=" text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese un nuevo nuevo dispositivo" oninput="restrictInput(event)" maxlength="30" required>
                                     <button type="submit" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                                         <i class="bi bi-send-plus-fill" style="font-size: 1.0rem; "></i>
                                     </button>
