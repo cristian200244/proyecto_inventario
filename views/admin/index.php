@@ -6,10 +6,10 @@ require_once '../../models/usuarioModel.php';
 
 $datos = new Usuario();
 $registro = $datos->getAll();
-
-
+ 
 
 ?>
+<link rel="stylesheet" href="">
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -28,10 +28,10 @@ $registro = $datos->getAll();
                 <th scope="col">Ciudad</th>
                 <th scope="col">Dirección</th>
                 <th scope="col">Teléfono</th>
-                <th scope="col">Contraseña</th>
                 <th scope="col">sexo</th>
                 <th scope="col">Correo electrónico</th>
                 <th scope="col" colspan="3">Opciones</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -40,6 +40,7 @@ $registro = $datos->getAll();
                 $pos = 1;
 
                 foreach ($registro as $row) {
+                     
             ?>
                     <tr>
                         <th><?= $pos ?></th>
@@ -49,6 +50,8 @@ $registro = $datos->getAll();
                         <td><?= $row->getDireccion() ?></td>
                         <td><?= $row->getTelefono() ?></td>
                         <td><?= $row->getSexo() ?></td>
+                        
+                       
                         <td><?= $row->getCorreo() ?></td>
                         <td><button type="button" class="btn btn-outline-info"><a href="../../controller/clienteController.php?c=2&id=<?= $row->getId() ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
@@ -81,46 +84,32 @@ $registro = $datos->getAll();
     </table>
 
     </form>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-
-        <h4>Perfil de usuario</h4>
 
 
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                    <img src="https://w7.pngwing.com/pngs/627/693/png-transparent-computer-icons-user-user-icon-thumbnail.png" class="img-thumbnail ">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Administrador</h5>
-                        <table width="90%">
-                            <tbody>
-                                <tr>
-                                    <td width="30%"><b>Usuario:</b></td>
-                                    <td width="70%">admin</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Rol:</b></td>
-                                    <td>Administrador</td>
-                                </tr>
-                                <tr>
-                                    <td><b>Caja:</b></td>
-                                    <td>Tienda Central</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <!--<p class="card-text">admin</p>
-						<p class="card-text">Administrador2 mexichango negro y gay</p>
-						<p class="card-text">Tienda Central</p>-->
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <a href="" class="btn btn-success">Actualizar información</a>
-    </div>
-
+    <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">
+    <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Primer Nombre</th>
+                <th scope="col">Primer Apellido</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Teléfono</th>
+               
+                <th scope="col">sexo</th>
+                <th scope="col">Correo electrónico</th>
+                <th scope="col" colspan="3">Opciones</th>
+            </tr>
+        </thead>
+    </p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+  
 
 </div>
 

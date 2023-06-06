@@ -19,7 +19,8 @@ class Usuario extends stdClass
     private $direccion;
     private $telefono;
     private $database;
-    public $password;
+    private $password;
+    private $memberTable = 'usuarios';
 
 
     public function __construct()
@@ -97,6 +98,7 @@ class Usuario extends stdClass
                 $item->ciudad           = $row['id_ciudad'];
                 $item->correo           = $row['correo'];
                 $item->direccion        = $row['direccion'];
+                $item->password        = $row['password'];
 
 
                 array_push($items, $item);
@@ -113,8 +115,8 @@ class Usuario extends stdClass
     {
         
         try {
-            $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_sexo, telefono, id_ciudad, correo, direccion) 
-            VALUES(:id_tipo_documento, :numero_documento, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :id_sexo, :telefono, :id_ciudad, :correo, :direccion)';
+            $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_sexo, telefono, id_ciudad, correo, direccion, password) 
+            VALUES(:id_tipo_documento, :numero_documento, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :id_sexo, :telefono, :id_ciudad, :correo, :direccion, :password)';
 
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
@@ -132,6 +134,7 @@ class Usuario extends stdClass
                 'id_ciudad'         => $datos['id_ciudad'],
                 'correo'            => $datos['correo'],
                 'direccion'         => $datos['direccion'],
+                'password'         => $datos['password'],
             ]);
             if ($query) {
                 return true;
@@ -318,6 +321,11 @@ class Usuario extends stdClass
     {
         return $this->telefono;
     }
+    public function setPassword($password)
+    {
+        return $this->password;
+    }
+
 
 
     public function getUser($datos)
@@ -342,5 +350,23 @@ class Usuario extends stdClass
         } catch (PDOException $e) {
             die($e->getMessage());
         }
+
+        
+
+//antes de nada obtengo la contraseña y la cifro para insertarla
+$password = $_POST['password'];
+//y ahora cifro la clave usando un hash
+$pass_cifrada = password_hash($password, PASSWORD_DEFAULT, array("cost"=>10));
+
+
+
     }
+
+
+
+    
+
+
 }
+
+
