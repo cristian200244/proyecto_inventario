@@ -8,6 +8,7 @@ require_once 'conexionModel.php';
 class Factura{
    private $id;
    private $persona;
+   private $codigo;
    private $dispositivo;
    private $tipo_servicio;
    private $fecha;
@@ -32,6 +33,7 @@ class Factura{
                 while ($row = $query->fetch()) {
                     $datos = new Factura();
                     $datos->persona       = $row['id_persona'];
+                    $datos->codigo        = $row['codigo'];
                     $datos->tipo_servicio = $row['id_servicio'];
                     $datos->dispositivo   = $row['id_tipo_dispositivo'];
                     $datos->fecha         = $row['fecha'];
@@ -49,7 +51,7 @@ class Factura{
 
             try {
                 $sql = 'SELECT f.id_factura,
-                CONCAT(p.primer_nombre, " ", segundo_nombre, " ", primer_apellido, " ", segundo_apellido) AS persona,ts.servicio , td.nombre , f.fecha,f.total
+                CONCAT(p.primer_nombre, " ", segundo_nombre, " ", primer_apellido, " ", segundo_apellido) AS persona,s.codigo,ts.servicio , td.nombre , f.fecha,f.total
                 FROM facturas AS f
                 JOIN personas AS p ON p.id_persona = f.id_persona
                 JOIN servicios AS s ON s.id_servicio = f.id_servicio
@@ -62,6 +64,7 @@ class Factura{
                     $item =            new Factura();
                     $item->id            = $row['id_factura'];
                     $item->persona       = $row['persona'];
+                    $item->codigo        = $row['codigo'];
                     $item->dispositivo   = $row['nombre'];
                     $item->tipo_servicio = $row['servicio'];
                     $item->fecha         = $row['fecha'];
@@ -99,6 +102,10 @@ class Factura{
         {
             return $this->persona;
         }
+        public function getCodigo()
+        {
+            return $this->codigo;
+        }
         public function getTipoDispositivo()
         {
             return $this->dispositivo;
@@ -118,6 +125,10 @@ class Factura{
         public function setPersona($persona)
         {
             return $this->persona;
+        }
+        public function setCodigo($codigo)
+        {
+            return $this->codigo;
         }
         public function setTipoDispositivo($dispositivo)
         {

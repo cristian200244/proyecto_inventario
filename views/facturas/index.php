@@ -25,6 +25,7 @@ $registro = $datos->getAll();
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Cliente</th>
+                <th scope="col">codigo</th>
                 <th scope="col">Dispositivo</th>
                 <th scope="col">Servicio</th>
                 <th scope="col">fecha</th>
@@ -45,10 +46,11 @@ $registro = $datos->getAll();
                         <th><?= $pos ?></th>
 
                         <td><?= $row->getPersona() ?></td>
+                        <td><?= $row->getCodigo() ?></td>
                         <td><?= $row->getTipoDispositivo() ?></td>
                         <td><?= $row->getTipoServicio() ?></td>
                         <td><?= $row->getFecha() ?></td>
-                        <td><?= $row->getTotal() ?></td>
+                        <td><?= number_format( $row->getTotal()) ?></td>
                 
                     </tr>
                 <?php

@@ -31,7 +31,7 @@ $fecha = date('y-m-d');
                 <hr>
          <form class="row g-3" action="../../controller/facturaController.php?c=1" method="post">
                 <div class="col-6">
-                    <div class="titulo" id="Nombre_completo">NOMBRE COMPLETO: </div>
+                    <div class="titulo" id="id_persona">NOMBRE COMPLETO: </div>
                     <select class="form-select persona" aria-label="Default select example" name="id_persona" id="id_persona">
                             <?php
                             foreach ($nombre as $nombreCompleto) {
@@ -89,7 +89,7 @@ $fecha = date('y-m-d');
 
 <script>
     $(document).ready(function() {
-        $('.idpersona').select2();
+        $('.persona').select2();
     });
 </script>
 
