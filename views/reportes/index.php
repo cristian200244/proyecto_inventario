@@ -1,41 +1,35 @@
 <?php
 include_once(__DIR__ . "../../../config/config.example.php");
 include_once(BASE_DIR . '../../views/main/partials/header.php');
-require_once '../../models/clienteModel.php';
+require_once '../../models/facturaModel.php';
+
+$datos = new Factura();
+$registro = $datos->getAll();
 
 
+
+
+
+$fecha = date('M-Y');
 ?>
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-</head>
-
-<body>
+<div class="container-fluid">
     <h1>Reportes</h1>
-    <div class="container-fluid">
-    <table class="table table-striped"> 
-        <thead>
+    <form class="row g-3" action="../../controller/facturaController.php?c=2" method="post">
+        <table class="table table-striped">
             <tr>
-                <th scope="col">Mes</th>
-                <th scope="col">Ventas</th>
-                <th scope="col">Ganancias</th>
+                <th>FECHA</th>
+                <th>Ganancias</th>
             </tr>
-        </thead>
-        <tbody>
-           
+            <tr>
+                <td><?= $fecha ?></td>
+                <td><?php ['GANANCIAS']; ?></td>
+            </tr>
+        </table>
         </tbody>
-    </table>
-    </div>
-</body>
-
-</html>
-
-
+        </table>
+    </form>
+</div>
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');
 ?>

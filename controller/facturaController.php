@@ -4,6 +4,7 @@ require_once '../models/facturaModel.php';
 $controller = new facturaControllers;
 class facturaControllers
 {
+  
     private $factura;
     public function __construct()
     {
@@ -14,6 +15,9 @@ class facturaControllers
                 case '1': //Almacenar en la base de datos
                     self::store();
                     break;
+                    case '2': //Almacenar en la base de datos
+                        self::GananciasMensuales();
+                     break;
                 default:
                     self::index();
                     break;
@@ -38,6 +42,22 @@ class facturaControllers
         $result = $this->factura->store($datos);
         if ($result) {
             header("Location: ../views/facturas/index.php");
+            exit();
+        } else {
+            echo $error = "ocurrio un me mensaje";
+        }
+    }
+
+    
+    public function GananciasMensuales() {
+
+
+
+
+        
+        $result = $this->factura->ganancias();
+        if ($result) {
+            header("Location: ../views/reportes/index.php");
             exit();
         } else {
             echo $error = "ocurrio un me mensaje";
