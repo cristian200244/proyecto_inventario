@@ -15,7 +15,7 @@ $registro_servicios = $servicio->getAll();
 $tipo_dispositivos = new Dispositivos();
 $registro_tipo_dispositivos = $tipo_dispositivos->getAll();
 
-$fecha = date('d-M-Y');
+$fecha = date('d-m-y');
 ?>
 <div class="container-fluid">
 

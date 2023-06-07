@@ -1,32 +1,49 @@
 <?php
 include_once(__DIR__ . "../../../config/config.example.php");
 include_once(BASE_DIR . '../../views/main/partials/header.php');
-require_once '../../models/facturaModel.php';
+require_once '../../models/reportesModel.php';
 
-$datos = new Factura();
+$datos = new ReportModel();
 $registro = $datos->getAll();
 
-
-
-
-
-$fecha = date('M-Y');
 ?>
 
 <div class="container-fluid">
     <h1>Reportes</h1>
-    <form class="row g-3" action="../../controller/facturaController.php?c=2" method="post">
-        <table class="table table-striped">
+    <form class="row g-3" action="../../controller/reportesControllers.php?c=1" method="post">
+        
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <th>FECHA</th>
-                <th>Ganancias</th>
+                <th scope="col">reporte </th>
+                <th scope="col">total reportado</th>
+             
             </tr>
-            <tr>
-                <td><?= $fecha ?></td>
-                <td><?php ['GANANCIAS']; ?></td>
-            </tr>
-        </table>
-        </tbody>
+        </thead>
+        <tbody>
+            <?php
+
+            if ($registro) {
+
+                $pos = 1;
+
+                foreach ($registro as $row) {
+            ?>
+                    <tr>
+                        <th>mes <?= $row->getFecha() ?></th>
+                        <td><?= number_format( $row->getTotal()) ?></td>
+                
+                    </tr>
+                <?php
+                    $pos++;
+                }
+            } else {
+                ?>
+                <td colspan="10" class="text-center">Sin Registros</td>
+            <?php
+            }
+            ?>
+        
         </table>
     </form>
 </div>

@@ -14,9 +14,6 @@ class facturaControllers
             switch ($_REQUEST['c']) {
                 case '1': //Almacenar en la base de datos
                     self::store();
-                    break;
-                    case '2': //Almacenar en la base de datos
-                        self::GananciasMensuales();
                      break;
                 default:
                     self::index();
@@ -42,22 +39,6 @@ class facturaControllers
         $result = $this->factura->store($datos);
         if ($result) {
             header("Location: ../views/facturas/index.php");
-            exit();
-        } else {
-            echo $error = "ocurrio un me mensaje";
-        }
-    }
-
-    
-    public function GananciasMensuales() {
-
-
-
-
-        
-        $result = $this->factura->ganancias();
-        if ($result) {
-            header("Location: ../views/reportes/index.php");
             exit();
         } else {
             echo $error = "ocurrio un me mensaje";

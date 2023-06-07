@@ -100,17 +100,6 @@ class Factura
         }
     }
 
-    public function ganancias()
-    {
-
-        $sql = 'SELECT MONTH(06) AS mes, YEAR(2023) AS anio, SUM(total) AS GANACIAS
-                FROM facturas 
-                GROUP BY MONTH(fecha), YEAR(fecha)';
-        $prepare = $this->database->conexion()->prepare($sql);
-        $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
-        
-        return $result;
-    }
     public function getPersona()
     {
         return $this->persona;
