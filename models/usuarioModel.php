@@ -68,8 +68,8 @@ class Usuario extends stdClass
         }
     }
 
-   
-    
+
+
 
     public function getAll()
     {
@@ -98,7 +98,7 @@ class Usuario extends stdClass
                 $item->ciudad           = $row['id_ciudad'];
                 $item->correo           = $row['correo'];
                 $item->direccion        = $row['direccion'];
-                $item->password        = $row['password'];
+                // $item->password        = $row['password'];
 
 
                 array_push($items, $item);
@@ -113,7 +113,7 @@ class Usuario extends stdClass
 
     public function store($datos)
     {
-        
+
         try {
             $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_sexo, telefono, id_ciudad, correo, direccion, password) 
             VALUES(:id_tipo_documento, :numero_documento, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :id_sexo, :telefono, :id_ciudad, :correo, :direccion, :password)';
@@ -135,6 +135,7 @@ class Usuario extends stdClass
                 'correo'            => $datos['correo'],
                 'direccion'         => $datos['direccion'],
                 'password'         => $datos['password'],
+
             ]);
             if ($query) {
                 return true;
@@ -333,40 +334,19 @@ class Usuario extends stdClass
 
         $items = [];
 
-        $datos = [
-            'correo'   => $datos['correo'],
-            'password' => $datos['password'],
-        ];
-
         $correo = $datos["correo"];
-        $pass   = $datos['password'];
+        $pass   = md5($datos['password']);
 
         try {
 
             $sql = "SELECT id, password, correo FROM usuarios WHERE correo = '$correo' AND password = '$pass' ";
             $query  = $this->database->conexion()->query($sql);
 
-            return $query->fetchObject();
+            $result = $query->fetchObject();
+           
+            return $result;
         } catch (PDOException $e) {
             die($e->getMessage());
         }
-
-        
-
-//antes de nada obtengo la contraseña y la cifro para insertarla
-$password = $_POST['password'];
-//y ahora cifro la clave usando un hash
-$pass_cifrada = password_hash($password, PASSWORD_DEFAULT, array("cost"=>10));
-
-
-
     }
-
-
-
-    
-
-
 }
-
-

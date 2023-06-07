@@ -1,10 +1,10 @@
 <?php
-include_once(__DIR__ . "/config/config.example.php");
+include_once(__DIR__ . "../../../config/config.example.php");
 
 // include_once(BASE_DIR . '../../views/main/partials/header.php');
-require_once 'models/ciudadModel.php';
-require_once 'models/rolesModel.php';
-require_once 'models/sexoModel.php';
+require_once '../../models/ciudadModel.php';
+require_once '../../models/rolesModel.php';
+require_once '../../models/sexoModel.php';
 
 $ciudad = new Ciudad();
 $data = $ciudad->getAll();
@@ -148,7 +148,7 @@ $data_rol = $roles->getAll();
 
                 </div>
                 <br>
-                <button onclick="user()" type="submit" class="btn btn-outline-info ml-2">Guardar Usuario</button>
+                <button onclick="user()" type="submit" src="../../index.php" class="btn btn-outline-info ml-2">Guardar Usuario</button>
              
             </div>
         </form>

@@ -47,7 +47,7 @@
                                 </li>
 
                                 <li>
-                                    <a class="dropdown-item" href="<?= BASE_URL ?>/index.php?c=6" onclick="salirSistema()">
+                                    <a class="dropdown-item" href="<?= BASE_URL ?>/login.php?c=6" onclick="salirSistema()">
                                         <i class="fa-solid fa-hand fa-shake" style="color: #FF4633 ; padding-left: 8%; padding-right:8%;"></i>
                                         Cerrar Sesión
                                     </a>
