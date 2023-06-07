@@ -17,8 +17,7 @@ class ClienteController
         if (isset($_REQUEST['c'])) {
             switch ($_REQUEST['c']) {
                 case '1': //Almacenar en la base de datos
-                    // self::store();
-
+                    self::store();
                     break;
                 case '2': //ver usuario
                     self::show();
@@ -41,41 +40,40 @@ class ClienteController
         return  $this->cliente->getAll();
     }
 
-    // public function store()
-    // {   
-    //     if ($_SERVER['SERVER_METHOD'] == 'POST') {
-    //         $primer_nombre= $_POST['primer_nombre'];
-        
-    //         $cliente = new ClienteController();
-    //         if ($cliente->existeNombre($primer_nombre)) {
-    //             echo "este usuario  esta repetido";
-    //         }else{
-    //         }
-    //         $datos = [
-    
-    //             'id_tipo_documento' => $_REQUEST['id_tipo_documento'],
-    //             'numero_documento'  => $_REQUEST['numero_documento'],
-    //             'primer_nombre'     => $_REQUEST['primer_nombre'],
-    //             'segundo_nombre'    => $_REQUEST['segundo_nombre'],
-    //             'primer_apellido'   => $_REQUEST['primer_apellido'],
-    //             'segundo_apellido'  => $_REQUEST['segundo_apellido'],
-    //             'id_sexo'           => $_REQUEST['id_sexo'],
-    //             'id_ciudad'         => $_REQUEST['id_ciudad'],
-    //             'telefono'          => $_REQUEST['telefono'],
-    //             'correo'            => $_REQUEST['correo'],
-    //             'direccion'         => $_REQUEST['direccion'],
-    //         ];
-    
-    //         $result = $this->cliente->store($datos);
-    //         if ($result) {
-    //             header("Location: ../views/clientes/index.php");
-    //             exit();
-    //         } else {
-    //             echo $error = "Ocurrió un error";
-    //         }
-    //         }
-        
-    // }
+    public function store()
+    {
+
+        $numero_documento = $this->cliente->existeDato("numero_documento", $_POST['numero_documento']);
+        $telefono         = $this->cliente->existeDato("telefono", $_POST['telefono']);
+        $correo           = $this->cliente->existeDato("correo", $_POST['correo']);
+
+        if ($numero_documento == 1 || $telefono == 1 || $correo == 1) {
+            header("Location: ../views/clientes/create.php");
+            echo "<script> alert('este usuario  esta repetido')</script>";
+        } else {
+
+            $datos = [
+
+                'id_tipo_documento' => $_REQUEST['id_tipo_documento'],
+                'numero_documento'  => $_REQUEST['numero_documento'],
+                'primer_nombre'     => $_REQUEST['primer_nombre'],
+                'segundo_nombre'    => $_REQUEST['segundo_nombre'],
+                'primer_apellido'   => $_REQUEST['primer_apellido'],
+                'segundo_apellido'  => $_REQUEST['segundo_apellido'],
+                'id_sexo'           => $_REQUEST['id_sexo'],
+                'id_ciudad'         => $_REQUEST['id_ciudad'],
+                'telefono'          => $_REQUEST['telefono'],
+                'correo'            => $_REQUEST['correo'],
+                'direccion'         => $_REQUEST['direccion'],
+            ];
+
+            $result = $this->cliente->store($datos);
+            if ($result) {
+                header("Location: ../views/clientes/index.php");
+                exit();
+            } 
+        }
+    }
 
     public function show()
     {

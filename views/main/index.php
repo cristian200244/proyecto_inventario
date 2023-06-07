@@ -9,7 +9,7 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">Welcome..</h1>
-
+    
 </div>
 <!-- /.container-fluid -->
 

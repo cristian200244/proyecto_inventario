@@ -4,7 +4,7 @@ include_once dirname(__FILE__) . '../../Config/config.example.php';
 require_once 'conexionModel.php';
 
 
-class Cliente 
+class Cliente
 {
     private $id_persona;
     private $tipo_documento;
@@ -100,10 +100,18 @@ class Cliente
         }
     }
 
+    public function existeDato($key, $val)
+    {
+        $sql = "SELECT COUNT(*) AS total FROM personas WHERE $key = '$val'";
+        $result = $this->database->conexion()->query($sql)->fetchColumn();
+        return $result;
+    }
+
+    
 
     public function store($datos)
     {
-        
+
         try {
             $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_sexo, telefono, id_ciudad, correo, direccion) 
             VALUES( :id_tipo_documento, :numero_documento, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :id_sexo, :telefono, :id_ciudad, :correo, :direccion)';
@@ -114,15 +122,15 @@ class Cliente
 
                 'id_tipo_documento' => $datos['id_tipo_documento'],
                 'numero_documento'  => $datos['numero_documento'],
-                'primer_nombre'     =>$datos['primer_nombre'],
-                'segundo_nombre'    =>$datos['segundo_nombre'],
-                'primer_apellido'   =>$datos['primer_apellido'],
-                'segundo_apellido'  =>$datos['segundo_apellido'],
-                'id_sexo'           =>$datos['id_sexo'],
-                'telefono'          =>$datos['telefono'],
-                'id_ciudad'         =>$datos['id_ciudad'],
-                'correo'            =>$datos['correo'],
-                'direccion'         =>$datos['direccion'],
+                'primer_nombre'     => $datos['primer_nombre'],
+                'segundo_nombre'    => $datos['segundo_nombre'],
+                'primer_apellido'   => $datos['primer_apellido'],
+                'segundo_apellido'  => $datos['segundo_apellido'],
+                'id_sexo'           => $datos['id_sexo'],
+                'telefono'          => $datos['telefono'],
+                'id_ciudad'         => $datos['id_ciudad'],
+                'correo'            => $datos['correo'],
+                'direccion'         => $datos['direccion'],
             ]);
             if ($query) {
                 return true;
@@ -192,8 +200,9 @@ class Cliente
         }
     }
 
-    public function NombreCompleto(){
-        
+    public function NombreCompleto()
+    {
+
         return $this->primer_nombre . " " .
             $this->segundo_nombre . " " .
             $this->primer_apellido . " " .
