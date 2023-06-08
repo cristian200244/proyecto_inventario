@@ -121,7 +121,7 @@ class Ciudad
 
     public function setCiudad($nombre)
     {
-        return $this->nombre;
+         $this->nombre = $nombre;
     }
 
    

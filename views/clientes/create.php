@@ -40,9 +40,7 @@ $registro_sexo = $datos_sexo->getAll();
                 </div>
                 <div class="col-6 mb-2">
                     <label for="numero_documento" class="form-label">N° de documento</label>
-                    <input type="text" class="form-control" id="numero_documento" name="numero_documento"   oninput="restrictNumberInput(event)" maxlength="10" required>
-                     
-
+                    <input type="text" class="form-control" id="numero_documento" name="numero_documento" oninput="restrictNumberInput(event)" onchange="myFunction()" maxlength="10" required>
                 </div>
                 <div class="col-6 mb-2">
                     <label for="primer_nombre" class="form-label">Primer Nombre</label>
@@ -91,22 +89,21 @@ $registro_sexo = $datos_sexo->getAll();
                 </div>
                 <div class="col-6 mb-2">
                     <label for="direccion" class="form-label ">Dirección</label>
-                    <input type="text" class="form-control" id="direccion" name="direccion" oninput="restricAddres(event)" maxlength="140" required>
+                    <input type="text" class="form-control" id="direccion" name="direccion" oninput="restrictAddres(event)" maxlength="140" required>
                 </div>
                 <div class="col-6 mb-2">
                     <label for="correo" class="form-label ">E-mail</label>
                     <input type="email" class="form-control" id="correo" name="correo">
                 </div>
             </div>
-            <br>
- 
+
             <button type="submit" class="btn btn-outline-info ml-2">Guardar Cliente</button>
         </div>
 
     </form>
 </div>
 
- 
+
 
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');

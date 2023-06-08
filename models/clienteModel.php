@@ -107,7 +107,7 @@ class Cliente
         return $result;
     }
 
-    
+
 
     public function store($datos)
     {
@@ -271,46 +271,46 @@ class Cliente
 
     public function setTipoDocumento($tipo_documento)
     {
-        return $this->tipo_documento;
+        $this->tipo_documento = $tipo_documento;
     }
     public function setNumeroDocumento($numero_documento)
     {
-        return $this->numero_documento;
+        $this->numero_documento = $numero_documento;
     }
     public function setPrimerNombre($primer_nombre)
     {
-        return $this->primer_nombre;
+        $this->primer_nombre = $primer_nombre;
     }
     public function setSegundoNombre($segundo_nombre)
     {
-        return $this->segundo_nombre;
+        $this->segundo_nombre = $segundo_nombre;
     }
     public function setPrimerApellidoo($primer_apellido)
     {
-        return $this->primer_apellido;
+        $this->primer_apellido = $primer_apellido ;
     }
     public function setSegundoApellido($segundo_apellido)
     {
-        return $this->segundo_apellido;
+        $this->segundo_apellido = $segundo_apellido;
     }
     public function setSexo($sexo)
     {
-        return $this->sexo;
+        $this->sexo = $sexo;
     }
     public function setCiudad($ciudad)
     {
-        return $this->ciudad;
+        $this->ciudad = $ciudad;
     }
     public function setCorreo($correo)
     {
-        return $this->correo;
+        $this->correo = $correo;
     }
     public function setDireccion($direccion)
     {
-        return $this->direccion;
+        $this->direccion= $direccion;
     }
     public function setTelefono($telefono)
     {
-        return $this->telefono;
+        $this->telefono = $telefono;
     }
 }

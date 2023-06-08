@@ -170,36 +170,37 @@
         {
             return $this->fecha;
         }
+
         public function setPersona($id_persona)
         {
-            return $this->id_persona;
+            $this->id_persona = $id_persona;
         }
         public function setTipoDispositivo($dispositivo)
         {
-            return $this->dispositivo;
+            $this->dispositivo = $dispositivo;
         }
         public function setMarca($marca)
         {
-            return $this->marca;
+            $this->marca = $marca;
         }
         public function setTipoServicio($tipo_servicio)
         {
-            return $this->tipo_servicio;
+            $this->tipo_servicio = $tipo_servicio ;
         }
         public function setCodigo($codigo)
         {
-            return $this->codigo;
+            $this->codigo = $codigo;
         }
         public function setEstadoProducto($estado)
         {
-            return $this->estado;
+            $this->estado = $estado;
         }
         public function setFalla($falla)
         {
-            return $this->falla;
+            $this->falla = $falla;
         }
         public function setFecha($fecha)
         {
-            return $this->fecha;
+            $this->fecha = $fecha;
         }
     }

@@ -108,7 +108,7 @@ class EstadoProducto
     }
     public function setEstado($estado)
     {
-        return $this->estado;
+         $this->estado = $estado;
     }
 }
 

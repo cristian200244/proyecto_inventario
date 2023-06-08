@@ -108,6 +108,6 @@ class Servicios
         
     }
     public function setServicio($servicio){
-        return $this->servicio;
+        return $this->servicio = $servicio;
     }
 }

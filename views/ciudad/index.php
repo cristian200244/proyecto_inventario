@@ -31,7 +31,7 @@ foreach ($registros as $ciudades) {
                 <div class="collapse" id="collapseExample">
                     <div class="card card-body">
                         <div class="mb-3">
-                            <form action="../../controller/ciudadController.php" method="POST" >
+                            <form action="../../controller/ciudadController.php" method="POST">
                                 <input type="hidden" name="c" value="1">
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese un nuevo nuevo departamento" oninput="restrictInput(event)" maxlength="30" required>

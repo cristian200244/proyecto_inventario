@@ -6,7 +6,7 @@ $controller = new ClienteController;
 
 class ClienteController
 {
-
+    public $mensaje = "";
     private $cliente;
 
     public function __construct()
@@ -28,13 +28,14 @@ class ClienteController
                 case '4': //eliminar el registro
                     self::delete();
                     break;
+                case '5': //buscar con axios
+                    self::buscarParam();
                 default:
                     self::index();
                     break;
             }
         }
     }
-
     public function index()
     {
         return  $this->cliente->getAll();
@@ -42,17 +43,15 @@ class ClienteController
 
     public function store()
     {
-
         $numero_documento = $this->cliente->existeDato("numero_documento", $_POST['numero_documento']);
         $telefono         = $this->cliente->existeDato("telefono", $_POST['telefono']);
         $correo           = $this->cliente->existeDato("correo", $_POST['correo']);
 
         if ($numero_documento == 1 || $telefono == 1 || $correo == 1) {
-            header("Location: ../views/clientes/create.php");
-            echo "<script> alert('este usuario  esta repetido')</script>";
+            echo 'este usuarios esta repetido';
         } else {
 
-            $datos = [
+             $datos = [
 
                 'id_tipo_documento' => $_REQUEST['id_tipo_documento'],
                 'numero_documento'  => $_REQUEST['numero_documento'],
@@ -71,7 +70,7 @@ class ClienteController
             if ($result) {
                 header("Location: ../views/clientes/index.php");
                 exit();
-            } 
+            }
         }
     }
 
@@ -113,5 +112,10 @@ class ClienteController
         }
 
         return $result;
+    }
+
+    function buscarParam(){
+        var_dump($_REQUEST);
+        die();
     }
 }
