@@ -20,7 +20,7 @@ $registro = $datos->getAll();
                 <th scope="col">#</th>
                 <th scope="col">Primer Nombre</th>
                 <th scope="col">Primer Apellido</th>
-                <th scope="col">Ciudad</th>
+                <th scope="col">Ciudad De Residencia</th>
                 <th scope="col">Direccion</th>
                 <th scope="col">Telefono</th>
                 <th scope="col" colspan="3">Opciones</th>

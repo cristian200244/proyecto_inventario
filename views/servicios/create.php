@@ -23,7 +23,7 @@ $servicio  = new Servicios();
 $registro_servicios = $servicio->getAll();
 
 $codigo = rand(1, 9999999);
-$fecha = date('y-m-d');
+$fecha = date('Y-m-d');
 
 ?>
 
@@ -39,7 +39,8 @@ $fecha = date('y-m-d');
 
                     <div class="col-12">
                         <label for="id_persona" class="form-label">Nombre Completo Del Cliente</label>
-                        <select class="form-select persona" aria-label="Default select example" name="id_persona" id="id_persona">
+                        <select class="form-select persona" aria-label="Default select example" name="id_persona" id="id_persona" required>
+                            <option selected value="">Seleccionar</option>
                             <?php
                             foreach ($nombre as $nombreCompleto) {
                                 echo '<option value="' . $nombreCompleto->getId() . '">' . $nombreCompleto->NombreCompleto() . '</option>';
@@ -58,8 +59,8 @@ $fecha = date('y-m-d');
                     </div>
                     <div class="col-md-4">
                         <label for="id_tipo_dispositivo" class="form-label">Dispositivo</label>
-                        <select class="form-select" aria-label="Default select example" name="id_tipo_dispositivo" id="id_tipo_dispositivo">
-                            <option selected>Seleccionar</option>
+                        <select class="form-select" aria-label="Default select example" name="id_tipo_dispositivo" id="id_tipo_dispositivo" required>
+                            <option selected value="">Seleccionar</option>
                             <?php
                             foreach ($registro_tipo_dispositivos  as $datos) {
                                 echo '<option value="' . $datos->getId() . '">' . $datos->getDispositivo() . '</option>';
@@ -69,8 +70,8 @@ $fecha = date('y-m-d');
                     </div>
                     <div class="col-md-4">
                         <label for="id_marca" class="form-label">Marca</label>
-                        <select class="form-select" aria-label="Default select example" name="id_marca" id="id_marca">
-                            <option selected>Seleccionar</option>
+                        <select class="form-select" aria-label="Default select example" name="id_marca" id="id_marca" required>
+                            <option selected value="">Seleccionar</option>
                             <?php
                             foreach ($registro_marcas as $datos_marca) {
                                 echo '<option value="' . $datos_marca->getId() . '">' . $datos_marca->getMarca() . '</option>';
@@ -80,9 +81,9 @@ $fecha = date('y-m-d');
                     </div>
                     <div class="col-md-4">
                         <label for="id_estado_producto" class="form-label">Estado</label>
-                        <select class="form-select" aria-label="Default select example" name="id_estado_producto" id="id_estado_producto">
-                            <option selected>Seleccionar</option>
-                            <?php
+                        <select class="form-select" aria-label="Default select example" name="id_estado_producto" id="id_estado_producto" required>
+                            <option  selected value="">Seleccionar</option>
+                             <?php
                             foreach ($registro as $producto) {
                                 echo '<option value=" ' . $producto->getId() . ' ">' . $producto->getEstado() . '</option>';
                             }
@@ -91,8 +92,8 @@ $fecha = date('y-m-d');
                     </div>
                     <div class="col-md-4">
                         <label for="id_tipo_servicio" class="form-label">Servicio</label>
-                        <select class="form-select" aria-label="Default select example" name="id_tipo_servicio" id="id_tipo_servicio">
-                            <option selected>Seleccionar</option>
+                        <select class="form-select" aria-label="Default select example" name="id_tipo_servicio" id="id_tipo_servicio " required>
+                            <option selected value="">Seleccionar</option>
                             <?php
                             foreach ($registro_servicios as $servicio) {
                                 echo '<option value="' . $servicio->getId() . '">' . $servicio->getServicio() . '</option>';
@@ -106,7 +107,7 @@ $fecha = date('y-m-d');
                     </div>
                     <div class="col-md-12">
                         <label for="falla" class="form-label">Falla</label>
-                        <textarea class="form-control" id="falla" rows="4" name="falla" placeholder="limite 500 caracteres"></textarea>
+                        <textarea class="form-control" id="falla" rows="4" name="falla" placeholder="limite 500 caracteres" oninput="restrictAddres(event)" ></textarea>
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-outline-info">Crear Servicio</button>

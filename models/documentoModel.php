@@ -118,7 +118,7 @@ class TipoDocumento
 
     public function setTipoDocumento($tipo_documento)
     {
-        return $this->tipo_documento;
+        $this->tipo_documento = $tipo_documento;
     }
 }
 

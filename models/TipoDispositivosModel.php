@@ -119,7 +119,7 @@ class Dispositivos
 
     public function setDispositivo($nombre)
     {
-        return $this->nombre;
+        return $this->nombre = $nombre;
     }
 
    

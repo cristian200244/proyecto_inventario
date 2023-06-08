@@ -33,8 +33,8 @@ foreach ($registros as $ciudades) {
                         <div class="mb-3">
                             <form action="../../controller/ciudadController.php" method="POST">
                                 <input type="hidden" name="c" value="1">
-                                <div class="input-group ">
-                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese un nuevo nuevo departamento">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese un nuevo nuevo departamento" oninput="restrictInput(event)" maxlength="30" required>
                                     <button type="submit" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                                         <i class="bi bi-send-plus-fill" style="font-size: 1.0rem; "></i>
                                     </button>

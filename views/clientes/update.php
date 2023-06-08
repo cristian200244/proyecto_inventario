@@ -58,19 +58,19 @@ foreach ($registro as $cliente) {
                 </div>
                 <div class="col-6 mb-2">
                     <label for="primer_nombre" class="form-label">Primer Nombre</label>
-                    <input type="text" class="form-control" id="primer_nombre" name="primer_nombre" value="<?= $primer_nombre ?>">
+                    <input type="text" class="form-control" id="primer_nombre" name="primer_nombre" value="<?= $primer_nombre ?>" oninput="restricForm(event)" maxlength="20" required>
                 </div>
                 <div class="col-6 mb-2">
                     <label for="segundo_nombre" class="form-label">Segundo Nombre</label>
-                    <input type="text" class="form-control" id="segundo_nombre" name="segundo_nombre" value="<?= $segundo_nombre ?>">
+                    <input type="text" class="form-control" id="segundo_nombre" name="segundo_nombre" value="<?= $segundo_nombre ?>" oninput="restricForm(event)" maxlength="20"  >
                 </div>
                 <div class="col-6 mb-2">
                     <label for="primer_apellido" class="form-label">Primer Apellido</label>
-                    <input type="text" class="form-control" id="primer_apellido" name="primer_apellido" value="<?= $primer_apellido ?>">
+                    <input type="text" class="form-control" id="primer_apellido" name="primer_apellido" value="<?= $primer_apellido ?>" oninput="restricForm(event)" maxlength="20" required>
                 </div>
                 <div class="col-6 mb-2">
                     <label for="segundo_apellido" class="form-label">Segundo Apellido</label>
-                    <input type="text" class="form-control" id="segundo_apellido" name="segundo_apellido" value="<?= $segundo_apellido ?>">
+                    <input type="text" class="form-control" id="segundo_apellido" name="segundo_apellido" value="<?= $segundo_apellido ?>" oninput="restricForm(event)" maxlength="20"  >
 
                 </div>
                 <div class="col-3 mb-2">
@@ -83,11 +83,11 @@ foreach ($registro as $cliente) {
                 </div>
                 <div class="col-3 mb-2">
                     <label for="telefono" class="form-label">Telefono</label>
-                    <input type="tel" class="form-control" id="telefono" name="telefono" value="<?= $telefono ?>">
+                    <input type="tel" class="form-control" id="telefono" name="telefono" value="<?= $telefono ?>" oninput="restrictNumberInput(event)" maxlength="10" required>
                 </div>
                 <div class="col-6 mb-2">
                     <label for="id_ciudad" class="form-label">Ciudad</label>
-                    <select class="form-select" aria-label="Default select example" id="id_ciudad" name="id_ciudad" >
+                    <select class="form-select" aria-label="Default select example" id="id_ciudad" name="id_ciudad" required>
                     <?php foreach ($data as $valores) : ?>
                             <option value="<?= $valores->getId() ?>" <?= $valores->getId() == $cliente->getCiudad() ? 'selected' :  "" ?>><?= $valores->getCiudad() ?></option>
                         <?php endforeach ?>
@@ -95,7 +95,7 @@ foreach ($registro as $cliente) {
                 </div>
                 <div class="col-6 mb-2">
                     <label for="direccion" class="form-label ">Dirección</label>
-                    <input type="text" class="form-control" id="direccion" name="direccion" value="<?= $direccion ?>">
+                    <input type="text" class="form-control" id="direccion" name="direccion" value="<?= $direccion ?>" oninput="restricAddres(event)" maxlength="140" required >
                 </div>
                 <div class="col-6 mb-2">
                     <label for="correo" class="form-label ">E-mail</label>

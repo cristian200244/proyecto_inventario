@@ -121,6 +121,6 @@ class Sexo
 
     public function setSexo($nombre)
     {
-        return $this->nombre;
+        return $this->nombre = $nombre;
     }
 }
