@@ -6,44 +6,47 @@ require_once '../../models/reportesModel.php';
 $datos = new ReportModel();
 $registro = $datos->getAll();
 
+setlocale(LC_TIME,'UTF-8');
+
 ?>
 
 <div class="container-fluid">
     <h1>Reportes</h1>
-    <form class="row g-3" action="../../controller/reportesControllers.php?c=1" method="post">
-        
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">reporte </th>
-                <th scope="col">total reportado</th>
-             
-            </tr>
-        </thead>
-        <tbody>
-            <?php
 
-            if ($registro) {
+    <form class="row g-3" action="../../controller/reportesController.php?c=1" method="post">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Año</th>
+                    <th scope="col">Mes</th>
+                    <th scope="col">Total Reportado</th>
 
-                $pos = 1;
-
-                foreach ($registro as $row) {
-            ?>
-                    <tr>
-                        <th>mes <?= $row->getFecha() ?></th>
-                        <td><?= number_format( $row->getTotal()) ?></td>
-                
-                    </tr>
+                </tr>
+            </thead>
+            <tbody>
                 <?php
-                    $pos++;
-                }
-            } else {
+
+                if ($registro) {
+                    $pos = 1;
+
+                    foreach ($registro as $row) {
                 ?>
-                <td colspan="10" class="text-center">Sin Registros</td>
-            <?php
-            }
-            ?>
-        
+                        <tr>
+                            <td><?= $row->getAnio(); ?></td>
+                            <td><?= $row->getMes(); ?></td>
+                            <td><?= number_format($row->getTotal()) ?></td>
+
+                        </tr>
+                    <?php
+                        $pos++;
+                    }
+                } else {
+                    ?>
+                    <td colspan="10" class="text-center">Sin Registros</td>
+                <?php
+                }
+                ?>
+
         </table>
     </form>
 </div>
