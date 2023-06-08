@@ -32,21 +32,18 @@ foreach ($registros as $marca) {
             <div class="collapse" id="collapseExample">
                 <div class="card card-body">
                     <div class="mb-3">
-                        <form action="../../controller/marcasController.php?c=1" method="POST">
+                        <form action="../../controller/marcasController.php?c=1" method="POST"  > 
                             <div class="input-group ">
-                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese una nueva marca">
-                                <button type="submit" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                <input type="text" class="form-control" id="nombre"  name="nombre" oninput="restrictInput(event)" maxlength="30" placeholder="Ingrese una nueva marca" required>
+                                <button type="submit" class="btn btn-outline-primary"  data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                                     <i class="bi bi-send-plus-fill" style="font-size: 1.0rem; "></i>
                                 </button>
-                            </div>
-
+                            </div> 
                         </form>
                     </div>
                 </div>
             </div>
-
         </div>
-        <hr>
         <div class="row">
             <div class="col">
                 <table class="table">
@@ -58,7 +55,7 @@ foreach ($registros as $marca) {
 
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         <?php
                         if ($registros) {
                             $pos = 1;

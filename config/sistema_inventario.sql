@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `estado_productos` (
   `id_estado_producto` bigint NOT NULL AUTO_INCREMENT,
   `estado` varchar(50) NOT NULL,
   PRIMARY KEY (`id_estado_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 -- Volcando datos para la tabla sistema_inventario.estado_productos: ~2 rows (aproximadamente)
 DELETE FROM `estado_productos`;
@@ -53,8 +53,6 @@ CREATE TABLE IF NOT EXISTS `facturas` (
   `id_persona` bigint NOT NULL,
   `id_servicio` bigint NOT NULL,
   `fecha` date NOT NULL,
-  `hora` time NOT NULL,
-  `precio` float NOT NULL,
   `total` double NOT NULL,
   `id_tipo_dispositivo` bigint NOT NULL,
   PRIMARY KEY (`id_factura`),
@@ -74,14 +72,15 @@ CREATE TABLE IF NOT EXISTS `marcas` (
   `id_marca` bigint NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
   PRIMARY KEY (`id_marca`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3;
 
--- Volcando datos para la tabla sistema_inventario.marcas: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla sistema_inventario.marcas: ~4 rows (aproximadamente)
 DELETE FROM `marcas`;
 INSERT INTO `marcas` (`id_marca`, `nombre`) VALUES
 	(1, 'SAMSUNG'),
 	(2, 'HAWEI'),
-	(3, 'HP');
+	(3, 'HP'),
+	(14, '  eeeee');
 
 -- Volcando estructura para tabla sistema_inventario.personas
 CREATE TABLE IF NOT EXISTS `personas` (
@@ -100,6 +99,10 @@ CREATE TABLE IF NOT EXISTS `personas` (
   `correo` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `estado` int DEFAULT '0' COMMENT '1 = activo, 0 = inactivo',
   PRIMARY KEY (`id_persona`),
+  UNIQUE KEY `numero_documento` (`numero_documento`),
+  UNIQUE KEY `telefono` (`telefono`),
+  UNIQUE KEY `numero_documento_telefono_correo` (`numero_documento`,`telefono`,`correo`),
+  UNIQUE KEY `correo` (`correo`),
   KEY `fk_id_persona_id_rol_idx` (`id_rol`),
   KEY `fk_id_persona_id_tipo_documento_idx` (`id_tipo_documento`),
   KEY `fk_id_persona_id_ciudad_idx` (`id_ciudad`),
@@ -108,15 +111,18 @@ CREATE TABLE IF NOT EXISTS `personas` (
   CONSTRAINT `fk_id_persona_id_rol` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`),
   CONSTRAINT `fk_id_persona_id_tipo_documento` FOREIGN KEY (`id_tipo_documento`) REFERENCES `tipo_documentos` (`id_tipo_documento`),
   CONSTRAINT `FK_personas_sexo` FOREIGN KEY (`id_sexo`) REFERENCES `sexo` (`id_sexo`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 
--- Volcando datos para la tabla sistema_inventario.personas: ~4 rows (aproximadamente)
+-- Volcando datos para la tabla sistema_inventario.personas: ~5 rows (aproximadamente)
 DELETE FROM `personas`;
 INSERT INTO `personas` (`id_persona`, `id_rol`, `id_tipo_documento`, `id_ciudad`, `numero_documento`, `primer_nombre`, `segundo_nombre`, `primer_apellido`, `segundo_apellido`, `direccion`, `telefono`, `id_sexo`, `correo`, `estado`) VALUES
 	(1, 2, 1, 1, '1120564623', 'JHON', '', 'RODRIGUEZ', '', 'CALLE FALSA 123', '3182825959', 1, 'JHHRODRIGUEZP@SENA.EDU.CO', 1),
-	(2, 2, 1, 2, '1234567890', 'JUAN', 'ANDRES', 'ZARAGOZA', 'DENTIR', 'calller nordeste ', '3123212122', 1, 'andres@gmail.com', 0),
-	(3, 2, 1, 3, '1234567890', 'MARLON', 'JAVIER', 'PEREZ', 'VALDEZ', 'calller nordeste 34-23', '3223452132', 1, 'moalro@gmail.com', 0),
-	(4, 2, 1, 2, '1234567890', 'CARLOS', '', 'SANCHEZ', '', 'calle 12a centro providencia', '3223452134', 1, 'carlos23@gmail.com', 0);
+	(2, 2, 1, 2, '1234567890', 'JUAN', 'ANDRES', 'ZARAGOZA', 'DENTIR', 'calller nordeste ', '3151185185', 1, 'andres@gmail.com', 0),
+	(3, 2, 1, 3, '1234567891', 'MARLON', 'JAVIER', 'PEREZ', 'VALDEZ', 'calller nordeste 34-23', '3223452132', 1, 'moalro@gmail.com', 0),
+	(4, 2, 1, 2, '1234567892', 'CARLOS', '', 'SANCHEZ', '', 'calle 12a centro providencia', '3223452134', 1, 'carlos23@gmail.com', 0),
+	(5, 2, 2, 4, '1234567893', 'BRENDA', '', 'SALAZAR', '', 'CALLE 12 AVENIDA LA SOLEDAD', '2332441221', 4, 'formato@gmail.com', 0),
+	(6, 2, 3, 2, '0000444555', 'JAIR', '', 'MEJIAQ', '', 'BARRIOS LA LINDOSA', '3124567887', 1, 'MIRT2@GAMAIL.COM', 0),
+	(7, 2, 3, 4, '41205456', 'JAVIER', '', 'GABRIEL', '', 'AVENIDA EL RETORNO', '3124562332', 1, 'JAVIERGABRIEL124@GMAIL.COM', 0);
 
 -- Volcando estructura para tabla sistema_inventario.roles
 CREATE TABLE IF NOT EXISTS `roles` (
@@ -160,20 +166,20 @@ DELETE FROM `servicios`;
 INSERT INTO `servicios` (`id_servicio`, `id_persona`, `id_tipo_dispositivo`, `id_marca`, `id_tipo_servicio`, `codigo`, `id_estado_producto`, `fecha`, `falla`) VALUES
 	(1, 1, 1, 3, 1, '8687793', 1, '2023-06-01', '  LA TARJETA GRÁFICA NO ENFRÍA '),
 	(4, 4, 2, 2, 3, '8615655', 1, '2023-06-01', 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. '),
-	(5, 2, 3, 2, 4, '4317251', 1, '2023-06-01', '  Lorem ');
+	(5, 2, 3, 2, 4, '4317251', 1, '2023-06-01', 'Lorem ');
 
 -- Volcando estructura para tabla sistema_inventario.sexo
 CREATE TABLE IF NOT EXISTS `sexo` (
   `id_sexo` bigint unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
   PRIMARY KEY (`id_sexo`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
 -- Volcando datos para la tabla sistema_inventario.sexo: ~2 rows (aproximadamente)
 DELETE FROM `sexo`;
 INSERT INTO `sexo` (`id_sexo`, `nombre`) VALUES
 	(1, 'MASCULINO'),
-	(2, 'FEMENINO');
+	(4, 'FEMENINO');
 
 -- Volcando estructura para tabla sistema_inventario.tipo_dispositivos
 CREATE TABLE IF NOT EXISTS `tipo_dispositivos` (
@@ -196,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `tipo_documentos` (
   PRIMARY KEY (`id_tipo_documento`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
--- Volcando datos para la tabla sistema_inventario.tipo_documentos: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla sistema_inventario.tipo_documentos: ~2 rows (aproximadamente)
 DELETE FROM `tipo_documentos`;
 INSERT INTO `tipo_documentos` (`id_tipo_documento`, `tipo`) VALUES
 	(1, 'CC'),
