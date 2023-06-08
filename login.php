@@ -54,11 +54,13 @@ if (isset($errorMessage)) { ?>
                                         <input type="hidden" name="c" value="5">
 
                                         <div class="form-group">
+
                                             <input type="email" required class="form-control form-control-user" name="correo" aria-describedby="emailHelp" placeholder="Introducir la dirección de correo electrónico...">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" required class="form-control form-control-user" name="password" placeholder="Contraseña">
                                         </div>
+
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
@@ -69,25 +71,50 @@ if (isset($errorMessage)) { ?>
                                         </div>
                                         <button id="boton" type="submit" class="btn btn-info">Iniciar sesion</button>
 
+
+                                        <div class="text-center">
+                                            <a class="small" href="olvido_contraseña.php">Olvidó su contraseña?</a>
+                                        </div>
+                                        <div class="text-center">
+                                            <a class="small" href="views/login/register.php">Crear cuenta!</a>
+
+                                            <?php
+                                            if (isset($_GET['message'])) {
+
+                                            ?>
+                                                <div class="alert alert-primary" role="alert">
+                                                    <?php
+                                                    switch ($_GET['message']) {
+                                                        case 'ok':
+                                                            echo 'Por favor, revisa tu correo';
+                                                            break;
+                                                        case 'success_password':
+                                                            echo 'Inicia sesión con tu nueva contraseña';
+                                                            break;
+
+                                                        default:
+                                                            echo 'Algo salió mal, intenta de nuevo';
+                                                            break;
+                                                    }
+                                                    ?>
+                                                </div>
+                                            <?php
+                                            }
+                                            ?>
+
+
+
                                     </form>
-
-
-
-                                    <div class="text-center">
-                                        <a class="small" href="password.php">Olvidó su contraseña?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="views/login/register.php">Crear cuenta!</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </div>
+
+    </div>
 
     </div>
 
@@ -97,5 +124,7 @@ if (isset($errorMessage)) { ?>
 
 
 
+
+</body>
 
 </html>

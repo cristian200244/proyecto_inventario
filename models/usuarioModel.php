@@ -349,4 +349,35 @@ class Usuario extends stdClass
             die($e->getMessage());
         }
     }
+
+    public function resetPassword()
+	{
+		$sqlQuery = "
+			SELECT corrro
+			FROM " . $this->memberTable . " 
+			WHERE correo='" . $_POST['correo'] . "' OR username='" . $_POST['userName'] . "'";
+		$result = mysqli_query($this->dbConnect, $sqlQuery);
+		$numRows = mysqli_num_rows($result);
+		if ($numRows) {
+			while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+				$link = "<a href='localhost/sesion/reset_password.php?authtoken=" . md5($row['email']) . "'>Reset Password</a>";
+				$to = $row['email'];
+				$subject = "Reset your password on examplesite.com";
+				$msg = "Hi there, click on this " . $link . " to reset your password.";
+				$msg = wordwrap($msg, 70);
+				$headers = "From: info@webdamn.com";
+				mail($to, $subject, $msg, $headers);
+				return 1;
+			}
+		} else {
+			return 0;
+		}
+	}
+
+    function generaTokenPass($user_id){
+        global $mysqli;
+
+        // $token = generateToken();
+        $stmt = $mysqli->prepare();
+    }
 }
