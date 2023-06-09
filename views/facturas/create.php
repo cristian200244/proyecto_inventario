@@ -2,6 +2,7 @@
 include_once(__DIR__ . "../../../config/config.example.php");
 include_once(BASE_DIR . '../../views/main/partials/header.php');
 require_once '../../models/clienteModel.php';
+require_once '../../models/facturaModel.php';
 require_once '../../models/tipoServicioModel.php';
 require_once '../../models/TipoDispositivosModel.php';
 
@@ -14,6 +15,11 @@ $registro_servicios = $servicio->getAll();
 
 $tipo_dispositivos = new Dispositivos();
 $registro_tipo_dispositivos = $tipo_dispositivos->getAll();
+
+
+$datos = new Factura();
+$registro = $datos->getAll();
+
 
 $fecha = date('d-m-y');
 ?>
@@ -64,11 +70,22 @@ $fecha = date('d-m-y');
                             ?>
                         </select>
                 </div>
+                <div class="col-md-4">
+                        <label for="codigo" class="form-label">CODIGO FACTURA</label>
+                        <br>
+                        <input type="text" type="text" class="form-control" value="
+                        <?php
+                        foreach ($registro  as $datos) {
+                            echo  $datos->getCodigo() ;
+                    }
+                    ?>
+                    " readonly>
+                 </div>
 
                 <div class="col-md-4">
                         <label for="fecha" class="form-label">FECHA</label>
                         <input type="text" class="form-control" id="fecha" name="fecha" value="<?= $fecha?>" readonly >
-                    </div>
+                 </div>
 
                 <div class="col-6">
                     <div class="titulo" id="total">TOTAL:</div>
