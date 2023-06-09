@@ -54,7 +54,7 @@ function restrictNumberInput(event) {
     input.value = input.value.slice(0, maxLength);
     Swal.fire('Se ha alcanzado el límite de caracteres');
   }
-
+  
   if (
     event.keyCode === 8 || event.keyCode === 46 || event.keyCode === 32
   ) {
@@ -106,3 +106,4 @@ function myFunction() {
     });
 }
 
+ 

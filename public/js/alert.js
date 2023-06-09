@@ -1,8 +1,6 @@
 function AlertDelete(id_persona) {
     Swal.fire({
-        title: 'Está seguro de eliminar el registro?',
-        text: "No podrás revertir ésto!",
-        icon: 'question',
+        title: 'Desea eleiminar este registro?',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
@@ -18,4 +16,5 @@ function AlertDelete(id_persona) {
         }
         return false;
     });
+   
 }

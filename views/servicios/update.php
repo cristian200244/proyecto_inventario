@@ -104,7 +104,7 @@ $falla           = $services->getFalla();
                     </div>
                     <div class="col-md-12">
                         <label for="falla" class="form-label">Falla</label>
-                        <textarea class="form-control" id="falla" rows="4" name="falla" placeholder="limite 500 caracteres"> <?= $falla ?></textarea>
+                        <textarea class="form-control" id="falla" rows="4" name="falla" placeholder="limite 140 caracteres"  oninput="estrictAddres(event)" maxlength="140"> <?= $falla ?></textarea>
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-outline-info">Actualizar Servicio</button>

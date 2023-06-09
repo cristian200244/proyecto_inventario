@@ -32,7 +32,7 @@ $registro_sexo = $datos_sexo->getAll();
                     <select class="form-select" aria-label="Default select example" name="id_tipo_documento" id="id_tipo_documento" required="required">
                         <option selected value="">Seleccionar</option>
                         <?php
-                        foreach ($registro  as $datos) {
+                        foreach ($registro as $datos) {
                             echo '<option value="' . $datos->getId() . '">' . $datos->getTipoDocumento() . '</option>';
                         }
                         ?>

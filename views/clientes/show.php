@@ -78,7 +78,7 @@ foreach ($registro as $cliente) {
                 </div>
                 <div class="col-3 mb-2">
                     <label for="sexo" class="form-label">Sexo</label>
-                    <select class="form-select" aria-label="Default select example" id="id_sexo" name="id_sexo" required="required" value="<?= $sexo ?>" readonly>
+                    <select class="form-select" aria-label="Default select example" id="id_sexo" name="id_sexo" required="required" value="<?= $sexo ?>" disabled>
                         <?php
                         foreach ($registro_sexo as $sexo) {
                             echo '<option value="' . $sexo->getId() . '">' . $sexo->getSexo() . '</option>';
@@ -92,7 +92,7 @@ foreach ($registro as $cliente) {
                 </div>
                 <div class="col-6 mb-2">
                     <label for="id_ciudad" class="form-label">Ciudad</label>
-                    <select class="form-select" aria-label="Default select example" id="id_ciudad" name="id_ciudad" value="<?= $ciudad ?> " readonly>
+                    <select class="form-select" aria-label="Default select example" id="id_ciudad" name="id_ciudad" value="<?= $ciudad ?> " disabled>
                         <option selected>Seleccionar</option>
                         <?php
                         foreach ($data as $valores) {

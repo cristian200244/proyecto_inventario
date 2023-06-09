@@ -7,7 +7,7 @@ $datos = new ServiciosModel();
 $registro = $datos->getAll();
 
 ?>
- 
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -19,7 +19,7 @@ $registro = $datos->getAll();
             <button class="btn btn-outline-success me-2" type="submit">Search</button>
         </form>
     </h1>
-    
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -39,9 +39,7 @@ $registro = $datos->getAll();
             <?php
 
             if ($registro) {
-
                 $pos = 1;
-
                 foreach ($registro as $row) {
             ?>
                     <tr>
@@ -53,10 +51,9 @@ $registro = $datos->getAll();
                         <td><?= $row->getMarca() ?></td>
                         <td><?= $row->getEstadoProducto() ?></td>
                         <td><?= $row->getFecha() ?></td>
-                        <td><?= $row->getFalla() ?></td>
+                        <td><?= $row->getFalla() ?> </td>
                         <td>
-
-                            <a href="../../controller/servicioController.php?c=2&id_servicio=<?= $row->getId() ?>" class="btn btn-outline-warning">
+                            <a type="button" href="../../controller/servicioController.php?c=2&id_servicio=<?= $row->getId() ?>" class="btn btn-outline-warning">
                                 <i class="bi bi-pencil-square" style="font-size: 1.3rem; "></i></a>
                         </td>
                     </tr>
