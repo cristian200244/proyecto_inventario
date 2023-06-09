@@ -6,8 +6,7 @@ $controller = new UsuarioController;
 
 class UsuarioController
 {
-
-    private $usuario;
+     private $usuario;
 
     public function __construct()
     {
@@ -51,6 +50,7 @@ class UsuarioController
             'correo'   => $_REQUEST['correo'],
             'password' => $_REQUEST['password'],
         ];
+         
 
         if (empty($datos['correo']) || empty($datos['password'])) {
 
@@ -93,9 +93,10 @@ class UsuarioController
 
     public function store()
     {
-
+     
+         
         $datos = [
-
+         
             'id_tipo_documento' => $_REQUEST['id_tipo_documento'],
             'numero_documento'  => $_REQUEST['numero_documento'],
             'primer_nombre'     => $_REQUEST['primer_nombre'],
@@ -108,13 +109,13 @@ class UsuarioController
             'correo'            => $_REQUEST['correo'],
             'direccion'         => $_REQUEST['direccion'],
             'correo'            => $_REQUEST['correo'],
-            'password'            => $_REQUEST['password'],
+     
           
 
         ];
         $result = $this->usuario->store($datos);
         if ($result) {
-            header("Location: ../index.php");
+            header("Location:../login.php");
             exit();
         } else {
             echo $error = "Ocurrió un error";

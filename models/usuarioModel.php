@@ -20,7 +20,7 @@ class Usuario extends stdClass
     private $telefono;
     private $database;
     private $password;
-    private $memberTable = 'usuarios';
+    
 
 
     public function __construct()
@@ -113,10 +113,12 @@ class Usuario extends stdClass
 
     public function store($datos)
     {
+       
+         
 
         try {
-            $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_sexo, telefono, id_ciudad, correo, direccion, password) 
-            VALUES(:id_tipo_documento, :numero_documento, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :id_sexo, :telefono, :id_ciudad, :correo, :direccion, :password)';
+            $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_sexo, telefono, id_ciudad, correo, direccion ) 
+            VALUES(:id_tipo_documento, :numero_documento, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :id_sexo, :telefono, :id_ciudad, :correo, :direccion)';
 
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
@@ -134,7 +136,7 @@ class Usuario extends stdClass
                 'id_ciudad'         => $datos['id_ciudad'],
                 'correo'            => $datos['correo'],
                 'direccion'         => $datos['direccion'],
-                'password'         => $datos['password'],
+                
 
             ]);
             if ($query) {
@@ -147,6 +149,7 @@ class Usuario extends stdClass
 
     public function update($datos)
     {
+
 
         try {
             $sql = 'UPDATE personas SET 
@@ -205,6 +208,8 @@ class Usuario extends stdClass
         }
     }
 
+
+   
 
 
 
@@ -350,34 +355,5 @@ class Usuario extends stdClass
         }
     }
 
-    public function resetPassword()
-	{
-		$sqlQuery = "
-			SELECT corrro
-			FROM " . $this->memberTable . " 
-			WHERE correo='" . $_POST['correo'] . "' OR username='" . $_POST['userName'] . "'";
-		$result = mysqli_query($this->dbConnect, $sqlQuery);
-		$numRows = mysqli_num_rows($result);
-		if ($numRows) {
-			while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-				$link = "<a href='localhost/sesion/reset_password.php?authtoken=" . md5($row['email']) . "'>Reset Password</a>";
-				$to = $row['email'];
-				$subject = "Reset your password on examplesite.com";
-				$msg = "Hi there, click on this " . $link . " to reset your password.";
-				$msg = wordwrap($msg, 70);
-				$headers = "From: info@webdamn.com";
-				mail($to, $subject, $msg, $headers);
-				return 1;
-			}
-		} else {
-			return 0;
-		}
-	}
-
-    function generaTokenPass($user_id){
-        global $mysqli;
-
-        // $token = generateToken();
-        $stmt = $mysqli->prepare();
-    }
+   
 }

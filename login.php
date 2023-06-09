@@ -1,5 +1,5 @@
 <?php
-include_once(__DIR__ . "/config/config.example.php");
+include_once(__DIR__ . "../config/config.example.php");
 // include_once(__DIR__ . "usuarioController.php");
 
 // require_once("sesion.class.php");
@@ -73,10 +73,10 @@ if (isset($errorMessage)) { ?>
 
 
                                         <div class="text-center">
-                                            <a class="small" href="olvido_contraseña.php">Olvidó su contraseña?</a>
+                                            <a class="small" href="views/login/olvido_contraseña.php">Olvidó su contraseña?</a>
                                         </div>
                                         <div class="text-center">
-                                            <a class="small" href="views/login/register.php">Crear cuenta!</a>
+                                            <a class="small" href="register.php">Crear cuenta!</a>
 
                                             <?php
                                             if (isset($_GET['message'])) {
