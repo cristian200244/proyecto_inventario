@@ -50,13 +50,13 @@ class UsuarioController
             'correo'   => $_REQUEST['correo'],
             'password' => $_REQUEST['password'],
         ];
-         
-
+    
         if (empty($datos['correo']) || empty($datos['password'])) {
 
             return $mensaje = "Nombre de Usuario o contraseña vacio";
         } else {
             $results = $this->usuario->getUser($datos);
+            
 
             if ($results) {
                 session_start();

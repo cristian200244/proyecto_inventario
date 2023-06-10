@@ -1,3 +1,4 @@
+ 
 <!DOCTYPE html>
 <html lang="es">
 
@@ -47,19 +48,53 @@
                                 </li>
 
                                 <li>
-                                    <a class="dropdown-item" href="<?= BASE_URL ?>/login.php?c=6" onclick="salirSistema()">
+                                    <a class="dropdown-item"  href="<?= BASE_URL ?>/login.php?c=6" onclick="salirSistema()">
                                         <i class="fa-solid fa-hand fa-shake" style="color: #FF4633 ; padding-left: 8%; padding-right:8%;"></i>
                                         Cerrar Sesión
                                     </a>
-                                </li>
+                                  </li>
+
+                                  <li>
+                                  <a class="dropdown-item"  type="button" class="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                        <i class="fa-solid fa-hand fa-shake" style="color: #FF4633 ; padding-left: 8%; padding-right:8%;"></i>
+                                        Cambiar Contraseña
+                                    </a>
+                                   
+                                  </li>
+ 
+                                  </ul>
+
+                                  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Deseas Cambiar la contraseña!!</h1>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label"  >Contraseña</label>
+                                        
+                                        <input type="password" class="form-control" id="exampleInputPassword1" >
+                                        
+                                         </div>
+                                            </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                          <button type="button" class="btn btn-primary">Guardar</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
                                 
+                             </li>
                             </ul>
+                            
+            </nav>
+                                 
+                          
 
-                        </li>
-                    </ul>
 
-                 </nav>
-     
                
      
 

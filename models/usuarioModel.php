@@ -283,7 +283,7 @@ class Usuario extends stdClass
 
     public function setTipo_documento($tipo_documento)
     {
-        return $this->tipo_documento;
+        $this->tipo_documento = $tipo_documento;
     }
     public function setNumero_documento($numero_documento)
     {
@@ -317,8 +317,6 @@ class Usuario extends stdClass
     {
         return $this->correo;
     }
-
-
     public function setDireccion($direccion)
     {
         return $this->direccion;
@@ -341,7 +339,7 @@ class Usuario extends stdClass
 
         $correo = $datos["correo"];
         $pass   = md5($datos['password']);
-
+ 
         try {
 
             $sql = "SELECT id, password, correo FROM usuarios WHERE correo = '$correo' AND password = '$pass' ";
@@ -353,6 +351,17 @@ class Usuario extends stdClass
         } catch (PDOException $e) {
             die($e->getMessage());
         }
+    }
+
+    public function mostrarContraseña(){
+
+        $sql = "SELECT id, password FROM usuarios WHERE correo = correo AND PASSWORD = password";
+        $query = $this->database->conexion()->query($sql);
+
+        $result=$query->fetchObject();
+        return $result;
+
+        
     }
 
    
