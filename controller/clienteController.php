@@ -82,8 +82,12 @@ class ClienteController
 
     public function delete()
     {
-        $this->cliente->delete($_REQUEST['id_persona']);
-        header("Location: ../views/clientes/index.php");
+        $id_persona= $_REQUEST['id_persona'];
+        $result = $this->cliente->delete($id_persona);
+        if ($result) {
+             header("Location: ../views/clientes/index.php");
+             exit();
+        }
     }
 
     public function update()
@@ -115,7 +119,6 @@ class ClienteController
     }
 
     function buscarParam(){
-        var_dump($_REQUEST);
-        die();
+        
     }
 }

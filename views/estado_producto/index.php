@@ -52,7 +52,7 @@ foreach ($registros as $estado_producto) {
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Esatdo</th>
+                            <th scope="col">Estado</th>
                             <th scope="col" colspan="2">opciones</th>
 
                         </tr>
@@ -89,8 +89,7 @@ foreach ($registros as $estado_producto) {
                                                 </div>
                                                 <div class="modal-footer">
                                                     <a class="btn btn-outline-success" data-bs-dismiss="modal" onclick="recarga(<?= $estado_producto->getId() ?>) ">Actualizar</a>
-                                                    <!-- <button type="button" class="btn btn-outline-primary">Cancelar</button> -->
-                                                </div>
+                                                 </div>
 
                                             </div>
                                         </div>

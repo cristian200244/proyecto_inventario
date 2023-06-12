@@ -60,7 +60,7 @@ class EstadoProducto
     public function store($datos)
     {
         try {
-            $sql = 'INSERT INTO estado_productos (estado) VALUES  (:estado) ';
+            $sql = 'INSERT INTO estado_productos (estado) VALUES  (UPPER(:estado)) ';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
                 'estado' => $datos['estado']

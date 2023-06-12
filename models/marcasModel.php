@@ -61,7 +61,7 @@ class Marcas
     public function store($datos)
     {
         try {
-            $sql = 'INSERT INTO marcas (nombre) VALUES (:nombre) ';
+            $sql = 'INSERT INTO marcas (nombre) VALUES (UPPER(:nombre)) ';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
                 'nombre' => trim($datos['nombre'])

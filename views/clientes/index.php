@@ -12,8 +12,9 @@ $registro = $datos->getAll();
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800 text-center">Clientes <button type="button" class="btn  border-primary float-right mr-5">
-            <a href="<?= BASE_URL ?>./views/clientes/create.php"> <i class="bi bi-person-plus" style="font-size: 1.5rem; "></i></a></button></h1>
+    <h1 class="h3 mb-4 text-dark text-center">Clientes
+        <a type="button" class="btn  btn-outline-primary float-right mr-5" href="<?= BASE_URL ?>./views/clientes/create.php"> <i class="bi bi-person-plus" style="font-size: 1.5rem; "></i></a>
+    </h1>
     <table class="table table-striped ">
         <thead>
             <tr>
@@ -21,8 +22,8 @@ $registro = $datos->getAll();
                 <th scope="col">Primer Nombre</th>
                 <th scope="col">Primer Apellido</th>
                 <th scope="col">Ciudad De Residencia</th>
-                <th scope="col">Direccion</th>
-                <th scope="col">Telefono</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Teléfono</th>
                 <th scope="col" colspan="3">Opciones</th>
             </tr>
         </thead>

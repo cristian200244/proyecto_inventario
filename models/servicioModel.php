@@ -92,7 +92,7 @@
 
             try {
                 $sql = 'INSERT INTO servicios(id_persona, id_tipo_dispositivo, id_marca, id_tipo_servicio, codigo, id_estado_producto, falla, fecha)
-                 VALUES  (:id_persona, :id_tipo_dispositivo, :id_marca, :id_tipo_servicio, :codigo, :id_estado_producto, :falla, :fecha)';
+                 VALUES  (:id_persona, :id_tipo_dispositivo, :id_marca, :id_tipo_servicio, :codigo, :id_estado_producto, UPPER(:falla), :fecha)';
                 $prepare = $this->database->conexion()->prepare($sql);
                 $query = $prepare->execute([
 

@@ -47,13 +47,13 @@ $falla           = $services->getFalla();
     <div class="row">
         <div class="col">
             <div class="container text-center">
-                <a type="button" class="btn  border-primary float-start mt-2" href="index.php"><i class="bi bi-arrow-return-left"></i></a>
-                <h1 class="h2 mb-4  text-center">Actualizacion Del Servicio</h1>
+                <a type="button" class="btn btn-outline-primary float-start mt-2" href="index.php"><i class="bi bi-arrow-return-left"></i></a>
+                <h1 class="h2 mb-4  text-center">Actualización Del Servicio</h1>
                 <hr>
                 <form class="row g-3" action="../../controller/servicioController.php?c=3&id_servicio=<?= $id ?>" method="post">
                     <div class="col-12">
-                        <label for="id_persona" class="form-label">Nombre Completo Del Cliente</label>
-                        <select class="form-select persona" aria-label="Default select example" name="id_persona" id="id_persona">
+                       <h5 class="text-start">Nombre Completo Del Cliente</h5>
+                        <select class="form-select persona" aria-label="Default select example" name="id_persona" id="id_persona" >
                             <?php foreach ($registro_person as $personas) : ?>
                                 <option value="<?= $personas->getId() ?>" <?= $personas->getId() == $services->getPersona() ? 'selected' :  "" ?>> <?= $personas->NombreCompleto() ?> </option>
                             <?php endforeach ?>
@@ -104,7 +104,7 @@ $falla           = $services->getFalla();
                     </div>
                     <div class="col-md-12">
                         <label for="falla" class="form-label">Falla</label>
-                        <textarea class="form-control" id="falla" rows="4" name="falla" placeholder="limite 500 caracteres"> <?= $falla ?></textarea>
+                        <textarea class="form-control" id="falla" rows="4" name="falla" placeholder="limite 140 caracteres"  oninput="estrictAddres(event)" maxlength="140"> <?= $falla ?></textarea>
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-outline-info">Actualizar Servicio</button>
