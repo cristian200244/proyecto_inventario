@@ -2,7 +2,7 @@
 include_once dirname(__FILE__) . '../../Config/config.example.php';
 require_once 'conexionModel.php';
 
-class Ciudad   
+class Ciudad  
 {
     private $id;
     private $nombre;
@@ -21,21 +21,19 @@ class Ciudad
 
     public function getById($id)
     {
-        $datos_ciudad = [];
+        $ciudad = [];
         try {
-            $sql = 'SELECT * FROM ciudades WHERE id_ciudad=:id_ciudad';
+            $sql = 'SELECT * FROM ciudades WHERE id=:id';
             $query = $this->database->conexion()->prepare($sql);
-            $query->execute([
-                    'id_ciudad' => $id
-            ]);
+            $query->execute(['id_ciudad' => $id]);
             while ($row = $query->fetch()) {
-                $item         = new Ciudad();
-                $item->id     = $row['id_ciudad'];
-                $item->nombre = $row['nombre'];
+                $datos  = new Ciudad();
+                $datos->id = $row['id_ciudad'];
+                $datos->nombre = $row['nombre'];
 
-                array_push($datos_ciudad , $item);
+                array_push($ciudad, $datos);
             }
-            return $datos_ciudad;
+            return $ciudad;
         } catch (PDOException $e) {
             return ['mensasje' => $e];
         }
@@ -46,7 +44,7 @@ class Ciudad
         $items = [];
 
         try {
-            $sql = 'SELECT  * FROM   ciudades ORDER BY  nombre ASC';
+            $sql = 'SELECT * FROM ciudades ORDER BY nombre ASC';
             $query = $this->database->conexion()->query($sql);
 
             while ($row = $query->fetch()) {
@@ -67,7 +65,7 @@ class Ciudad
     public function store($datos)
     {
         try {
-            $sql = 'INSERT INTO ciudades ( nombre) values  (UPPER(:nombre)) ';
+            $sql = 'INSERT INTO ciudades ( nombre) values (:nombre)';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
                 'nombre' => $datos['nombre']
@@ -83,11 +81,11 @@ class Ciudad
     public function update($datos)
     {
         try {
-            $sql = 'UPDATE ciudades SET nombre = :nombre WHERE id_ciudad = :id_ciudad'; 
+            $sql = 'UPDATE ciudades SET  nombre WHERE id_ciudad = :id_ciudad'; 
             $prepare = $this->database->conexion()->prepare($sql);
              $query = $prepare->execute([
                 'id_ciudad'      => $datos['id_ciudad'],
-                'nombre'         => $datos['nombre'] 
+                'nombre'         => $datos['nombre']
             ]);
             
             if ($query) {
@@ -121,7 +119,7 @@ class Ciudad
 
     public function setCiudad($nombre)
     {
-         $this->nombre = $nombre;
+        return $this->nombre;
     }
 
    

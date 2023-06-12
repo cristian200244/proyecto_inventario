@@ -20,7 +20,7 @@ class Servicios
     {
         $servicio = [];
         try {
-            $sql = 'SELECT * FROM tipo_servicios WHERE id_tipo_servicio=:id_tipo_servicio';
+            $sql = 'SELECT * FROM tipo_servicios WHERE id=:id';
             $query = $this->database->conexion()->prepare($sql);
             $query->execute(['id_tipo_servicio' => $id]);
 
@@ -61,7 +61,7 @@ class Servicios
     public function store($datos)
     {
         try {
-            $sql = 'INSERT INTO tipo_servicios (servicio) VALUES  (UPPER(:servicio)) ';
+            $sql = 'INSERT INTO tipo_servicios (servicio) VALUES (:servicio)';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
                 'servicio' => $datos['servicio']
@@ -76,7 +76,7 @@ class Servicios
     public function update($datos)
     {
         try {
-            $sql = 'UPDATE tipo_servicios SET servicio = :servicio WHERE id_tipo_servicio= :id_tipo_servicio';
+            $sql = 'UPDATE tipo_servicios SET servicio WHERE id_tipo_servicio= :id_tipo_servicio';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
                 'id_tipo_servicio' => $datos['id_tipo_servicio'],
@@ -92,7 +92,7 @@ class Servicios
     public function delete($id)
     {
         try {
-            $sql = 'DELETE  FROM tipo_servicios WHERE id_tipo_servicio = :id_tipo_servicio';
+            $sql = 'DELETE  FROM tipo_servicios WHERE id_tipo_servicio =: id_tipo_servicio';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute(['id_tipo_servicio' => $id]);
 
@@ -108,6 +108,6 @@ class Servicios
         
     }
     public function setServicio($servicio){
-        return $this->servicio = $servicio;
+        return $this->servicio;
     }
 }
