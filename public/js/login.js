@@ -12,7 +12,7 @@ form.addEventListener('submit', function(event){
     var userData = new FormData(form);
 
     //Validamos el email
-    if (!validEmail(userData.get('email'))) {
+    if (!validEmail(userData.get('correo'))) {
         borderedBox(0,1);
         showResponse(1, 'Introduce una dirección de correo electrónico valida');
         return false;

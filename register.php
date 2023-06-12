@@ -44,7 +44,7 @@ $data_rol = $roles->getAll();
 
         <!-- Page Heading -->
 
-        <form action="controller/usuarioController.php"  method="POST">
+        <form action="controller/usuarioController.php"  method="POST" id="">
             <input type="hidden" name="c" value="1">
             <div class="container text-center">
                 <h1 class="h2 mb-4  text-center">Crear Usuario</h1>
@@ -148,15 +148,16 @@ $data_rol = $roles->getAll();
 
                 </div>
                 <br>
-                <button onclick="user()" type="submit" src="login.php" class="btn btn-outline-info ml-2">Guardar Usuario</button>
+                <button onclick="fntGuardar()" type="submit" src="login.php" class="btn btn-outline-info ml-2">Guardar Usuario</button>
              
             </div>
         </form>
 
     </div>
-    <script src="public/js/register.js">
+    <script src="public/js/register.js"></script>
+    <script src="publict/js/alert.js"></script>
         
-    </script>
+   
 </body>
 
 </html>

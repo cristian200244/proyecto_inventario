@@ -65,10 +65,12 @@ class UsuarioController
                 $_SESSION['correo'] = $results->correo;
 
                 $message = '¡Bienvenido!';
-                header('Location:../Views/main/index.php');
+                header('Location:../Views/servicios/create.php');
             } else {
-                echo $message = '¡Lo sentimos! Los datos ingresados no concuerdan' . '<br>' .
+                echo $message = '¡El nombre de usuario o correo electr&oacute;nico no existe' . '<br>' .
                     '<div class="alert-danger"> ¡Error al Digtar o Usuario no existe!</div>';
+
+                    
             }
         }
     }

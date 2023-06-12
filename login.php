@@ -44,7 +44,9 @@ if (isset($errorMessage)) { ?>
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6 d-none d-lg-block ">
+                                <img src="public/img/logo.png">
+                            </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
@@ -58,18 +60,20 @@ if (isset($errorMessage)) { ?>
                                             <input type="email" required class="form-control form-control-user" name="correo" aria-describedby="emailHelp" placeholder="Introducir la dirección de correo electrónico...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" required class="form-control form-control-user" name="password" placeholder="Contraseña">
+                                            <input type="password" required class="form-control form-control-user" name="password"  id="password" placeholder="Contraseña">
+                                            
                                         </div>
 
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
                                                 <div class="CheckBox1">
-                                                    <input type="checkbox" onclick="togglePasswordVisibility()">Mostrar contraseña
+                                                    <input type="checkbox" onclick="Mostrar()">Mostrar contraseña
                                                 </div>
                                             </div>
                                         </div>
-                                        <button id="boton" type="submit" class="btn btn-info">Iniciar sesion</button>
+                                        
+                                        <button id="boton" type="submit" class="btn btn-info">Iniciar Sesi&oacute;n</button>
 
 
                                         <div class="text-center">
@@ -121,6 +125,7 @@ if (isset($errorMessage)) { ?>
     <script src="public/js/main.js">
     </script>
     <script src="public/js/cerrar.js"></script>
+    <script src="public/js/login.js"></script>
 
 
 
