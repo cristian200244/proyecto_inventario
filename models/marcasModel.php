@@ -20,7 +20,7 @@ class Marcas
     {
         $marca = [];
         try {
-            $sql = 'SELECT * FROM marcas WHERE id=:id';
+            $sql = 'SELECT * FROM marcas WHERE id_marca =:id_marca';
             $query = $this->database->conexion()->prepare($sql);
             $query->execute(['id_marca' => $id]);
 
@@ -61,10 +61,10 @@ class Marcas
     public function store($datos)
     {
         try {
-            $sql = 'INSERT INTO marcas (nombre) VALUES (:nombre)';
+            $sql = 'INSERT INTO marcas (nombre) VALUES (UPPER(:nombre)) ';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
-                'nombre' => $datos['nombre']
+                'nombre' => trim($datos['nombre'])
             ]);
             if ($query) {
                 return true;
@@ -76,11 +76,13 @@ class Marcas
     public function update($datos)
     {
         try {
-            $sql = 'UPDATE marcas SET nombre WHERE id_marca= :id_marca';
+            $sql = 'UPDATE marcas SET nombre = :nombre 
+                    WHERE id_marca = :id_marca
+            ';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
-                'id_marca' => $datos['id_marca'],
-                'nombre'    => $datos['nombre']
+                'nombre'    => $datos['nombre'],
+                'id_marca'  => $datos['id_marca'],
             ]);
             if ($query) {
                 return true;
@@ -92,9 +94,11 @@ class Marcas
     public function delete($id)
     {
         try {
-            $sql = 'DELETE  FROM marcas WHERE id_marca =: id_marca';
+            $sql = 'DELETE  FROM marcas WHERE id_marca = :id_marca';
             $prepare = $this->database->conexion()->prepare($sql);
-            $query = $prepare->execute(['id_marca' => $id]);
+            $query = $prepare->execute([
+                'id_marca' => $id
+            ]);
 
             if ($query) {
                 return true;
@@ -109,6 +113,6 @@ class Marcas
     }
     public function setMarca($nombre)
     {
-        return $this->nombre;
+        $this->nombre = $nombre;
     }
 }
