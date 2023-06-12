@@ -50,24 +50,24 @@ class SexoController
     public function show()
     {
         $id = $_REQUEST['id_sexo'];
-        header("Location: ../views/sexo/index.php");
+        header("Location: ../views/sexo/index.php?id_sexo=".$id);
     }
     public function delete()
     {
-        $this->sexo->delete($_REQUEST['id']);
+        $this->sexo->delete($_REQUEST['id_sexo']);
         header('Location: ../views/sexo/index.php');
     }
     public function update()
     {
-        $datos = [
-            'id_marca' => $_REQUEST['id_marca'],
+         $datos = [
+            'id_sexo' => $_REQUEST['id_sexo'],
             'nombre' => $_REQUEST['nombre']
 
         ];
         $result = $this->sexo->update($datos);
 
         if ($result) {
-            header("Location: ../views/sexo/update.php");
+            header('Location: ../views/sexo/index.php');
             exit();
         }
         return $result;

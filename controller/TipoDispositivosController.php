@@ -2,7 +2,7 @@
 
 require_once '../models/TipoDispositivosModel.php';
 $controller = new DispositivoController;
-class DispositivoController 
+class DispositivoController
 {
 
     private $dispositivo;
@@ -14,7 +14,7 @@ class DispositivoController
         if (isset($_REQUEST['c'])) {
             switch ($_REQUEST['c']) {
                 case '1': //Almacenar en la base de datos
-                    self::store(); 
+                    self::store();
                     break;
                 case '2': //ver usuario
                     self::show();
@@ -52,11 +52,11 @@ class DispositivoController
     public function show()
     {
         $id = $_REQUEST['id_tipo_dispositivo'];
-        header("Location: ../views/tipo_dispositivos/index.php");
+        header("Location: ../views/tipo_dispositivos/index.php?id_tipo_dispositivo=" . $id);
     }
     public function delete()
     {
-        $this->dispositivo->delete($_REQUEST['id']);
+        $this->dispositivo->delete($_REQUEST['id_tipo_dispositivo']);
         header("Location: ../views/tipo_dispositivos/index.php");
     }
     public function update()
@@ -68,9 +68,7 @@ class DispositivoController
         $result = $this->dispositivo->update($datos);
 
         if ($result) {
-            header("Location: ../views/tipo_dispositivos/update.php");
-            exit();
+            echo json_encode(array('succes' => 1, 'nombre' => $datos['nombre']));
         }
-        return $result;
     }
 }

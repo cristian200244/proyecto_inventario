@@ -23,7 +23,7 @@ class Dispositivos
     {
         $dispositivo = [];
         try {
-            $sql = 'SELECT * FROM tipo_dispositivos WHERE id=:id';
+            $sql = 'SELECT * FROM tipo_dispositivos WHERE id_tipo_dispositivo=:id_tipo_dispositivo';
             $query = $this->database->conexion()->prepare($sql);
             $query->execute(['id_tipo_dispositivo' => $id]);
             while ($row = $query->fetch()) {
@@ -65,7 +65,7 @@ class Dispositivos
     public function store($datos)
     {
         try {
-            $sql = 'INSERT INTO tipo_dispositivos (nombre) values (:nombre)';
+            $sql = 'INSERT INTO tipo_dispositivos (nombre) values (UPPER(:nombre)) ';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
                 'nombre' => $datos['nombre']
@@ -81,7 +81,7 @@ class Dispositivos
     public function update($datos)
     {
         try {
-            $sql = 'UPDATE tipo_dispositivos SET  nombre WHERE id_tipo_dispositivo = :id_tipo_dispositivo'; 
+            $sql = 'UPDATE tipo_dispositivos SET  nombre = :nombre WHERE id_tipo_dispositivo = :id_tipo_dispositivo'; 
             $prepare = $this->database->conexion()->prepare($sql);
              $query = $prepare->execute([
                 'id_tipo_dispositivo'      => $datos['id_tipo_dispositivo'],
@@ -119,7 +119,7 @@ class Dispositivos
 
     public function setDispositivo($nombre)
     {
-        return $this->nombre;
+        return $this->nombre = $nombre;
     }
 
    
