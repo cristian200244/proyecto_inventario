@@ -21,7 +21,8 @@ $registro_sexo = $datos_sexo->getAll();
 <div class="container-fluid">
 
     <!-- Page Heading -->
-
+   
+     
     <form method="POST" action="../../controller/clienteController.php?c=1">
         <div class="container text-center">
             <h1 class="h2 mb-4  text-center">Crear Cliente</h1>
@@ -32,7 +33,7 @@ $registro_sexo = $datos_sexo->getAll();
                     <select class="form-select" aria-label="Default select example" name="id_tipo_documento" id="id_tipo_documento" required="required">
                         <option selected value="">Seleccionar</option>
                         <?php
-                        foreach ($registro  as $datos) {
+                        foreach ($registro as $datos) {
                             echo '<option value="' . $datos->getId() . '">' . $datos->getTipoDocumento() . '</option>';
                         }
                         ?>

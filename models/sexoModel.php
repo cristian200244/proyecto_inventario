@@ -67,7 +67,7 @@ class Sexo
     public function store($datos)
     {
         try {
-            $sql = 'INSERT INTO sexo (nombre) values  (:nombre) ';
+            $sql = 'INSERT INTO sexo (nombre) values  (UPPER(:nombre)) ';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
                 'nombre' => $datos['nombre']
