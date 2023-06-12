@@ -38,7 +38,7 @@ $fecha = date('Y-m-d');
                 <form class="row g-3" action="../../controller/servicioController.php?c=1" method="post">
 
                     <div class="col-12">
-                        <label for="id_persona" class="form-label">Nombre Completo Del Cliente</label>
+                    <h5 class="text-start">Datos Del Cliente</h5>
                         <select class="form-select persona" aria-label="Default select example" name="id_persona" id="id_persona" required>
                             <option selected value="">Seleccionar</option>
                             <?php
@@ -50,7 +50,7 @@ $fecha = date('Y-m-d');
                     </div>
                     <hr>
 
-                    <h5 class="text-start">Ingresar Datos Del Dispositivo
+                    <h5 class="text-start">Datos Del Dispositivo
 
                     </h5>
                     <div class="col-md-4">

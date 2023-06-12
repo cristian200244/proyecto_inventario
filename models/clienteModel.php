@@ -114,7 +114,7 @@ class Cliente
 
         try {
             $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_sexo, telefono, id_ciudad, correo, direccion) 
-            VALUES( :id_tipo_documento, :numero_documento, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :id_sexo, :telefono, :id_ciudad, :correo, :direccion)';
+            VALUES( :id_tipo_documento, :numero_documento, UPPER(:primer_nombre), UPPER(:segundo_nombre), UPPER(:primer_apellido), UPPER(:segundo_apellido), :id_sexo, :telefono, :id_ciudad, UPPER(:correo), UPPER(:direccion))';
 
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
@@ -202,7 +202,6 @@ class Cliente
 
     public function NombreCompleto()
     {
-
         return $this->primer_nombre . " " . $this->segundo_nombre . " " . $this->primer_apellido . " " . $this->segundo_apellido;
     }
     //---------------------------------------------------------------//

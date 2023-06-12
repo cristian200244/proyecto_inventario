@@ -64,7 +64,7 @@ class TipoDocumento
     public function store($datos)
     {
          try {
-            $sql = 'INSERT INTO tipo_documentos (tipo) values  (:tipo) ';
+            $sql = 'INSERT INTO tipo_documentos (tipo) values  (UPPER(:tipo)) ';
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
                 'tipo' => $datos['tipo']

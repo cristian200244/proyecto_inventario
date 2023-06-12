@@ -21,7 +21,8 @@ $registro_sexo = $datos_sexo->getAll();
 <div class="container-fluid">
 
     <!-- Page Heading -->
-
+   
+     
     <form method="POST" action="../../controller/clienteController.php?c=1">
         <div class="container text-center">
             <h1 class="h2 mb-4  text-center">Crear Cliente</h1>

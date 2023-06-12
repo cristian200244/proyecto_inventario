@@ -13,7 +13,7 @@ $registro = $datos->getAll();
 
 
     <a type="button" class="btn btn-outline-primary float-right mr-5  " href="<?= BASE_URL ?>./views/servicios/create.php"> <i class="bi bi-person-plus" style="font-size: 1.2rem; "></i></a>
-    <h1 class="h3 mb-4 text-gray-800 ">Servicios Relizados
+    <h1 class="h3 mb-4 text-dark">Servicios
         <form class="d-flex float-end" role="search">
             <input class="form-control me-1" type="search" placeholder="buscar " aria-label="Search">
             <button class="btn btn-outline-success me-2" type="submit">Search</button>

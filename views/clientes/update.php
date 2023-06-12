@@ -40,7 +40,7 @@ foreach ($registro as $cliente) {
 
     <form method="POST" action="../../controller/clienteController.php?c=3&id_persona=<?= $id_persona ?>">
         <div class="container text-center">
-        <a type="button" class="btn  border-primary float-start" href="index.php"><i class="bi bi-arrow-return-left"></i></a>
+        <a type="button" class="btn btn-outline-primary float-start" href="index.php"><i class="bi bi-arrow-return-left"></i></a>
             <h1 class="h2 mb-4  text-center">Actualizar Datos Del Cliente </h1>
             <hr class="bg-info">
             <div class="row text-start">
@@ -82,7 +82,7 @@ foreach ($registro as $cliente) {
                     </select>
                 </div>
                 <div class="col-3 mb-2">
-                    <label for="telefono" class="form-label">Telefono</label>
+                    <label for="telefono" class="form-label">Teléfono</label>
                     <input type="tel" class="form-control" id="telefono" name="telefono" value="<?= $telefono ?>" oninput="restrictNumberInput(event)" maxlength="10" required>
                 </div>
                 <div class="col-6 mb-2">
