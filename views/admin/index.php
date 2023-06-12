@@ -4,11 +4,11 @@ include_once(BASE_DIR . '../../views/main/partials/header.php');
 ?>
 
 <!-- Begin Page Content -->
+
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">hola estas en el modulo Administrador</h1>
-    
-    
+   
 
 </div>
 <!-- /.container-fluid -->
