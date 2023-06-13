@@ -57,7 +57,7 @@
         public function delete()
         {
             $this->ciudad->delete($_REQUEST['id_ciudad']);
-            header("Location: ../views/ciudad/index.php");
+            header("Location: ../views/ciudad/index.php" );
         }
         public function update()
         {
