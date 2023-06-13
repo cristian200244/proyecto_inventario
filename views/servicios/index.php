@@ -28,11 +28,11 @@ $registro = $datos->getAll();
                 <th scope="col">Cliente</th>
                 <th scope="col">Dispositivo</th>
                 <th scope="col">Servicio</th>
-                <th scope="col">Marca</th>
-                <th scope="col">Estado</th>
+                <th scope="col">Marca</th> 
                 <th scope="col">Fecha</th>
-                <th scope="col">Falla</th>
-                <th scope="col">Actualizar</th>
+                <th scope="col">Falla</th> 
+                <th scope="col">Estado</th> 
+                <th scope="col">Actualizar</th> 
             </tr>
         </thead>
         <tbody>
@@ -49,11 +49,10 @@ $registro = $datos->getAll();
                         <td><?= $row->getTipoDispositivo() ?></td>
                         <td><?= $row->getTipoServicio() ?></td>
                         <td><?= $row->getMarca() ?></td>
-                        <td><?= $row->getEstadoProducto() ?></td>
-                        <td><?= $row->getFecha() ?></td>
+                         <td><?= $row->getFecha() ?></td>
                         <td><?= $row->getFalla() ?> </td>
-                        <td>
-                            <button id="myButton" class="btn btn-danger custom-btn">Pendiente</button>
+                        <td><?= $row->getEstadoProducto() ?> </td> 
+                         <td  class="text-center">
                             <a type="button" href="../../controller/servicioController.php?c=2&id_servicio=<?= $row->getId() ?>" class="btn btn-outline-warning">
                                 <i class="bi bi-pencil-square" style="font-size: 1.3rem; "></i></a>
                         </td>

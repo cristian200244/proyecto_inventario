@@ -48,9 +48,7 @@ $registro = $datos->getAll();
                                 <i class="bi bi-pencil-square" style="font-size: 1.3rem; "></i></a>
 
                             <a onclick="AlertDelete('<?= $row->getId() ?>')" class="btn btn-sm btn-outline-danger">
-                                <i class="bi bi-trash3-fill" style="font-size: 1.3rem; "></i></a>
-
-
+                                <i class="bi bi-trash3-fill" style="font-size: 1.3rem; "></i></a> 
                         </td>
 
                     </tr>

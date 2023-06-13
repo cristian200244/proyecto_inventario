@@ -98,7 +98,7 @@ $registro_sexo = $datos_sexo->getAll();
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-outline-info ml-2">Guardar Cliente</button>
+            <button type="submit"onclick="showAlert()" class="btn btn-outline-info ml-2">Guardar Cliente</button>
         </div>
 
     </form>
@@ -109,3 +109,8 @@ $registro_sexo = $datos_sexo->getAll();
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');
 ?>
+ <script>
+    function showAlert() {
+        var notification = alertify.notify('sample', 'success', 5, function(){  console.log('dismissed'); });
+    }
+  </script>
