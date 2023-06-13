@@ -12,7 +12,7 @@ define('BASE_URL', '/proyecto_inventario');
 // Rutas de conexión a DB
 define('DIR', dirname(__FILE__));
 define('HOST', 'localhost');
-define('DB', 'sistema_inventario');
-define('USER', 'root');
-define('PASSWORD', '123456789');
+define('DB', 'database');
+define('USER', 'username');
+define('PASSWORD', 'password');
 define('CHARSET', 'utf8mb4');
