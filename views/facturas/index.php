@@ -14,10 +14,6 @@ $registro = $datos->getAll();
     <button type="button" class="btn  border-primary float-right mr-5  ">
         <a href="<?= BASE_URL ?>./views/facturas/create.php"> <i class="bi bi-person-plus" style="font-size: 1.2rem; "></i></a></button>
     <h1 class="h3 mb-4 text-gray-800 ">Facturas Relizadas
-        <form class="d-flex float-end" role="search">
-            <input class="form-control me-1" type="search" placeholder="buscar " aria-label="Search">
-            <button class="btn btn-outline-success me-2" type="submit">Search</button>
-        </form>
     </h1>
 
     <table class="table table-striped">
