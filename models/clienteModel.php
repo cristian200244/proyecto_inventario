@@ -4,7 +4,7 @@ include_once dirname(__FILE__) . '../../Config/config.example.php';
 require_once 'conexionModel.php';
 
 
-class Cliente
+class Cliente extends stdClass
 {
     private $id_persona;
     private $tipo_documento;
@@ -70,7 +70,7 @@ class Cliente
         try {
             $sql = 'SELECT  id_persona, id_tipo_documento, numero_documento , primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_sexo, telefono, c.nombre AS ciudad, correo, direccion 
             FROM personas AS p
-            JOIN ciudades AS c ON p.id_ciudad = c.id_ciudad
+            JOIN ciudades AS c ON p.id_ciudad = c.id_ciudad 
             WHERE id_rol = 2
             ORDER BY id_persona DESC';
             $query = $this->database->conexion()->query($sql);
@@ -100,24 +100,16 @@ class Cliente
         }
     }
 
-    public function existeDato($key, $val)
-    {
-        $sql = "SELECT COUNT(*) AS total FROM personas WHERE $key = '$val'";
-        $result = $this->database->conexion()->query($sql)->fetchColumn();
-        return $result;
-    }
-
-
 
     public function store($datos)
     {
-
         try {
             $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_sexo, telefono, id_ciudad, correo, direccion) 
-            VALUES( :id_tipo_documento, :numero_documento, UPPER(:primer_nombre), UPPER(:segundo_nombre), UPPER(:primer_apellido), UPPER(:segundo_apellido), :id_sexo, :telefono, :id_ciudad, UPPER(:correo), UPPER(:direccion))';
+            VALUES(:id_tipo_documento, :numero_documento, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :id_sexo, :telefono, :id_ciudad, :correo, :direccion)';
 
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
+
 
 
                 'id_tipo_documento' => $datos['id_tipo_documento'],
@@ -126,7 +118,7 @@ class Cliente
                 'segundo_nombre'    => $datos['segundo_nombre'],
                 'primer_apellido'   => $datos['primer_apellido'],
                 'segundo_apellido'  => $datos['segundo_apellido'],
-                'id_sexo'           => $datos['id_sexo'],
+                'id_sexo'              => $datos['id_sexo'],
                 'telefono'          => $datos['telefono'],
                 'id_ciudad'         => $datos['id_ciudad'],
                 'correo'            => $datos['correo'],
@@ -153,15 +145,16 @@ class Cliente
               primer_apellido   = :primer_apellido,
               segundo_apellido  = :segundo_apellido,
               telefono          = :telefono,
-              id_sexo           = :id_sexo,
+              id_sexo              = :id_sexo,
               id_ciudad         = :id_ciudad,
               correo            = :correo,
-              direccion         = :direccion
-              WHERE id_persona  = :id_persona';
+              direccion         = :direccion,
+              WHERE id          = :id';
 
             $prepare = $this->database->conexion()->prepare($sql);
             $query = $prepare->execute([
-                'id_persona'        => $datos['id_persona'],
+                'id'                => $datos['id'],
+                'direccion'         => $datos['direccion'],
                 'id_tipo_documento' => $datos['id_tipo_documento'],
                 'numero_documento'  => $datos['numero_documento'],
                 'primer_nombre'     => $datos['primer_nombre'],
@@ -200,10 +193,6 @@ class Cliente
         }
     }
 
-    public function NombreCompleto()
-    {
-        return $this->primer_nombre . " " . $this->segundo_nombre . " " . $this->primer_apellido . " " . $this->segundo_apellido;
-    }
     //---------------------------------------------------------------//
     // -------------------------------getter------------------------//
 
@@ -267,46 +256,46 @@ class Cliente
 
     public function setTipoDocumento($tipo_documento)
     {
-        $this->tipo_documento = $tipo_documento;
+        return $this->tipo_documento;
     }
     public function setNumeroDocumento($numero_documento)
     {
-        $this->numero_documento = $numero_documento;
+        return $this->numero_documento;
     }
     public function setPrimerNombre($primer_nombre)
     {
-        $this->primer_nombre = $primer_nombre;
+        return $this->primer_nombre;
     }
     public function setSegundoNombre($segundo_nombre)
     {
-        $this->segundo_nombre = $segundo_nombre;
+        return $this->segundo_nombre;
     }
     public function setPrimerApellidoo($primer_apellido)
     {
-        $this->primer_apellido = $primer_apellido ;
+        return $this->primer_apellido;
     }
     public function setSegundoApellido($segundo_apellido)
     {
-        $this->segundo_apellido = $segundo_apellido;
+        return $this->segundo_apellido;
     }
     public function setSexo($sexo)
     {
-        $this->sexo = $sexo;
+        return $this->sexo;
     }
     public function setCiudad($ciudad)
     {
-        $this->ciudad = $ciudad;
+        return $this->ciudad;
     }
     public function setCorreo($correo)
     {
-        $this->correo = $correo;
+        return $this->correo;
     }
     public function setDireccion($direccion)
     {
-        $this->direccion= $direccion;
+        return $this->direccion;
     }
     public function setTelefono($telefono)
     {
-        $this->telefono = $telefono;
+        return $this->telefono;
     }
 }

@@ -51,11 +51,11 @@ class ServicioController
     public function show()
     {
         $id = $_REQUEST['id_tipo_servicio'];
-        header("Location: ../views/tipo_servicio/index.php?id__tipo_servicio=".$id);
+        header("Location: ../views/tipo_servicio/index.php");
     }
     public function delete()
     {
-        $this->servicio->delete($_REQUEST['id_tipo_servicio']);
+        $this->servicio->delete($_REQUEST['id']);
         header("Location: ../views/tipo_servicio/index.php");
     }
     public function update()
@@ -67,8 +67,9 @@ class ServicioController
         $result = $this->servicio->update($datos);
 
         if ($result) {
-            echo json_encode(array('succes' => 1, 'servicio'=>$datos['servicio']));
+            header("Location: ../views/tipo_servicio/update.php");
+            exit();
         }
-         
+        return $result;
     }
 }
