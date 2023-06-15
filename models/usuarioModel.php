@@ -29,13 +29,15 @@ class Usuario extends stdClass
     }
     public function getId()
     {
+
         return $this->id_persona;
     }
     public function getById($id_persona)
     {
         $datos_usuario = [];
+
         try {
-            $sql  = 'SELECT * FROM personas WHERE id_persona = id_persona';
+            $sql  = 'SELECT * FROM personas WHERE $id_persona = :$id_persona';
             $query = $this->database->conexion()->prepare($sql);
             $query->execute([
                 'id_persona' => $id_persona
@@ -43,7 +45,7 @@ class Usuario extends stdClass
 
             while ($row = $query->fetch()) {
                 $item = new Usuario();
-                $item->id_persona       = $row['$id_persona'];
+                $item->id               = $row['$id_persona'];
                 $item->tipo_documento   = $row['id_tipo_documento'];
                 $item->numero_documento = $row['numero_documento'];
                 $item->primer_nombre    = $row['primer_nombre'];
@@ -66,6 +68,9 @@ class Usuario extends stdClass
         }
     }
 
+
+
+
     public function getAll()
     {
         $items = [];
@@ -81,7 +86,7 @@ class Usuario extends stdClass
             while ($row = $query->fetch()) {
 
                 $item                   = new Usuario();
-                $item->id_persona               = $row['id_persona'];
+                $item->id               = $row['id_persona'];
                 $item->tipo_documento   = $row['id_tipo_documento'];
                 $item->numero_documento = $row['numero_documento'];
                 $item->primer_nombre    = $row['primer_nombre'];
