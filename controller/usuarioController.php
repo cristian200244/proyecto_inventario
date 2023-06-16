@@ -18,7 +18,6 @@ class UsuarioController
             switch ($controlador) {
                 case '1': //Almacenar en la base de datos
                     self::store();
-
                     break;
                 case '2': //ver usuario
                     self::show();
@@ -67,21 +66,20 @@ class UsuarioController
                 header('Location:../Views/servicios/create.php');
             } else {
                 echo $message = '¡El nombre de usuario o correo electr&oacute;nico no existe' . '<br>' .
-                    '<div class="alert-danger"> ¡Error al Digtar o Usuario no existe!</div>';
+                    '<div class="alert-danger"> ¡Error al Digtar o Usuario no existe!</div>
+                    <br>
+                    <a   button href="../login.php"  type="button" class="link-primary">Atras</a>';
+
+                   
+
+                    
+
+                    
             }
         }
     }
 
-    // public function login()
-    // {
-    // 	$sqlQuery = "
-    // 		SELECT * 
-    // 		FROM " . $this->memberTable . " 
-    // 		WHERE email='" . $_POST['userEmail'] . "' AND password='" . md5($_POST['userPassword']) . "'";
-    // 	return  $this->getData($sqlQuery);
-
-    // }
-
+    
 
 
 
