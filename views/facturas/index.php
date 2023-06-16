@@ -7,7 +7,7 @@ $datos = new Factura();
 $registro = $datos->getAll();
 
 ?>
-
+<!-- facturas -->
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -26,7 +26,6 @@ $registro = $datos->getAll();
                 <th scope="col">Servicio</th>
                 <th scope="col">fecha</th>
                 <th scope="col">total</th>
-             
             </tr>
         </thead>
         <tbody>
@@ -46,8 +45,8 @@ $registro = $datos->getAll();
                         <td><?= $row->getTipoDispositivo() ?></td>
                         <td><?= $row->getTipoServicio() ?></td>
                         <td><?= $row->getFecha() ?></td>
-                        <td><?= number_format( $row->getTotal()) ?></td>
-                
+                        <td><?= number_format($row->getTotal()) ?></td>
+
                     </tr>
                 <?php
                     $pos++;
