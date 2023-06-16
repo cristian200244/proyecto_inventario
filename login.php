@@ -52,9 +52,8 @@ if (isset($errorMessage)) { ?>
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Bienvenido!!</h1>
                                     </div>
-                                    <form action="controller/usuarioController.php" method="POST">
-                                        <input type="hidden" name="c" value="5">
-
+                                    <form action="controller/usuarioController.php?c=5" method="POST">
+ 
                                         <div class="form-group">
 
                                             <input type="email" required class="form-control form-control-user" name="correo" aria-describedby="emailHelp" placeholder="Introducir la dirección de correo electrónico...">

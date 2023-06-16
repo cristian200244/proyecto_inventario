@@ -6,7 +6,7 @@ $controller = new UsuarioController;
 
 class UsuarioController
 {
-     private $usuario;
+    private $usuario;
 
     public function __construct()
     {
@@ -33,15 +33,14 @@ class UsuarioController
                     self::InciarSesion();
                     break;
 
-                    case '6':
-                        self::CerrarSesion();
-                        break;
-                       
+                case '6':
+                    self::CerrarSesion();
+                    break;
             }
         }
     }
 
-   
+
 
     public function InciarSesion()
     {
@@ -50,13 +49,13 @@ class UsuarioController
             'correo'   => $_REQUEST['correo'],
             'password' => $_REQUEST['password'],
         ];
-    
+
         if (empty($datos['correo']) || empty($datos['password'])) {
 
             return $mensaje = "Nombre de Usuario o contraseña vacio";
         } else {
             $results = $this->usuario->getUser($datos);
-            
+
 
             if ($results) {
                 session_start();
@@ -69,24 +68,22 @@ class UsuarioController
             } else {
                 echo $message = '¡El nombre de usuario o correo electr&oacute;nico no existe' . '<br>' .
                     '<div class="alert-danger"> ¡Error al Digtar o Usuario no existe!</div>';
-
-                    
             }
         }
     }
 
     // public function login()
-	// {
-	// 	$sqlQuery = "
-	// 		SELECT * 
-	// 		FROM " . $this->memberTable . " 
-	// 		WHERE email='" . $_POST['userEmail'] . "' AND password='" . md5($_POST['userPassword']) . "'";
-	// 	return  $this->getData($sqlQuery);
+    // {
+    // 	$sqlQuery = "
+    // 		SELECT * 
+    // 		FROM " . $this->memberTable . " 
+    // 		WHERE email='" . $_POST['userEmail'] . "' AND password='" . md5($_POST['userPassword']) . "'";
+    // 	return  $this->getData($sqlQuery);
 
-	// }
+    // }
 
 
-  
+
 
     public function index()
     {
@@ -95,10 +92,10 @@ class UsuarioController
 
     public function store()
     {
-     
-         
+
+
         $datos = [
-         
+
             'id_tipo_documento' => $_REQUEST['id_tipo_documento'],
             'numero_documento'  => $_REQUEST['numero_documento'],
             'primer_nombre'     => $_REQUEST['primer_nombre'],
@@ -111,8 +108,8 @@ class UsuarioController
             'correo'            => $_REQUEST['correo'],
             'direccion'         => $_REQUEST['direccion'],
             'correo'            => $_REQUEST['correo'],
-     
-          
+
+
 
         ];
         $result = $this->usuario->store($datos);
@@ -121,7 +118,6 @@ class UsuarioController
             exit();
         } else {
             echo $error = "Ocurrió un error";
-           
         }
     }
 
@@ -173,28 +169,14 @@ class UsuarioController
 
     public function cerrarSesion()
     {
-    //   session_start();
-    //   session_unset();
-    //   session_destroy();
-    //   header('Location: index.php');
+        //   session_start();
+        //   session_unset();
+        //   session_destroy();
+        //   header('Location: index.php');
 
-    @session_start();
-    session_destroy();
-    exit();
-    header("Location: ../index.php" );
-
-    
-      
+        @session_start();
+        session_destroy();
+        exit();
+        header("Location: ../index.php");
     }
-
-
-  
-	
-  
-   
-    
-    
 }
-
-
-
