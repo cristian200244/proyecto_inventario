@@ -7,7 +7,7 @@ $datos = new Factura();
 $registro = $datos->getAll();
 
 ?>
-
+<!-- facturas -->
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -26,7 +26,6 @@ $registro = $datos->getAll();
                 <th scope="col">Servicio</th>
                 <th scope="col">fecha</th>
                 <th scope="col">total</th>
-             
             </tr>
         </thead>
         <tbody>
