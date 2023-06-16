@@ -1,7 +1,14 @@
 <?php
+
+session_start();
+if (!isset($_SESSION['id'])) {
+    header("Location:../../index.php");
+}
+
 include_once(__DIR__ . "../../../config/config.php");
 include_once(BASE_DIR . '../../views/main/partials/header.php');
 require_once '../../models/servicioModel.php';
+
 
 $datos = new ServiciosModel();
 $registro = $datos->getAll();
@@ -28,11 +35,11 @@ $registro = $datos->getAll();
                 <th scope="col">Cliente</th>
                 <th scope="col">Dispositivo</th>
                 <th scope="col">Servicio</th>
-                <th scope="col">Marca</th> 
+                <th scope="col">Marca</th>
                 <th scope="col">Fecha</th>
-                <th scope="col">Falla</th> 
-                <th scope="col">Estado</th> 
-                <th scope="col">Actualizar</th> 
+                <th scope="col">Falla</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Actualizar</th>
             </tr>
         </thead>
         <tbody>
@@ -49,10 +56,10 @@ $registro = $datos->getAll();
                         <td><?= $row->getTipoDispositivo() ?></td>
                         <td><?= $row->getTipoServicio() ?></td>
                         <td><?= $row->getMarca() ?></td>
-                         <td><?= $row->getFecha() ?></td>
+                        <td><?= $row->getFecha() ?></td>
                         <td><?= $row->getFalla() ?> </td>
-                        <td><?= $row->getEstadoProducto() ?> </td> 
-                         <td  class="text-center">
+                        <td><?= $row->getEstadoProducto() ?> </td>
+                        <td class="text-center">
                             <a type="button" href="../../controller/servicioController.php?c=2&id_servicio=<?= $row->getId() ?>" class="btn btn-outline-warning">
                                 <i class="bi bi-pencil-square" style="font-size: 1.3rem; "></i></a>
                         </td>
@@ -73,7 +80,7 @@ $registro = $datos->getAll();
 
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');
- 
+
 ?>
 <script>
     document.getElementById("myButton").addEventListener("click", function() {
@@ -99,7 +106,7 @@ include_once(BASE_DIR . '../../views/main/partials/footer.php');
                         });
                 } else {
                     button.classList.remove("btn-success");
-                    button.classList.add("btn-danger" );
+                    button.classList.add("btn-danger");
                     button.textContent = "Pendiente";
 
                     // Actualizar el estado en la base de datos utilizando Axios
@@ -111,13 +118,11 @@ include_once(BASE_DIR . '../../views/main/partials/footer.php');
                         })
                         .catch(function(error) {
                             console.error(error);
-                        }
-                    );
+                        });
                 }
             })
             .catch(function(error) {
                 console.error(error);
-            }
-        );
+            });
     });
 </script>

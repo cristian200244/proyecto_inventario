@@ -53,14 +53,14 @@ if (isset($errorMessage)) { ?>
                                         <h1 class="h4 text-gray-900 mb-4">Bienvenido!!</h1>
                                     </div>
                                     <form action="controller/usuarioController.php?c=5" method="POST">
- 
+
                                         <div class="form-group">
 
                                             <input type="email" required class="form-control form-control-user" name="correo" aria-describedby="emailHelp" placeholder="Introducir la dirección de correo electrónico...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" required class="form-control form-control-user" name="password"  id="password" placeholder="Contraseña">
-                                            
+                                            <input type="password" required class="form-control form-control-user" name="password" id="password" placeholder="Contraseña">
+
                                         </div>
 
                                         <div class="form-group">
@@ -71,7 +71,7 @@ if (isset($errorMessage)) { ?>
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <button id="boton" type="submit" class="btn btn-info">Iniciar Sesi&oacute;n</button>
 
 

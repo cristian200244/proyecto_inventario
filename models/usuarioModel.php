@@ -20,7 +20,7 @@ class Usuario extends stdClass
     private $telefono;
     private $database;
     private $password;
-    
+
 
 
     public function __construct()
@@ -108,8 +108,8 @@ class Usuario extends stdClass
 
     public function store($datos)
     {
-       
-         
+
+
 
         try {
             $sql = 'INSERT INTO personas( id_tipo_documento, numero_documento, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, id_sexo, telefono, id_ciudad, correo, direccion ) 
@@ -131,7 +131,7 @@ class Usuario extends stdClass
                 'id_ciudad'         => $datos['id_ciudad'],
                 'correo'            => $datos['correo'],
                 'direccion'         => $datos['direccion'],
-                
+
 
             ]);
             if ($query) {
@@ -204,7 +204,7 @@ class Usuario extends stdClass
     }
 
 
-   
+
 
 
 
@@ -330,34 +330,29 @@ class Usuario extends stdClass
     public function getUser($datos)
     {
 
-        $items = [];
-
         $correo = $datos["correo"];
         $pass   = md5($datos['password']);
- 
+
         try {
 
             $sql = "SELECT id, password, correo FROM usuarios WHERE correo = '$correo' AND password = '$pass' ";
             $query  = $this->database->conexion()->query($sql);
 
             $result = $query->fetchObject();
-           
+
             return $result;
         } catch (PDOException $e) {
             die($e->getMessage());
         }
     }
 
-    public function mostrarContraseña(){
+    public function mostrarContraseña()
+    {
 
         $sql = "SELECT id, password FROM usuarios WHERE correo = correo AND PASSWORD = password";
         $query = $this->database->conexion()->query($sql);
 
-        $result=$query->fetchObject();
+        $result = $query->fetchObject();
         return $result;
-
-        
     }
-
-   
 }

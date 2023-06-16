@@ -54,8 +54,7 @@ class UsuarioController
             return $mensaje = "Nombre de Usuario o contraseña vacio";
         } else {
             $results = $this->usuario->getUser($datos);
-
-
+            
             if ($results) {
                 session_start();
 
@@ -69,17 +68,11 @@ class UsuarioController
                     '<div class="alert-danger"> ¡Error al Digtar o Usuario no existe!</div>
                     <br>
                     <a   button href="../login.php"  type="button" class="link-primary">Atras</a>';
-
-                   
-
-                    
-
-                    
             }
         }
     }
 
-    
+
 
 
 
