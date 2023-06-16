@@ -1,5 +1,5 @@
 <?php
-include_once(__DIR__ . "../../../config/config.example.php");
+include_once(__DIR__ . "../../../config/config.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,6 +1,6 @@
 <?php
 
-include_once dirname(__FILE__) . '../../Config/config.example.php';
+include_once dirname(__FILE__) . '../../Config/config.php';
 require_once 'conexionModel.php';
 // require_once '../controller/usuarioController.php';
 

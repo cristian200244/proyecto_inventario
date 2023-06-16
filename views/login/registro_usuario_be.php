@@ -1,5 +1,5 @@
 <?php
-include 'config/config.example.php';
+include 'config/config.php';
 $nombre_completo = $_POST['primer_nombre'];
 $correo = $_POST['correo'];
 $contraseña= $_POST['password'];
