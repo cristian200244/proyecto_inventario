@@ -27,9 +27,7 @@ $fecha = date('Y-m-d');
 
 ?>
 
-
-<!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid " >
     <div class="row">
         <div class="col">
             <div class="container text-center">
@@ -54,7 +52,7 @@ $fecha = date('Y-m-d');
 
                     </h5>
                     <div class="col-md-4">
-                        <label for="codigo" class="form-label">codigo</label>
+                        <label for="codigo" class="form-label">Código</label>
                         <input type="text" class="form-control" id="codigo" name="codigo" value="<?= $codigo ?>" readonly>
                     </div>
                     <div class="col-md-4">
@@ -120,7 +118,6 @@ $fecha = date('Y-m-d');
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');
 ?>
-
 
 <script>
     $(document).ready(function() {

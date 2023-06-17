@@ -136,7 +136,6 @@ foreach ($registros as $estado_producto) {
             });
     }
 </script>
-<!-- /.container-fluid -->
 
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');

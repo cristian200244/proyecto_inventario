@@ -15,14 +15,8 @@ $datos_sexo = new Sexo();
 $registro_sexo = $datos_sexo->getAll();
 ?>
 
-
-
-<!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <!-- Page Heading -->
-   
-     
     <form method="POST" action="../../controller/clienteController.php?c=1">
         <div class="container text-center">
             <h1 class="h2 mb-4  text-center">Crear Cliente</h1>
@@ -98,19 +92,19 @@ $registro_sexo = $datos_sexo->getAll();
                 </div>
             </div>
 
-            <button type="submit"onclick="showAlert()" class="btn btn-outline-info ml-2">Guardar Cliente</button>
+            <button type="submit" onclick="showAlert()" class="btn btn-outline-info ml-2">Guardar Cliente</button>
         </div>
 
     </form>
 </div>
 
-
-
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');
 ?>
- <script>
+<script>
     function showAlert() {
-        var notification = alertify.notify('sample', 'success', 5, function(){  console.log('dismissed'); });
+        var notification = alertify.notify('sample', 'success', 5, function() {
+            console.log('dismissed');
+        });
     }
-  </script>
+</script>

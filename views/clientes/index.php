@@ -8,10 +8,8 @@ $registro = $datos->getAll();
 
 ?>
 
-<!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <!-- Page Heading -->
     <h1 class="h3 mb-4 text-dark text-center">Clientes
         <a type="button" class="btn  btn-outline-primary float-right mr-5" href="<?= BASE_URL ?>./views/clientes/create.php"> <i class="bi bi-person-plus" style="font-size: 1.5rem; "></i></a>
     </h1>
@@ -48,7 +46,7 @@ $registro = $datos->getAll();
                                 <i class="bi bi-pencil-square" style="font-size: 1.3rem; "></i></a>
 
                             <a onclick="AlertDelete('<?= $row->getId() ?>')" class="btn btn-sm btn-outline-danger">
-                                <i class="bi bi-trash3-fill" style="font-size: 1.3rem; "></i></a> 
+                                <i class="bi bi-trash3-fill" style="font-size: 1.3rem; "></i></a>
                         </td>
 
                     </tr>
@@ -66,7 +64,6 @@ $registro = $datos->getAll();
         </tbody>
     </table>
 </div>
-
 
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');

@@ -13,10 +13,8 @@ foreach ($registro as $servicios) {
 
 ?>
 
-
-<!-- Begin Page Content -->
 <div class="container-fluid">
-    <!-- Page Heading -->
+
     <div class="container text-center">
         <h1 class="h3 mb-4 text-gray-800">Configuración Del Sistema</h1>
         <hr>
@@ -134,7 +132,6 @@ foreach ($registro as $servicios) {
             });
     }
 </script>
-<!-- /.container-fluid -->
 
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');

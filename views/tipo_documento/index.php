@@ -13,7 +13,6 @@
 
     ?>
 
-    <!-- Begin Page Content -->
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="container text-center">
@@ -132,7 +131,6 @@
                 });
         }
     </script>
-    <!-- /.container-fluid -->
 
     <?php
     include_once(BASE_DIR . '../../views/main/partials/footer.php');

@@ -8,6 +8,11 @@ input {
 .table td {
   text-transform: uppercase;
 }
-.custom-btn {
-  transition: background-color 0.3s ease;
-} 
+ul li a {
+  text-decoration: none;
+  color: #000; 
+}
+
+ ul li a:hover {
+  color: #f00; 
+}

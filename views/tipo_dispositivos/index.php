@@ -14,10 +14,8 @@ foreach ($registro as $dispositivos) {
 
 ?>
 
-<!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <!-- Page Heading -->
     <div class="container text-center">
         <h1 class="h3 mb-4 text-gray-800">Configuración Del Sistema</h1>
         <hr>
@@ -44,8 +42,6 @@ foreach ($registro as $dispositivos) {
                         </div>
                     </div>
                 </div>
-                <!-- Actualizacion de registro-->
-
                 <br>
                 <table class="table">
                     <thead>
@@ -115,7 +111,7 @@ foreach ($registro as $dispositivos) {
     </div>
 
 </div>
-<!-- /.container-fluid -->
+
 <script>
     function update(id) {
         let elemento = document.getElementById(`dispositivo${id}`);

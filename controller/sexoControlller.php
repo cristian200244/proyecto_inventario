@@ -12,16 +12,16 @@ class SexoController
 
         if (isset($_REQUEST['c'])) {
             switch ($_REQUEST['c']) {
-                case '1': //Almacenar en la base de datos
+                case '1':
                     self::store();
                     break;
-                case '2': //ver usuario
+                case '2':
                     self::show();
                     break;
-                case '3': //Actualizar el registro
+                case '3': 
                     self::update();
                     break;
-                case '4': //eliminar el registro
+                case '4':
                     self::delete();
                     break;
                 default:

@@ -12,6 +12,7 @@ function AlertDelete(id_persona) {
                 success: function(r) {
                     document.location.reload();
                 }
+                
             });
         }
         return false;

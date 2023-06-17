@@ -21,7 +21,7 @@ foreach ($registros as $ciudades) {
         <hr>
         <?php include_once(BASE_DIR . '../../views/main/partials/menu.php'); ?>
         <hr>
-        <h1 class="h3 mb-4 text-gray-800 text-left">Departamentos
+        <h1 class="h3 mb-4 text-gray-800 text-left">Ciudades
             <a type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                 <i class="bi bi-plus-circle-fill" style="font-size: 1.5rem; "></i>
             </a>
@@ -50,8 +50,8 @@ foreach ($registros as $ciudades) {
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Departemento</th>
-                            <th scope="col" colspan="2">opciones</th>
+                            <th scope="col">Ciudades</th>
+                            <th scope="col" colspan="2">Opciones</th>
 
                         </tr>
                     </thead>
@@ -134,7 +134,7 @@ foreach ($registros as $ciudades) {
             });
     }
 </script>
-<!-- /.container-fluid -->
+
 
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');

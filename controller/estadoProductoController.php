@@ -2,7 +2,7 @@
 
 require_once '../models/estadoProductoModel.php';
 $controller = new EstadoController;
-class EstadoController 
+class EstadoController
 {
 
     private $estado;
@@ -13,16 +13,16 @@ class EstadoController
 
         if (isset($_REQUEST['c'])) {
             switch ($_REQUEST['c']) {
-                case '1': //Almacenar en la base de datos
-                    self::store(); 
+                case '1':
+                    self::store();
                     break;
-                case '2': //ver usuario
+                case '2':
                     self::show();
                     break;
-                case '3': //Actualizar el registro
+                case '3':
                     self::update();
                     break;
-                case '4': //eliminar el registro
+                case '4':
                     self::delete();
                     break;
                 default:
@@ -68,9 +68,7 @@ class EstadoController
         $result = $this->estado->update($datos);
 
         if ($result) {
-            echo json_encode(array('succes' => 1, 'estado'=>$datos['estado']));
-
+            echo json_encode(array('succes' => 1, 'estado' => $datos['estado']));
         }
-        
     }
 }

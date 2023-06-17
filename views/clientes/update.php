@@ -107,7 +107,6 @@ foreach ($registro as $cliente) {
 
     </form>
 </div>
-<!-- /.container-fluid -->
 
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');
