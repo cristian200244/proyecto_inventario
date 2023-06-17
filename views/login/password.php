@@ -1,28 +1,39 @@
 <?php
 include_once(__DIR__ . "/config/config.php");
+
+
+
+
+$correo = $_POST['txtcorreo'];
+
+$queryusuario 	= mysqli_query($conn,"SELECT * FROM login WHERE correo = '$correo'");
+$nr 			= mysqli_num_rows($queryusuario); 
+if ($nr == 1)
+{
+$mostrar		= mysqli_fetch_array($queryusuario); 
+$enviarpass 	= $mostrar['pass'];
+
+$paracorreo 		= $correo;
+$titulo				= "Recuperar contraseña";
+$mensaje			= $enviarpass;
+$tucorreo			= "From: olveryucuna@gmail.com";
+
+if(mail($paracorreo,$titulo,$mensaje,$tucorreo))
+{
+	echo "<script> alert('Contraseña enviado');window.location= 'index.html' </script>";
+}else
+{
+	echo "<script> alert('Error');window.location= 'index.html' </script>";
+}
+}
+else
+{
+	echo "<script> alert('Este correo no existe');window.location= 'index.html' </script>";
+}
+
 ?>
 
 
 
-
-<form id="forgetForm" method="POST">
-    <div id="errorMessge" class="alert hidden">
-    </div>
-    <div id="inputSection">
-        <div class="form-group">
-            <input type="text" name="userName" class="form-control" placeholder="Username..." />
-        </div>
-        <div class="form-group">
-            OR
-        </div>
-        <div class="form-group">
-            <input type="email" name="userEmail" class="form-control" placeholder="Email address..." />
-        </div>
-        <div class="form-group">
-            <input type="hidden" name="action" value="forgetPassword" />
-            <input type="submit" class="btnSubmit" value="Reset Password" />
-        </div>
-    </div>
-</form>
 
 

@@ -1,4 +1,10 @@
 <?php
+
+session_start();
+if (!isset($_SESSION['id'])) {
+    header("Location:../../index.php");
+}
+
 include_once(__DIR__ . "../../../config/config.php");
 include_once(BASE_DIR . '../../views/main/partials/header.php');
 require_once '../../models/estadoProductoModel.php';

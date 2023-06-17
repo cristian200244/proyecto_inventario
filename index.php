@@ -31,7 +31,7 @@ if (isset($errorMessage)) { ?>
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-ligth">
 
     <div class="container">
 
