@@ -49,12 +49,17 @@
         public function show()
         {
             $id = $_REQUEST['id_ciudad'];
-            header("Location: ../views/ciudad/index.php?id_ciudad=". $id);
+            header("Location: ../views/ciudad/index.php?id_ciudad=" . $id);
         }
         public function delete()
         {
-            $this->ciudad->delete($_REQUEST['id_ciudad']);
-            header("Location: ../views/ciudad/index.php" );
+
+            $ciudades = $_REQUEST['id_ciudad'];
+            $result = $this->ciudad->delete($ciudades);
+            if ($result) {
+                header("Location: ../views/ciudad/index.php");
+                exit();
+            }
         }
         public function update()
         {
@@ -65,8 +70,7 @@
             $result = $this->ciudad->update($datos);
 
             if ($result) {
-                echo json_encode(array('succes' => 1, 'nombre'=>$datos['nombre']));
+                echo json_encode(array('succes' => 1, 'nombre' => $datos['nombre']));
             }
-             
         }
     }

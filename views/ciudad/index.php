@@ -68,8 +68,7 @@ foreach ($registros as $ciudades) {
                                     </td>
                                     <td>
                                         <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_ciudad_<?= $ciudades->getId() ?>" onclick="update (<?= $ciudades->getId() ?>)">Actualizar</a>
-                                        <a type="button" class="btn btn-sm btn-outline-danger" href="../../controller/ciudadController.php?c=4&id_ciudad=<?= $ciudades->getId() ?>">Eliminar</a>
-
+                                        <a onclick="AlertDeleteCiudad('<?= $ciudades->getId() ?>')" class="btn btn-sm btn-outline-danger">Eliminar</a>
                                     </td>
 
                                 </tr>

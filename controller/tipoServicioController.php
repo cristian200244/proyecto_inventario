@@ -55,8 +55,13 @@ class ServicioController
     }
     public function delete()
     {
-        $this->servicio->delete($_REQUEST['id_tipo_servicio']);
-        header("Location: ../views/tipo_servicio/index.php");
+        
+        $servicios = $_REQUEST['id_tipo_servicio'];
+        $result= $this->servicio->delete($servicios);
+        if($result){
+            header("Location: ../views/tipo_servicio/index.php");
+            exit();
+        }
     }
     public function update()
     {

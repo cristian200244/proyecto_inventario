@@ -30,13 +30,13 @@ foreach ($registros as $marca) {
             <div class="collapse" id="collapseExample">
                 <div class="card card-body">
                     <div class="mb-3">
-                        <form action="../../controller/marcasController.php?c=1" method="POST"  > 
+                        <form action="../../controller/marcasController.php?c=1" method="POST">
                             <div class="input-group ">
-                                <input type="text" class="form-control" id="nombre"  name="nombre" oninput="restrictInput(event)" maxlength="30" placeholder="Ingrese una nueva marca" required>
-                                <button type="submit" class="btn btn-outline-primary"  data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                <input type="text" class="form-control" id="nombre" name="nombre" oninput="restrictInput(event)" maxlength="30" placeholder="Ingrese una nueva marca" required>
+                                <button type="submit" class="btn btn-outline-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                                     <i class="bi bi-send-plus-fill" style="font-size: 1.0rem; "></i>
                                 </button>
-                            </div> 
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -53,7 +53,7 @@ foreach ($registros as $marca) {
 
                         </tr>
                     </thead>
-                    <tbody >
+                    <tbody>
                         <?php
                         if ($registros) {
                             $pos = 1;
@@ -67,7 +67,8 @@ foreach ($registros as $marca) {
                                     </td>
                                     <td>
                                         <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_marca_<?= $marca->getId() ?>" onclick="update(<?= $marca->getId() ?>)">Actualizar</a>
-                                        <a type="button" class="btn btn-sm btn-outline-danger" href="../../controller/marcasController.php?c=4&id_marca=<?= $marca->getId() ?>">Eliminar</a>
+                                        <a onclick="AlertDeleteMarcas('<?= $marca->getId() ?>')" class="btn btn-sm btn-outline-danger">
+                                            Eliminar</a>
                                     </td>
                                 </tr>
                                 <!-- Actualizacion de registro-->

@@ -54,8 +54,13 @@ class SexoController
     }
     public function delete()
     {
-        $this->sexo->delete($_REQUEST['id_sexo']);
-        header('Location: ../views/sexo/index.php');
+        
+        $sexos = $_REQUEST['id_sexo'];
+        $result= $this->sexo->delete($sexos);
+        if($result){
+            header('Location: ../views/sexo/index.php');
+            exit();
+        }
     }
     public function update()
     {

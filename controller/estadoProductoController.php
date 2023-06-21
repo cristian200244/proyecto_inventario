@@ -56,8 +56,13 @@ class EstadoController
     }
     public function delete()
     {
-        $this->estado->delete($_REQUEST['id_estado_producto']);
-        header("Location: ../views/estado_producto/index.php");
+        
+        $estado_producto = $_REQUEST['id_estado_producto'];
+        $result= $this->estado->delete($estado_producto);
+        if($result){
+             header("Location: ../views/estado_producto/index.php");
+            exit();
+        }
     }
     public function update()
     {

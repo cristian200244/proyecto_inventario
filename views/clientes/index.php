@@ -68,3 +68,4 @@ $registro = $datos->getAll();
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');
 ?>
+ 

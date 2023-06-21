@@ -27,7 +27,7 @@ $fecha = date('Y-m-d');
 
 ?>
 
-<div class="container-fluid " >
+<div class="container-fluid ">
     <div class="row">
         <div class="col">
             <div class="container text-center">
@@ -36,7 +36,7 @@ $fecha = date('Y-m-d');
                 <form class="row g-3" action="../../controller/servicioController.php?c=1" method="post">
 
                     <div class="col-12">
-                    <h5 class="text-start">Datos Del Cliente</h5>
+                        <h5 class="text-start">Datos Del Cliente</h5>
                         <select class="form-select persona" aria-label="Default select example" name="id_persona" id="id_persona" required>
                             <option selected value="">Seleccionar</option>
                             <?php
@@ -47,9 +47,7 @@ $fecha = date('Y-m-d');
                         </select>
                     </div>
                     <hr>
-
                     <h5 class="text-start">Datos Del Dispositivo
-
                     </h5>
                     <div class="col-md-4">
                         <label for="codigo" class="form-label">Código</label>
@@ -80,8 +78,8 @@ $fecha = date('Y-m-d');
                     <div class="col-md-4">
                         <label for="id_estado_producto" class="form-label">Estado</label>
                         <select class="form-select" aria-label="Default select example" name="id_estado_producto" id="id_estado_producto" required>
-                            <option  selected value="">Seleccionar</option>
-                             <?php
+                            <option selected value="">Seleccionar</option>
+                            <?php
                             foreach ($registro as $producto) {
                                 echo '<option value=" ' . $producto->getId() . ' ">' . $producto->getEstado() . '</option>';
                             }
@@ -105,7 +103,7 @@ $fecha = date('Y-m-d');
                     </div>
                     <div class="col-md-12">
                         <label for="falla" class="form-label">Falla</label>
-                        <textarea class="form-control" id="falla" rows="4" name="falla" placeholder="limite 500 caracteres" oninput="estrictAddres(event)" maxlength="140" ></textarea>
+                        <textarea class="form-control" id="falla" rows="4" name="falla" placeholder="limite 500 caracteres" oninput="estrictAddres(event)" maxlength="140"></textarea>
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-outline-info">Crear Servicio</button>
@@ -118,7 +116,6 @@ $fecha = date('Y-m-d');
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');
 ?>
-
 <script>
     $(document).ready(function() {
         $('.persona').select2();

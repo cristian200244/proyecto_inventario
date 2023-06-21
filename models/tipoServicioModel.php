@@ -28,7 +28,6 @@ class Servicios
                 $datos = new Servicios();
                 $datos->id = $row['id_tipo_servicio'];
                 $datos->servicio = $row['servicio'];
-
                 array_push($servicio, $datos);
             }
             return $servicio;

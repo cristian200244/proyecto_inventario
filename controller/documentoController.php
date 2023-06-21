@@ -53,8 +53,12 @@ class TipoDocumentoController
     }
     public function delete()
     {
-        $this->documento->delete($_REQUEST['id_tipo_documento']);
-        header("Location: ../views/tipo_documento/index.php");
+        $documentos = $_REQUEST['id_tipo_documento'];
+        $result= $this->documento->delete($documentos);
+        if($result){
+            header("Location: ../views/tipo_documento/index.php");
+            exit();
+        }
     }
     public function update()
     {

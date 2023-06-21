@@ -71,7 +71,7 @@ foreach ($registros as $estado_producto) {
                                     </td>
                                     <td>
                                         <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_estado_<?= $estado_producto->getId() ?>" onclick="update(<?= $estado_producto->getId() ?>)">Actualizar</a>
-                                        <a type="button" class="btn btn-sm btn-outline-danger" href="../../controller/estadoProductoController.php?c=4&id_estado_producto=<?= $estado_producto->getId() ?>">Eliminar</a>
+                                        <a onclick="AlertDeleteEstadoProducto('<?= $estado_producto->getId() ?>')" class="btn btn-sm btn-outline-danger">Eliminar</a> 
                                     </td>
 
                                 </tr>

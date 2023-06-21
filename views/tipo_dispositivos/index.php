@@ -67,8 +67,7 @@ foreach ($registro as $dispositivos) {
                                     </td>
                                     <td>
                                         <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_dispositivo_<?= $dispositivos->getId() ?>" onclick="update(<?= $dispositivos->getId() ?>)">Actualizar</a>
-                                        <a type="button" class="btn btn-sm btn-outline-danger" href="../../controller/TipoDispositivosController.php?c=4&id_tipo_dispositivo=<?= $dispositivos->getId() ?>">Eliminar</a>
-
+                                         <a onclick="AlertDeleteDispositivos('<?= $dispositivos->getId() ?>')" class="btn btn-sm btn-outline-danger">Eliminar</a>
                                     </td>
 
                                 </tr>

@@ -1,4 +1,5 @@
  
+<a type="button" class="btn btn-warning text-decoration-none"" onclick="alertInfo()"><i class="bi bi-info-circle-fill"></i></a>   
 <a type="button" class="btn btn-info text-decoration-none" href="<?= BASE_URL ?>./views/marcas/index.php">Marcas</a> 
 <a type="button" class="btn btn-info text-decoration-none" href="<?= BASE_URL ?>./views/tipo_dispositivos">Dispositivos</a> 
 <a type="button" class="btn btn-info text-decoration-none" href="<?= BASE_URL ?>./views/estado_producto/index.php">Estado Del Dispositivo</a> 
@@ -6,4 +7,12 @@
 <a type="button" class="btn btn-info text-decoration-none" href="<?= BASE_URL ?>./views/tipo_servicio/index.php">Tipos De Servicios</a> 
 <a type="button" class="btn btn-info text-decoration-none" href="<?= BASE_URL ?>./views/ciudad/index.php">Ciudades</a>   
 <a type="button" class="btn btn-info text-decoration-none" href="<?= BASE_URL ?>./views/sexo/index.php">Sexo</a>  
- 
+
+<script>
+    function alertInfo(){
+        alertify.alert('Nota',
+         'Los registros que ya se estan usando en relacion con otros no se pueden eliminar, '+
+         'si su eliminacion es forzada puede afectar algunos registros como los de clientes, servicios, facturas y reportes', function(){ alertify.success('Ok'); });
+
+    }
+</script>

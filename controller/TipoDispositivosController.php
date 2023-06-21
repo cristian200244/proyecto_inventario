@@ -56,8 +56,13 @@ class DispositivoController
     }
     public function delete()
     {
-        $this->dispositivo->delete($_REQUEST['id_tipo_dispositivo']);
-        header("Location: ../views/tipo_dispositivos/index.php");
+
+        $dispositivos = $_REQUEST['id_tipo_dispositivo'];
+        $result= $this->dispositivo->delete($dispositivos);
+        if($result){
+            header("Location: ../views/tipo_dispositivos/index.php");
+            exit();
+        }
     }
     public function update()
     {

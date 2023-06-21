@@ -54,8 +54,12 @@ class MarcasController
     }
     public function delete()
     {
-        $this->marca->delete($_REQUEST['id_marca']);
-        header('Location: ../views/marcas/index.php');
+        $marca = $_REQUEST['id_marca'];
+        $result= $this->marca->delete($marca);
+        if($result){
+            header('Location: ../views/marcas/index.php');
+            exit();
+        }
     }
     public function update()
     {
