@@ -34,7 +34,7 @@ setlocale(LC_TIME,'UTF-8');
                         <tr>
                             <td><?= $row->getAnio(); ?></td>
                             <td><?= $row->getMes(); ?></td>
-                            <td><?= number_format($row->getTotal()) ?></td>
+                            <td>$<?= number_format($row->getTotal()) ?></td>
 
                         </tr>
                     <?php

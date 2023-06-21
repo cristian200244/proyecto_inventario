@@ -15,7 +15,7 @@ $registro_servicios = $servicio->getAll();
 $tipo_dispositivos = new Dispositivos();
 $registro_tipo_dispositivos = $tipo_dispositivos->getAll();
 
-$fecha = date('d-m-y');
+$fecha = date('Y-m-d')
 ?>
 <div class="container-fluid">
 
@@ -42,8 +42,8 @@ $fecha = date('d-m-y');
                     </div>
                     <div class="col-6">
                         <div class="titulo" id="tipo_servicio">TIPO DE SERVICIO: </div>
-                        <select class="form-select" aria-label="Default select example" name="id_servicio" id="id_servicio">
-                            <option selected>Seleccionar</option>
+                        <select class="form-select" aria-label="Default select example" name="id_servicio" id="id_servicio" required>
+                            <option selected value="">Seleccionar</option>
                             <?php
                             foreach ($registro_servicios as $servicio) {
                                 echo '<option value="' . $servicio->getId() . '">' . $servicio->getServicio() . '</option>';
@@ -54,8 +54,8 @@ $fecha = date('d-m-y');
 
                     <div class="col-6">
                         <div class="titulo" id="id_servicio">DISPOSITIVO: </div>
-                        <select class="form-select" aria-label="Default select example" name="id_tipo_dispositivo" id="id_tipo_dispositivo">
-                            <option selected>Seleccionar</option>
+                        <select class="form-select" aria-label="Default select example" name="id_tipo_dispositivo" id="id_tipo_dispositivo" required>
+                            <option selected value="">Seleccionar</option>
                             <?php
                             foreach ($registro_tipo_dispositivos  as $datos) {
                                 echo '<option value="' . $datos->getId() . '">' . $datos->getDispositivo() . '</option>';
@@ -64,16 +64,17 @@ $fecha = date('d-m-y');
                         </select>
                     </div>
 
-                    <div class="col-md-4">
-                        <label for="fecha" class="form-label">FECHA</label>
-                        <input type="text" class="form-control" id="fecha" name="fecha" value="<?= $fecha ?>" readonly>
-                    </div>
 
                     <div class="col-6">
                         <div class="titulo" id="total">TOTAL:</div>
-                        <input class="form-control" name="total" id="total" type="number">
+                        <input class="form-control" name="total" id="total" type="number" required>
                     </div>
 
+                    
+                    <div class="col-6">
+                        <div class="titulo" id="total">FECHA:</div>
+                        <input type="text" class="form-control" id="fecha" name="fecha" value="<?= $fecha ?>" readonly>
+                    </div>
                     <p>
 
 

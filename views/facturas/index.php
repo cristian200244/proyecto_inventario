@@ -45,7 +45,7 @@ $registro = $datos->getAll();
                         <td><?= $row->getTipoDispositivo() ?></td>
                         <td><?= $row->getTipoServicio() ?></td>
                         <td><?= $row->getFecha() ?></td>
-                        <td><?= number_format($row->getTotal()) ?></td>
+                        <td>$<?= number_format($row->getTotal()) ?></td>
 
                     </tr>
                 <?php
@@ -53,7 +53,7 @@ $registro = $datos->getAll();
                 }
             } else {
                 ?>
-                <td colspan="10" class="text-center">Sin Registros</td>
+                <td colspan="3" class="text-center">Sin Registros</td>
             <?php
             }
             ?>
