@@ -67,7 +67,7 @@ $fecha = date('Y-m-d')
 
                     <div class="col-6">
                         <div class="titulo" id="total">TOTAL:</div>
-                        <input class="form-control" name="total" id="total" type="number" required>
+                        <input class="form-control" name="total" id="total" type="number" oninput="restrictNumberInput(event)" maxlength="7" required>
                     </div>
 
                     
