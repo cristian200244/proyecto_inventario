@@ -20,6 +20,7 @@ class Usuario extends stdClass
     private $telefono;
     private $database;
     private $password;
+    
 
 
 

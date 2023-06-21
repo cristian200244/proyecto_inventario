@@ -61,8 +61,11 @@
                                     </a>
                                   </li>
 
+
+                            <a href="../../views/login/cambiar_contraseña.php" class="btn btn-warning">Cambia tu contraseña</a> 
+
                                   <li>
-                                  <a class="dropdown-item"  type="button" class="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                  <a class="dropdown-item"   class="btn btn-warning"  type="button" class="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                         <i class="fa-solid fa-hand fa-shake" style="color: #FF4633 ; padding-left: 8%; padding-right:8%;"></i>
                                         Cambiar Contraseña
                                     </a>
@@ -88,7 +91,8 @@
                                             </div>
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                          <button type="button" class="btn btn-primary">Guardar</button>
+                                         
+                                          <input type="submit" class="btn btn-primary" value="Enviar">
                                         </div>
                                       </div>
                                     </div>
