@@ -14,10 +14,8 @@ foreach ($registro as $dispositivos) {
 
 ?>
 
-<!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <!-- Page Heading -->
     <div class="container text-center">
         <h1 class="h3 mb-4 text-gray-800">Configuración Del Sistema</h1>
         <hr>
@@ -44,8 +42,6 @@ foreach ($registro as $dispositivos) {
                         </div>
                     </div>
                 </div>
-                <!-- Actualizacion de registro-->
-
                 <br>
                 <table class="table">
                     <thead>
@@ -71,8 +67,7 @@ foreach ($registro as $dispositivos) {
                                     </td>
                                     <td>
                                         <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_dispositivo_<?= $dispositivos->getId() ?>" onclick="update(<?= $dispositivos->getId() ?>)">Actualizar</a>
-                                        <a type="button" class="btn btn-sm btn-outline-danger" href="../../controller/TipoDispositivosController.php?c=4&id_tipo_dispositivo=<?= $dispositivos->getId() ?>">Eliminar</a>
-
+                                         <a onclick="AlertDeleteDispositivos('<?= $dispositivos->getId() ?>')" class="btn btn-sm btn-outline-danger">Eliminar</a>
                                     </td>
 
                                 </tr>
@@ -115,7 +110,7 @@ foreach ($registro as $dispositivos) {
     </div>
 
 </div>
-<!-- /.container-fluid -->
+
 <script>
     function update(id) {
         let elemento = document.getElementById(`dispositivo${id}`);

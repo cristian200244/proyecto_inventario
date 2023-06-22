@@ -34,7 +34,7 @@ class Cliente
         $datos_clientes = [];
 
         try {
-            $sql  = 'SELECT * FROM personas WHERE id_persona = :id_persona';
+            $sql  = 'SELECT * FROM personas WHERE  id_persona = :id_persona';
             $query = $this->database->conexion()->prepare($sql);
             $query->execute([
                 'id_persona' => $id_persona
@@ -80,7 +80,7 @@ class Cliente
                 $item                   = new Cliente();
                 $item->id_persona       = $row['id_persona'];
                 $item->tipo_documento   = $row['id_tipo_documento'];
-                $item->numero_documento = $row['numero_documento'];
+                $item->numero_documento = ($row['numero_documento']);
                 $item->primer_nombre    = $row['primer_nombre'];
                 $item->segundo_nombre   = $row['segundo_nombre'];
                 $item->primer_apellido  = $row['primer_apellido'];

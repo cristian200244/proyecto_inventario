@@ -8,16 +8,11 @@ $registro = $datos->getAll();
 
 ?>
 
-<!-- Begin Page Content -->
 <div class="container-fluid">
 
-
     <a type="button" class="btn btn-outline-primary float-right mr-5  " href="<?= BASE_URL ?>./views/servicios/create.php"> <i class="bi bi-person-plus" style="font-size: 1.2rem; "></i></a>
-    <h1 class="h3 mb-4 text-dark">Servicios
-        <form class="d-flex float-end" role="search">
-            <input class="form-control me-1" type="search" placeholder="buscar " aria-label="Search">
-            <button class="btn btn-outline-success me-2" type="submit">Search</button>
-        </form>
+    <h1 class="h3 mb-4 text-dark text-center">Servicios
+         
     </h1>
 
     <table class="table table-striped">
@@ -69,55 +64,8 @@ $registro = $datos->getAll();
         </tbody>
     </table>
 </div>
-<!-- /.container-fluid -->
 
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');
  
 ?>
-<script>
-    document.getElementById("myButton").addEventListener("click", function() {
-        var button = document.getElementById("myButton");
-
-        // Obtener el estado actual del botón desde la base de datos utilizando Axios
-        axios.get('obtener_estado.php')
-            .then(function(response) {
-                if (response.data.estado === 'pendiente') {
-                    button.classList.remove("btn-danger");
-                    button.classList.add("btn-success");
-                    button.textContent = "No pendiente";
-
-                    // Actualizar el estado en la base de datos utilizando Axios
-                    axios.post('actualizar_estado.php', {
-                            estado: 'no pendiente'
-                        })
-                        .then(function(response) {
-                            console.log(response.data);
-                        })
-                        .catch(function(error) {
-                            console.error(error);
-                        });
-                } else {
-                    button.classList.remove("btn-success");
-                    button.classList.add("btn-danger" );
-                    button.textContent = "Pendiente";
-
-                    // Actualizar el estado en la base de datos utilizando Axios
-                    axios.post('actualizar_estado.php', {
-                            estado: 'pendiente'
-                        })
-                        .then(function(response) {
-                            console.log(response.data);
-                        })
-                        .catch(function(error) {
-                            console.error(error);
-                        }
-                    );
-                }
-            })
-            .catch(function(error) {
-                console.error(error);
-            }
-        );
-    });
-</script>

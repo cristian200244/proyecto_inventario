@@ -89,21 +89,3 @@ function restrictAddres(event) {
   }
 }
 
-function myFunction() {
-
-  let value = document.getElementById('numero_documento').value;
-
-  // GET request for remote image in node.js
-  axios({
-    method: 'get',
-    url: '../../controller/clienteController.php?c=5&param=' + value,
-  })
-    .then(function (response) {
-      // window.location.reload()
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-}
-
- 

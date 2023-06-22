@@ -12,16 +12,16 @@ class ServicioController
 
         if (isset($_REQUEST['c'])) {
             switch ($_REQUEST['c']) {
-                case '1': //Almacenar en la base de datos
+                case '1': 
                     self::store(); 
                     break;
-                case '2': //ver usuario
+                case '2': 
                     self::show();
                     break;
-                case '3': //Actualizar el registro
+                case '3':
                     self::update();
                     break;
-                case '4': //eliminar el registro
+                case '4':
                     self::delete();
                     break;
                 default:
@@ -55,8 +55,13 @@ class ServicioController
     }
     public function delete()
     {
-        $this->servicio->delete($_REQUEST['id_tipo_servicio']);
-        header("Location: ../views/tipo_servicio/index.php");
+        
+        $servicios = $_REQUEST['id_tipo_servicio'];
+        $result= $this->servicio->delete($servicios);
+        if($result){
+            header("Location: ../views/tipo_servicio/index.php");
+            exit();
+        }
     }
     public function update()
     {
