@@ -6,7 +6,7 @@ include_once(__DIR__ . "/config/config.php");
 
 $correo = $_POST['txtcorreo'];
 
-$queryusuario 	= mysqli_query($conn,"SELECT * FROM login WHERE correo = '$correo'");
+$queryusuario 	= mysqli_query($conn,"SELECT * FROM  usuarios WHERE correo = '$correo'");
 $nr 			= mysqli_num_rows($queryusuario); 
 if ($nr == 1)
 {

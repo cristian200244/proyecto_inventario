@@ -10,16 +10,18 @@ include_once(__DIR__ . "/config/config.php");
 require_once 'models/ciudadModel.php';
 require_once 'models/rolesModel.php';
 require_once 'models/sexoModel.php';
+require_once 'models/documentoModel.php';
 
 $ciudad = new Ciudad();
 $data = $ciudad->getAll();
+
+$datos_documen = new TipoDocumento();
+$registro = $datos_documen->getAll();
 
 $sexo = new Sexo();
 $data_sexo = $sexo->getAll();
 
 
-$roles = new Roles();
-$data_rol = $roles->getAll();
 
 
 
@@ -42,14 +44,14 @@ $data_rol = $roles->getAll();
     <link href="<?= BASE_URL ?> ../public/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
- 
+
 <body class="bg-light">
 
     <div class="container-fluid">
 
         <!-- Page Heading -->
 
-        <form action="controller/usuarioController.php"  method="POST" id="">
+        <form action="controller/usuarioController.php" method="POST" id="">
             <input type="hidden" name="c" value="1">
             <div class="container text-center">
                 <h1 class="h2 mb-4  text-center">Crear Usuario</h1>
@@ -59,34 +61,36 @@ $data_rol = $roles->getAll();
                         <label for="id_tipo_documento" class="form-label">Tipo de documento</label>
                         <select class="form-select" aria-label="Default select example" name="id_tipo_documento" id="id_tipo_documento" required="required">
                             <option>Seleccionar Documento</option>
-                            <option value="1">CC</option>
-                            <option value="2">TI</option>
-                            <option value="3">CE</option>
+                            <?php
+                            foreach ($registro as $datos) {
+                                echo '<option value="' . $datos->getId() . '">' . $datos->getTipoDocumento() . '</option>';
+                            }
+                            ?>
                         </select>
                     </div>
                     <div class="col-6 mb-2">
                         <label for="numero_documento" class="form-label">N° de documento</label>
-                        <input type="number" class="form-control" id="numero_documento" name="numero_documento">
+                        <input type="number" class="form-control" id="numero_documento" name="numero_documento" oninput="restrictNumberInput(event)" onchange="myFunction()" maxlength="10" required>
                     </div>
 
                     <div class="col-6 mb-2">
                         <label for="primer_nombre" class="form-label">Primer Nombre</label>
-                        <input type="text" class="form-control" id="primer_nombre" name="primer_nombre">
+                        <input type="text" class="form-control" id="primer_nombre" name="primer_nombre" oninput="restricForm(event)" maxlength="20" required>
                     </div>
 
                     <div class="col-6 mb-2">
                         <label for="segundo_nombre" class="form-label">Segundo Nombre</label>
-                        <input type="text" class="form-control" id="segundo_nombre" name="segundo_nombre">
+                        <input type="text" class="form-control" id="segundo_nombre" name="segundo_nombre" oninput="restricForm(event)" maxlength="20">
                     </div>
 
                     <div class="col-6 mb-2">
                         <label for="primer_apellido" class="form-label">Primer Apellido</label>
-                        <input type="text" class="form-control" id="primer_apellido" name="primer_apellido">
+                        <input type="text" class="form-control" id="primer_apellido" name="primer_apellido" oninput="restricForm(event)" maxlength="30" required>
                     </div>
 
                     <div class="col-6 mb-2">
                         <label for="segundo_apellido" class="form-label">Segundo Apellido</label>
-                        <input type="text" class="form-control" id="segundo_apellido" name="segundo_apellido">
+                        <input type="text" class="form-control" id="segundo_apellido" name="segundo_apellido" oninput="restricForm(event)" maxlength="30">
 
                     </div>
 
@@ -100,13 +104,13 @@ $data_rol = $roles->getAll();
                                 echo '<option value="' . $valores->getId() . '">' . $valores->getSexo() . '</option>';
                             }
                             ?>
-                           
+
                         </select>
                     </div>
 
                     <div class="col-3 mb-2">
                         <label for="telefono" class="form-label">Telefono</label>
-                        <input type="tel" class="form-control" id="telefono" name="telefono">
+                        <input type="tel" class="form-control" id="telefono" name="telefono" oninput="restrictNumberInput(event)" maxlength="10" required>
                     </div>
 
                     <div class="col-6 mb-2">
@@ -133,36 +137,20 @@ $data_rol = $roles->getAll();
 
                     </div>
 
-                    <!-- <div class="col-6 mb-2">
-                        <label for="id_rol" class="form-label">Roles</label>
-                        <select class="form-select" aria-label="Default select example" id="id_rol" name="id_rol" required="required">
-                            <option selected>Seleccionar</option>
-                            
-                            foreach ($data_rol as $valores) {
-                                echo '<option value="' . $valores->getId() . '">' . $valores->getRol() . '</option>';
-                            }
-                            ?>
-                        </select>
-                    </div> -->
-
-
-                    <!-- <div class="col-6 mb-2">
-                        <label for="password" class="form-label ">Contraseña</label>
-                        <input type="password" class="form-control" id="password" name="password">
-                    </div> -->
-
                 </div>
                 <br>
-                <button onclick="fntGuardar()" type="submit" src="login.php" class="btn btn-outline-info ml-2">Guardar Usuario</button>
-             
+                <button onclick="fntGuardar()" type="submit" src="index.php" class="btn btn-outline-info ml-2">Guardar Usuario</button>
+
             </div>
         </form>
 
     </div>
-    <script src="public/js/register.js"></script>
-    <script src="publict/js/alert.js"></script>
-        
-   
+    <?php
+    include_once(BASE_DIR . '../../views/main/partials/footer.php');
+    ?>
+
+    <script src="public/js/restriccion_input.js"></script>
+
 </body>
 
 </html>

@@ -78,10 +78,8 @@ if (isset($errorMessage)) { ?>
                                         <div class="text-center">
                                             <a class="small" href="views/login/olvido_contraseña.php">Olvidó su contraseña?</a>
                                         </div>
-                                        <div class="text-center">
-                                            <a class="small" href="register.php">Crear cuenta!</a>
-
-                                            <?php
+                                               
+                                        <?php
                                             if (isset($_GET['message'])) {
 
                                             ?>
@@ -104,7 +102,11 @@ if (isset($errorMessage)) { ?>
                                             <?php
                                             }
                                             ?>
+                    
+                                        <div class="text-center">
+                                            <a class="small" href="register.php">Crear cuenta!</a>
 
+                                           
 
 
                                     </form>

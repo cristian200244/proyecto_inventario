@@ -9,7 +9,7 @@ include_once(__DIR__ . "../../../config/config.php");
 include_once(BASE_DIR . '../../views/main/partials/header.php');
 require_once '../../models/ciudadModel.php';
 require_once '../../models/documentoModel.php';
-require_once '../../models/clienteModel.php';
+require_once '../../models/usuarioModel.php';
 require_once '../../models/sexoModel.php';
 
 $ciudad = new Ciudad();
@@ -44,7 +44,7 @@ foreach ($registro as $cliente) {
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <form method="POST" action="../../controller/clienteController.php?c=3&id_persona=<?= $id_persona ?>">
+    <form method="POST" action="../../controller/usuarioController.php?c=3&id_persona=<?= $id_persona ?>">
         <input type="hidden" name="c" value="3">
         <input type="hidden" name="id" value="<?= $id_persona ?>">
         <div class="container text-center">
@@ -119,7 +119,7 @@ foreach ($registro as $cliente) {
                 </div>
             </div>
             <br>
-            <button type="submit" class="btn btn-outline-info ml-2">Guardar Cliente</button>
+            <button type="submit" class="btn btn-outline-info ml-2">Actualizar </button>
         </div>
 
     </form>

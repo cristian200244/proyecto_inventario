@@ -77,7 +77,7 @@ class UsuarioController
 }
  
 // Include config file
-require_once "config.php";
+ require_once "config.php";
  
 // Define variables and initialize with empty values
 $username = $password = "";
@@ -191,7 +191,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         ];
         $result = $this->usuario->store($datos);
         if ($result) {
-            header("Location:../login.php");
+            header("Location:../index.php");
             exit();
         } else {
             echo $error = "Ocurrió un error";
@@ -209,6 +209,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     public function delete()
     {
         $this->usuario->delete($_REQUEST['id']);
+       
         header("Location: ../views/clientes/index.php");
     }
 

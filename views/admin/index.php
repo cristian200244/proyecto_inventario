@@ -8,10 +8,14 @@ if (!isset($_SESSION['id'])) {
 include_once(__DIR__ . "../../../config/config.php");
 include_once(BASE_DIR . '../../views/main/partials/header.php');
 require_once '../../models/usuarioModel.php';
+require_once '../../models/sexoModel.php';
 
 
 $datos = new Usuario();
 $registro = $datos->getAll();
+
+$sexo = new Sexo();
+$data_sexo = $sexo->getAll();
 
 
 ?>
@@ -66,7 +70,9 @@ $registro = $datos->getAll();
                                     </svg></a>
                             </button>
                             
-                           
+                            <a href="../../controller/usuarioController.php?c=2&id_persona=<?= $row->getId() ?>" class="btn btn-outline-warning">
+                                <i class="bi bi-pencil-square" style="font-size: 1.3rem; "></i></a>
+
 
                         </td>
 

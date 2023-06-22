@@ -40,8 +40,9 @@ foreach ($registro as $cliente) {
     <form method="POST" action="../../controller/clienteController.php">
         <input type="hidden" name="c" value="3">
         <input type="hidden" name="id" value="<?= $id ?>">
+        <a type="button" class="btn btn-outline-primary float-start" href="../admin/index.php"><i class="bi bi-arrow-return-left"></i></a>
         <div class="container text-center">
-            <h1 class="h2 mb-4  text-center"> Actualizar Cliente</h1>
+            <h1 class="h2 mb-4  text-center">Información Completa Del Administrador</h1>
             <hr class="bg-info">
             <div class="row text-start">
                 <div class="col">
@@ -108,7 +109,7 @@ foreach ($registro as $cliente) {
                 </div>
 
             </div>
-            <button type="submit" class="btn btn-outline-info ml-0">Actualizar Cliente</button>
+           
         </div>
     </form>
 
