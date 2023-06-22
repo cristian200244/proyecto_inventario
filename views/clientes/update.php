@@ -86,7 +86,7 @@ foreach ($registro as $cliente) {
                     <input type="tel" class="form-control" id="telefono" name="telefono" value="<?= $telefono ?>" oninput="restrictNumberInput(event)" maxlength="10" required>
                 </div>
                 <div class="col-6 mb-2">
-                    <label for="id_ciudad" class="form-label">Ciudad</label>
+                    <label for="id_ciudad" class="form-label">Ciudad De Residencia</label>
                     <select class="form-select" aria-label="Default select example" id="id_ciudad" name="id_ciudad" required>
                     <?php foreach ($data as $valores) : ?>
                             <option value="<?= $valores->getId() ?>" <?= $valores->getId() == $cliente->getCiudad() ? 'selected' :  "" ?>><?= $valores->getCiudad() ?></option>
