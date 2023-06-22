@@ -1,8 +1,8 @@
- -- --------------------------------------------------------
+-- --------------------------------------------------------
 -- Host:                         127.0.0.1
 -- Versión del servidor:         8.0.32 - MySQL Community Server - GPL
 -- SO del servidor:              Win64
--- HeidiSQL Versión:             12.1.0.6537
+-- HeidiSQL Versión:             12.4.0.6659
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -24,22 +24,22 @@ CREATE TABLE IF NOT EXISTS `ciudades` (
   `id_ciudad` bigint NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
   PRIMARY KEY (`id_ciudad`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 
 -- Volcando datos para la tabla sistema_inventario.ciudades: ~4 rows (aproximadamente)
 DELETE FROM `ciudades`;
 INSERT INTO `ciudades` (`id_ciudad`, `nombre`) VALUES
-	(1, 'SAN JOSE DEL GUAVIARE'),
-	(2, 'ANTIOQUIA'),
-	(3, 'VAUPES'),
-	(5, 'AMAZONAS');
+	(1, 'GUAVIARE'),
+	(2, 'CALAMAR'),
+	(3, 'LIBERTAD'),
+	(8, 'RETORNO');
 
 -- Volcando estructura para tabla sistema_inventario.estado_productos
 CREATE TABLE IF NOT EXISTS `estado_productos` (
   `id_estado_producto` bigint NOT NULL AUTO_INCREMENT,
   `estado` varchar(50) NOT NULL,
   PRIMARY KEY (`id_estado_producto`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
 -- Volcando datos para la tabla sistema_inventario.estado_productos: ~2 rows (aproximadamente)
 DELETE FROM `estado_productos`;
@@ -62,25 +62,37 @@ CREATE TABLE IF NOT EXISTS `facturas` (
   CONSTRAINT `fk_factura_id_servicio` FOREIGN KEY (`id_servicio`) REFERENCES `servicios` (`id_servicio`),
   CONSTRAINT `FK_facturas_tipo_dispositivos` FOREIGN KEY (`id_tipo_dispositivo`) REFERENCES `tipo_dispositivos` (`id_tipo_dispositivo`),
   CONSTRAINT `fk_id_factura_id_persona` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb3;
 
--- Volcando datos para la tabla sistema_inventario.facturas: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla sistema_inventario.facturas: ~11 rows (aproximadamente)
 DELETE FROM `facturas`;
+INSERT INTO `facturas` (`id_factura`, `id_persona`, `id_servicio`, `fecha`, `total`, `id_tipo_dispositivo`) VALUES
+	(1, 2, 4, '2013-06-23', 50000, 2),
+	(4, 5, 1, '2014-06-23', 3450000, 3),
+	(6, 4, 1, '2014-06-23', 3000000, 2),
+	(7, 1, 4, '2014-06-23', 23445566, 2),
+	(8, 9, 4, '2014-06-23', 2000200, 3),
+	(9, 2, 1, '2015-06-23', 454656565, 2),
+	(10, 5, 1, '2015-06-23', 345456454, 2),
+	(11, 9, 4, '2020-06-23', 454545, 6),
+	(15, 10, 1, '2020-06-23', 565564, 6),
+	(18, 14, 1, '2021-06-23', 2000000, 6),
+	(19, 9, 4, '2021-06-23', 2400000, 6);
 
 -- Volcando estructura para tabla sistema_inventario.marcas
 CREATE TABLE IF NOT EXISTS `marcas` (
   `id_marca` bigint NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
   PRIMARY KEY (`id_marca`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb3;
 
 -- Volcando datos para la tabla sistema_inventario.marcas: ~4 rows (aproximadamente)
 DELETE FROM `marcas`;
 INSERT INTO `marcas` (`id_marca`, `nombre`) VALUES
 	(1, 'SAMSUNG'),
-	(2, 'HAWEI'),
-	(3, 'HP'),
-	(14, 'YAHOO');
+	(2, 'STARLINK'),
+	(3, 'ADOBE'),
+	(30, 'ACER');
 
 -- Volcando estructura para tabla sistema_inventario.personas
 CREATE TABLE IF NOT EXISTS `personas` (
@@ -111,16 +123,19 @@ CREATE TABLE IF NOT EXISTS `personas` (
   CONSTRAINT `fk_id_persona_id_rol` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`),
   CONSTRAINT `fk_id_persona_id_tipo_documento` FOREIGN KEY (`id_tipo_documento`) REFERENCES `tipo_documentos` (`id_tipo_documento`),
   CONSTRAINT `FK_personas_sexo` FOREIGN KEY (`id_sexo`) REFERENCES `sexo` (`id_sexo`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3;
 
--- Volcando datos para la tabla sistema_inventario.personas: ~4 rows (aproximadamente)
+-- Volcando datos para la tabla sistema_inventario.personas: ~8 rows (aproximadamente)
 DELETE FROM `personas`;
 INSERT INTO `personas` (`id_persona`, `id_rol`, `id_tipo_documento`, `id_ciudad`, `numero_documento`, `primer_nombre`, `segundo_nombre`, `primer_apellido`, `segundo_apellido`, `direccion`, `telefono`, `id_sexo`, `correo`, `estado`) VALUES
 	(1, 2, 1, 3, '1120564623', 'JHON', '', 'RODRIGUEZ', '', 'CALLE FALSA 123', '3182825959', 1, 'JHHRODRIGUEZP@SENA.EDU.CO', 1),
-	(2, 2, 1, 2, '1234567890', 'JUAN', 'ANDRES', 'ZARAGOZA', 'DENTIR', 'calller nordeste ', '3151185185', 1, 'andres@gmail.com', 0),
-	(4, 2, 1, 2, '1234567892', 'CARLOS', '', 'SANCHEZ', '', 'calle 12a centro providencia', '3223452134', 1, 'carlos23@gmail.com', 0),
-	(5, 2, 2, 1, '1234567893', 'BRENDA', '', 'SALAZAR', '', 'corredor las venecias', '2332441221', 4, 'formato@gmail.com', 0),
-	(9, 2, 3, 1, '1345685838', 'CARLOS', 'MANUEL', 'DARTE', 'LOZADA', 'CALLE LA VENECIA 23-34', '3234767547', 1, 'CARLOS34GUIRT@GMAIL.COM', 0);
+	(2, 2, 1, 2, '1234567890', 'JUAN', 'ANDRES', 'ZARAGOZA', 'DENTIR', 'CALLE NORDESTE', '3151185185', 1, 'ANDRES@GMAIL.COM', 0),
+	(4, 2, 1, 2, '1234567892', 'CARLOS', '', 'SANCHEZ', '', 'CALLE 12 CENTRO PROVIDENCIA', '3223452134', 1, 'CARLOS23@GMAIL.COM', 0),
+	(5, 2, 2, 1, '1234567893', 'BRENDA', '', 'SALAZAR', '', 'CORREDOR LAS VENECIAS', '2332441221', 4, 'BRENDA@GMAIL.COM', 0),
+	(9, 2, 3, 1, '1345685838', 'CARLOS', 'MANUEL', 'DARTE', 'LOZADA', 'CALLE LA VENECIA 23-34', '3234767547', 1, 'CARLOS34GUIRT@GMAIL.COM', 0),
+	(10, 1, 1, 2, '1234556654', 'OLVER', '', 'YUCUNA', '', 'CALLE DEFITINO', '3225657432', 1, 'OLVERYUCUNA@GMAIL.COM', 1),
+	(14, 2, 1, 1, '2343545400', 'VLADIMIR', '', 'CONTRERAS', '', 'LOS OLIVOS', '3234349430', 1, 'VLADIMIR@GMAIL.COM', 0),
+	(16, 2, 1, 2, '2633556754', 'FRANCO', '', 'GALINDO', '', 'CALLE SANTACRUZ', '4636573622', 1, 'FR243@GMAIL.COM', 0);
 
 -- Volcando estructura para tabla sistema_inventario.roles
 CREATE TABLE IF NOT EXISTS `roles` (
@@ -157,22 +172,26 @@ CREATE TABLE IF NOT EXISTS `servicios` (
   CONSTRAINT `fk_id_servicio_id_persona` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`),
   CONSTRAINT `fk_id_servicio_id_tipo_dispositivo` FOREIGN KEY (`id_tipo_dispositivo`) REFERENCES `tipo_dispositivos` (`id_tipo_dispositivo`),
   CONSTRAINT `fk_id_servicio_id_tipo_servicio` FOREIGN KEY (`id_tipo_servicio`) REFERENCES `tipo_servicios` (`id_tipo_servicio`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
 
--- Volcando datos para la tabla sistema_inventario.servicios: ~4 rows (aproximadamente)
+-- Volcando datos para la tabla sistema_inventario.servicios: ~8 rows (aproximadamente)
 DELETE FROM `servicios`;
 INSERT INTO `servicios` (`id_servicio`, `id_persona`, `id_tipo_dispositivo`, `id_marca`, `id_tipo_servicio`, `codigo`, `id_estado_producto`, `fecha`, `falla`) VALUES
 	(1, 1, 1, 3, 1, '8687793', 1, '2023-06-01', '  LA TARJETA GRÁFICA NO ENFRÍA '),
-	(4, 4, 2, 2, 3, '8615655', 1, '2023-06-01', '  fallas en placa 2ty'),
-	(5, 2, 3, 2, 4, '4317251', 2, '2023-06-01', '  fallas en los cables de tension de cuerdas'),
-	(6, 2, 3, 2, 1, '1687611', 2, '2023-06-09', ' frecuente falla en los arpensores');
+	(4, 4, 2, 2, 3, '8615655', 1, '2023-06-01', 'FALLAS EN LAS PLACAS TC'),
+	(5, 2, 3, 2, 4, '4317251', 1, '2023-06-01', 'FALLA EN LOS CABLES C Y R'),
+	(6, 2, 3, 2, 1, '1687611', 1, '2023-06-09', 'FRECUENTE FALLAS EN LOS FR'),
+	(7, 1, 2, 2, 4, '8995190', 1, '2023-06-14', 'FALLAS EN LOS ASPENSOERE'),
+	(8, 9, 3, 3, 4, '4467815', 1, '2023-06-14', 'FAKLAS EBN '),
+	(9, 10, 6, 3, 2, '2697014', 1, '2023-06-20', 'FALLA EN LOS DFR'),
+	(10, 14, 3, 2, 2, '6422005', 1, '2023-06-21', 'FALLA EN LOS AFR');
 
 -- Volcando estructura para tabla sistema_inventario.sexo
 CREATE TABLE IF NOT EXISTS `sexo` (
   `id_sexo` bigint unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
   PRIMARY KEY (`id_sexo`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 
 -- Volcando datos para la tabla sistema_inventario.sexo: ~2 rows (aproximadamente)
 DELETE FROM `sexo`;
@@ -185,21 +204,22 @@ CREATE TABLE IF NOT EXISTS `tipo_dispositivos` (
   `id_tipo_dispositivo` bigint NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
   PRIMARY KEY (`id_tipo_dispositivo`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 
--- Volcando datos para la tabla sistema_inventario.tipo_dispositivos: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla sistema_inventario.tipo_dispositivos: ~4 rows (aproximadamente)
 DELETE FROM `tipo_dispositivos`;
 INSERT INTO `tipo_dispositivos` (`id_tipo_dispositivo`, `nombre`) VALUES
 	(1, 'TV'),
-	(2, 'CELULAR'),
-	(3, 'ROUTER');
+	(2, 'PORTATIL'),
+	(3, 'XBOX'),
+	(6, 'CELULAR');
 
 -- Volcando estructura para tabla sistema_inventario.tipo_documentos
 CREATE TABLE IF NOT EXISTS `tipo_documentos` (
   `id_tipo_documento` bigint NOT NULL AUTO_INCREMENT,
   `tipo` varchar(50) NOT NULL,
   PRIMARY KEY (`id_tipo_documento`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 
 -- Volcando datos para la tabla sistema_inventario.tipo_documentos: ~3 rows (aproximadamente)
 DELETE FROM `tipo_documentos`;
@@ -213,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `tipo_servicios` (
   `id_tipo_servicio` bigint NOT NULL AUTO_INCREMENT,
   `servicio` varchar(50) NOT NULL,
   PRIMARY KEY (`id_tipo_servicio`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 
 -- Volcando datos para la tabla sistema_inventario.tipo_servicios: ~4 rows (aproximadamente)
 DELETE FROM `tipo_servicios`;
@@ -235,10 +255,10 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   CONSTRAINT `FK_usuarios_personas` FOREIGN KEY (`id_persona`) REFERENCES `personas` (`id_persona`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COMMENT='En esta tabla se van a ingresar todos los usuarios del sistema';
 
--- Volcando datos para la tabla sistema_inventario.usuarios: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla sistema_inventario.usuarios: ~1 rows (aproximadamente)
 DELETE FROM `usuarios`;
 INSERT INTO `usuarios` (`id`, `id_persona`, `correo`, `password`, `estado`) VALUES
-	(1, 10, NULL, '123456', 1);
+	(1, 10, 'OLVERYUCUNA@GMAIL.COM', '123456', 1);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
