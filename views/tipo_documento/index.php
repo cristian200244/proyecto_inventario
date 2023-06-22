@@ -13,7 +13,6 @@
 
     ?>
 
-    <!-- Begin Page Content -->
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="container text-center">
@@ -67,8 +66,7 @@
                                         </td>
                                         <td>
                                             <a class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_documento_<?= $documento->getId() ?>" onclick="update(<?= $documento->getId() ?>)">Actualizar</a>
-                                            <a class="btn btn-sm btn-outline-danger" href="../../controller/documentoController.php?c=4&id_tipo_documento=<?= $documento->getId() ?>">Eliminar</a>
-                                        </td>
+                                            <a onclick="AlertDeleteTipoDocumento('<?= $documento->getId() ?>')" class="btn btn-sm btn-outline-danger">Eliminar</a>                                               </td>
 
                                     </tr>
                                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -132,7 +130,6 @@
                 });
         }
     </script>
-    <!-- /.container-fluid -->
 
     <?php
     include_once(BASE_DIR . '../../views/main/partials/footer.php');

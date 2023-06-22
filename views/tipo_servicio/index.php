@@ -13,10 +13,8 @@ foreach ($registro as $servicios) {
 
 ?>
 
-
-<!-- Begin Page Content -->
 <div class="container-fluid">
-    <!-- Page Heading -->
+
     <div class="container text-center">
         <h1 class="h3 mb-4 text-gray-800">Configuración Del Sistema</h1>
         <hr>
@@ -67,8 +65,7 @@ foreach ($registro as $servicios) {
                                     </td>
                                     <td>
                                         <a class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_servicio_<?= $servicios->getId() ?>" onclick="update(<?= $servicios->getId() ?>)">Actualizar</a>
-                                        <a class="btn btn-sm btn-outline-danger" href="../../controller/tipoServicioController.php?c=4&id_tipo_servicio=<?= $servicios->getId() ?>">Eliminar</a>
-                                    </td>
+                                        <a onclick="AlertDeleteServicios('<?= $servicios->getId() ?>')" class="btn btn-sm btn-outline-danger">Eliminar</a>                                    </td>
                                 </tr>
                                 <!-- registro -->
                                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -134,7 +131,6 @@ foreach ($registro as $servicios) {
             });
     }
 </script>
-<!-- /.container-fluid -->
 
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');

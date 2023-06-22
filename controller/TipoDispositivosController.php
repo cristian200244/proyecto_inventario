@@ -13,16 +13,16 @@ class DispositivoController
 
         if (isset($_REQUEST['c'])) {
             switch ($_REQUEST['c']) {
-                case '1': //Almacenar en la base de datos
+                case '1': 
                     self::store();
                     break;
-                case '2': //ver usuario
+                case '2': 
                     self::show();
                     break;
-                case '3': //Actualizar el registro
+                case '3':
                     self::update();
                     break;
-                case '4': //eliminar el registro
+                case '4':
                     self::delete();
                     break;
                 default:
@@ -56,8 +56,13 @@ class DispositivoController
     }
     public function delete()
     {
-        $this->dispositivo->delete($_REQUEST['id_tipo_dispositivo']);
-        header("Location: ../views/tipo_dispositivos/index.php");
+
+        $dispositivos = $_REQUEST['id_tipo_dispositivo'];
+        $result= $this->dispositivo->delete($dispositivos);
+        if($result){
+            header("Location: ../views/tipo_dispositivos/index.php");
+            exit();
+        }
     }
     public function update()
     {

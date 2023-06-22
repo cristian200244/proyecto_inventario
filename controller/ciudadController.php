@@ -4,25 +4,22 @@
     $controller = new CiudadController;
     class CiudadController
     {
-
         private $ciudad;
-
         public function __construct()
         {
             $this->ciudad = new Ciudad();
-
             if (isset($_REQUEST['c'])) {
                 switch ($_REQUEST['c']) {
-                    case '1': //Almacenar en la base de datos
+                    case '1':
                         self::store();
                         break;
-                    case '2': //ver usuario
+                    case '2':
                         self::show();
                         break;
-                    case '3': //Actualizar el registro
+                    case '3':
                         self::update();
                         break;
-                    case '4': //eliminar el registro
+                    case '4':
                         self::delete();
                         break;
                     default:
@@ -52,12 +49,17 @@
         public function show()
         {
             $id = $_REQUEST['id_ciudad'];
-            header("Location: ../views/ciudad/index.php?id_ciudad=". $id);
+            header("Location: ../views/ciudad/index.php?id_ciudad=" . $id);
         }
         public function delete()
         {
-            $this->ciudad->delete($_REQUEST['id_ciudad']);
-            header("Location: ../views/ciudad/index.php" );
+
+            $ciudades = $_REQUEST['id_ciudad'];
+            $result = $this->ciudad->delete($ciudades);
+            if ($result) {
+                header("Location: ../views/ciudad/index.php");
+                exit();
+            }
         }
         public function update()
         {
@@ -68,8 +70,7 @@
             $result = $this->ciudad->update($datos);
 
             if ($result) {
-                echo json_encode(array('succes' => 1, 'nombre'=>$datos['nombre']));
+                echo json_encode(array('succes' => 1, 'nombre' => $datos['nombre']));
             }
-             
         }
     }

@@ -40,9 +40,6 @@ $falla           = $services->getFalla();
 
 ?>
 
-
-
-<!-- Begin Page Content -->
 <div class="container-fluid">
     <div class="row">
         <div class="col">

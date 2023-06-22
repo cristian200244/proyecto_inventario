@@ -12,10 +12,8 @@ foreach ($registro_sexo as $sexo) {
 }
 ?>
 
-<!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <!-- Page Heading -->
     <div class="container text-center">
         <h1 class="h3 mb-4 text-gray-800">Configuración Del Sistema</h1>
         <hr>
@@ -67,8 +65,7 @@ foreach ($registro_sexo as $sexo) {
                                     </td>
                                     <td>
                                         <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_sexo_<?= $sexo->getId() ?>" onclick="update(<?= $sexo->getId() ?>)">Actualizar</a>
-                                        <a type="button" class="btn btn-sm btn-outline-danger" href="../../controller/sexoControlller.php?c=4&id_sexo=<?= $sexo->getId() ?>">Eliminar</a>
-                                    </td>
+                                        <a onclick="AlertDeleteSexo('<?= $sexo->getId() ?>')" class="btn btn-sm btn-outline-danger">Eliminar</a>                                    </td>
 
                                 </tr>
                                 <!-- Actualizacion de registro-->
@@ -132,7 +129,6 @@ foreach ($registro_sexo as $sexo) {
             });
     }
 </script>
-<!-- /.container-fluid -->
 
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');

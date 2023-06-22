@@ -9,17 +9,16 @@ class TipoDocumentoController
         $this->documento = new TipoDocumento();
         if (isset($_REQUEST['c'])) {
             switch ($_REQUEST['c']) {
-                case '1': //Almacenar en la base de datos
+                case '1':
                     self::store();
-
                     break;
-                case '2': //ver usuario
+                case '2': 
                     self::show();
                     break;
-                case '3': //Actualizar el registro
+                case '3':
                     self::update();
                     break;
-                case '4': //eliminar el registro
+                case '4': 
                     self::delete();
                     break;
                 default:
@@ -54,8 +53,12 @@ class TipoDocumentoController
     }
     public function delete()
     {
-        $this->documento->delete($_REQUEST['id_tipo_documento']);
-        header("Location: ../views/tipo_documento/index.php");
+        $documentos = $_REQUEST['id_tipo_documento'];
+        $result= $this->documento->delete($documentos);
+        if($result){
+            header("Location: ../views/tipo_documento/index.php");
+            exit();
+        }
     }
     public function update()
     {
