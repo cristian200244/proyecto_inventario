@@ -62,13 +62,13 @@
                                   </li>
 
 
-                            <a href="../../views/login/cambiar_contraseña.php" class="btn btn-warning">Cambia tu contraseña</a> 
+                           
 
                                   <li>
                                   <a class="dropdown-item"   class="btn btn-warning"  type="button" class="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                         <i class="fa-solid fa-hand fa-shake" style="color: #FF4633 ; padding-left: 8%; padding-right:8%;"></i>
                                         Cambiar Contraseña
-                                    </a>
+                                  </a>
                                    
                                   </li>
  
@@ -79,20 +79,20 @@
                                       <div class="modal-content">
                                         <div class="modal-header">
                                           <h1 class="modal-title fs-5" id="staticBackdropLabel">Deseas Cambiar la contraseña!!</h1>
-                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                          <button id="change-password-close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label"  >Contraseña</label>
                                         
-                                        <input type="password" class="form-control" id="exampleInputPassword1" >
+                                        <input id="change-password-input" type="password" class="form-control" id="exampleInputPassword1" >
                                         
                                          </div>
                                             </div>
                                         <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                          <button id="change-password-cancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                          
-                                          <input type="submit" class="btn btn-primary" value="Enviar">
+                                          <input id="change-password-button" class="btn btn-primary" value="Enviar" onclick="changepasswordOnClikc()">
                                         </div>
                                       </div>
                                     </div>
@@ -101,4 +101,43 @@
                              </li>
                             </ul>
                 </nav>
+                <script>
+
+                    // Capturamos lo elementos
+                    changepasswordinput = document.querySelector('#change-password-input')
+                    changepasswordclose = document.querySelector('#change-password-close')
+                    changepasswordcancel = document.querySelector('#change-password-cancel')
+                    changepasswordbuttton = document.querySelector('#change-password-button')
+
+                    changepasswordOnClikc = () => {
+
+                      changepasswordinput.disabled = true;
+                      changepasswordclose.disabled = true;
+                      changepasswordbuttton.disabled = true;
+                      changepasswordcancel.disabled = true;
+
+                      formdata = new FormData();
+
+                      formdata.append('password', changepasswordinput.value);
+
+                      fetch('http://localhost/proyecto_inventario/app/change-password.php', {
+                        method: 'post',
+                        body: formdata
+                      })
+                      .then(response => response.json())
+                      .then(json => {
+                        changepasswordclose.disabled = true;
+                        changepasswordcancel.disabled = false;
+                        changepasswordinput.disabled = false;
+                        changepasswordbuttton.disabled = false;
+  
+                        changepasswordcancel.click();
+                        alert('Contraseña actualizada')
+                      });
+                       setTimeout(() => {
+
+                      }, 3000);
+                    }
+
+                </script>
                 

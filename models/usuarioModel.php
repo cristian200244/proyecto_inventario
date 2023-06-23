@@ -1,6 +1,8 @@
 <?php
 
-include_once dirname(__FILE__) . '../../Config/config.php';
+use App\Database as Db2;
+
+include_once dirname(__FILE__) . '../../Config/config.example.php';
 require_once 'conexionModel.php';
 // require_once '../controller/usuarioController.php';
 
@@ -336,10 +338,13 @@ class Usuario extends stdClass
 
         try {
 
-            $sql = "SELECT id, password, correo FROM usuarios WHERE correo = '$correo' AND password = '$pass' ";
-            $query  = $this->database->conexion()->query($sql);
+            $sql = "SELECT id, password, correo FROM usuarios WHERE `correo` = '$correo' AND `password` = '$pass' ";
+            require __DIR__ . '/../app/vendor/autoload.php';
 
-            $result = $query->fetchObject();
+            $db = new Db2();
+
+            $stmt = $db->execute($sql);
+            $result = $stmt->fetchObject();
 
             return $result;
         } catch (PDOException $e) {

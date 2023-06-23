@@ -23,9 +23,13 @@
 <script src='../../public/js/restriccion_input.js'></script>
 <script src='../../public/js/validacion.js'></script>
 <script src='../../public/js/bienvenido.js'></script>
+
 <script src='../../public/js/salir.js'></script>
+
 <script src="../../public/vendor/jquery/jquery.min.js"></script>
+
 <script src="../../public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../public/reset_alerts.js"></script>
 <script src="../../public/vendor/jquery-easing/jquery.easing.min.js"></script>
 <script src="../../public/js/sb-admin-2.min.js"></script>
 <script src='../../public/js/main.js'></script>

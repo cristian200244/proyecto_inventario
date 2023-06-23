@@ -30,15 +30,17 @@ include_once(__DIR__ . "../../../config/config.php");
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-2">Olvidaste tu contraseña?</h1>
-                                        <p class="mb-4">Lo entendemos, pasan cosas. ¡Simplemente ingrese su dirección de correo electrónico a continuación y le enviaremos un enlace para restablecer su contraseña!</p>
+                                        <p class="mb-4">Lo entendemos, pasan cosas. ¡Simplemente ingrese su dirección de correo electrónico a continuación y le enviaremos una contraseña nueva!</p>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" onsubmit="return false" on>
+                                        <!-- Input del correo -->
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                                            <input id="correo" type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                                         </div>
-                                        <a href="" class="btn btn-primary btn-user btn-block">
-                                            Restablecer Contraseña
-                                        </a>
+                                        <input id="btn1" class="btn btn-primary btn-user btn-block" type="submit" onclick="onClickSend()">
+                                        <br>
+                                        <a type="button"  href="../../index.php"><i class="btn btn-primary">Atras</i></a>
+                                        </button>
                                     </form>
                                     <hr>
                                    
@@ -50,5 +52,31 @@ include_once(__DIR__ . "../../../config/config.php");
             </div>
         </div>
     </div>
+    <script>
+      correo = document.querySelector('#correo');
+btn = document.querySelector('#btn1');
+
+
+function onClickSend(){
+
+    let formdata = new FormData();
+    formdata.append('email', correo.value);
+
+    correo.disabled = true;
+    btn.disabled = true;
+
+
+    fetch('http://localhost/proyecto_inventario/app/recuperar-password.php', { 
+        method: 'post',
+        body: formdata
+    }).then(response => response.json())
+    .then(json => {
+        alert(json.mensage)
+        correo.disabled = false;
+        btn.disabled = false;
+        correo.disabled = false;
+    })
+}
+    </script>
 </body>
 </html>
