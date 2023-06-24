@@ -99,5 +99,5 @@ include_once(BASE_DIR . '../../views/main/partials/footer.php');
 </div>
 
 
-<!-- /.container-fluid -->
+
 

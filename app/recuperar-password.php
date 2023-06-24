@@ -43,9 +43,6 @@ if ( $user == null){
     }
 }
 
-
-
-
 // echo $email;
 
 
@@ -55,3 +52,6 @@ if ( $user == null){
 // echo $password; exit;
 
 // Mail::send("heilernova@gmail.com", "hola");
+
+
+

@@ -5,11 +5,12 @@ if (!isset($_SESSION['id'])) {
     header("Location:../../index.php");
 }
 
-include_once(__DIR__ . "../../../config/config.example.php");
+include_once(__DIR__ . "../../../config/config.php");
 include_once(BASE_DIR . '../../views/main/partials/header.php');
 require_once '../../models/ciudadModel.php';
 require_once '../../models/documentoModel.php';
 require_once '../../models/sexoModel.php';
+
 require_once '../../models/usuarioModel.php';
 
 

@@ -122,11 +122,12 @@ if (isset($errorMessage)) { ?>
     </div>
 
     </div>
-
+    
+   
     <script src="public/js/main.js">
     </script>
     <script src="public/js/cerrar.js"></script>
-    <script src="public/js/login.js"></script>
+    <script src="public/js/login.js"></script> 
 
 
 
