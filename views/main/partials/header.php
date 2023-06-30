@@ -44,5 +44,100 @@
             
                 <nav class="navbar navbar-expand navbar-light bg-ligth topbar mb-4 static-top shadow ">
                     <h2 class="text-dark  ml-2 text">Control De Inventario </h2> 
+
+                    <ul class="navbar-nav ms-auto ms-md-0 me-5 me-lg-7">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item"  href="<?= BASE_URL ?>/index.php" onclick="salirSistema()">
+                                        <i class="fa-solid fa-hand fa-shake" style="color: #FF4633 ; padding-left: 8%; padding-right:8%;"></i>
+                                        Cerrar Sesión
+                                    </a>
+                                  </li>
+
+
+                           
+
+                                  <li>
+                                  <a class="dropdown-item"   class="btn btn-warning"  type="button" class="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                        <i class="fa-solid fa-hand fa-shake" style="color: #FF4633 ; padding-left: 8%; padding-right:8%;"></i>
+                                        Cambiar Contraseña
+                                  </a>
+                                   
+                                  </li>
+ 
+                                  </ul>
+
+                                  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h1 class="modal-title fs-5" id="staticBackdropLabel">Deseas Cambiar la contraseña!!</h1>
+                                          <button id="change-password-close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label"  >Contraseña</label>
+                                        
+                                        <input id="change-password-input" type="password" class="form-control" id="exampleInputPassword1" >
+                                        
+                                         </div>
+                                            </div>
+                                        <div class="modal-footer">
+                                          <button id="change-password-cancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                         
+                                          <input id="change-password-button" class="btn btn-primary" value="Enviar" onclick="changepasswordOnClikc()">
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                                
+                             </li>
+                            </ul>
                 </nav>
+                <script>
+
+                    // Capturamos lo elementos
+                    changepasswordinput = document.querySelector('#change-password-input')
+                    changepasswordclose = document.querySelector('#change-password-close')
+                    changepasswordcancel = document.querySelector('#change-password-cancel')
+                    changepasswordbuttton = document.querySelector('#change-password-button')
+
+                    changepasswordOnClikc = () => {
+
+                      changepasswordinput.disabled = true;
+                      changepasswordclose.disabled = true;
+                      changepasswordbuttton.disabled = true;
+                      changepasswordcancel.disabled = true;
+
+                      formdata = new FormData();
+
+                      formdata.append('password', changepasswordinput.value);
+
+                      fetch('http://localhost/proyecto_inventario/app/change-password.php', {
+                        method: 'post',
+                        body: formdata
+                      })
+                      .then(response => response.json())
+                      .then(json => {
+                        changepasswordclose.disabled = true;
+                        changepasswordcancel.disabled = false;
+                        changepasswordinput.disabled = false;
+                        changepasswordbuttton.disabled = false;
+  
+                        changepasswordcancel.click();
+                        alert('Contraseña actualizada')
+                      });
+                       setTimeout(() => {
+
+                      }, 3000);
+                    }
+
+                </script>
                 

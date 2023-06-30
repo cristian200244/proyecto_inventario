@@ -1,8 +1,15 @@
 <?php
+
+session_start();
+if (!isset($_SESSION['id'])) {
+    header("Location:../../index.php");
+}
+
 include_once(__DIR__ . "../../../config/config.php");
 include_once(BASE_DIR . '../../views/main/partials/header.php');
 require_once '../../models/ciudadModel.php';
 require_once '../../models/documentoModel.php';
+// require_once '../../models/usuarioModel.php';
 require_once '../../models/clienteModel.php';
 require_once '../../models/sexoModel.php';
 
@@ -19,35 +26,35 @@ $datos = new Cliente();
 $registro = $datos->getById($_REQUEST['id_persona']);
 
 
-foreach ($registro as $cliente) {
-    $id_persona         = $cliente->getId();
-    $tipo_documento     = $cliente->getTipoDocumento();
-    $numero_documento   = $cliente->getNumeroDocumento();
-    $primer_nombre      = $cliente->getPrimerNombre();
-    $segundo_nombre     = $cliente->getSegundoNombre();
-    $primer_apellido    = $cliente->getPrimerApellido();
-    $segundo_apellido   = $cliente->getSegundoApellido();
-    $sexo               = $cliente->getSexo();
-    $ciudad             = $cliente->getCiudad();
-    $correo             = $cliente->getCorreo();
-    $direccion          = $cliente->getDireccion();
-    $telefono           = $cliente->getTelefono();
+foreach ($registro as $usuario) {
+    $id_persona         = $usuario->getId();
+    $tipo_documento     = $usuario->getTipoDocumento();
+    $numero_documento   = $usuario->getNumeroDocumento();
+    $primer_nombre      = $usuario->getPrimerNombre();
+    $segundo_nombre     = $usuario->getSegundoNombre();
+    $primer_apellido    = $usuario->getPrimerApellido();
+    $segundo_apellido   = $usuario->getSegundoApellido();
+    $sexo               = $usuario->getSexo();
+    $ciudad             = $usuario->getCiudad();
+    $correo             = $usuario->getCorreo();
+    $direccion          = $usuario->getDireccion();
+    $telefono           = $usuario->getTelefono();
 }
+
+
 ?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <form method="POST" action="../../controller/clienteController.php?c=3&id_persona=<?= $id_persona ?>">
-        <input type="hidden" name="c" value="3">
-        <input type="hidden" name="id" value="<?= $id_persona ?>">
+    <form method="POST" action="../../controller/usuarioController.php?c=3&id_persona=<?= $id_persona ?>">
         <div class="container text-center">
-            <h1 class="h2 mb-4  text-center">Actualizar Datos Del Cliente </h1>
+            <h1 class="h2 mb-4  text-center">Actualizar del administrador</h1>
             <hr class="bg-info">
             <div class="row text-start">
                 <div class="col-6 mb-2">
                     <label for="id_tipo_documento" class="form-label">Tipo de documento</label>
-                    <select class="form-select" aria-label="Default select example" name="id_tipo_documento" id="id_tipo_documento" value="<?= $tipo_documento ?>">
+                    <select class="form-select" aria-label="Default select example" name="id_tipo_documento" id="id_tipo_documento" value="<?= $tipo_documento?>">
                         <option selected>Seleccionar</option>
                         <?php
                         foreach ($registros  as $tipo_documento) {
@@ -113,12 +120,13 @@ foreach ($registro as $cliente) {
                 </div>
             </div>
             <br>
-            <button type="submit" class="btn btn-outline-info ml-2">Guardar Cliente</button>
+            <button type="submit" class="btn btn-outline-info ml-2">Actualizar </button>
         </div>
 
     </form>
 
 </div>
+<!-- /.container-fluid -->
 
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');

@@ -1,8 +1,16 @@
 <?php
-    include_once(__DIR__ . "/config/config.php");
+include_once(__DIR__ . "../config/config.php");
+// include_once(__DIR__ . "usuarioController.php");
+
+// require_once("sesion.class.php");
+if (isset($errorMessage)) { ?>
+    <p><?php echo $errorMessage; ?></p>
+<?php }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
     <meta charset="utf-8">
@@ -10,6 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="ico" href="electronica.ico">
 
     <title> Login </title>
 
@@ -22,8 +31,8 @@
 
 </head>
 
-<body class="bg-gradient-primary"> 
-    
+<body class="bg-ligth">
+
     <div class="container">
 
         <!-- Outer Row -->
@@ -35,50 +44,94 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6 d-none d-lg-block ">
+                                <img src="public/img/logo.png">
+                            </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Bienvenido!!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form action="controller/usuarioController.php?c=5" method="POST">
+
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Introducir la dirección de correo electrónico...">
+
+                                            <input type="email" required class="form-control form-control-user" name="correo" aria-describedby="emailHelp" placeholder="Introducir la dirección de correo electrónico...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Contraseña">
+                                            <input type="password" required class="form-control form-control-user" name="password" id="password" placeholder="Contraseña">
+
                                         </div>
+
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
+                                                <div class="CheckBox1">
+                                                    <input type="checkbox" onclick="Mostrar()">Mostrar contraseña
+                                                </div>
                                             </div>
                                         </div>
-                                        <a href="<?= BASE_URL ?>/views/main/index.php" class="btn btn-primary btn-user btn-block">
-                                            Iniciar sesion
-                                        </a>
-                                        <hr>
+
+                                        <button id="boton" type="submit" class="btn btn-info">Iniciar Sesi&oacute;n</button>
+
+
+                                        <div class="text-center">
+                                            <a class="small" href="views/login/olvido_contraseña.php">Olvidó su contraseña?</a>
+                                        </div>
+                                               
+                                        <?php
+                                            if (isset($_GET['message'])) {
+
+                                            ?>
+                                                <div class="alert alert-primary" role="alert">
+                                                    <?php
+                                                    switch ($_GET['message']) {
+                                                        case 'ok':
+                                                            echo 'Por favor, revisa tu correo';
+                                                            break;
+                                                        case 'success_password':
+                                                            echo 'Inicia sesión con tu nueva contraseña';
+                                                            break;
+
+                                                        default:
+                                                            echo 'Algo salió mal, intenta de nuevo';
+                                                            break;
+                                                    }
+                                                    ?>
+                                                </div>
+                                            <?php
+                                            }
+                                            ?>
+                    
+                                        <div class="text-center">
+                                            <a class="small" href="register.php">Crear cuenta!</a>
+
+                                           
+
 
                                     </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="password.php">Olvidó su contraseña?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="register.php">Crear cuenta!</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </div>
 
     </div>
+
+    </div>
+    
+   
+    <script src="public/js/main.js">
+    </script>
+    <script src="public/js/cerrar.js"></script>
+    <script src="public/js/login.js"></script> 
+
+
+
+
 </body>
 
 </html>

@@ -1,5 +1,31 @@
 <?php
+
+session_start();
+if (!isset($_SESSION['id'])) {
+    header("Location: index.php");
+}
 include_once(__DIR__ . "/config/config.php");
+
+// include_once(BASE_DIR . '../../views/main/partials/header.php');
+require_once 'models/ciudadModel.php';
+require_once 'models/rolesModel.php';
+require_once 'models/sexoModel.php';
+require_once 'models/documentoModel.php';
+
+$ciudad = new Ciudad();
+$data = $ciudad->getAll();
+
+$datos_documen = new TipoDocumento();
+$registro = $datos_documen->getAll();
+
+$sexo = new Sexo();
+$data_sexo = $sexo->getAll();
+
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -13,161 +39,118 @@ include_once(__DIR__ . "/config/config.php");
     <meta name="author" content="">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
-    <title>SB Admin 2 - Register</title>
+    <title>Registro</title>
 
     <link href="<?= BASE_URL ?> ../public/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-light">
 
     <div class="container-fluid">
 
         <!-- Page Heading -->
 
-        <div class="div">
-            <a href="#" class="btn btn-primary"> Nuevo registro</a>
-        </div>
-        <form action="">
-            <div class="container text-center  text-light">
-
-                <h1 class="h2 mb-4  text-center text-light">Crear Usuario</h1>
+        <form action="controller/usuarioController.php" method="POST" id="">
+            <input type="hidden" name="c" value="1">
+            <div class="container text-center">
+                <h1 class="h2 mb-4  text-center">Crear Usuario</h1>
                 <hr class="bg-info">
                 <div class="row text-start">
-                    <div class="col">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Tipo de documento</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Selecciona una opción</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label ">Primer Nombre</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Primer Apellido</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Sexo</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Selecciona una opción</option>
-                                <option value="1">Masculino</option>
-                                <option value="2">Femenino</option>
-                            </select>
-                        </div>
+                    <div class="col-6 mb-2">
+                        <label for="id_tipo_documento" class="form-label">Tipo de documento</label>
+                        <select class="form-select" aria-label="Default select example" name="id_tipo_documento" id="id_tipo_documento" required="required">
+                            <option>Seleccionar Documento</option>
+                            <?php
+                            foreach ($registro as $datos) {
+                                echo '<option value="' . $datos->getId() . '">' . $datos->getTipoDocumento() . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <label for="numero_documento" class="form-label">N° de documento</label>
+                        <input type="number" class="form-control" id="numero_documento" name="numero_documento" oninput="restrictNumberInput(event)" onchange="myFunction()" maxlength="10" required>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label ">Direccion</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1">
-                        </div>
+                    <div class="col-6 mb-2">
+                        <label for="primer_nombre" class="form-label">Primer Nombre</label>
+                        <input type="text" class="form-control" id="primer_nombre" name="primer_nombre" oninput="restricForm(event)" maxlength="20" required>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label ">E-mail</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Estado</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Selecciona una opción</option>
-                                <option value="1">Activo</option>
-                                <option value="2">innativo</option>
-                            </select>
-                        </div>
-                       
+                    <div class="col-6 mb-2">
+                        <label for="segundo_nombre" class="form-label">Segundo Nombre</label>
+                        <input type="text" class="form-control" id="segundo_nombre" name="segundo_nombre" oninput="restricForm(event)" maxlength="20">
+                    </div>
+
+                    <div class="col-6 mb-2">
+                        <label for="primer_apellido" class="form-label">Primer Apellido</label>
+                        <input type="text" class="form-control" id="primer_apellido" name="primer_apellido" oninput="restricForm(event)" maxlength="30" required>
+                    </div>
+
+                    <div class="col-6 mb-2">
+                        <label for="segundo_apellido" class="form-label">Segundo Apellido</label>
+                        <input type="text" class="form-control" id="segundo_apellido" name="segundo_apellido" oninput="restricForm(event)" maxlength="30">
 
                     </div>
 
-                   
 
-                    
-                    <div class="col">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">N° de documento</label>
-                            <input type="number" class="form-control" id="exampleFormControlInput1">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Segundo Nombre</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Segundo Apellido</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Ciudad</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Selecciona una opción</option>
-                                <option value="1">Amazonas</option>
-                                <option value="2">Antioquia</option>
-                                <option value="3">Arauca</option>
-                                <option value="4">Atlántico</option>
-                                <option value="5">Bogotá</option>
-                                <option value="6">Bolívar</option>
-                                <option value="7">Boyacá</option>
-                                <option value="8">Caldas</option>
-                                <option value="9">Caquetá</option>
-                                <option value="10">Casanare</option>
-                                <option value="11">Cauca</option>
-                                <option value="12">Cesar</option>
-                                <option value="13">Chocó</option>
-                                <option value="14">Córdoba</option>
-                                <option value="15">Cundinamarca</option>
-                                <option value="16">Guainía</option>
-                                <option value="17">Guaviare</option>
-                                <option value="18">Huila</option>
-                                <option value="19">La Guajira</option>
-                                <option value="20">Magdalena</option>
-                                <option value="21">Meta</option>
-                                <option value="22">Nariño</option>
-                                <option value="23">Norte de Santander</option>
-                                <option value="24">Putumayo</option>
-                                <option value="25">Quindío</option>
-                                <option value="26">Risaralda</option>
-                                <option value="27">San Andrés y Providencia</option>
-                                <option value="28">Santander</option>
-                                <option value="29">Sucre</option>
-                                <option value="30">Tolima</option>
-                                <option value="31">Valle del Cauca</option>
-                                <option value="32">Vaupés</option>
-                                <option value="33">Vichada</option>
+                    <div class="col-3 mb-2">
+                        <label for="id_sexo" class="form-label">Sexo</label>
+                        <select class="form-select" aria-label="Default select example" id="id_sexo" name="id_sexo" required="required">
+                            <option selected>Seleccionar Sexo</option>
+                            <?php
+                            foreach ($data_sexo as $valores) {
+                                echo '<option value="' . $valores->getId() . '">' . $valores->getSexo() . '</option>';
+                            }
+                            ?>
 
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Telefono</label>
-                            <input type="tel" class="form-control" id="exampleFormControlInput1">
-                        </div>
+                        </select>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Rol</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Selecciona una opción</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
+                    <div class="col-3 mb-2">
+                        <label for="telefono" class="form-label">Telefono</label>
+                        <input type="tel" class="form-control" id="telefono" name="telefono" oninput="restrictNumberInput(event)" maxlength="10" required>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="exampleFormControlInput1">
-                        </div>
+                    <div class="col-6 mb-2">
+                        <label for="id_ciudad" class="form-label">Ciudad</label>
+                        <select class="form-select" aria-label="Default select example" id="id_ciudad" name="id_ciudad" required="required">
+                            <option selected>Seleccionar</option>
+                            <?php
+                            foreach ($data as $valores) {
+                                echo '<option value="' . $valores->getId() . '">' . $valores->getCiudad() . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+
+                    <div class="col-6 mb-2">
+                        <label for="direccion" class="form-label ">Dirección</label>
+                        <input type="text" class="form-control" id="direccion" name="direccion">
+
+                    </div>
+
+                    <div class="col-6 mb-2">
+                        <label for="correo" class="form-label ">E-mail</label>
+                        <input type="text" class="form-control" id="correo" name="correo">
+
                     </div>
 
                 </div>
-                <!-- <button type="submit" class="btn btn-outline-info ml-0">Guardar</button> -->
-                <a href="index.php" class="btn btn-primary btn-user btn-bloc">
-                    Guardar
-                </a>
+                <br>
+                <button onclick="fntGuardar()" type="submit" src="index.php" class="btn btn-outline-info ml-2">Guardar Usuario</button>
+
             </div>
         </form>
 
     </div>
+    <?php
+    include_once(BASE_DIR . '../../views/main/partials/footer.php');
+    ?>
+
+    <script src="public/js/restriccion_input.js"></script>
+
 </body>
 
 </html>
