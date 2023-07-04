@@ -67,7 +67,7 @@ foreach ($registros as $ciudades) {
                                         <span id="ciudad_<?= $ciudades->getId() ?>"> <?= $ciudades->getCiudad() ?> </span>
                                     </td>
                                     <td>
-                                        <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_ciudad_<?= $ciudades->getId() ?>" onclick="update (<?= $ciudades->getId() ?>)">Actualizar</a>
+                                        <a type="button" class="btn btn-sm btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="id_ciudad<?= $ciudades->getId() ?>" onclick="update (<?= $ciudades->getId() ?>)">Actualizar</a>
                                         <a onclick="AlertDeleteCiudad('<?= $ciudades->getId() ?>')" class="btn btn-sm btn-outline-danger">Eliminar</a>
                                     </td>
 
@@ -111,30 +111,30 @@ foreach ($registros as $ciudades) {
     </div>
 
 </div>
-<script>
-    function update(id) {
-        let elemento = document.getElementById(`ciudad_${id}`)
-        let nombre = elemento.textContent
-
-        document.getElementById('nombre_actualizado').value = nombre
-
-    }
-
-    function recarga(id) {
-        let elemento = document.getElementById("nombre_actualizado")
-        let nombre = elemento.value
-
-        axios.post(`../../controller/ciudadController.php?c=3&id_ciudad=${id}&nombre=${nombre}`)
-            .then(function(response) {
-                window.location.reload()
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-    }
-</script>
 
 
 <?php
 include_once(BASE_DIR . '../../views/main/partials/footer.php');
 ?>
+<script>
+   function update(id) {
+    let elemento = document.getElementById(`ciudad_${id}`);
+    let nombre = elemento.textContent;
+
+    document.getElementById('nombre_actualizado').value = nombre;
+}
+
+function recarga(id) {
+    let nombreElemento = document.getElementById("nombre_actualizado");
+    let nombre = nombreElemento.value;
+
+    axios.post(`../../controller/ciudadController.php?c=3&id_ciudad=${id}&nombre=${nombre}`)
+        .then(function(response) {
+            window.location.reload();
+        })
+        .catch(function(error) {
+            console.error(error);
+        });
+}
+
+</script>

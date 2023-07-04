@@ -94,7 +94,7 @@ foreach ($registro as $cliente) {
                     <input type="tel" class="form-control" id="telefono" name="telefono" value="<?= $telefono ?>" readonly>
                 </div>
                 <div class="col-6 mb-2">
-                    <label for="id_ciudad" class="form-label">Ciudad</label>
+                    <label for="id_ciudad" class="form-label">Ciudad De Residencia</label>
                     <select class="form-select" aria-label="Default select example" id="id_ciudad" name="id_ciudad" value="<?= $ciudad ?> " disabled>
                         <?php
                         foreach ($data as $valores) {

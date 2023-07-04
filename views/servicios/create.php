@@ -103,7 +103,7 @@ $fecha = date('Y-m-d');
                     </div>
                     <div class="col-md-12">
                         <label for="falla" class="form-label">Falla</label>
-                        <textarea class="form-control" id="falla" rows="4" name="falla" placeholder="limite 500 caracteres" oninput="estrictAddres(event)" maxlength="140"></textarea>
+                        <textarea class="form-control" id="falla" rows="4" name="falla" placeholder="limite 150 caracteres" oninput="estrictAddres(event)" maxlength="140"></textarea>
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-outline-info">Crear Servicio</button>
