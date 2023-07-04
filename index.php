@@ -55,7 +55,7 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="<?= BASE_URL ?>/views/main/index.php" class="btn btn-primary btn-user btn-block">
+                                        <a href="<?= BASE_URL ?>/views/admin/index.php" class="btn btn-primary btn-user btn-block">
                                             Iniciar sesion
                                         </a>
                                         <hr>
